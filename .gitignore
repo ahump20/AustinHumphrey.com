@@ -25,6 +25,7 @@ dist-ssr
 
 # Worker build
 .wrangler
+*.tsbuildinfo
 
 # Generated exports
 scripts/resume_export.json

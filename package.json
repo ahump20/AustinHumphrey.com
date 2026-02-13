@@ -5,9 +5,20 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:api": "wrangler dev",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pdf:export": "npx tsx scripts/export_resume.ts",
+    "pdf:generate": "python3 scripts/generate_pdfs.py",
+    "pdf:build": "npm run pdf:export && npm run pdf:generate",
+    "image:generate": "bash scripts/generate_images.sh",
+    "test:smoke": "npx playwright test",
+    "cf:pages:create": "wrangler pages project create austin-humphrey-professional-resume-portfolio --production-branch main",
+    "cf:pages:deploy": "npm run build && wrangler pages deploy dist --project-name austin-humphrey-professional-resume-portfolio",
+    "cf:worker:deploy": "wrangler deploy",
+    "cf:domain:attach": "wrangler pages project edit austin-humphrey-professional-resume-portfolio --domains austinhumphrey.com",
+    "deploy:all": "npm run build && npm run pdf:build && npm run cf:pages:deploy && npm run cf:worker:deploy && npm run cf:domain:attach"
   },
   "dependencies": {
     "hono": "^4.11.9",

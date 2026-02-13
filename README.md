@@ -1,73 +1,89 @@
-# React + TypeScript + Vite
+# Austin Humphrey Professional Resume Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Production React portfolio + Cloudflare Worker API + Cloudflare Pages deployment for `austinhumphrey.com`.
 
-Currently, two official plugins are available:
+## Stack
+- Frontend: React + TypeScript + Vite
+- API: Cloudflare Worker (Hono)
+- Testing: Playwright
+- PDF generation: ReportLab + Poppler render checks
+- Image generation: OpenAI Image API via bundled skill CLI
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Layout
+- `src/content/resume.ts`: single source-of-truth resume and brand content model
+- `src/`: portfolio React app
+- `worker/`: Worker API (`/api/profile`, `/api/assets`, `/api/contact`, `/api/health`)
+- `scripts/generate_pdfs.py`: builds Premium and ATS resume PDFs from exported content model
+- `scripts/generate_images.sh`: creates hero, OG card, and poster assets
+- `tests/smoke.spec.ts`: UI/API smoke checks
 
-## React Compiler
+## Key Commands
+- `npm run dev`: start frontend locally
+- `npm run dev:api`: run Worker API locally
+- `npm run build`: build frontend
+- `npm run pdf:build`: export content and generate both PDFs
+- `npm run image:generate`: generate image assets (requires `OPENAI_API_KEY`)
+- `npm run test:smoke`: run Playwright smoke tests
+- `npm run cf:pages:create`: create Pages project
+- `npm run cf:pages:deploy`: deploy frontend to Pages
+- `npm run cf:worker:deploy`: deploy Worker API
+- `npm run cf:domain:attach`: attach custom domain `austinhumphrey.com`
+- `npm run deploy:all`: build + pdf + pages deploy + worker deploy + domain attach
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Local Development
 
-## Expanding the ESLint configuration
+```bash
+# Install dependencies
+npm install
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Start frontend dev server
+npm run dev
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Start Worker API locally (separate terminal)
+npm run dev:api
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Run smoke tests
+npx playwright install chromium
+npm run test:smoke
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## PDF Generation
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Install Python dependency
+pip install reportlab
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Export content model and generate PDFs
+npm run pdf:build
 ```
+
+## Image Generation
+
+```bash
+# Requires OPENAI_API_KEY environment variable
+export OPENAI_API_KEY=sk-...
+npm run image:generate
+```
+
+## Deploy to Cloudflare
+
+```bash
+# One-time: create Cloudflare Pages project
+npm run cf:pages:create
+
+# Deploy everything
+npm run deploy:all
+
+# Or deploy individually:
+npm run cf:pages:deploy    # frontend
+npm run cf:worker:deploy   # API worker
+npm run cf:domain:attach   # custom domain
+```
+
+## Domain
+- Primary domain: `https://austinhumphrey.com`
+- Pages fallback: `https://austin-humphrey-professional-resume-portfolio.pages.dev`
+
+## Notes
+- `public/assets/origin/newspaper-and-soil.jpg` currently uses the available origin asset fallback until a higher-resolution newspaper+soil source file is uploaded.
+- Contact persistence is optional via KV binding (`PORTFOLIO_CONTACTS`). If no binding is configured, `/api/contact` still validates payloads and returns success IDs.

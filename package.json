@@ -1,0 +1,15 @@
+{
+  "name": "austinhumphrey-proxy-worker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260204.0",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}

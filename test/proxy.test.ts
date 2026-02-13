@@ -1,0 +1,133 @@
+import { describe, expect, it, vi } from 'vitest';
+import { handleProxyRequest, type Env } from '../src/index';
+
+function createEnv(overrides: Partial<Env> = {}): Env {
+  const stubFetch = vi.fn().mockResolvedValue(new Response(JSON.stringify({ ok: true }), { status: 200 }));
+  return {
+    PROXY_TOKEN: 'secret',
+    ALLOWED_UPSTREAMS: 'api.blazesportsintel.com,statsapi.mlb.com',
+    ALLOWED_ORIGINS: 'https://austinhumphrey.com,https://www.austinhumphrey.com',
+    REQUEST_TIMEOUT_MS: '20',
+    RATE_LIMITER: {
+      idFromName: vi.fn().mockReturnValue({ toString: () => 'id' }),
+      get: vi.fn().mockReturnValue({ fetch: stubFetch })
+    } as unknown as DurableObjectNamespace,
+    ...overrides
+  };
+}
+
+function proxyRequest(url: string, headers: HeadersInit = {}): Request {
+  return new Request(url, {
+    headers: {
+      Origin: 'https://austinhumphrey.com',
+      Authorization: 'Bearer secret',
+      ...headers
+    }
+  });
+}
+
+describe('proxy handler', () => {
+  it('blocks upstream hosts not on allowlist', async () => {
+    const env = createEnv();
+    const response = await handleProxyRequest(
+      proxyRequest('https://worker.test/proxy?target=https://evil.example.com/path'),
+      env
+    );
+
+    expect(response.status).toBe(403);
+    await expect(response.json()).resolves.toEqual({ error: 'upstream_not_allowed' });
+  });
+
+  it('fails when auth header is missing', async () => {
+    const env = createEnv();
+    const response = await handleProxyRequest(
+      new Request('https://worker.test/proxy?target=https://api.blazesportsintel.com/feed', {
+        headers: { Origin: 'https://austinhumphrey.com' }
+      }),
+      env
+    );
+
+    expect(response.status).toBe(401);
+    await expect(response.json()).resolves.toEqual({ error: 'invalid_proxy_token' });
+  });
+
+  it('returns timeout response when upstream exceeds timeout', async () => {
+    const env = createEnv();
+    const delayedFetch = vi.fn(async (_url: string, init?: RequestInit) => {
+      await new Promise<void>((resolve, reject) => {
+        const timer = setTimeout(resolve, 50);
+        init?.signal?.addEventListener('abort', () => {
+          clearTimeout(timer);
+          reject(new Error('aborted'));
+        });
+      });
+      return new Response('should not return');
+    });
+
+    const response = await handleProxyRequest(
+      proxyRequest('https://worker.test/proxy?target=https://api.blazesportsintel.com/feed'),
+      env,
+      delayedFetch as typeof fetch
+    );
+
+    expect(response.status).toBe(504);
+    await expect(response.json()).resolves.toEqual({ error: 'upstream_timeout' });
+  });
+
+  it('passes successful proxied responses with filtered headers', async () => {
+    const env = createEnv();
+    const upstreamFetch = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify({ data: 'ok' }), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          Connection: 'keep-alive',
+          'Set-Cookie': 'token=123'
+        }
+      })
+    );
+
+    const response = await handleProxyRequest(
+      proxyRequest('https://worker.test/proxy?target=https://statsapi.mlb.com/feed', {
+        'X-Untrusted': 'drop-me',
+        Accept: 'application/json'
+      }),
+      env,
+      upstreamFetch as typeof fetch
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get('Content-Type')).toBe('application/json');
+    expect(response.headers.get('Set-Cookie')).toBeNull();
+    expect(response.headers.get('Connection')).toBeNull();
+    expect(response.headers.get('Access-Control-Allow-Origin')).toBe('https://austinhumphrey.com');
+    await expect(response.json()).resolves.toEqual({ data: 'ok' });
+
+    const forwardedHeaders = upstreamFetch.mock.calls[0][1]?.headers as Headers;
+    expect(forwardedHeaders.get('X-Untrusted')).toBeNull();
+    expect(forwardedHeaders.get('Accept')).toBe('application/json');
+  });
+
+  it('returns 429 when rate limiter denies request', async () => {
+    const env = createEnv({
+      RATE_LIMITER: {
+        idFromName: vi.fn().mockReturnValue({ toString: () => 'id' }),
+        get: vi.fn().mockReturnValue({
+          fetch: vi.fn().mockResolvedValue(new Response(JSON.stringify({ error: 'rate_limit_exceeded' }), {
+            status: 429,
+            headers: { 'Retry-After': '30' }
+          }))
+        })
+      } as unknown as DurableObjectNamespace
+    });
+
+    const response = await handleProxyRequest(
+      proxyRequest('https://worker.test/proxy?target=https://statsapi.mlb.com/feed'),
+      env
+    );
+
+    expect(response.status).toBe(429);
+    expect(response.headers.get('Retry-After')).toBe('30');
+    await expect(response.json()).resolves.toEqual({ error: 'rate_limit_exceeded' });
+  });
+});

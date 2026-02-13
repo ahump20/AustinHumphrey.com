@@ -7,7 +7,15 @@ type Bindings = {
 
 const app = new Hono<{ Bindings: Bindings }>();
 
-app.use("/*", cors({ origin: "*" }));
+app.use(
+  "/*",
+  cors({
+    origin: [
+      "https://austinhumphrey.com",
+      "https://austin-humphrey-professional-resume-portfolio.pages.dev",
+    ],
+  }),
+);
 
 // ── Health ──────────────────────────────────────────────────────────────────
 app.get("/api/health", (c) => {

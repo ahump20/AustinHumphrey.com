@@ -1,34 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { NavLink, Outlet } from 'react-router-dom'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app">
+      <header className="site-header">
+        <nav className="site-nav" aria-label="Main navigation">
+          <NavLink to="/" className="nav-brand">AH</NavLink>
+          <ul className="nav-links">
+            <li><NavLink to="/" end>Home</NavLink></li>
+            <li><NavLink to="/resume">Resume</NavLink></li>
+            <li><NavLink to="/work">Work</NavLink></li>
+            <li><NavLink to="/contact">Contact</NavLink></li>
+          </ul>
+        </nav>
+      </header>
+      <main className="site-main">
+        <Outlet />
+      </main>
+      <footer className="site-footer">
+        <p>&copy; {new Date().getFullYear()} Austin Humphrey</p>
+      </footer>
+    </div>
   )
 }
 

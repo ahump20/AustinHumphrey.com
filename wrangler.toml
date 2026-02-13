@@ -1,0 +1,11 @@
+name = "austin-humphrey-api"
+main = "worker/index.ts"
+compatibility_date = "2024-12-01"
+
+# Optional KV namespace for storing contact form submissions.
+# Uncomment and add your KV namespace ID after creating one with:
+#   wrangler kv namespace create PORTFOLIO_CONTACTS
+#
+# [[kv_namespaces]]
+# binding = "PORTFOLIO_CONTACTS"
+# id = "<your-kv-namespace-id>"

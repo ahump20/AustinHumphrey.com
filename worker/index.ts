@@ -23,6 +23,9 @@ app.get("/api/health", (c) => {
 });
 
 // ── Profile ─────────────────────────────────────────────────────────────────
+// NOTE: This endpoint duplicates content from src/content/resume.ts
+// If the content model in resume.ts is updated, this endpoint must be updated manually
+// to keep the API response in sync with the frontend content.
 app.get("/api/profile", (c) => {
   return c.json({
     name: "Austin Humphrey",

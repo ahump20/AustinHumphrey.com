@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { resume } from '../content/resume'
+import ContactLinks from '../components/ContactLinks'
 
 export default function Home() {
   return (
@@ -27,24 +28,7 @@ export default function Home() {
         </a>
       </div>
 
-      <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
-        <a
-          href={`https://${resume.contact.linkedin}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="utility-text"
-        >
-          LinkedIn →
-        </a>
-        <a
-          href="https://BlazeSportsIntel.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="utility-text"
-        >
-          BlazeSportsIntel.com →
-        </a>
-      </div>
+      <ContactLinks variant="home" />
     </section>
   )
 }

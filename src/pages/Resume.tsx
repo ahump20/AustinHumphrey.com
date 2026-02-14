@@ -1,4 +1,5 @@
 import { resume } from '../content/resume'
+import ContactLinks from '../components/ContactLinks'
 
 export default function Resume() {
   return (
@@ -9,16 +10,7 @@ export default function Resume() {
         <p className="utility-text" style={{ opacity: 0.7, marginBottom: '1rem' }}>
           {resume.tagline}
         </p>
-        <div className="utility-text" style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', fontSize: '0.7rem' }}>
-          <span>{resume.contact.location}</span>
-          <span>{resume.contact.phone}</span>
-          {resume.contact.emails.map((emailAddress) => (
-            <a key={emailAddress} href={`mailto:${emailAddress}`}>{emailAddress}</a>
-          ))}
-          <a href={`https://${resume.contact.linkedin}`} target="_blank" rel="noopener noreferrer">
-            {resume.contact.linkedin}
-          </a>
-        </div>
+        <ContactLinks variant="resume" />
       </header>
 
       {/* Download */}

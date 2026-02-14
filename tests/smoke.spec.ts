@@ -43,6 +43,56 @@ test.describe("Smoke tests", () => {
       }
     }
   });
+
+  test("theme toggle updates data-theme attribute", async ({ page }) => {
+    await page.goto("/");
+
+    // Get initial theme
+    const initialTheme = await page.locator("html").getAttribute("data-theme");
+    expect(initialTheme).toBeTruthy();
+
+    // Click the theme toggle button
+    const themeToggle = page.locator("button.theme-toggle");
+    await expect(themeToggle).toBeVisible();
+    await themeToggle.click();
+
+    // Verify the theme has changed
+    const newTheme = await page.locator("html").getAttribute("data-theme");
+    expect(newTheme).not.toBe(initialTheme);
+    expect(newTheme === "light" || newTheme === "dark").toBe(true);
+  });
+
+  test("theme preference persists after page reload", async ({ page }) => {
+    await page.goto("/");
+
+    // Get initial theme
+    const initialTheme = await page.locator("html").getAttribute("data-theme");
+
+    // Click the theme toggle to change theme
+    const themeToggle = page.locator("button.theme-toggle");
+    await themeToggle.click();
+
+    // Get the new theme
+    const newTheme = await page.locator("html").getAttribute("data-theme");
+    expect(newTheme).not.toBe(initialTheme);
+
+    // Verify localStorage has been updated
+    const storedTheme = await page.evaluate(() => localStorage.getItem("theme"));
+    expect(storedTheme).toBe(newTheme);
+
+    // Reload the page
+    await page.reload();
+
+    // Verify the theme persisted after reload
+    const persistedTheme = await page.locator("html").getAttribute("data-theme");
+    expect(persistedTheme).toBe(newTheme);
+
+    // Verify localStorage still has the correct value
+    const storedThemeAfterReload = await page.evaluate(() =>
+      localStorage.getItem("theme")
+    );
+    expect(storedThemeAfterReload).toBe(newTheme);
+  });
 });
 
 test.describe("API smoke tests", () => {

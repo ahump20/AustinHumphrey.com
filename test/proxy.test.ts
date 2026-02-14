@@ -133,6 +133,9 @@ describe('proxy handler', () => {
 
   it('handles requests without an Origin header for non-browser clients', async () => {
     const env = createEnv();
+    const mockFetch = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify({ ok: true }), { status: 200 })
+    );
 
     const request = new Request(
       'https://worker.test/proxy?target=https://api.blazesportsintel.com/feed',
@@ -143,7 +146,7 @@ describe('proxy handler', () => {
       }
     );
 
-    const response = await handleProxyRequest(request, env);
+    const response = await handleProxyRequest(request, env, mockFetch as typeof fetch);
 
     expect(response.status).toBe(200);
     await expect(response.json()).resolves.toEqual({ ok: true });

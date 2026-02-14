@@ -192,6 +192,11 @@ export async function handleProxyRequest(request: Request, env: Env, fetchImpl: 
     if (controller.signal.aborted) {
       return jsonResponse(504, { error: 'upstream_timeout' }, corsHeaders);
     }
+    // Log upstream fetch failure for debugging (excluding sensitive headers)
+    console.error('Upstream fetch failed:', {
+      target: upstream.toString(),
+      error: error instanceof Error ? error.message : String(error)
+    });
     return jsonResponse(502, { error: 'upstream_fetch_failed' }, corsHeaders);
   } finally {
     clearTimeout(timeout);
@@ -240,10 +245,9 @@ export class RateLimiter implements DurableObject {
     const bucket = Math.floor(now / (windowSecondsNum * 1000));
     const key = `bucket:${bucket}`;
 
-    const count = ((await this.state.storage.get<number>(key)) ?? 0) + 1;
-    await this.state.storage.put(key, count);
+    const currentCount = (await this.state.storage.get<number>(key)) ?? 0;
 
-    if (count > maxNum) {
+    if (currentCount >= maxNum) {
       return new Response(JSON.stringify({ error: 'rate_limit_exceeded' }), {
         status: 429,
         headers: {
@@ -253,10 +257,29 @@ export class RateLimiter implements DurableObject {
       });
     }
 
+    const count = currentCount + 1;
+    await this.state.storage.put(key, count);
+
+    // Schedule cleanup of old buckets to prevent unbounded storage growth
+    await this.scheduleCleanup(bucket, windowSecondsNum);
+
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });
+  }
+
+  private async scheduleCleanup(currentBucket: number, windowSeconds: number): Promise<void> {
+    // Clean up buckets older than 2 window periods
+    const cutoffBucket = currentBucket - 2;
+    const keys = await this.state.storage.list<number>({ prefix: 'bucket:' });
+    
+    for (const [key] of keys) {
+      const bucketNum = parseInt(key.split(':')[1]);
+      if (bucketNum < cutoffBucket) {
+        await this.state.storage.delete(key);
+      }
+    }
   }
 }
 

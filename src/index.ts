@@ -260,8 +260,10 @@ export class RateLimiter implements DurableObject {
     const count = currentCount + 1;
     await this.state.storage.put(key, count);
 
-    // Schedule cleanup of old buckets to prevent unbounded storage growth
-    await this.scheduleCleanup(bucket, windowSecondsNum);
+    // Probabilistically run cleanup to reduce overhead (10% chance)
+    if (Math.random() < 0.1) {
+      await this.cleanupOldBuckets(bucket);
+    }
 
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
@@ -269,7 +271,7 @@ export class RateLimiter implements DurableObject {
     });
   }
 
-  private async scheduleCleanup(currentBucket: number, windowSeconds: number): Promise<void> {
+  private async cleanupOldBuckets(currentBucket: number): Promise<void> {
     // Clean up buckets older than 2 window periods
     const cutoffBucket = currentBucket - 2;
     const keys = await this.state.storage.list<number>({ prefix: 'bucket:' });

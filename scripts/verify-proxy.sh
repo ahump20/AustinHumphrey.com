@@ -26,7 +26,7 @@ run_case() {
 
 run_case "blocked upstream" "403" "$BASE_URL?target=https://example.org/private"
 run_case "missing auth" "401" "$BASE_URL?target=https://statsapi.mlb.com/api/v1/schedule" ""
-run_case "timeout path" "504" "$BASE_URL?target=https://httpstat.us/200?sleep=20000"
+run_case "timeout path" "504" "$BASE_URL?target=https://statsapi.mlb.com/api/v1/schedule?sportId=1&startDate=1900-01-01&endDate=2100-01-01"
 run_case "successful proxy" "200" "$BASE_URL?target=https://statsapi.mlb.com/api/v1/schedule"
 
 echo "All proxy verification cases passed."

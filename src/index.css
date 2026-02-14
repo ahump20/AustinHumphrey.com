@@ -25,6 +25,8 @@
   --text-primary: var(--charcoal);
   --text-secondary: rgba(26, 26, 26, 0.7);
   --border-accent: rgba(191, 87, 0, 0.2);
+  /* Darker sand in light mode to maintain contrast for hover states (e.g., links) */
+  --sand: #D0C4B0;
   --grain-opacity: 0.02;
   --glow-opacity: 0.05;
 }

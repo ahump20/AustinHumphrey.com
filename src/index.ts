@@ -139,6 +139,10 @@ export async function handleProxyRequest(request: Request, env: Env, fetchImpl: 
     return new Response(null, { status: 204, headers: corsHeaders });
   }
 
+  if (!['GET', 'HEAD'].includes(request.method)) {
+    return jsonResponse(405, { error: 'method_not_allowed' }, corsHeaders);
+  }
+
   if (origin && !allowedOrigins.has(origin.toLowerCase())) {
     return jsonResponse(403, { error: 'origin_not_allowed' }, corsHeaders);
   }
@@ -175,7 +179,7 @@ export async function handleProxyRequest(request: Request, env: Env, fetchImpl: 
 
   try {
     const upstreamResponse = await fetchImpl(upstream.toString(), {
-      method: 'GET',
+      method: request.method,
       headers: filterRequestHeaders(request.headers),
       signal: controller.signal
     });

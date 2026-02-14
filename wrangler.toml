@@ -1,21 +1,11 @@
-name = "austinhumphrey-proxy"
-main = "src/index.ts"
-compatibility_date = "2026-02-13"
+name = "austin-humphrey-api"
+main = "worker/index.ts"
+compatibility_date = "2026-01-01"
 
-[vars]
-ALLOWED_UPSTREAMS = "api.blazesportsintel.com,statsapi.mlb.com"
-ALLOWED_ORIGINS = "https://austinhumphrey.com,https://www.austinhumphrey.com"
-REQUEST_TIMEOUT_MS = "8000"
-RATE_LIMIT_MAX = "60"
-RATE_LIMIT_WINDOW_SECONDS = "60"
-
-# PROXY_TOKEN is required by the worker but is a sensitive value.
-# Configure it as a secret before deployment:
-#   wrangler secret put PROXY_TOKEN
-[[durable_objects.bindings]]
-name = "RATE_LIMITER"
-class_name = "RateLimiter"
-
-[[migrations]]
-tag = "v1"
-new_sqlite_classes = ["RateLimiter"]
+# Optional KV namespace for storing contact form submissions.
+# Uncomment and add your KV namespace ID after creating one with:
+#   wrangler kv namespace create PORTFOLIO_CONTACTS
+#
+# [[kv_namespaces]]
+# binding = "PORTFOLIO_CONTACTS"
+# id = "<your-kv-namespace-id>"

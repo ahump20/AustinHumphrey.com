@@ -130,4 +130,23 @@ describe('proxy handler', () => {
     expect(response.headers.get('Retry-After')).toBe('30');
     await expect(response.json()).resolves.toEqual({ error: 'rate_limit_exceeded' });
   });
+
+  it('handles CORS preflight OPTIONS requests', async () => {
+    const env = createEnv();
+    const request = new Request('https://worker.test/proxy', {
+      method: 'OPTIONS',
+      headers: {
+        Origin: 'https://austinhumphrey.com',
+        'Access-Control-Request-Method': 'GET',
+        'Access-Control-Request-Headers': 'Authorization,Content-Type'
+      }
+    });
+
+    const response = await handleProxyRequest(request, env);
+
+    expect(response.status).toBe(204);
+    expect(response.headers.get('Access-Control-Allow-Origin')).toBe('https://austinhumphrey.com');
+    expect(response.headers.get('Access-Control-Allow-Methods')).toBeTruthy();
+    expect(response.headers.get('Access-Control-Allow-Headers')).toBeTruthy();
+  });
 });

@@ -9,6 +9,9 @@ REQUEST_TIMEOUT_MS = "8000"
 RATE_LIMIT_MAX = "60"
 RATE_LIMIT_WINDOW_SECONDS = "60"
 
+# PROXY_TOKEN is required by the worker but is a sensitive value.
+# Configure it as a secret before deployment:
+#   wrangler secret put PROXY_TOKEN
 [[durable_objects.bindings]]
 name = "RATE_LIMITER"
 class_name = "RateLimiter"

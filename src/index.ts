@@ -206,20 +206,49 @@ export class RateLimiter implements DurableObject {
       return new Response('Method Not Allowed', { status: 405 });
     }
 
-    const { max, windowSeconds } = (await request.json()) as { max: number; windowSeconds: number };
+    let body: unknown;
+    try {
+      body = await request.json();
+    } catch {
+      return new Response(JSON.stringify({ error: 'invalid_json' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    const { max, windowSeconds } = (body ?? {}) as {
+      max?: unknown;
+      windowSeconds?: unknown;
+    };
+
+    const maxNum = Number(max);
+    const windowSecondsNum = Number(windowSeconds);
+
+    if (
+      !Number.isFinite(maxNum) ||
+      !Number.isFinite(windowSecondsNum) ||
+      maxNum <= 0 ||
+      windowSecondsNum <= 0
+    ) {
+      return new Response(JSON.stringify({ error: 'invalid_rate_limit_config' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
     const now = Date.now();
-    const bucket = Math.floor(now / (windowSeconds * 1000));
+    const bucket = Math.floor(now / (windowSecondsNum * 1000));
     const key = `bucket:${bucket}`;
 
     const count = ((await this.state.storage.get<number>(key)) ?? 0) + 1;
     await this.state.storage.put(key, count);
 
-    if (count > max) {
+    if (count > maxNum) {
       return new Response(JSON.stringify({ error: 'rate_limit_exceeded' }), {
         status: 429,
         headers: {
           'Content-Type': 'application/json',
-          'Retry-After': `${windowSeconds}`
+          'Retry-After': `${windowSecondsNum}`
         }
       });
     }

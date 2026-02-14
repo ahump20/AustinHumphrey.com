@@ -50,6 +50,7 @@ test.describe("Smoke tests", () => {
     // Get initial theme
     const initialTheme = await page.locator("html").getAttribute("data-theme");
     expect(initialTheme).toBeTruthy();
+    expect(initialTheme === "light" || initialTheme === "dark").toBe(true);
 
     // Click the theme toggle button
     const themeToggle = page.locator("button.theme-toggle");
@@ -67,6 +68,8 @@ test.describe("Smoke tests", () => {
 
     // Get initial theme
     const initialTheme = await page.locator("html").getAttribute("data-theme");
+    expect(initialTheme).toBeTruthy();
+    expect(initialTheme === "light" || initialTheme === "dark").toBe(true);
 
     // Click the theme toggle to change theme
     const themeToggle = page.locator("button.theme-toggle");

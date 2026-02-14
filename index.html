@@ -80,7 +80,12 @@
     <!-- Theme Detection (before render to prevent flash) -->
     <script>
       (function() {
-        var theme = localStorage.getItem('theme');
+        var theme;
+        try {
+          theme = localStorage.getItem('theme');
+        } catch (e) {
+          // localStorage may be unavailable in strict privacy/sandboxed contexts
+        }
         if (!theme) {
           theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
         }

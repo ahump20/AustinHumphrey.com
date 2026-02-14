@@ -9,7 +9,12 @@ function useTheme() {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
-    localStorage.setItem('theme', theme)
+    try {
+      localStorage.setItem('theme', theme)
+    } catch {
+      // localStorage may be unavailable in strict privacy/sandboxed contexts
+      // Silently fail to avoid breaking the app - theme will still work for current session
+    }
   }, [theme])
 
   const toggle = useCallback(() => {

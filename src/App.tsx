@@ -9,7 +9,13 @@ function useTheme() {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
-    localStorage.setItem('theme', theme)
+    if (theme === 'light' || theme === 'dark') {
+      try {
+        localStorage.setItem('theme', theme)
+      } catch {
+        // Ignore persistence errors (e.g., blocked storage / privacy mode)
+      }
+    }
   }, [theme])
 
   const toggle = useCallback(() => {

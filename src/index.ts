@@ -115,7 +115,19 @@ function filterResponseHeaders(responseHeaders: Headers): Headers {
 }
 
 function isAllowedUpstream(upstream: URL, allowedUpstreams: Set<string>): boolean {
-  return upstream.protocol === 'https:' && allowedUpstreams.has(upstream.hostname.toLowerCase());
+  // Enforce HTTPS protocol
+  if (upstream.protocol !== 'https:') {
+    return false;
+  }
+
+  // Disallow embedded credentials in the upstream URL (username:password@hostname)
+  if (upstream.username || upstream.password) {
+    return false;
+  }
+
+  // Only allow explicitly whitelisted hostnames
+  const hostname = upstream.hostname.toLowerCase();
+  return allowedUpstreams.has(hostname);
 }
 
 export async function handleProxyRequest(request: Request, env: Env, fetchImpl: typeof fetch = fetch): Promise<Response> {

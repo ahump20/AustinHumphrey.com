@@ -12,8 +12,8 @@ export default function Resume() {
         <div className="utility-text" style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', fontSize: '0.7rem' }}>
           <span>{resume.contact.location}</span>
           <span>{resume.contact.phone}</span>
-          {resume.contact.emails.map((e) => (
-            <a key={e} href={`mailto:${e}`}>{e}</a>
+          {resume.contact.emails.map((emailAddress) => (
+            <a key={emailAddress} href={`mailto:${emailAddress}`}>{emailAddress}</a>
           ))}
           <a href={`https://${resume.contact.linkedin}`} target="_blank" rel="noopener noreferrer">
             {resume.contact.linkedin}
@@ -45,15 +45,15 @@ export default function Resume() {
       {/* Experience */}
       <section style={{ marginBottom: '2.5rem' }}>
         <h2 className="section-title">Experience</h2>
-        {resume.experience.map((exp) => (
-          <div key={exp.company} style={{ marginBottom: '2rem' }}>
-            <h3 style={{ marginBottom: '0.15rem' }}>{exp.title}</h3>
+        {resume.experience.map((role) => (
+          <div key={`${role.company}-${role.dates}`} style={{ marginBottom: '2rem' }}>
+            <h3 style={{ marginBottom: '0.15rem' }}>{role.title}</h3>
             <p className="utility-text" style={{ marginBottom: '0.5rem', opacity: 0.7 }}>
-              {exp.company} · {exp.location} · {exp.dates}
+              {role.company} · {role.location} · {role.dates}
             </p>
             <ul style={{ paddingLeft: '1.25rem', listStyle: 'disc' }}>
-              {exp.bullets.map((b, i) => (
-                <li key={i} style={{ marginBottom: '0.4rem', fontSize: '1.05rem' }}>{b}</li>
+              {role.bullets.map((bulletPoint, index) => (
+                <li key={index} style={{ marginBottom: '0.4rem', fontSize: '1.05rem' }}>{bulletPoint}</li>
               ))}
             </ul>
           </div>
@@ -63,11 +63,11 @@ export default function Resume() {
       {/* Education */}
       <section style={{ marginBottom: '2.5rem' }}>
         <h2 className="section-title">Education</h2>
-        {resume.education.map((ed) => (
-          <div key={ed.institution} style={{ marginBottom: '1.25rem' }}>
-            <h3 style={{ marginBottom: '0.15rem', fontSize: '1.1rem' }}>{ed.degree}</h3>
+        {resume.education.map((educationEntry) => (
+          <div key={educationEntry.institution} style={{ marginBottom: '1.25rem' }}>
+            <h3 style={{ marginBottom: '0.15rem', fontSize: '1.1rem' }}>{educationEntry.degree}</h3>
             <p className="utility-text" style={{ opacity: 0.7 }}>
-              {ed.institution}{ed.details ? ` · ${ed.details}` : ''}
+              {educationEntry.institution}{educationEntry.details ? ` · ${educationEntry.details}` : ''}
             </p>
           </div>
         ))}
@@ -77,8 +77,8 @@ export default function Resume() {
       <section style={{ marginBottom: '2.5rem' }}>
         <h2 className="section-title">Honors &amp; Leadership</h2>
         <ul style={{ paddingLeft: '1.25rem', listStyle: 'disc' }}>
-          {resume.honorsAndLeadership.map((item, i) => (
-            <li key={i} style={{ marginBottom: '0.4rem', fontSize: '1.05rem' }}>{item}</li>
+          {resume.honorsAndLeadership.map((item, index) => (
+            <li key={index} style={{ marginBottom: '0.4rem', fontSize: '1.05rem' }}>{item}</li>
           ))}
         </ul>
       </section>
@@ -87,8 +87,8 @@ export default function Resume() {
       <section>
         <h2 className="section-title">Skills</h2>
         <ul style={{ paddingLeft: '1.25rem', listStyle: 'disc' }}>
-          {resume.skills.map((skill, i) => (
-            <li key={i} style={{ marginBottom: '0.4rem', fontSize: '1.05rem' }}>{skill}</li>
+          {resume.skills.map((skill, index) => (
+            <li key={index} style={{ marginBottom: '0.4rem', fontSize: '1.05rem' }}>{skill}</li>
           ))}
         </ul>
       </section>

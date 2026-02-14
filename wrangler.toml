@@ -1,6 +1,6 @@
 name = "austin-humphrey-api"
 main = "worker/index.ts"
-compatibility_date = "2024-12-01"
+compatibility_date = "2026-01-01"
 
 # Optional KV namespace for storing contact form submissions.
 # Uncomment and add your KV namespace ID after creating one with:

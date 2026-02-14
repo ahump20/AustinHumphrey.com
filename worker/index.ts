@@ -59,14 +59,14 @@ app.get("/api/assets", (c) => {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 app.post("/api/contact", async (c) => {
-  let body: Record<string, unknown>;
+  let contactPayload: Record<string, unknown>;
   try {
-    body = await c.req.json();
+    contactPayload = await c.req.json();
   } catch {
     return c.json({ error: "Invalid JSON body" }, 400);
   }
 
-  const { name, email, message } = body as {
+  const { name, email, message } = contactPayload as {
     name?: string;
     email?: string;
     message?: string;

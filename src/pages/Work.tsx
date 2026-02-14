@@ -1,19 +1,19 @@
 import { resume } from '../content/resume'
 
-const blazeExp = resume.experience[0]
+const founderExperience = resume.experience[0]
 
 const projects = [
   {
     name: 'Blaze Sports Intel',
     url: 'https://BlazeSportsIntel.com',
-    description: blazeExp.bullets[0],
-    details: [blazeExp.bullets[1], blazeExp.bullets[2], blazeExp.bullets[3]],
+    description: founderExperience.bullets[0],
+    details: [founderExperience.bullets[1], founderExperience.bullets[2], founderExperience.bullets[3]],
   },
   {
     name: 'BlazeCraft.app',
     url: 'https://BlazeCraft.app',
-    description: blazeExp.bullets[4],
-    details: [blazeExp.bullets[5]],
+    description: founderExperience.bullets[4],
+    details: [founderExperience.bullets[5]],
   },
 ]
 
@@ -26,9 +26,9 @@ export default function Work() {
       </p>
 
       <div style={{ display: 'grid', gap: '2.5rem' }}>
-        {projects.map((proj) => (
+        {projects.map((project) => (
           <article
-            key={proj.name}
+            key={project.name}
             style={{
               border: '1px solid rgba(191,87,0,0.2)',
               padding: '2rem',
@@ -36,17 +36,17 @@ export default function Work() {
             }}
           >
             <h2 style={{ marginBottom: '0.25rem' }}>
-              <a href={proj.url} target="_blank" rel="noopener noreferrer">
-                {proj.name}
+              <a href={project.url} target="_blank" rel="noopener noreferrer">
+                {project.name}
               </a>
             </h2>
             <p className="utility-text" style={{ opacity: 0.5, marginBottom: '1rem' }}>
-              {proj.url.replace('https://', '')}
+              {project.url.replace('https://', '')}
             </p>
-            <p style={{ marginBottom: '1rem' }}>{proj.description}</p>
+            <p style={{ marginBottom: '1rem' }}>{project.description}</p>
             <ul style={{ paddingLeft: '1.25rem', listStyle: 'disc' }}>
-              {proj.details.map((d, i) => (
-                <li key={i} style={{ marginBottom: '0.4rem', fontSize: '1.05rem' }}>{d}</li>
+              {project.details.map((detail, index) => (
+                <li key={index} style={{ marginBottom: '0.4rem', fontSize: '1.05rem' }}>{detail}</li>
               ))}
             </ul>
           </article>

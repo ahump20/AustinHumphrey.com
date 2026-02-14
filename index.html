@@ -31,6 +31,62 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <link rel="icon" href="/assets/favicon.ico" />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "John Austin Humphrey",
+      "alternateName": "Austin Humphrey",
+      "jobTitle": "Founder & Builder",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Blaze Sports Intel",
+        "url": "https://blazesportsintel.com"
+      },
+      "url": "https://austinhumphrey.com",
+      "email": "Austin@BlazeSportsIntel.com",
+      "birthPlace": {
+        "@type": "Place",
+        "name": "Memphis, Tennessee"
+      },
+      "homeLocation": {
+        "@type": "Place",
+        "name": "San Antonio, Texas"
+      },
+      "knowsAbout": [
+        "Sports Analytics",
+        "Product Strategy",
+        "AI-Assisted Analytics",
+        "Cloudflare Workers",
+        "TypeScript",
+        "Sports Intelligence"
+      ],
+      "description": "Builder of Blaze Sports Intel, a sports analytics platform serving underserved markets. Born in Memphis, Tennessee, with roots in West Columbia, Texas — birthplace of the Republic of Texas.",
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "The University of Texas at Austin"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Full Sail University"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Theme Detection (before render to prevent flash) -->
+    <script>
+      (function() {
+        var theme = localStorage.getItem('theme');
+        if (!theme) {
+          theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

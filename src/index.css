@@ -7,6 +7,26 @@
   --font-heading: 'Oswald', sans-serif;
   --font-body: 'Cormorant Garamond', serif;
   --font-utility: 'JetBrains Mono', monospace;
+
+  /* Theme defaults (dark) */
+  --bg-primary: var(--midnight);
+  --bg-header: rgba(13, 13, 13, 0.92);
+  --text-primary: var(--sand);
+  --text-secondary: rgba(245, 242, 235, 0.7);
+  --border-accent: rgba(191, 87, 0, 0.15);
+  --grain-opacity: 0.04;
+  --glow-opacity: 0.08;
+}
+
+/* ── Light Theme ── */
+[data-theme="light"] {
+  --bg-primary: #FAFAF8;
+  --bg-header: rgba(250, 250, 248, 0.92);
+  --text-primary: var(--charcoal);
+  --text-secondary: rgba(26, 26, 26, 0.7);
+  --border-accent: rgba(191, 87, 0, 0.2);
+  --grain-opacity: 0.02;
+  --glow-opacity: 0.05;
 }
 
 /* ── Reset ── */
@@ -25,10 +45,11 @@ body {
   font-family: var(--font-body);
   font-weight: 400;
   line-height: 1.6;
-  color: var(--sand);
-  background-color: var(--midnight);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ── Film-grain overlay ── */
@@ -38,7 +59,7 @@ body::before {
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: var(--grain-opacity);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
@@ -51,7 +72,7 @@ body::after {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(ellipse at 50% 20%, rgba(191, 87, 0, 0.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 50% 20%, rgba(191, 87, 0, var(--glow-opacity)) 0%, transparent 70%);
 }
 
 /* ── Typography ── */
@@ -101,7 +122,7 @@ ul { list-style: none; }
   text-transform: uppercase;
   padding: 0.75rem 2rem;
   border: 1px solid var(--burnt-orange);
-  color: var(--sand);
+  color: var(--text-primary);
   background: transparent;
   cursor: pointer;
   transition: all 0.25s ease;
@@ -109,15 +130,15 @@ ul { list-style: none; }
 }
 .btn:hover {
   background: var(--burnt-orange);
-  color: var(--midnight);
+  color: #fff;
 }
 .btn-primary {
   background: var(--burnt-orange);
-  color: var(--midnight);
+  color: #fff;
 }
 .btn-primary:hover {
   background: transparent;
-  color: var(--sand);
+  color: var(--text-primary);
 }
 
 /* ── Section ── */

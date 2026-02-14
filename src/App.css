@@ -87,6 +87,14 @@
   border-top: 1px solid var(--border-accent);
 }
 
+/* ── Origin Page ── */
+.origin-callout {
+  border: 1px solid var(--border-accent);
+  border-left: 4px solid var(--burnt-orange);
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
 /* ── Responsive Nav ── */
 @media (max-width: 640px) {
   .nav-links {

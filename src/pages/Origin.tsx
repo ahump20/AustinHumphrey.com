@@ -21,15 +21,7 @@ export default function Origin() {
       </div>
 
       {/* Heritage Callout */}
-      <div
-        className="origin-callout"
-        style={{
-          border: '1px solid rgba(191,87,0,0.3)',
-          padding: '2rem',
-          marginBottom: '3rem',
-          borderLeft: '4px solid var(--burnt-orange)',
-        }}
-      >
+      <div className="origin-callout">
         <h3 style={{ marginBottom: '0.5rem', color: 'var(--burnt-orange)' }}>
           {resume.origin.heritage}
         </h3>
@@ -45,15 +37,7 @@ export default function Origin() {
       </div>
 
       {/* Memphis Roots */}
-      <div
-        className="origin-callout"
-        style={{
-          border: '1px solid rgba(191,87,0,0.3)',
-          padding: '2rem',
-          marginBottom: '3rem',
-          borderLeft: '4px solid var(--burnt-orange)',
-        }}
-      >
+      <div className="origin-callout">
         <h3 style={{ marginBottom: '0.5rem', color: 'var(--burnt-orange)' }}>
           {resume.origin.birthplace}
         </h3>

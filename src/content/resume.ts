@@ -1,11 +1,18 @@
 import { brand, type Brand } from "./brand";
 
+export interface SocialLinks {
+  linkedin: string;
+  github: string;
+  twitter: string;
+}
+
 export interface ContactInfo {
   location: string;
   phone: string;
   emails: string[];
   linkedin: string;
   websites: string[];
+  socials: SocialLinks;
 }
 
 export interface Experience {
@@ -46,7 +53,7 @@ export interface ResumeData {
 export const resume: ResumeData = {
   fullName: "John Austin Humphrey",
   name: "Austin Humphrey",
-  tagline: "Sports Intelligence | Product Strategy | AI-Assisted Analytics",
+  tagline: "Sports Intelligence Architect & AI-Powered Analytics",
 
   summary:
     "Product-minded builder with deep experience in sports intelligence, advertising analytics, and AI-assisted development. Currently building BlazeSportsIntel.com — a real-time sports intelligence platform deployed on Cloudflare — while pursuing graduate and postgraduate studies in business management and artificial intelligence.",
@@ -68,6 +75,11 @@ export const resume: ResumeData = {
     ],
     linkedin: "linkedin.com/in/ahump20",
     websites: ["BlazeSportsIntel.com", "AustinHumphrey.com"],
+    socials: {
+      linkedin: "https://linkedin.com/in/ahump20",
+      github: "https://github.com/ahump20",
+      twitter: "https://x.com/ahump20",
+    },
   },
 
   experience: [

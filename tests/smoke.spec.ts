@@ -22,6 +22,26 @@ test.describe("Smoke tests", () => {
     await expect(page.locator("body")).toBeVisible();
   });
 
+  test("origin page loads", async ({ page }) => {
+    await page.goto("/origin");
+    await expect(page.locator("body")).toContainText("The Origin");
+  });
+
+  test("origin/memphis subpage loads", async ({ page }) => {
+    await page.goto("/origin/memphis");
+    await expect(page.locator("body")).toContainText("Memphis");
+  });
+
+  test("origin/texas subpage loads", async ({ page }) => {
+    await page.goto("/origin/texas");
+    await expect(page.locator("body")).toContainText("West Columbia");
+  });
+
+  test("origin/journey subpage loads", async ({ page }) => {
+    await page.goto("/origin/journey");
+    await expect(page.locator("body")).toContainText("Through-Line");
+  });
+
   test("404 page shows for unknown routes", async ({ page }) => {
     await page.goto("/this-page-does-not-exist");
     await expect(page.locator("body")).toContainText("404");

@@ -14,6 +14,7 @@
   --text-primary: var(--sand);
   --text-secondary: rgba(245, 242, 235, 0.7);
   --border-accent: rgba(191, 87, 0, 0.15);
+  --hover-accent: var(--sand);
   --grain-opacity: 0.04;
   --glow-opacity: 0.08;
 }
@@ -25,8 +26,7 @@
   --text-primary: var(--charcoal);
   --text-secondary: rgba(26, 26, 26, 0.7);
   --border-accent: rgba(191, 87, 0, 0.2);
-  /* Darker sand in light mode to maintain contrast for hover states (e.g., links) */
-  --sand: #D0C4B0;
+  --hover-accent: rgba(26, 26, 26, 0.85);
   --grain-opacity: 0.02;
   --glow-opacity: 0.05;
 }
@@ -101,7 +101,7 @@ a {
   transition: color 0.2s ease;
 }
 a:hover {
-  color: var(--sand);
+  color: var(--hover-accent);
 }
 
 ul { list-style: none; }

@@ -27,7 +27,7 @@
   letter-spacing: 0.05em;
 }
 .nav-brand:hover {
-  color: var(--sand);
+  color: var(--hover-accent);
 }
 
 .nav-links {

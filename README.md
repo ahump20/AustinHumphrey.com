@@ -110,6 +110,9 @@ npm run deploy:all
 npm run cf:pages:deploy    # frontend
 npm run cf:worker:deploy   # API worker
 npm run cf:domain:attach   # custom domain
+
+# Deploy proxy worker separately:
+wrangler deploy --config wrangler.proxy.toml
 ```
 
 ## Proxy Worker Environment Variables

@@ -133,6 +133,9 @@ describe('proxy handler', () => {
 
   it('handles requests without an Origin header for non-browser clients', async () => {
     const env = createEnv();
+    const mockFetch = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify({ ok: true }), { status: 200 })
+    );
 
     const request = new Request(
       'https://worker.test/proxy?target=https://api.blazesportsintel.com/feed',
@@ -143,7 +146,7 @@ describe('proxy handler', () => {
       }
     );
 
-    const response = await handleProxyRequest(request, env);
+    const response = await handleProxyRequest(request, env, mockFetch as typeof fetch);
 
     expect(response.status).toBe(200);
     await expect(response.json()).resolves.toEqual({ ok: true });
@@ -166,5 +169,59 @@ describe('proxy handler', () => {
     expect(response.headers.get('Access-Control-Allow-Origin')).toBe('https://austinhumphrey.com');
     expect(response.headers.get('Access-Control-Allow-Methods')).toBeTruthy();
     expect(response.headers.get('Access-Control-Allow-Headers')).toBeTruthy();
+  });
+
+  it('forwards HEAD requests without coercing to GET', async () => {
+    const env = createEnv();
+    const mockFetch = vi.fn().mockResolvedValue(
+      new Response(null, {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Content-Length': '42'
+        }
+      })
+    );
+
+    const response = await handleProxyRequest(
+      new Request('https://worker.test/proxy?target=https://api.blazesportsintel.com/feed', {
+        method: 'HEAD',
+        headers: {
+          Origin: 'https://austinhumphrey.com',
+          Authorization: 'Bearer secret'
+        }
+      }),
+      env,
+      mockFetch as typeof fetch
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get('Content-Type')).toBe('application/json');
+    expect(response.headers.get('Content-Length')).toBe('42');
+
+    // Verify that HEAD method was actually used, not GET
+    expect(mockFetch).toHaveBeenCalledWith(
+      'https://api.blazesportsintel.com/feed',
+      expect.objectContaining({
+        method: 'HEAD'
+      })
+    );
+  });
+
+  it('rejects unsupported HTTP methods', async () => {
+    const env = createEnv();
+    const response = await handleProxyRequest(
+      new Request('https://worker.test/proxy?target=https://api.blazesportsintel.com/feed', {
+        method: 'POST',
+        headers: {
+          Origin: 'https://austinhumphrey.com',
+          Authorization: 'Bearer secret'
+        }
+      }),
+      env
+    );
+
+    expect(response.status).toBe(405);
+    await expect(response.json()).resolves.toEqual({ error: 'method_not_allowed' });
   });
 });

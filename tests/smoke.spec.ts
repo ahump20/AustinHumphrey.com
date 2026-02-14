@@ -22,6 +22,12 @@ test.describe("Smoke tests", () => {
     await expect(page.locator("body")).toBeVisible();
   });
 
+  test("404 page shows for unknown routes", async ({ page }) => {
+    await page.goto("/this-page-does-not-exist");
+    await expect(page.locator("body")).toContainText("404");
+    await expect(page.locator("body")).toContainText("Page not found");
+  });
+
   test("navigation links work", async ({ page }) => {
     await page.goto("/");
 

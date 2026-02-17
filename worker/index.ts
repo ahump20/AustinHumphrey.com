@@ -71,7 +71,7 @@ export default {
     const upstreamRequest = new Request(upstreamUrl.toString(), {
       method: request.method,
       headers: sanitizeHeaders(request.headers),
-      body: request.method === "POST" ? request.body : undefined,
+      body: request.body,
       redirect: "follow"
     });
 

@@ -1,0 +1,22 @@
+name = "austin-humphrey-site"
+main = "worker/index.ts"
+compatibility_date = "2026-02-13"
+workers_dev = true
+
+[vars]
+PROXY_TIMEOUT_MS = "12000"
+PROXY_ALLOWLIST = '{"example":{"origin":"https://api.example.com","allowedMethods":["GET","POST"]}}'
+
+[env.dev]
+name = "austin-humphrey-site-dev"
+
+[env.dev.vars]
+PROXY_TIMEOUT_MS = "15000"
+PROXY_ALLOWLIST = '{"example":{"origin":"https://api.example.com","allowedMethods":["GET","POST"]}}'
+
+[env.production]
+name = "austin-humphrey-site-prod"
+
+[env.production.vars]
+PROXY_TIMEOUT_MS = "10000"
+PROXY_ALLOWLIST = '{"example":{"origin":"https://api.example.com","allowedMethods":["GET"]}}'

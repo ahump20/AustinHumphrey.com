@@ -91,6 +91,9 @@ export default {
         headers: responseHeaders
       });
     } catch (error) {
+      if (error instanceof Error && error.name === "AbortError") {
+        return jsonError(504, "Upstream request timed out");
+      }
       const message = error instanceof Error ? error.message : "Unknown upstream error";
       return jsonError(502, `Upstream request failed: ${message}`);
     } finally {

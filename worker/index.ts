@@ -69,9 +69,9 @@ export default {
       redirect: "follow"
     });
 
-    const timeoutMs = Number(env.PROXY_TIMEOUT_MS ?? "12000");
+    const timeoutMs = Number.isFinite(Number(env.PROXY_TIMEOUT_MS)) ? Number(env.PROXY_TIMEOUT_MS) : 12000;
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), Number.isFinite(timeoutMs) ? timeoutMs : 12000);
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
     try {
       const upstreamResponse = await fetch(upstreamRequest, { signal: controller.signal });

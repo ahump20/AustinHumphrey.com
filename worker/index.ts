@@ -174,13 +174,20 @@ function sanitizeHeaders(source: Headers): Headers {
 function methodNotAllowed(allowedMethods: string[]): Response {
   return new Response(JSON.stringify({ error: "Method not allowed" }), {
     status: 405,
-    headers: { ...JSON_HEADERS, allow: allowedMethods.join(",") }
+    headers: {
+      ...JSON_HEADERS,
+      "access-control-allow-origin": "*",
+      allow: allowedMethods.join(",")
+    }
   });
 }
 
 function jsonError(status: number, error: string): Response {
   return new Response(JSON.stringify({ error }), {
     status,
-    headers: JSON_HEADERS
+    headers: {
+      ...JSON_HEADERS,
+      "access-control-allow-origin": "*"
+    }
   });
 }

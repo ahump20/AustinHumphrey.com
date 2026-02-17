@@ -157,7 +157,7 @@ function resolveProxyTarget(
 
 function sanitizeHeaders(source: Headers): Headers {
   const headers = new Headers();
-  const blockedHeaders = new Set(["host", "cf-connecting-ip", "x-forwarded-for", "content-length"]);
+  const blockedHeaders = new Set(["host", "cf-connecting-ip", "x-forwarded-for"]);
 
   for (const [key, value] of source.entries()) {
     if (!blockedHeaders.has(key.toLowerCase())) {

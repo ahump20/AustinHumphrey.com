@@ -17,6 +17,9 @@ const PROXY_ROUTE_PREFIX = "/api/proxy/";
 const JSON_HEADERS = { "content-type": "application/json; charset=utf-8" };
 const CORS_HEADERS = { "access-control-allow-origin": "*" };
 
+// Module-level cache shared across requests in the Worker isolate.
+// Note: Multiple concurrent requests may race to populate the cache,
+// but the final state will be consistent since they parse the same input.
 let cachedAllowlist: CachedAllowlist | null = null;
 
 export default {

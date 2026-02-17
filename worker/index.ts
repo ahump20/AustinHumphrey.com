@@ -59,7 +59,13 @@ export default {
       );
     }
 
-    const upstreamUrl = new URL(proxied.value.path, proxied.value.rule.origin);
+    const upstreamBase = new URL(proxied.value.rule.origin);
+    const basePath = upstreamBase.pathname.replace(/\/+$/, "");
+    const proxyPath = proxied.value.path.startsWith("/")
+      ? proxied.value.path
+      : "/" + proxied.value.path;
+    upstreamBase.pathname = basePath + proxyPath;
+    const upstreamUrl = new URL(upstreamBase.toString());
     upstreamUrl.search = url.search;
 
     const upstreamRequest = new Request(upstreamUrl.toString(), {

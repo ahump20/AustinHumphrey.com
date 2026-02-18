@@ -182,20 +182,64 @@ export async function handleProxyRequest(request: Request, env: Env, fetchImpl: 
   const timeout = setTimeout(() => controller.abort('upstream_timeout'), timeoutMs);
 
   try {
-    const upstreamResponse = await fetchImpl(upstream.toString(), {
-      method: request.method,
-      headers: filterRequestHeaders(request.headers),
-      signal: controller.signal
-    });
-    const passthroughHeaders = filterResponseHeaders(upstreamResponse.headers);
-    corsHeaders.forEach((value, name) => {
-      passthroughHeaders.set(name, value);
-    });
+    const allowedUpstreams = parseCsv(env.ALLOWED_UPSTREAMS);
+    const MAX_REDIRECTS = 5;
+    let currentUrl = upstream.toString();
+    let redirectCount = 0;
 
-    return new Response(upstreamResponse.body, {
-      status: upstreamResponse.status,
-      headers: passthroughHeaders
-    });
+    while (redirectCount <= MAX_REDIRECTS) {
+      const upstreamResponse = await fetchImpl(currentUrl, {
+        method: request.method,
+        headers: filterRequestHeaders(request.headers),
+        signal: controller.signal,
+        redirect: 'manual'
+      });
+
+      // Check if this is a redirect response
+      if (upstreamResponse.status >= 300 && upstreamResponse.status < 400) {
+        const location = upstreamResponse.headers.get('Location');
+        if (!location) {
+          // Redirect without Location header is invalid
+          return jsonResponse(502, { error: 'invalid_redirect' }, corsHeaders);
+        }
+
+        redirectCount++;
+        if (redirectCount > MAX_REDIRECTS) {
+          return jsonResponse(502, { error: 'too_many_redirects' }, corsHeaders);
+        }
+
+        // Parse the redirect location (may be relative)
+        let redirectUrl: URL;
+        try {
+          redirectUrl = new URL(location, currentUrl);
+        } catch {
+          return jsonResponse(502, { error: 'invalid_redirect_location' }, corsHeaders);
+        }
+
+        // Validate the redirect destination against allowlist
+        if (!isAllowedUpstream(redirectUrl, allowedUpstreams)) {
+          return jsonResponse(403, { error: 'redirect_not_allowed' }, corsHeaders);
+        }
+
+        // Follow the redirect
+        currentUrl = redirectUrl.toString();
+        continue;
+      }
+
+      // Not a redirect, return the response
+      const passthroughHeaders = filterResponseHeaders(upstreamResponse.headers);
+      corsHeaders.forEach((value, name) => {
+        passthroughHeaders.set(name, value);
+      });
+
+      return new Response(upstreamResponse.body, {
+        status: upstreamResponse.status,
+        headers: passthroughHeaders
+      });
+    }
+
+    // This should not be reached, but just in case
+    return jsonResponse(502, { error: 'too_many_redirects' }, corsHeaders);
   } catch (error) {
     if (controller.signal.aborted) {
       return jsonResponse(504, { error: 'upstream_timeout' }, corsHeaders);

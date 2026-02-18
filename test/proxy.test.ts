@@ -240,4 +240,157 @@ describe('proxy handler', () => {
     expect(response.status).toBe(400);
     await expect(response.json()).resolves.toEqual({ error: 'missing_target' });
   });
+
+  it('follows redirects to allowlisted hosts', async () => {
+    const env = createEnv();
+    const mockFetch = vi.fn()
+      .mockResolvedValueOnce(
+        new Response(null, {
+          status: 302,
+          headers: {
+            Location: 'https://statsapi.mlb.com/actual-feed'
+          }
+        })
+      )
+      .mockResolvedValueOnce(
+        new Response(JSON.stringify({ data: 'redirected' }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' }
+        })
+      );
+
+    const response = await handleProxyRequest(
+      proxyRequest('https://worker.test/proxy?target=https://api.blazesportsintel.com/feed'),
+      env,
+      mockFetch as typeof fetch
+    );
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toEqual({ data: 'redirected' });
+    expect(mockFetch).toHaveBeenCalledTimes(2);
+    expect(mockFetch).toHaveBeenCalledWith(
+      'https://api.blazesportsintel.com/feed',
+      expect.objectContaining({ redirect: 'manual' })
+    );
+    expect(mockFetch).toHaveBeenCalledWith(
+      'https://statsapi.mlb.com/actual-feed',
+      expect.objectContaining({ redirect: 'manual' })
+    );
+  });
+
+  it('blocks redirects to non-allowlisted hosts', async () => {
+    const env = createEnv();
+    const mockFetch = vi.fn().mockResolvedValueOnce(
+      new Response(null, {
+        status: 302,
+        headers: {
+          Location: 'https://evil.example.com/malicious'
+        }
+      })
+    );
+
+    const response = await handleProxyRequest(
+      proxyRequest('https://worker.test/proxy?target=https://api.blazesportsintel.com/feed'),
+      env,
+      mockFetch as typeof fetch
+    );
+
+    expect(response.status).toBe(403);
+    await expect(response.json()).resolves.toEqual({ error: 'redirect_not_allowed' });
+    expect(mockFetch).toHaveBeenCalledTimes(1);
+  });
+
+  it('blocks redirects exceeding maximum redirect limit', async () => {
+    const env = createEnv();
+    const mockFetch = vi.fn().mockResolvedValue(
+      new Response(null, {
+        status: 302,
+        headers: {
+          Location: 'https://api.blazesportsintel.com/redirect-loop'
+        }
+      })
+    );
+
+    const response = await handleProxyRequest(
+      proxyRequest('https://worker.test/proxy?target=https://api.blazesportsintel.com/feed'),
+      env,
+      mockFetch as typeof fetch
+    );
+
+    expect(response.status).toBe(502);
+    await expect(response.json()).resolves.toEqual({ error: 'too_many_redirects' });
+    expect(mockFetch).toHaveBeenCalledTimes(6); // Initial + 5 redirects
+  });
+
+  it('handles relative redirects correctly', async () => {
+    const env = createEnv();
+    const mockFetch = vi.fn()
+      .mockResolvedValueOnce(
+        new Response(null, {
+          status: 301,
+          headers: {
+            Location: '/redirected-path'
+          }
+        })
+      )
+      .mockResolvedValueOnce(
+        new Response(JSON.stringify({ data: 'relative-redirect' }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' }
+        })
+      );
+
+    const response = await handleProxyRequest(
+      proxyRequest('https://worker.test/proxy?target=https://statsapi.mlb.com/original'),
+      env,
+      mockFetch as typeof fetch
+    );
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toEqual({ data: 'relative-redirect' });
+    expect(mockFetch).toHaveBeenCalledWith(
+      'https://statsapi.mlb.com/redirected-path',
+      expect.objectContaining({ redirect: 'manual' })
+    );
+  });
+
+  it('blocks relative redirects that change to non-allowlisted host', async () => {
+    const env = createEnv();
+    const mockFetch = vi.fn().mockResolvedValueOnce(
+      new Response(null, {
+        status: 302,
+        headers: {
+          Location: '//evil.example.com/malicious'
+        }
+      })
+    );
+
+    const response = await handleProxyRequest(
+      proxyRequest('https://worker.test/proxy?target=https://api.blazesportsintel.com/feed'),
+      env,
+      mockFetch as typeof fetch
+    );
+
+    expect(response.status).toBe(403);
+    await expect(response.json()).resolves.toEqual({ error: 'redirect_not_allowed' });
+  });
+
+  it('returns error for redirect without Location header', async () => {
+    const env = createEnv();
+    const mockFetch = vi.fn().mockResolvedValueOnce(
+      new Response(null, {
+        status: 302,
+        headers: {}
+      })
+    );
+
+    const response = await handleProxyRequest(
+      proxyRequest('https://worker.test/proxy?target=https://api.blazesportsintel.com/feed'),
+      env,
+      mockFetch as typeof fetch
+    );
+
+    expect(response.status).toBe(502);
+    await expect(response.json()).resolves.toEqual({ error: 'invalid_redirect' });
+  });
 });

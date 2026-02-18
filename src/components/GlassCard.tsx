@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
-import type { ReactNode } from 'react'
+import type { ReactNode, CSSProperties } from 'react'
 
 interface GlassCardProps {
   children: ReactNode
   className?: string
-  style?: React.CSSProperties
+  style?: CSSProperties
   hover?: boolean
   glowColor?: string
 }

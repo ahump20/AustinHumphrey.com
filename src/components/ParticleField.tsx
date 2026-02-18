@@ -84,6 +84,7 @@ function Particles() {
     const colAttr = lineGeometry.getAttribute('color') as THREE.BufferAttribute
     let lineIndex = 0
     const maxLines = PARTICLE_COUNT * 6
+    const maxDistSq = CONNECTION_DISTANCE * CONNECTION_DISTANCE
 
     for (let i = 0; i < PARTICLE_COUNT && lineIndex < maxLines; i++) {
       for (let j = i + 1; j < PARTICLE_COUNT && lineIndex < maxLines; j++) {
@@ -91,7 +92,6 @@ function Particles() {
         const dy = particles.positions[i][1] - particles.positions[j][1]
         const dz = particles.positions[i][2] - particles.positions[j][2]
         const distSq = dx * dx + dy * dy + dz * dz
-        const maxDistSq = CONNECTION_DISTANCE * CONNECTION_DISTANCE
 
         if (distSq < maxDistSq) {
           const dist = Math.sqrt(distSq)

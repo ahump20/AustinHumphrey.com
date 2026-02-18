@@ -57,7 +57,7 @@ describe('proxy handler', () => {
       new Request('https://worker.test/proxy?target=https://api.blazesportsintel.com/feed', {
         headers: {
           Origin: 'https://austinhumphrey.com',
-          Authorization: 'Bearer '
+          Authorization: 'Bearer attacker-token'
         }
       }),
       env
@@ -73,7 +73,7 @@ describe('proxy handler', () => {
       new Request('https://worker.test/proxy?target=https://api.blazesportsintel.com/feed', {
         headers: {
           Origin: 'https://austinhumphrey.com',
-          Authorization: 'Bearer undefined'
+          Authorization: 'Bearer attacker-token'
         }
       }),
       env

@@ -204,10 +204,12 @@ export async function handleProxyRequest(request: Request, env: Env, fetchImpl: 
           return jsonResponse(502, { error: 'invalid_redirect' }, corsHeaders);
         }
 
-        redirectCount++;
-        if (redirectCount > MAX_REDIRECTS) {
+        // Check if we've hit the redirect limit (before incrementing)
+        if (redirectCount >= MAX_REDIRECTS) {
           return jsonResponse(502, { error: 'too_many_redirects' }, corsHeaders);
         }
+
+        redirectCount++;
 
         // Parse the redirect location (may be relative)
         let redirectUrl: URL;

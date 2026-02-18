@@ -224,4 +224,20 @@ describe('proxy handler', () => {
     expect(response.status).toBe(405);
     await expect(response.json()).resolves.toEqual({ error: 'method_not_allowed' });
   });
+
+  it('returns 400 when target parameter is missing', async () => {
+    const env = createEnv();
+    const request = new Request('https://worker.test/proxy', {
+      method: 'GET',
+      headers: {
+        Origin: 'https://austinhumphrey.com',
+        Authorization: 'Bearer secret'
+      }
+    });
+
+    const response = await handleProxyRequest(request, env);
+
+    expect(response.status).toBe(400);
+    await expect(response.json()).resolves.toEqual({ error: 'missing_target' });
+  });
 });

@@ -17,22 +17,22 @@ const typewriterWords = [
 
 const highlights = [
   {
-    icon: '&#x26A1;',
+    icon: '⚡',
     title: 'Blaze Sports Intel',
     desc: 'Real-time MLB & college baseball dashboards with 30-second refresh cadence.',
   },
   {
-    icon: '&#x1F9E0;',
+    icon: '🧠',
     title: 'AI & ML Pipeline',
     desc: 'Win probability models, Monte Carlo simulations, and predictive analytics.',
   },
   {
-    icon: '&#x2601;',
+    icon: '☁',
     title: 'Serverless Architecture',
     desc: 'Built on Cloudflare Workers, D1, KV, and R2 for speed and reliability.',
   },
   {
-    icon: '&#x1F3AF;',
+    icon: '🎯',
     title: 'BlazeCraft.app',
     desc: 'RTS-style Agent Forge interface for system health and operational flow.',
   },
@@ -181,10 +181,9 @@ export default function Home() {
           {highlights.map((item) => (
             <StaggerItem key={item.title}>
               <GlassCard>
-                <div
-                  className="highlight-icon"
-                  dangerouslySetInnerHTML={{ __html: item.icon }}
-                />
+                <div className="highlight-icon">
+                  {item.icon}
+                </div>
                 <h3 className="highlight-title">{item.title}</h3>
                 <p className="highlight-desc">{item.desc}</p>
               </GlassCard>

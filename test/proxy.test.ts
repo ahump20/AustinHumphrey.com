@@ -67,6 +67,22 @@ describe('proxy handler', () => {
     await expect(response.json()).resolves.toEqual({ error: 'proxy_token_not_configured' });
   });
 
+  it('fails with 500 when PROXY_TOKEN is whitespace-only', async () => {
+    const env = createEnv({ PROXY_TOKEN: '   ' });
+    const response = await handleProxyRequest(
+      new Request('https://worker.test/proxy?target=https://api.blazesportsintel.com/feed', {
+        headers: {
+          Origin: 'https://austinhumphrey.com',
+          Authorization: 'Bearer attacker-token'
+        }
+      }),
+      env
+    );
+
+    expect(response.status).toBe(500);
+    await expect(response.json()).resolves.toEqual({ error: 'proxy_token_not_configured' });
+  });
+
   it('fails with 500 when PROXY_TOKEN is undefined', async () => {
     const env = createEnv({ PROXY_TOKEN: undefined as unknown as string });
     const response = await handleProxyRequest(

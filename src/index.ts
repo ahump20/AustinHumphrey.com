@@ -147,7 +147,7 @@ export async function handleProxyRequest(request: Request, env: Env, fetchImpl: 
     return jsonResponse(403, { error: 'origin_not_allowed' }, corsHeaders);
   }
 
-  if (!env.PROXY_TOKEN) {
+  if (!env.PROXY_TOKEN || env.PROXY_TOKEN.trim() === '') {
     return jsonResponse(500, { error: 'proxy_token_not_configured' }, corsHeaders);
   }
 

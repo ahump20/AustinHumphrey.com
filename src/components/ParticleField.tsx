@@ -90,9 +90,11 @@ function Particles() {
         const dx = particles.positions[i][0] - particles.positions[j][0]
         const dy = particles.positions[i][1] - particles.positions[j][1]
         const dz = particles.positions[i][2] - particles.positions[j][2]
-        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz)
+        const distSq = dx * dx + dy * dy + dz * dz
+        const maxDistSq = CONNECTION_DISTANCE * CONNECTION_DISTANCE
 
-        if (dist < CONNECTION_DISTANCE) {
+        if (distSq < maxDistSq) {
+          const dist = Math.sqrt(distSq)
           const alpha = 1 - dist / CONNECTION_DISTANCE
           const idx = lineIndex * 6
 

@@ -30,16 +30,19 @@ function App() {
           </NavLink>
 
           <button
+            type="button"
             className={`hamburger ${mobileOpen ? 'active' : ''}`}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle navigation"
+            aria-expanded={mobileOpen}
+            aria-controls="main-menu"
           >
             <span />
             <span />
             <span />
           </button>
 
-          <ul className={`nav-links ${mobileOpen ? 'nav-open' : ''}`}>
+          <ul id="main-menu" className={`nav-links ${mobileOpen ? 'nav-open' : ''}`}>
             {[
               { to: '/', label: 'Home', end: true },
               { to: '/resume', label: 'Resume' },

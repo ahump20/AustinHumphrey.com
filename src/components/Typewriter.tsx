@@ -21,14 +21,17 @@ export default function Typewriter({
   const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
+    if (words.length === 0) return
+
     const currentWord = words[wordIndex]
+    let pauseTimeout: number | undefined
 
     const timeout = setTimeout(
       () => {
         if (!isDeleting) {
           setText(currentWord.slice(0, text.length + 1))
           if (text.length + 1 === currentWord.length) {
-            setTimeout(() => setIsDeleting(true), pauseDuration)
+            pauseTimeout = window.setTimeout(() => setIsDeleting(true), pauseDuration)
           }
         } else {
           setText(currentWord.slice(0, text.length - 1))
@@ -41,7 +44,12 @@ export default function Typewriter({
       isDeleting ? deletingSpeed : typingSpeed,
     )
 
-    return () => clearTimeout(timeout)
+    return () => {
+      clearTimeout(timeout)
+      if (pauseTimeout !== undefined) {
+        clearTimeout(pauseTimeout)
+      }
+    }
   }, [text, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseDuration])
 
   return (

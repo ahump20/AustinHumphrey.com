@@ -3,31 +3,62 @@ import { resume } from '../content/resume'
 import ScrollReveal from '../components/ScrollReveal'
 import { StaggerContainer, StaggerItem } from '../components/ScrollReveal'
 import GlassCard from '../components/GlassCard'
+import type { ReactNode } from 'react'
 
 interface ContactItem {
   text: string
   href?: string
 }
 
-const contactMethods: { label: string; icon: string; items: ContactItem[] }[] = [
+const EmailIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22,6 12,13 2,6"/>
+  </svg>
+)
+
+const LinkedInIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+    <rect x="2" y="9" width="4" height="12"/>
+    <circle cx="4" cy="4" r="2"/>
+  </svg>
+)
+
+const LocationIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+    <circle cx="12" cy="10" r="3"/>
+  </svg>
+)
+
+const WebsiteIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <circle cx="12" cy="12" r="10"/>
+    <line x1="2" y1="12" x2="22" y2="12"/>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+  </svg>
+)
+
+const contactMethods: { label: string; icon: ReactNode; items: ContactItem[] }[] = [
   {
     label: 'Email',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
+    icon: <EmailIcon />,
     items: resume.contact.emails.map((e) => ({ text: e, href: `mailto:${e}` })),
   },
   {
     label: 'LinkedIn',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>`,
+    icon: <LinkedInIcon />,
     items: [{ text: resume.contact.linkedin, href: `https://${resume.contact.linkedin}` }],
   },
   {
     label: 'Location',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+    icon: <LocationIcon />,
     items: [{ text: resume.contact.location }],
   },
   {
     label: 'Websites',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+    icon: <WebsiteIcon />,
     items: resume.contact.websites.map((s) => ({ text: s, href: `https://${s}` })),
   },
 ]
@@ -62,10 +93,9 @@ export default function Contact() {
           {contactMethods.map((method) => (
             <StaggerItem key={method.label}>
               <GlassCard className="contact-card">
-                <div
-                  className="contact-icon"
-                  dangerouslySetInnerHTML={{ __html: method.icon }}
-                />
+                <div className="contact-icon">
+                  {method.icon}
+                </div>
                 <h3 className="contact-label">{method.label}</h3>
                 <div className="contact-items">
                   {method.items.map((item) =>

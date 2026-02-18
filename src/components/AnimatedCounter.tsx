@@ -24,16 +24,25 @@ export default function AnimatedCounter({
     if (!isInView) return
 
     let startTime: number | null = null
+    let rafId: number | undefined
+    
     const step = (timestamp: number) => {
       if (!startTime) startTime = timestamp
       const progress = Math.min((timestamp - startTime) / (duration * 1000), 1)
       const eased = 1 - Math.pow(1 - progress, 3) // ease-out cubic
       setCount(Math.floor(eased * end))
       if (progress < 1) {
-        requestAnimationFrame(step)
+        rafId = requestAnimationFrame(step)
       }
     }
-    requestAnimationFrame(step)
+    
+    rafId = requestAnimationFrame(step)
+    
+    return () => {
+      if (rafId !== undefined) {
+        cancelAnimationFrame(rafId)
+      }
+    }
   }, [isInView, end, duration])
 
   return (

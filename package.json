@@ -21,7 +21,6 @@
     "deploy:all": "npm run build && npm run pdf:build && npm run cf:pages:deploy && npm run cf:worker:deploy && npm run cf:domain:attach"
   },
   "dependencies": {
-    "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
     "framer-motion": "^12.34.0",
     "hono": "^4.11.9",

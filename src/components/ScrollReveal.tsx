@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import type { ReactNode } from 'react'
+import type { ReactNode, CSSProperties } from 'react'
 
 interface ScrollRevealProps {
   children: ReactNode
@@ -7,7 +7,7 @@ interface ScrollRevealProps {
   direction?: 'up' | 'down' | 'left' | 'right'
   distance?: number
   className?: string
-  style?: React.CSSProperties
+  style?: CSSProperties
 }
 
 export default function ScrollReveal({
@@ -53,7 +53,7 @@ export function StaggerContainer({
 }: {
   children: ReactNode
   className?: string
-  style?: React.CSSProperties
+  style?: CSSProperties
   staggerDelay?: number
 }) {
   return (
@@ -84,7 +84,7 @@ export function StaggerItem({
 }: {
   children: ReactNode
   className?: string
-  style?: React.CSSProperties
+  style?: CSSProperties
 }) {
   return (
     <motion.div

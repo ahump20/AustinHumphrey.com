@@ -187,7 +187,8 @@ export async function handleProxyRequest(request: Request, env: Env, fetchImpl: 
     let currentUrl = upstream.toString();
     let redirectCount = 0;
 
-    while (redirectCount <= MAX_REDIRECTS) {
+    // Allow initial request + up to MAX_REDIRECTS redirects
+    while (true) {
       const upstreamResponse = await fetchImpl(currentUrl, {
         method: request.method,
         headers: filterRequestHeaders(request.headers),
@@ -237,9 +238,6 @@ export async function handleProxyRequest(request: Request, env: Env, fetchImpl: 
         headers: passthroughHeaders
       });
     }
-
-    // This should not be reached, but just in case
-    return jsonResponse(502, { error: 'too_many_redirects' }, corsHeaders);
   } catch (error) {
     if (controller.signal.aborted) {
       return jsonResponse(504, { error: 'upstream_timeout' }, corsHeaders);

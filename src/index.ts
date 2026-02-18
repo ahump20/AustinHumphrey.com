@@ -174,7 +174,11 @@ export async function handleProxyRequest(request: Request, env: Env, fetchImpl: 
   }
 
   const controller = new AbortController();
-  const timeoutMs = Number(env.REQUEST_TIMEOUT_MS ?? 8000);
+  const rawTimeout = env.REQUEST_TIMEOUT_MS;
+  let timeoutMs = Number(rawTimeout);
+  if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) {
+    timeoutMs = 8000;
+  }
   const timeout = setTimeout(() => controller.abort('upstream_timeout'), timeoutMs);
 
   try {

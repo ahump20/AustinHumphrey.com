@@ -45,6 +45,11 @@ function Particles() {
     return geo
   }, [])
 
+  useEffect(() => {
+    return () => {
+      lineGeometry.dispose()
+    }
+  }, [lineGeometry])
   useFrame((state) => {
     const particles = particlesRef.current
     if (!meshRef.current || !linesRef.current || !particles) return

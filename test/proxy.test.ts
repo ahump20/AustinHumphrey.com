@@ -354,7 +354,7 @@ describe('proxy handler', () => {
     );
   });
 
-  it('blocks relative redirects that change to non-allowlisted host', async () => {
+  it('blocks protocol-relative redirects to non-allowlisted hosts', async () => {
     const env = createEnv();
     const mockFetch = vi.fn().mockResolvedValueOnce(
       new Response(null, {

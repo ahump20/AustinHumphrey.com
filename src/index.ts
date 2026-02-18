@@ -169,7 +169,8 @@ export async function handleProxyRequest(request: Request, env: Env, fetchImpl: 
     return jsonResponse(400, { error: 'invalid_target' }, corsHeaders);
   }
 
-  if (!isAllowedUpstream(upstream, parseCsv(env.ALLOWED_UPSTREAMS))) {
+  const allowedUpstreams = parseCsv(env.ALLOWED_UPSTREAMS);
+  if (!isAllowedUpstream(upstream, allowedUpstreams)) {
     return jsonResponse(403, { error: 'upstream_not_allowed' }, corsHeaders);
   }
 
@@ -182,7 +183,6 @@ export async function handleProxyRequest(request: Request, env: Env, fetchImpl: 
   const timeout = setTimeout(() => controller.abort('upstream_timeout'), timeoutMs);
 
   try {
-    const allowedUpstreams = parseCsv(env.ALLOWED_UPSTREAMS);
     const MAX_REDIRECTS = 5;
     let currentUrl = upstream.toString();
     let redirectCount = 0;

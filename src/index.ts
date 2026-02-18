@@ -281,7 +281,11 @@ export class RateLimiter implements DurableObject {
     const keys = await this.state.storage.list<number>({ prefix: 'bucket:' });
     
     for (const [key] of keys) {
-      const bucketNum = parseInt(key.split(':')[1]);
+      const bucketPart = key.split(':')[1];
+      const bucketNum = Number.parseInt(bucketPart, 10);
+      if (!Number.isFinite(bucketNum)) {
+        continue;
+      }
       if (bucketNum < cutoffBucket) {
         await this.state.storage.delete(key);
       }

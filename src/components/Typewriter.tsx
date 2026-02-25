@@ -24,31 +24,28 @@ export default function Typewriter({
     if (words.length === 0) return
 
     const currentWord = words[wordIndex]
-    let pauseTimeout: number | undefined
+    const isWordFullyTyped = text === currentWord
 
-    const timeout = setTimeout(
-      () => {
-        if (!isDeleting) {
-          setText(currentWord.slice(0, text.length + 1))
-          if (text.length + 1 === currentWord.length) {
-            pauseTimeout = window.setTimeout(() => setIsDeleting(true), pauseDuration)
-          }
-        } else {
-          setText(currentWord.slice(0, text.length - 1))
-          if (text.length === 0) {
-            setIsDeleting(false)
-            setWordIndex((prev) => (prev + 1) % words.length)
-          }
+    const timeout = window.setTimeout(() => {
+      if (!isDeleting) {
+        if (isWordFullyTyped) {
+          setIsDeleting(true)
+          return
         }
-      },
-      isDeleting ? deletingSpeed : typingSpeed,
-    )
+
+        setText(currentWord.slice(0, text.length + 1))
+        return
+      }
+
+      setText(currentWord.slice(0, text.length - 1))
+      if (text.length === 0) {
+        setIsDeleting(false)
+        setWordIndex((prev) => (prev + 1) % words.length)
+      }
+    }, isDeleting ? deletingSpeed : isWordFullyTyped ? pauseDuration : typingSpeed)
 
     return () => {
       clearTimeout(timeout)
-      if (pauseTimeout !== undefined) {
-        clearTimeout(pauseTimeout)
-      }
     }
   }, [text, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseDuration])
 

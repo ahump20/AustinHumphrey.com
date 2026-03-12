@@ -21,10 +21,13 @@
     "deploy:all": "npm run build && npm run pdf:build && npm run cf:pages:deploy && npm run cf:worker:deploy && npm run cf:domain:attach"
   },
   "dependencies": {
+    "@react-three/fiber": "^9.5.0",
+    "framer-motion": "^12.34.0",
     "hono": "^4.11.9",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.13.0"
+    "react-router-dom": "^7.13.0",
+    "three": "^0.182.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260213.0",
@@ -33,6 +36,7 @@
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "@types/three": "^0.182.0",
     "@vitejs/plugin-react": "^5.1.1",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",

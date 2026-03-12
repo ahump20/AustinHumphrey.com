@@ -123,7 +123,21 @@ function parseAllowlist(raw: string | undefined):
         return { ok: false, error: `Invalid origin URL for '${service}'.` };
       }
 
-      rule.allowedMethods = rule.allowedMethods.map((method) => method.toUpperCase());
+      const invalidMethod = rule.allowedMethods.find(
+        (method) => typeof method !== "string" || !method
+      );
+      if (invalidMethod !== undefined) {
+        return {
+          ok: false,
+          error: `Invalid HTTP method '${String(
+            invalidMethod
+          )}' in allowlist entry for '${service}'.`
+        };
+      }
+
+      rule.allowedMethods = rule.allowedMethods.map((method) =>
+        method.toUpperCase()
+      );
     }
 
     return { ok: true, value: parsed };

@@ -22,8 +22,10 @@ function useTheme() {
     document.documentElement.setAttribute('data-theme', theme)
     try {
       localStorage.setItem('theme', theme)
-    } catch {
-      // Ignore persistence failures in privacy-restricted contexts.
+    } catch (error) {
+      if (import.meta.env.DEV) {
+        console.warn('Theme persistence failed:', error)
+      }
     }
   }, [theme])
 

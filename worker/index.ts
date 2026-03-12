@@ -180,8 +180,16 @@ function resolveProxyTarget(
   }
 
   const normalizedPath = `/${remainingParts.join("/")}`.replace(/\/+/g, "/");
-  if (normalizedPath.includes("..")) {
-    return { ok: false, error: "Path traversal is not allowed." };
+  for (const segment of normalizedPath.split("/")) {
+    let decoded: string;
+    try {
+      decoded = decodeURIComponent(segment);
+    } catch {
+      return { ok: false, error: "Invalid URL encoding in path." };
+    }
+    if (decoded === "..") {
+      return { ok: false, error: "Path traversal is not allowed." };
+    }
   }
 
   return { ok: true, value: { service, path: normalizedPath, rule } };

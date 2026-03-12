@@ -25,10 +25,16 @@ app.get("/api/health", (c) => {
 // ── Profile ─────────────────────────────────────────────────────────────────
 app.get("/api/profile", (c) => {
   return c.json({
+    fullName: "John Austin Humphrey",
     name: "Austin Humphrey",
     tagline: "Sports Intelligence | Product Strategy | AI-Assisted Analytics",
     summary:
       "Product-minded builder with deep experience in sports intelligence, advertising analytics, and AI-assisted development. Currently building BlazeSportsIntel.com — a real-time sports intelligence platform deployed on Cloudflare — while pursuing graduate and postgraduate studies in business management and artificial intelligence.",
+    origin: {
+      birthplace: "Memphis, Tennessee",
+      heritage: "West Columbia, Texas",
+      heritageDetail: "Birthplace of the Republic of Texas",
+    },
     contact: {
       location: "San Antonio, TX",
       phone: "(210) 273-5538",

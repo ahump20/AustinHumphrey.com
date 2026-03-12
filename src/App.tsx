@@ -1,14 +1,47 @@
+import { Suspense, lazy, useCallback, useEffect, useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Suspense, useState, lazy } from 'react'
 import ScrollProgress from './components/ScrollProgress'
+import Ticker from './components/Ticker'
 import './App.css'
 
 const ParticleField = lazy(() => import('./components/ParticleField'))
 
+const navLinks = [
+  { to: '/', label: 'Home', end: true },
+  { to: '/origin', label: 'Origin' },
+  { to: '/resume', label: 'Resume' },
+  { to: '/work', label: 'Work' },
+  { to: '/contact', label: 'Contact' },
+]
+
+function useTheme() {
+  const [theme, setTheme] = useState(() => document.documentElement.getAttribute('data-theme') || 'dark')
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    try {
+      localStorage.setItem('theme', theme)
+    } catch {
+      // Ignore persistence failures in privacy-restricted contexts.
+    }
+  }, [theme])
+
+  const toggle = useCallback(() => {
+    setTheme((current) => (current === 'dark' ? 'light' : 'dark'))
+  }, [])
+
+  return { theme, toggle }
+}
+
 function App() {
   const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { theme, toggle } = useTheme()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location.pathname])
 
   return (
     <div className="app">
@@ -32,7 +65,7 @@ function App() {
           <button
             type="button"
             className={`hamburger ${mobileOpen ? 'active' : ''}`}
-            onClick={() => setMobileOpen(!mobileOpen)}
+            onClick={() => setMobileOpen((open) => !open)}
             aria-label="Toggle navigation"
             aria-expanded={mobileOpen}
             aria-controls="main-menu"
@@ -43,12 +76,7 @@ function App() {
           </button>
 
           <ul id="main-menu" className={`nav-links ${mobileOpen ? 'nav-open' : ''}`}>
-            {[
-              { to: '/', label: 'Home', end: true },
-              { to: '/resume', label: 'Resume' },
-              { to: '/work', label: 'Work' },
-              { to: '/contact', label: 'Contact' },
-            ].map((link, i) => (
+            {navLinks.map((link, i) => (
               <motion.li
                 key={link.to}
                 initial={{ opacity: 0, y: -10 }}
@@ -65,6 +93,16 @@ function App() {
               </motion.li>
             ))}
           </ul>
+
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={toggle}
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          >
+            {theme === 'dark' ? '☀' : '☾'}
+          </button>
         </nav>
       </header>
 
@@ -98,6 +136,7 @@ function App() {
           </div>
         </div>
       </footer>
+      <Ticker />
     </div>
   )
 }

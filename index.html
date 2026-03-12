@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Austin Humphrey — Sports Intelligence | Product Strategy | AI-Assisted Analytics</title>
+    <title>Austin Humphrey — Sports Intelligence Architect & AI-Powered Analytics</title>
     <meta name="description" content="Austin Humphrey — Product-minded builder with deep experience in sports intelligence, advertising analytics, and AI-assisted development." />
 
     <!-- OpenGraph -->
-    <meta property="og:title" content="Austin Humphrey — Sports Intelligence | Product Strategy | AI-Assisted Analytics" />
+    <meta property="og:title" content="Austin Humphrey — Sports Intelligence Architect & AI-Powered Analytics" />
     <meta property="og:description" content="Product-minded builder with deep experience in sports intelligence, advertising analytics, and AI-assisted development." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://austinhumphrey.com" />
@@ -19,7 +19,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://austinhumphrey.com/assets/og-card.png" />
-    <meta name="twitter:title" content="Austin Humphrey — Sports Intelligence | Product Strategy | AI-Assisted Analytics" />
+    <meta name="twitter:title" content="Austin Humphrey — Sports Intelligence Architect & AI-Powered Analytics" />
     <meta name="twitter:description" content="Product-minded builder with deep experience in sports intelligence, advertising analytics, and AI-assisted development." />
 
     <!-- Canonical URL -->
@@ -31,6 +31,83 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <link rel="icon" href="/assets/favicon.ico" />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "John Austin Humphrey",
+      "alternateName": "Austin Humphrey",
+      "jobTitle": "Sports Intelligence Architect & Founder",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Blaze Sports Intel",
+        "url": "https://blazesportsintel.com"
+      },
+      "url": "https://austinhumphrey.com",
+      "email": "Austin@BlazeSportsIntel.com",
+      "birthPlace": {
+        "@type": "Place",
+        "name": "Memphis, Tennessee"
+      },
+      "homeLocation": {
+        "@type": "Place",
+        "name": "San Antonio, Texas"
+      },
+      "knowsAbout": [
+        "Sports Analytics",
+        "Product Strategy",
+        "AI-Assisted Analytics",
+        "Cloudflare Workers",
+        "TypeScript",
+        "Sports Intelligence"
+      ],
+      "description": "Builder of Blaze Sports Intel, a sports analytics platform serving underserved markets. Born in Memphis, Tennessee, with roots in West Columbia, Texas — birthplace of the Republic of Texas.",
+      "sameAs": [
+        "https://linkedin.com/in/ahump20",
+        "https://github.com/ahump20",
+        "https://x.com/ahump20"
+      ],
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "The University of Texas at Austin"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Full Sail University"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Theme Detection (before render to prevent flash) -->
+    <script>
+      (function() {
+        var theme = null;
+        try {
+          theme = localStorage.getItem('theme');
+        } catch (e) {
+          theme = null;
+        }
+
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = null;
+        }
+
+        if (!theme) {
+          var prefersDark = false;
+          try {
+            prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          } catch (e) {
+            prefersDark = false;
+          }
+          theme = prefersDark ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

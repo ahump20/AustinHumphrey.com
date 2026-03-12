@@ -1,11 +1,18 @@
 import { brand, type Brand } from "./brand";
 
+export interface SocialLinks {
+  linkedin: string;
+  github: string;
+  twitter: string;
+}
+
 export interface ContactInfo {
   location: string;
   phone: string;
   emails: string[];
   linkedin: string;
   websites: string[];
+  socials: SocialLinks;
 }
 
 export interface Experience {
@@ -22,11 +29,20 @@ export interface Education {
   details?: string;
 }
 
+export interface Origin {
+  birthplace: string;
+  heritage: string;
+  heritageDetail: string;
+  narrative: string;
+}
+
 export interface ResumeData {
+  fullName: string;
   name: string;
   tagline: string;
   contact: ContactInfo;
   summary: string;
+  origin: Origin;
   experience: Experience[];
   education: Education[];
   honorsAndLeadership: string[];
@@ -35,11 +51,20 @@ export interface ResumeData {
 }
 
 export const resume: ResumeData = {
+  fullName: "John Austin Humphrey",
   name: "Austin Humphrey",
-  tagline: "Sports Intelligence | Product Strategy | AI-Assisted Analytics",
+  tagline: "Sports Intelligence Architect & AI-Powered Analytics",
 
   summary:
     "Product-minded builder with deep experience in sports intelligence, advertising analytics, and AI-assisted development. Currently building BlazeSportsIntel.com — a real-time sports intelligence platform deployed on Cloudflare — while pursuing graduate and postgraduate studies in business management and artificial intelligence.",
+
+  origin: {
+    birthplace: "Memphis, Tennessee",
+    heritage: "West Columbia, Texas",
+    heritageDetail: "Birthplace of the Republic of Texas",
+    narrative:
+      "Born in Memphis, Tennessee — the city of blues, grit, and unshakable resolve. Raised with roots in West Columbia, Texas — the birthplace of the Republic of Texas, where Stephen F. Austin's colony planted the flag that built a nation. That heritage runs deep: a foundation forged in the place where Texas itself was born, carrying forward the same restless drive to build something from nothing. From the banks of the Mississippi to the plains of the Brazos, the through-line has always been the same — show up, compete, and build.",
+  },
 
   contact: {
     location: "San Antonio, TX",
@@ -50,6 +75,11 @@ export const resume: ResumeData = {
     ],
     linkedin: "linkedin.com/in/ahump20",
     websites: ["BlazeSportsIntel.com", "AustinHumphrey.com"],
+    socials: {
+      linkedin: "https://linkedin.com/in/ahump20",
+      github: "https://github.com/ahump20",
+      twitter: "https://x.com/ahump20",
+    },
   },
 
   experience: [

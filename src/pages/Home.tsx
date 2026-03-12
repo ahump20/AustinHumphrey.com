@@ -101,6 +101,9 @@ export default function Home() {
             <Link to="/work" className="btn btn-ghost">
               View Work
             </Link>
+            <Link to="/origin" className="btn btn-ghost">
+              Explore Origin
+            </Link>
           </motion.div>
 
           <motion.div

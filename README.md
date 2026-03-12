@@ -80,6 +80,9 @@ npm run cf:worker:deploy   # API worker
 npm run cf:domain:attach   # custom domain
 ```
 
+- Cloudflare Pages should stay connected to GitHub for frontend builds/deploys on `main`.
+- GitHub Actions handles validation for pull requests and deploys only the Worker API on pushes to `main`.
+
 ## Domain
 - Primary domain: `https://austinhumphrey.com`
 - Pages fallback: `https://austin-humphrey-professional-resume-portfolio.pages.dev`

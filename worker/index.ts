@@ -189,10 +189,31 @@ function resolveProxyTarget(
 
 function sanitizeHeaders(source: Headers): Headers {
   const headers = new Headers();
-  const blockedHeaders = new Set(["host", "cf-connecting-ip", "x-forwarded-for"]);
+  // Allowlist of headers safe to forward to upstream services.
+  // This approach automatically strips hop-by-hop headers (connection,
+  // keep-alive, transfer-encoding, upgrade, te, trailer), content-length
+  // (which the HTTP client sets from the actual body), host, and any
+  // Cloudflare-injected headers (cf-connecting-ip, x-forwarded-for, etc.).
+  const allowedHeaders = new Set([
+    "accept",
+    "accept-encoding",
+    "accept-language",
+    "authorization",
+    "cache-control",
+    "content-encoding",
+    "content-type",
+    "if-match",
+    "if-modified-since",
+    "if-none-match",
+    "if-range",
+    "if-unmodified-since",
+    "origin",
+    "referer",
+    "user-agent",
+  ]);
 
   for (const [key, value] of source.entries()) {
-    if (!blockedHeaders.has(key.toLowerCase())) {
+    if (allowedHeaders.has(key.toLowerCase())) {
       headers.set(key, value);
     }
   }

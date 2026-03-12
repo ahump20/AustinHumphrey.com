@@ -1,4 +1,5 @@
 import { resume } from '../content/resume'
+import './Resume.css'
 
 export default function Resume() {
   return (
@@ -9,7 +10,7 @@ export default function Resume() {
         <p className="utility-text" style={{ opacity: 0.7, marginBottom: '1rem' }}>
           {resume.tagline}
         </p>
-        <div className="utility-text" style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', fontSize: '0.7rem' }}>
+        <div className="utility-text resume-contact-row">
           <span>{resume.contact.location}</span>
           <span>{resume.contact.phone}</span>
           {resume.contact.emails.map((emailAddress) => (
@@ -22,7 +23,7 @@ export default function Resume() {
       </header>
 
       {/* Download */}
-      <div className="no-print" style={{ marginBottom: '2.5rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+      <div className="no-print resume-actions">
         <a
           href="/assets/Austin_Humphrey_Resume.pdf"
           className="btn btn-primary"

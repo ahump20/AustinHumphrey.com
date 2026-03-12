@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, Page } from "@playwright/test";
 
 test.describe("Smoke tests", () => {
   test("home page loads and shows Austin Humphrey", async ({ page }) => {
@@ -57,4 +57,47 @@ test.describe("API smoke tests", () => {
       test.skip(true, "API not available — skipping health check");
     }
   });
+});
+
+const allRoutes = ["/", "/resume", "/work", "/contact"];
+
+async function assertNoHorizontalScroll(page: Page) {
+  const noHScroll = await page.evaluate(
+    () => document.documentElement.scrollWidth <= document.documentElement.clientWidth
+  );
+  expect(noHScroll).toBe(true);
+}
+
+test.describe("Mobile viewport tests", () => {
+  test.use({ viewport: { width: 375, height: 667 } });
+
+  for (const route of allRoutes) {
+    test(`${route} loads and has no horizontal scroll at 375px`, async ({ page }) => {
+      await page.goto(route);
+      await expect(page.locator("body")).toBeVisible();
+      await assertNoHorizontalScroll(page);
+    });
+  }
+
+  test("hamburger button is visible at 375px", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator(".hamburger-btn")).toBeVisible();
+  });
+
+  test("nav-links are not visible at 375px", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator(".nav-links")).not.toBeVisible();
+  });
+});
+
+test.describe("Tablet viewport tests", () => {
+  test.use({ viewport: { width: 768, height: 1024 } });
+
+  for (const route of ["/", "/resume"]) {
+    test(`${route} loads and has no horizontal scroll at 768px`, async ({ page }) => {
+      await page.goto(route);
+      await expect(page.locator("body")).toBeVisible();
+      await assertNoHorizontalScroll(page);
+    });
+  }
 });

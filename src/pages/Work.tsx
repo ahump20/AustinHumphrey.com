@@ -1,4 +1,5 @@
 import { resume } from '../content/resume'
+import './Work.css'
 
 const founderExperience = resume.experience[0]
 
@@ -25,16 +26,9 @@ export default function Work() {
         Products built and operated by Austin Humphrey
       </p>
 
-      <div style={{ display: 'grid', gap: '2.5rem' }}>
+      <div className="work-grid">
         {projects.map((project) => (
-          <article
-            key={project.name}
-            style={{
-              border: '1px solid rgba(191,87,0,0.2)',
-              padding: '2rem',
-              borderRadius: '2px',
-            }}
-          >
+          <article key={project.name} className="work-card">
             <h2 style={{ marginBottom: '0.25rem' }}>
               <a href={project.url} target="_blank" rel="noopener noreferrer">
                 {project.name}

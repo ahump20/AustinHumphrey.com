@@ -1,4 +1,5 @@
 import { resume } from '../content/resume'
+import './Contact.css'
 
 export default function Contact() {
   const { contact } = resume
@@ -10,7 +11,7 @@ export default function Contact() {
         Get in touch
       </p>
 
-      <div style={{ display: 'grid', gap: '2rem', maxWidth: '480px' }}>
+      <div className="contact-grid">
         {/* Email */}
         <div>
           <h3 style={{ marginBottom: '0.5rem', color: 'var(--burnt-orange)' }}>Email</h3>

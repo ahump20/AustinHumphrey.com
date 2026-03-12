@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { resume } from '../content/resume'
+import './Home.css'
 
 export default function Home() {
   return (
@@ -11,11 +12,11 @@ export default function Home() {
       <p className="utility-text" style={{ marginBottom: '2rem', opacity: 0.7 }}>
         {resume.tagline}
       </p>
-      <p style={{ maxWidth: '640px', fontSize: '1.2rem', lineHeight: 1.7, marginBottom: '2.5rem' }}>
+      <p className="hero-summary">
         {resume.summary}
       </p>
 
-      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
+      <div className="hero-actions">
         <Link to="/resume" className="btn btn-primary">View Resume</Link>
         <a
           href="/assets/Austin_Humphrey_Resume.pdf"
@@ -27,7 +28,7 @@ export default function Home() {
         </a>
       </div>
 
-      <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+      <div className="hero-links">
         <a
           href={`https://${resume.contact.linkedin}`}
           target="_blank"

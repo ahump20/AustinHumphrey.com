@@ -1,0 +1,9 @@
+.contact-grid {
+  display: grid;
+  gap: 2rem;
+  max-width: 480px;
+}
+
+@media (max-width: 640px) {
+  .contact-grid { max-width: 100%; }
+}

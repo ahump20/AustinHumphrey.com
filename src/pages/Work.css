@@ -1,0 +1,14 @@
+.work-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.work-card {
+  border: 1px solid rgba(191, 87, 0, 0.2);
+  padding: 2rem;
+  border-radius: 2px;
+}
+
+@media (max-width: 640px) {
+  .work-card { padding: 1.25rem; }
+}

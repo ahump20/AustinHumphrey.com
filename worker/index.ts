@@ -117,12 +117,27 @@ function parseAllowlist(raw: string | undefined):
         return { ok: false, error: `Invalid allowlist entry for '${service}'.` };
       }
 
+      let originUrl: URL;
       try {
-        new URL(rule.origin);
+        originUrl = new URL(rule.origin);
       } catch {
         return { ok: false, error: `Invalid origin URL for '${service}'.` };
       }
 
+      // Enforce secure/explicit schemes and disallow embedded credentials.
+      if (originUrl.protocol !== "https:" && originUrl.protocol !== "http:") {
+        return {
+          ok: false,
+          error: `Origin for '${service}' must use http: or https: scheme.`
+        };
+      }
+
+      if (originUrl.username || originUrl.password) {
+        return {
+          ok: false,
+          error: `Origin for '${service}' must not contain embedded credentials.`
+        };
+      }
       const invalidMethod = rule.allowedMethods.find(
         (method) => typeof method !== "string" || !method
       );

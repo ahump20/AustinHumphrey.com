@@ -26,12 +26,22 @@ const corsHeaders: Record<string, string> = {
   'Access-Control-Allow-Headers': 'Content-Type',
 };
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 async function verifyTurnstile(token: string, secret: string): Promise<boolean> {
   try {
+    const params = new URLSearchParams({ secret, response: token });
     const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ secret, response: token }),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString(),
     });
     const data = (await res.json()) as { success: boolean };
     return data.success === true;
@@ -97,16 +107,23 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     }
   }
 
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safeMessage = escapeHtml(message);
+
   const emailHtml = `
     <div style="font-family: monospace; max-width: 600px; margin: 0 auto; color: #1a1a1a;">
       <h2 style="color: #BF5700; margin-bottom: 8px;">New message via austinhumphrey.com</h2>
       <hr style="border: 1px solid #e5e5e5; margin-bottom: 16px;" />
-      <p><strong>From:</strong> ${name}</p>
-      <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+      <p><strong>From:</strong> ${safeName}</p>
+      <p><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
       <hr style="border: 1px solid #e5e5e5; margin: 16px 0;" />
-      <p style="white-space: pre-wrap;">${message.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
+      <p style="white-space: pre-wrap;">${safeMessage}</p>
     </div>
   `.trim();
+
+  // Strip newlines from name to prevent header injection in subject
+  const subjectName = name.replace(/[\r\n]/g, ' ').slice(0, 100);
 
   try {
     const res = await fetch('https://api.resend.com/emails', {
@@ -119,7 +136,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         from: 'Portfolio Contact <noreply@blazesportsintel.com>',
         to: ['Austin@BlazeSportsIntel.com'],
         reply_to: email,
-        subject: `[austinhumphrey.com] Message from ${name}`,
+        subject: `[austinhumphrey.com] Message from ${subjectName}`,
         html: emailHtml,
       }),
     });

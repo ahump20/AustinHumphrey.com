@@ -6,6 +6,12 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      deploy_worker:
+        description: Deploy the Cloudflare Worker after validation
+        required: true
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -46,7 +52,9 @@ jobs:
   deploy-worker:
     name: Deploy Cloudflare Worker API
     needs: validate
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: |
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_dispatch' && inputs.deploy_worker)
     runs-on: ubuntu-latest
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

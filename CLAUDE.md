@@ -25,24 +25,37 @@ npm run deploy       # Build + wrangler pages deploy dist
 ```
 src/
   main.tsx                    # Entry point — StrictMode + App
-  App.tsx                     # Root — section layout + inline footer
-  index.css                   # Tailwind layers, dark-only CSS vars, film grain, reveal animations
+  App.tsx                     # Root — section layout, scroll routing
+  index.css                   # Tailwind layers, dark-only CSS vars, section backgrounds, scroll animations
   components/
     Navigation.tsx            # Transparent → glass-on-scroll nav, IntersectionObserver active tracking
-    Hero.tsx                  # 2D canvas particle system + radial blur overlays + italic tagline
-    About.tsx                 # Origin story — 2-col narrative + sticky sidebar facts
-    Experience.tsx            # Left-border timeline with burnt-orange dot markers
+    Hero.tsx                  # Gradient mesh hero + marquee stats ticker + tagline
+    BSIShowcase.tsx           # Platform narrative + stats + architecture + capabilities + tech stack
+    Projects.tsx              # Featured + supporting project cards with live badges
+    Proof.tsx                 # Editorial ledger + speaking reel video player
+    About.tsx                 # Origin story — 2-col narrative + sticky sidebar facts + photos
+    AthleticArc.tsx           # Photo gallery — staggered desktop grid, horizontal mobile scroll
+    Experience.tsx            # Left-border timeline with company-colored dot markers
     Education.tsx             # 3-card grid (Full Sail, McCombs, UT Austin)
-    BSIShowcase.tsx           # 2-col description + stats/league rows + tech stack tags
-    AIFeatures.tsx            # 4 gradient-top-border cards
-    Podcast.tsx               # Centered CTA box with NotebookLM link
-    Philosophy.tsx            # Centered Austin covenant quote
-    Contact.tsx               # Centered link grid (email, LinkedIn, BSI, GitHub, X)
-    AIChatWidget.tsx          # Fixed bottom-right FAB with keyword-based local responses
-    ErrorBoundary.tsx         # Safety net for async component issues
+    Philosophy.tsx            # Texas covenant blockquote + animated underline close
+    Contact.tsx               # Contact cards + form with Turnstile + Resend delivery
+    Footer.tsx                # 4-col link grid + Cloudflare badge
+    PlatformStatus.tsx        # Live BSI health indicator (polls /api/platform-health)
+    AIChatWidget.tsx          # Claude Haiku concierge via SSE, keyword fallback offline
+    ErrorBoundary.tsx         # Wraps entire app in App.tsx
+  content/
+    site.ts                   # All static content — nav items, stats, projects, contact channels
+    concierge.ts              # Chat widget greeting, suggested prompts, fallback responses
   hooks/
-    usePrefersReducedMotion.ts  # Accessibility — disables canvas particles when reduced motion
-  utils/                      # (empty — animation utilities removed)
+    usePrefersReducedMotion.ts  # Accessibility — disables motion when reduced motion preferred
+    usePlatformHealth.ts        # Singleton health poller via useSyncExternalStore
+  utils/
+    animations.ts             # Framer Motion variants — stagger, fadeInRight, easing
+functions/
+  api/
+    chat.ts                   # Claude Haiku SSE streaming for concierge widget
+    contact.ts                # Contact form delivery via Resend + Turnstile validation
+    platform-health.ts        # Same-origin proxy for BSI health endpoint
 ```
 
 ## Design System
@@ -77,14 +90,13 @@ No light mode. No `data-theme` attribute. No ThemeToggle.
 - **Cards**: `rgba(26,26,26,0.6)` bg, `rgba(245,240,235,0.04)` border, hover lifts
 - **Timeline**: left 1px gradient line, 9px burnt-orange dots with glow shadow
 - **Buttons**: `btn-primary` (filled) + `btn-outline` (border), Oswald 500, 0.75rem
-- **Film grain**: SVG `feTurbulence` on `body::after`, opacity 0.4, pointer-events: none
-
 ### Animation
 
 - Framer Motion for nav `layoutId`, hero entrance, `AnimatePresence` (mobile menu, chat widget)
-- IntersectionObserver + CSS `.reveal` / `.reveal.visible` for scroll-triggered section reveals
+- Scroll-triggered `whileInView` stagger reveals on all sections (variants in `animations.ts`)
 - Easing: `ease-out-expo` → `cubic-bezier(0.19, 1, 0.22, 1)`
-- Canvas particle hero respects `prefers-reduced-motion` via `usePrefersReducedMotion` hook
+- Hero respects `prefers-reduced-motion` via `usePrefersReducedMotion` hook
+- CSS `marquee` animation on hero stats ticker, disabled on reduced-motion
 
 ## Deployment
 
@@ -103,10 +115,10 @@ No light mode. No `data-theme` attribute. No ThemeToggle.
 
 ## Performance
 
-- Bundle: 297KB JS (95KB gzipped) — down from 900KB+ with R3F
-- Zero WebGL — 2D canvas only, no SecurityError risk
-- Scroll animations: CSS transitions on compositor thread (no React re-renders)
-- Canvas particles: 80 particles, `requestAnimationFrame`, disabled on reduced-motion
+- Bundle: ~255KB main JS + ~142KB framer-motion chunk + ~10KB lazy chat widget (~130KB total gzipped)
+- Zero WebGL — gradient mesh hero, no SecurityError risk
+- Scroll animations: Framer Motion `whileInView` with `once: true` (fires once per section)
+- Self-hosted fonts with `font-display: swap` and hero font preloads
 
 ## Gotchas
 

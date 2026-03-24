@@ -112,4 +112,4 @@ No light mode. No `data-theme` attribute. No ThemeToggle.
 
 - Repo lives on iCloud Drive — git operations can hang. Use `--no-verify` if hooks stall. Remove stale `.git/index.lock` if git hangs.
 - `tsconfig.json` has `noUnusedLocals` and `noUnusedParameters` — clean up imports.
-- `ErrorBoundary.tsx` is retained but not currently imported — available as safety net.
+- `ErrorBoundary.tsx` wraps the entire app in `App.tsx`.

@@ -188,7 +188,7 @@ export default function AIChatWidget() {
           if (!open) window.posthog?.capture('chat_opened');
           setOpen(!open);
         }}
-        className={`fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full border px-3 py-2 backdrop-blur-md transition-all duration-300 cursor-pointer group ${
+        className={`fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full border px-3 py-2 backdrop-blur-md transition-all duration-300 cursor-pointer group ${
           open
             ? 'border-burnt-orange/40 bg-burnt-orange text-white shadow-lg'
             : 'border-bone/10 bg-charcoal/80 text-bone/85 hover:border-burnt-orange/30 hover:text-burnt-orange'
@@ -231,7 +231,7 @@ export default function AIChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed z-50 flex flex-col overflow-hidden border border-bone/10 bg-charcoal shadow-2xl
+            className="fixed z-40 flex flex-col overflow-hidden border border-bone/10 bg-charcoal shadow-2xl
               inset-x-0 bottom-0 w-full rounded-t-sm max-h-[70vh]
               sm:inset-auto sm:bottom-20 sm:right-5 sm:w-[min(24rem,calc(100vw-2.5rem))] sm:max-h-[28rem] sm:rounded-sm"
           >

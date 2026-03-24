@@ -119,9 +119,11 @@ export default function Navigation() {
               scrollToSection('hero');
             }}
           >
-            <div className="w-9 h-9 bg-burnt-orange rounded-full flex items-center justify-center font-sans font-bold text-white text-xs group-hover:scale-110 transition-transform duration-300">
-              AH
-            </div>
+            <img
+              src="/assets/austin-headshot.webp"
+              alt="Austin Humphrey"
+              className="w-9 h-9 rounded-full object-cover object-top border border-burnt-orange/40 group-hover:scale-110 transition-transform duration-300"
+            />
             <span className="font-mono text-sm text-bone/70 hidden sm:block group-hover:text-burnt-orange transition-colors duration-300">
               Austin Humphrey
             </span>
@@ -182,37 +184,49 @@ export default function Navigation() {
         {/* Mobile menu */}
         <AnimatePresence>
           {mobileOpen && (
-            <motion.div
-              id="mobile-nav-menu"
-              ref={mobileMenuRef}
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.19, 1, 0.22, 1] }}
-              className="overflow-hidden md:hidden bg-midnight/98 border-t border-burnt-orange/10"
-            >
-              <ul className="px-6 py-4 space-y-1">
-                {NAV_ITEMS.map((item) => (
-                  <li key={item.id}>
-                    <a
-                      href={`#${item.id}`}
-                      onClick={(event) => {
-                        event.preventDefault();
-                        scrollToSection(item.id);
-                      }}
-                      aria-current={activeSection === item.id ? 'location' : undefined}
-                      className={`block px-4 py-3 font-sans text-xs uppercase tracking-[0.2em] rounded-sm transition-colors duration-300 ${
-                        activeSection === item.id
-                          ? 'text-burnt-orange bg-burnt-orange/10'
-                          : 'text-bone/50 hover:text-bone hover:bg-white/5'
-                      }`}
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+            <>
+              {/* Backdrop — blocks interaction with content behind */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-0 top-[60px] bg-midnight/80 md:hidden"
+                onClick={() => setMobileOpen(false)}
+                aria-hidden="true"
+              />
+              <motion.div
+                id="mobile-nav-menu"
+                ref={mobileMenuRef}
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: [0.19, 1, 0.22, 1] }}
+                className="relative overflow-hidden md:hidden bg-midnight border-t border-burnt-orange/10"
+              >
+                <ul className="px-6 py-4 space-y-1">
+                  {NAV_ITEMS.map((item) => (
+                    <li key={item.id}>
+                      <a
+                        href={`#${item.id}`}
+                        onClick={(event) => {
+                          event.preventDefault();
+                          scrollToSection(item.id);
+                        }}
+                        aria-current={activeSection === item.id ? 'location' : undefined}
+                        className={`block px-4 py-3 font-sans text-xs uppercase tracking-[0.2em] rounded-sm transition-colors duration-300 ${
+                          activeSection === item.id
+                            ? 'text-burnt-orange bg-burnt-orange/10'
+                            : 'text-bone/50 hover:text-bone hover:bg-white/5'
+                        }`}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </motion.nav>

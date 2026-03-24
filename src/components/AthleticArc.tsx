@@ -46,8 +46,9 @@ export default function AthleticArc() {
 
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
-          initial="visible"
-          animate='visible'
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.05 }}
           variants={staggerContainer}
         >
           <motion.p

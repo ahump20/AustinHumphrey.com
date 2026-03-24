@@ -54,6 +54,16 @@ export default function Navigation() {
   }, []);
 
   useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+      window.dispatchEvent(new CustomEvent('mobile-nav', { detail: { open: true } }));
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
+  useEffect(() => {
     if (!mobileOpen) return;
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setMobileOpen(false);
@@ -122,7 +132,7 @@ export default function Navigation() {
             <img
               src="/assets/austin-headshot.webp"
               alt="Austin Humphrey"
-              className="w-9 h-9 rounded-full object-cover object-top border border-burnt-orange/40 group-hover:scale-110 transition-transform duration-300"
+              className="w-9 h-9 rounded-full object-cover object-[center_35%] border border-burnt-orange/40 group-hover:scale-110 transition-transform duration-300"
             />
             <span className="font-mono text-sm text-bone/70 hidden sm:block group-hover:text-burnt-orange transition-colors duration-300">
               Austin Humphrey
@@ -191,7 +201,7 @@ export default function Navigation() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="fixed inset-0 top-[60px] bg-midnight/80 md:hidden"
+                className="fixed inset-0 top-[60px] bg-midnight md:hidden"
                 onClick={() => setMobileOpen(false)}
                 aria-hidden="true"
               />

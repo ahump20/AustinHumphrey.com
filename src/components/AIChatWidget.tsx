@@ -61,6 +61,12 @@ export default function AIChatWidget() {
   }, [messages, loading, streamingText]);
 
   useEffect(() => {
+    const closeChatOnMobileNav = () => setOpen(false);
+    window.addEventListener('mobile-nav', closeChatOnMobileNav);
+    return () => window.removeEventListener('mobile-nav', closeChatOnMobileNav);
+  }, []);
+
+  useEffect(() => {
     if (!open) return;
     requestAnimationFrame(() => {
       panelRef.current?.querySelector<HTMLInputElement>('input[type="text"]')?.focus();

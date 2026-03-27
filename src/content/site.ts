@@ -23,11 +23,10 @@ export const PLATFORM_URLS = {
 
 export const NAV_ITEMS = [
   { id: 'hero', label: 'Home' },
-  { id: 'bsi', label: 'BSI' },
   { id: 'projects', label: 'Work' },
   { id: 'proof', label: 'Proof' },
+  { id: 'bsi', label: 'BSI' },
   { id: 'origin', label: 'Origin' },
-  { id: 'covenant', label: 'Covenant' },
   { id: 'contact', label: 'Contact' },
 ] as const;
 
@@ -35,11 +34,10 @@ export const FOOTER_LINK_GROUPS = [
   {
     title: 'Navigate',
     links: [
-      { label: 'BSI', href: '#bsi' },
       { label: 'Work', href: '#projects' },
       { label: 'Proof', href: '#proof' },
+      { label: 'BSI', href: '#bsi' },
       { label: 'Origin', href: '#origin' },
-      { label: 'Covenant', href: '#covenant' },
       { label: 'Contact', href: '#contact' },
     ] satisfies SiteLink[],
   },
@@ -107,13 +105,13 @@ export const CONTACT_CHANNELS: Array<{
 export const PORTFOLIO_PROJECTS = {
   featured: [
     {
-      name: 'A Documented Heritage',
+      name: 'Blaze Sports Intel',
       description:
-        'Personal data archive with 12+ interactive D3 charts, a Three.js swing biomechanics viewer, and an ancestry globe. Cross-references 8 data sources — Spotify, 23andMe, natal chart, personality instruments, writing corpus, and more.',
-      tech: ['React', 'D3.js', 'Three.js', 'TypeScript', 'Tailwind'],
-      url: PLATFORM_URLS.dna,
-      highlight: 'Data Viz',
-      live: false,
+        'Live scores, park-adjusted sabermetrics, and original editorial across 330 D1 college baseball programs. Six-league platform built solo on Cloudflare.',
+      tech: ['Next.js', 'Cloudflare Workers', 'D1', 'Hono'],
+      url: PLATFORM_URLS.bsi,
+      highlight: 'Flagship',
+      live: true,
     },
     {
       name: 'BSI Radar Lab',
@@ -144,6 +142,15 @@ export const PORTFOLIO_PROJECTS = {
       highlight: 'Game',
       live: true,
     },
+    {
+      name: 'A Documented Heritage',
+      description:
+        'Personal data archive with interactive D3 charts, Three.js biomechanics viewer, and ancestry globe.',
+      tech: ['React', 'D3.js', 'Three.js'],
+      url: PLATFORM_URLS.dna,
+      highlight: 'Data Viz',
+      live: false,
+    },
   ],
 } as const;
 
@@ -162,47 +169,18 @@ export const BSI_SHOWCASE = {
   ],
   leagues: [
     { name: 'College Baseball', note: 'Flagship' },
-    { name: 'MLB', note: 'Full Coverage' },
-    { name: 'NFL', note: 'Full Coverage' },
-    { name: 'NCAA Football', note: 'Full Coverage' },
-    { name: 'NBA', note: 'Full Coverage' },
-    { name: 'NCAA Basketball', note: 'Full Coverage' },
+    { name: 'MLB', note: 'Scores + Standings' },
+    { name: 'NFL', note: 'Scores + Standings' },
+    { name: 'NCAA Football', note: 'Scores + Standings' },
+    { name: 'NBA', note: 'Scores + Standings' },
+    { name: 'NCAA Basketball', note: 'Scores + Standings' },
   ],
   techStack: [
     'Cloudflare Workers',
-    'D1',
-    'KV',
-    'R2',
+    'D1/KV/R2',
     'Hono',
     'Next.js',
-    'React',
     'TypeScript',
-    'Claude API',
-    'SportsDataIO',
-    'Highlightly',
-    'Vitest',
     'Playwright',
-  ],
-  capabilities: [
-    {
-      title: 'AI-Powered Analysis',
-      description:
-        'Claude-driven editorial generation, predictive modeling, and analytical depth — AI as a force multiplier for coverage, not a gimmick.',
-    },
-    {
-      title: 'Predictive Intelligence',
-      description:
-        'Machine learning models trained on historical performance, matchup dynamics, and contextual factors. Predictions grounded in real signal.',
-    },
-    {
-      title: 'Edge-First Architecture',
-      description:
-        'Dozens of edge-powered specialists deliver sub-50ms response times globally. Data pipelines that fetch, transform, and cache without a traditional server.',
-    },
-    {
-      title: 'Podcast Export',
-      description:
-        'NotebookLM integration transforms written analytics into audio. Coverage extends beyond readers to listeners through a second medium.',
-    },
   ],
 } as const;

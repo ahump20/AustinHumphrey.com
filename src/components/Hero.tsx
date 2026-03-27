@@ -1,21 +1,8 @@
 import { motion } from 'framer-motion';
-import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import { EASE_OUT_EXPO } from '../utils/animations';
-import { PLATFORM_URLS, RESUME_PATH } from '../content/site';
-
-const marqueeItems = [
-  '6 Leagues',
-  '330+ D1 Programs',
-  '58+ Articles',
-  'Live Scores',
-  'Advanced Analytics',
-  'Original Editorial',
-  'Solo Built',
-];
+import { PLATFORM_URLS } from '../content/site';
 
 export default function Hero() {
-  const prefersReducedMotion = usePrefersReducedMotion();
-
   return (
     <section id="hero" aria-labelledby="hero-heading" className="relative min-h-screen flex items-center overflow-hidden bg-midnight">
       {/* Static editorial gradient — deliberate burnt-orange anchor at top-right */}
@@ -72,7 +59,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.4, ease: EASE_OUT_EXPO }}
           className="text-warm-gray text-lg md:text-xl max-w-xl mb-10 leading-relaxed text-center md:text-left"
         >
-          Blaze Sports Intel — six leagues of live analytics and original editorial, built solo because the athletes outside the spotlight deserved real coverage.
+          Built Blaze Sports Intel solo — live analytics, park-adjusted sabermetrics, and original editorial for 330 D1 college baseball programs.
         </motion.p>
 
         <motion.div
@@ -89,49 +76,11 @@ export default function Hero() {
           >
             Blaze Sports Intel
           </a>
-          <a href="#origin" className="btn-outline">
-            The Origin
-          </a>
-          <a href={RESUME_PATH} download className="btn-outline">
-            Resume
+          <a href="#projects" className="btn-outline">
+            See the Work
           </a>
         </motion.div>
       </div>
-
-      {/* Stats marquee */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.8 }}
-        className="absolute bottom-16 left-0 right-0 overflow-hidden border-t border-b border-bone/5 py-3"
-      >
-        <div className="marquee-track" aria-hidden="true">
-          {[...marqueeItems, ...marqueeItems].map((item, i) => (
-            <span key={i} className="font-mono text-xs text-warm-gray/80 uppercase tracking-[0.3em] mx-8 whitespace-nowrap">
-              {item}
-              <span className="text-burnt-orange/40 ml-8">·</span>
-            </span>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={prefersReducedMotion ? {} : { y: [0, 8, 0] }}
-          transition={prefersReducedMotion ? {} : { repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-        >
-          <svg width="20" height="12" viewBox="0 0 20 12" fill="none" className="text-bone/30">
-            <path d="M1 1L10 10L19 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-        </motion.div>
-      </motion.div>
-
     </section>
   );
 }

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { staggerContainer, staggerItem } from '../utils/animations';
-import { CONTACT_CHANNELS, PLATFORM_URLS, PRIMARY_EMAIL, RESUME_PATH } from '../content/site';
+import { CONTACT_CHANNELS, PRIMARY_EMAIL } from '../content/site';
 
 const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || '';
 
@@ -137,36 +137,11 @@ export default function Contact() {
             <motion.div variants={staggerItem} className="space-y-8">
               <div>
                 <p className="section-label">// Connect</p>
-                <h2 id="contact-heading" className="section-title">Direct Line</h2>
+                <h2 id="contact-heading" className="section-title">Get in Touch</h2>
                 <p className="editorial-lead max-w-xl">
-                  This goes straight to Austin. For platform work, sports intelligence, or
-                  partnership conversations — no gatekeepers, no forms-that-go-nowhere.
+                  This goes straight to Austin. Platform work, sports intelligence, or
+                  partnership conversations — no gatekeepers.
                 </p>
-              </div>
-
-              {/* Direct Line card — prominent, above link grid */}
-              <div className="relative rounded-sm border border-bone/10 bg-midnight/70 px-6 py-6 overflow-hidden">
-                <div
-                  className="pointer-events-none absolute inset-x-0 top-0 h-px accent-line-narrow"
-                />
-                <p className="section-label mb-3">Direct Line</p>
-                <p className="text-base leading-7 text-bone/75">
-                  Based in San Antonio, Texas. Email is the fastest path for serious inquiries.
-                  If you want context first, LinkedIn and BSI are the better starting points.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-4">
-                  <a
-                    href={RESUME_PATH}
-                    download
-                    onClick={() => window.posthog?.capture('cta_clicked', { cta: 'resume' })}
-                    className="btn-primary"
-                  >
-                    Download Resume
-                  </a>
-                  <a href={PLATFORM_URLS.email} className="btn-outline">
-                    Email Austin
-                  </a>
-                </div>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">

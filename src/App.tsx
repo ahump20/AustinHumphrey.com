@@ -6,10 +6,7 @@ import BSIShowcase from './components/BSIShowcase';
 import Projects from './components/Projects';
 import Proof from './components/Proof';
 import About from './components/About';
-import AthleticArc from './components/AthleticArc';
 import Experience from './components/Experience';
-import Education from './components/Education';
-import Philosophy from './components/Philosophy';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -46,9 +43,6 @@ function App() {
         <main id="main" className="main-content" tabIndex={-1}>
           <Hero />
 
-          {/* Proof: authority first */}
-          <BSIShowcase />
-
           <div className="section-divider" />
 
           <Projects />
@@ -57,19 +51,17 @@ function App() {
 
           <Proof />
 
+          <div className="section-divider" />
+
+          <BSIShowcase />
+
           {/* Origin narrative — warm seam from authority into biography */}
           <div className="origin-bridge-shell">
             <div className="section-seam" />
             <About />
-            <AthleticArc />
           </div>
 
           <Experience />
-
-          <Education />
-
-          {/* Emotional close */}
-          <Philosophy />
 
           <Contact />
         </main>

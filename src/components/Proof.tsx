@@ -52,7 +52,7 @@ export default function Proof() {
     <section
       id="proof"
       aria-labelledby="proof-heading"
-      className="section-padding section-border section-glow relative overflow-hidden proof-section-bottom"
+      className="section-padding section-border relative overflow-hidden"
     >
       <div className="container-custom">
         <motion.div
@@ -77,13 +77,13 @@ export default function Proof() {
           {lead && (
             <motion.div
               variants={staggerItem}
-              className="grid gap-8 border-t border-b border-bone/5 py-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(250px,0.7fr)] lg:items-end"
+              className="border-t border-b border-bone/5 py-10"
             >
               <a
                 href={lead.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block"
+                className="group block max-w-4xl"
               >
                 <span className="inline-flex rounded-sm border border-burnt-orange/25 bg-burnt-orange/10 px-3 py-1 font-mono text-[0.58rem] uppercase tracking-[0.28em] text-burnt-orange">
                   {lead.tag}
@@ -96,23 +96,7 @@ export default function Proof() {
                 <p className="mt-6 max-w-3xl font-serif text-xl leading-relaxed text-bone/72 md:text-2xl">
                   {lead.excerpt}
                 </p>
-              </a>
-
-              <div className="space-y-4 border-l border-bone/10 pl-0 lg:pl-8">
-                <p className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-warm-gray/70">
-                  Why It Matters
-                </p>
-                <p className="text-sm leading-7 text-bone/70">
-                  This is the public proof layer behind the platform: editorial
-                  coverage, film, and voice all pushing the same thesis with
-                  different instruments.
-                </p>
-                <a
-                  href={lead.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-mono text-[0.62rem] uppercase tracking-[0.28em] text-burnt-orange"
-                >
+                <span className="inline-flex items-center gap-2 mt-6 font-mono text-[0.62rem] uppercase tracking-[0.28em] text-burnt-orange">
                   Read the feature
                   <svg className="h-4 w-4" viewBox="0 0 20 20" fill="none">
                     <path
@@ -123,51 +107,39 @@ export default function Proof() {
                       strokeLinejoin="round"
                     />
                   </svg>
-                </a>
-              </div>
+                </span>
+              </a>
             </motion.div>
           )}
 
           <motion.div
             variants={staggerItem}
-            className="grid gap-4 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]"
+            className="space-y-3"
           >
-            <div className="space-y-3">
-              <p className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-warm-gray/60">
-                Editorial Ledger
-              </p>
-              <p className="max-w-sm text-sm leading-7 text-bone/65">
-                The deeper pieces carry the same job: show range, show signal,
-                and make the platform legible through repeatable public work.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              {rest.map((piece, index) => (
-                <a
-                  key={piece.title}
-                  href={piece.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group grid gap-4 border-b border-bone/5 py-4 md:grid-cols-[9rem_minmax(0,1fr)_1.5rem]"
-                >
-                  <span className="font-mono text-[0.58rem] uppercase tracking-[0.24em] text-burnt-orange/85">
-                    {piece.tag}
+            {rest.map((piece, index) => (
+              <a
+                key={piece.title}
+                href={piece.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group grid gap-4 border-b border-bone/5 py-4 md:grid-cols-[9rem_minmax(0,1fr)_1.5rem]"
+              >
+                <span className="font-mono text-[0.58rem] uppercase tracking-[0.24em] text-burnt-orange/85">
+                  {piece.tag}
+                </span>
+                <div className="space-y-2">
+                  <h3 className="font-sans text-sm font-semibold uppercase tracking-[0.16em] text-bone transition-colors duration-300 group-hover:text-burnt-orange">
+                    {piece.title}
+                  </h3>
+                  <p className="text-sm leading-7 text-bone/60">{piece.excerpt}</p>
+                </div>
+                <div className="flex items-start justify-end pt-1">
+                  <span className="font-mono text-xs text-bone/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-burnt-orange">
+                    {String(index + 1).padStart(2, '0')}
                   </span>
-                  <div className="space-y-2">
-                    <h3 className="font-sans text-sm font-semibold uppercase tracking-[0.16em] text-bone transition-colors duration-300 group-hover:text-burnt-orange">
-                      {piece.title}
-                    </h3>
-                    <p className="text-sm leading-7 text-bone/60">{piece.excerpt}</p>
-                  </div>
-                  <div className="flex items-start justify-end pt-1">
-                    <span className="font-mono text-xs text-bone/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-burnt-orange">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                  </div>
-                </a>
-              ))}
-            </div>
+                </div>
+              </a>
+            ))}
           </motion.div>
 
           <motion.div
@@ -191,9 +163,6 @@ export default function Proof() {
                 />
               </svg>
             </a>
-            <p className="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-warm-gray/65">
-              Also exported as audio via NotebookLM
-            </p>
           </motion.div>
 
           <motion.div
@@ -207,12 +176,7 @@ export default function Proof() {
                   Talking Sports: The Analytical Lens
                 </h3>
                 <p className="max-w-2xl text-base leading-8 text-bone/70">
-                  The same argument, spoken instead of typed. Film matters here
-                  because credibility is not only what gets published. It is how
-                  the thinking sounds when the notes are gone.
-                </p>
-                <p className="font-mono text-[0.68rem] uppercase tracking-[0.24em] text-warm-gray/60">
-                  Short-form editorial proof from the same operating system.
+                  The same argument, spoken instead of typed — credibility is how the thinking sounds when the notes are gone.
                 </p>
               </div>
 

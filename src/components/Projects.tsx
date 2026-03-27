@@ -60,20 +60,13 @@ export default function Projects() {
                 <h3 className="font-sans font-bold text-xl uppercase tracking-wider text-bone mb-3 group-hover:text-burnt-orange transition-colors duration-300">
                   {project.name}
                 </h3>
-                <p className="text-bone/75 text-base leading-relaxed mb-5">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((t) => (
-                    <span key={t} className="text-[0.65rem] font-mono text-warm-gray bg-bone/5 px-3 py-1 rounded-sm">
-                      {t}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-bone/75 text-base leading-relaxed">{project.description}</p>
               </motion.a>
             ))}
           </div>
 
           {/* Light-weight projects — compact treatment */}
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {PORTFOLIO_PROJECTS.supporting.map((project) => (
               <motion.a
                 key={project.name}

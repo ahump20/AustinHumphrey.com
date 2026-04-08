@@ -90,9 +90,9 @@ export default function About() {
               <motion.article
                 key={moment.title}
                 variants={staggerItem}
-                className="grid gap-4 border-t border-bone/10 pt-6 md:grid-cols-[4rem_minmax(0,1fr)]"
+                className="group grid gap-4 border-t border-bone/10 pt-6 md:grid-cols-[4rem_minmax(0,1fr)]"
               >
-                <div className="font-mono text-xs uppercase tracking-[0.24em] text-burnt-orange/70">
+                <div className="font-mono text-xs uppercase tracking-[0.24em] text-burnt-orange/70 group-hover:text-burnt-orange transition-colors duration-300">
                   {String(index + 1).padStart(2, '0')}
                 </div>
                 <div className="space-y-3">

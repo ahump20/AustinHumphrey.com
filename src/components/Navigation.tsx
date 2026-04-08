@@ -154,7 +154,7 @@ export default function Navigation() {
             <img
               src="/assets/austin-headshot.webp"
               alt="Austin Humphrey"
-              className="w-9 h-9 rounded-full object-cover object-[center_35%] border border-burnt-orange/40 group-hover:scale-110 group-hover:border-burnt-orange/80 transition-all duration-300"
+              className="w-9 h-9 rounded-full object-cover object-[center_35%] border border-burnt-orange/40 group-hover:scale-110 group-hover:border-burnt-orange/80 group-hover:-translate-y-px transition-all duration-300"
             />
             <span className="font-mono text-sm text-bone/70 hidden sm:block group-hover:text-burnt-orange transition-colors duration-300">
               Austin Humphrey

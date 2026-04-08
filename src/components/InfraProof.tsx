@@ -17,10 +17,11 @@ function InfraStat({ value, label, suffix }: { value: number; label: string; suf
 
   return (
     <div className="text-center" ref={ref as React.RefObject<HTMLDivElement>}>
-      <p className="font-sans font-bold text-bone leading-none infra-stat-value">
+      <p className="font-sans font-bold text-bone leading-none infra-stat-value" aria-hidden="true">
         {displayValue}
         <span className="text-burnt-orange">{suffix}</span>
       </p>
+      <span className="sr-only">{value}{suffix}</span>
       <p className="font-mono text-[0.65rem] uppercase tracking-[0.25em] text-warm-gray mt-3">
         {label}
       </p>

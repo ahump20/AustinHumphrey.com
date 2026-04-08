@@ -233,13 +233,19 @@ export default function Contact() {
               </div>
 
               <div className="mt-6">
-                <label htmlFor="contact-message" className="text-xs font-mono text-warm-gray block mb-2">
-                  Message
-                </label>
+                <div className="flex items-center justify-between mb-2">
+                  <label htmlFor="contact-message" className="text-xs font-mono text-warm-gray">
+                    Message
+                  </label>
+                  <span className={`text-[0.6rem] font-mono tabular-nums ${message.length > 450 ? 'text-amber-400' : 'text-warm-gray/40'}`}>
+                    {message.length} / 500
+                  </span>
+                </div>
                 <textarea
                   id="contact-message"
                   required
                   rows={4}
+                  maxLength={500}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   className="w-full bg-transparent border-0 border-b border-bone/15 px-0 py-2 text-sm text-bone placeholder-warm-gray/70 focus:outline-none focus:border-burnt-orange transition-colors duration-300 resize-none"

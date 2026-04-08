@@ -35,7 +35,7 @@ export default function Philosophy() {
             <footer className="text-sm font-mono text-burnt-orange">— Austin Humphrey</footer>
           </motion.blockquote>
 
-          <motion.div variants={staggerItem} className="text-warm-gray text-lg leading-relaxed space-y-6 text-left max-w-3xl mx-auto">
+          <motion.div variants={staggerItem} className="text-warm-gray text-lg leading-relaxed space-y-6 text-left max-w-2xl mx-auto">
             <p>
               It's a covenant with oneself and the company one keeps, to never stop dreaming
               beyond the horizon, regardless of race, ethnicity, religion, or even birth soil.

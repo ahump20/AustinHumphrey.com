@@ -68,11 +68,22 @@ export default function Philosophy() {
             </p>
           </motion.div>
 
+          {/* Crockett whisper — ceremonial citation */}
+          <motion.p
+            variants={staggerItem}
+            className="mt-16 font-display italic text-sm text-warm-gray/40 tracking-wide"
+          >
+            &ldquo;You may all go to hell, and I will go to Texas.&rdquo;
+            <span className="block mt-1 not-italic font-mono text-[0.55rem] uppercase tracking-[0.3em] text-burnt-orange/30">
+              &mdash; Davy Crockett, 1835
+            </span>
+          </motion.p>
+
           {/* Transition bridge — wider diamond accent signaling the close */}
           <motion.div
             aria-hidden="true"
             variants={staggerItem}
-            className="flex items-center justify-center gap-3 mt-16 opacity-30"
+            className="flex items-center justify-center gap-3 mt-12 opacity-30"
           >
             <div className="h-px w-24 bg-gradient-to-r from-transparent to-burnt-orange/40" />
             <div className="w-1.5 h-1.5 rotate-45 border border-burnt-orange/40" />

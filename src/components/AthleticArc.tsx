@@ -110,8 +110,10 @@ export default function AthleticArc() {
             })}
           </div>
 
-          {/* Mobile: horizontal scroll strip */}
-          <div className="md:hidden -mx-6 px-6 overflow-x-auto scrollbar-hide">
+          {/* Mobile: horizontal scroll strip with edge fade hints */}
+          <div className="md:hidden -mx-6 px-6 overflow-x-auto scrollbar-hide relative">
+            {/* Scroll fade hints */}
+            <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-midnight/90 to-transparent z-10 md:hidden" />
             <div className="flex gap-4 pb-4 mobile-scroll-track">
               {photos.map((photo) => {
                 const isLastGame = photo.featured;

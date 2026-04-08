@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { staggerContainer, staggerItem } from '../utils/animations';
 import { BSI_SHOWCASE, PLATFORM_URLS, SITE_TAGLINE } from '../content/site';
 import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
+import PlatformStatus from './PlatformStatus';
 
 function AnimatedStatCard({ value, label, suffix = '' }: { value: string; label: string; suffix?: string }) {
   const numericValue = parseInt(value.replace(/[^0-9]/g, ''), 10);
@@ -95,7 +96,7 @@ export default function BSIShowcase() {
                 editorial &mdash; one builder, zero shortcuts.
               </p>
 
-              <div className="flex flex-wrap gap-4 pt-2">
+              <div className="flex flex-wrap items-center gap-4 pt-2">
                 <a
                   href={PLATFORM_URLS.bsi}
                   target="_blank"
@@ -104,6 +105,7 @@ export default function BSIShowcase() {
                 >
                   Visit BSI
                 </a>
+                <PlatformStatus />
               </div>
             </motion.div>
 

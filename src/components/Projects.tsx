@@ -20,6 +20,10 @@ const SCREENSHOTS: Record<string, { src: string; webp: string }> = {
     src: '/assets/arcade-screenshot.png',
     webp: '/assets/optimized/arcade-screenshot-640w.webp',
   },
+  'A Documented Heritage': {
+    src: '/assets/dna-screenshot.png',
+    webp: '/assets/optimized/dna-screenshot-640w.webp',
+  },
 };
 
 function LiveBadge() {

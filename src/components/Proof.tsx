@@ -96,6 +96,7 @@ export default function Proof() {
                 href={lead.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => window.posthog?.capture('editorial_clicked', { title: lead.title })}
                 className="group block max-w-4xl border-l-2 border-transparent hover:border-burnt-orange/50 pl-6 -ml-6 transition-all duration-500"
               >
                 <span className="inline-flex rounded-sm border border-burnt-orange/25 bg-burnt-orange/10 px-3 py-1 font-mono text-[0.58rem] uppercase tracking-[0.28em] text-burnt-orange">
@@ -135,6 +136,7 @@ export default function Proof() {
                 href={piece.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => window.posthog?.capture('editorial_clicked', { title: piece.title })}
                 className="group grid gap-4 border-b border-bone/5 py-4 md:grid-cols-[9rem_minmax(0,1fr)_1.5rem]"
               >
                 <span className="font-mono text-[0.58rem] uppercase tracking-[0.24em] text-burnt-orange/85">

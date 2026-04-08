@@ -238,7 +238,10 @@ export default function Proof() {
                     poster="/assets/speaking-poster.jpg"
                     aria-label="Talking Sports: The Analytical Lens"
                     className="h-full w-full object-cover"
-                    onPlay={() => setPlaying(true)}
+                    onPlay={() => {
+                      setPlaying(true);
+                      window.posthog?.capture('speaking_reel_played');
+                    }}
                   >
                     <source src="/assets/austin-speaking-sports.mp4" type="video/mp4" />
                     Your browser does not support the video tag.

@@ -264,7 +264,7 @@ export default function Proof() {
                   </button>
                 )}
 
-                <div className="flex items-center justify-between border-t border-bone/10 px-4 py-3">
+                <div className="flex items-center justify-between border-t border-bone/10 px-4 py-3 bg-gradient-to-r from-charcoal/50 to-transparent">
                   <p className="font-mono text-[0.62rem] uppercase tracking-[0.24em] text-warm-gray/70">
                     Speaking Reel
                   </p>

@@ -268,12 +268,12 @@
   }
 
   /* ── Link styling: burnt-orange with hover/focus states ── */
-  a:not(.btn-primary):not(.btn-outline):not(.skip-link):not([class*="group"]):not([class*="nav"]):not([class*="card"]) {
+  a:not(.btn-primary):not(.btn-outline):not(.skip-link):not([class*="group"]):not([class*="nav"]):not([class*="card"]):not([class*="text-bone"]) {
     color: var(--color-accent);
     text-decoration: none;
     transition: color 0.2s ease, text-decoration-color 0.2s ease;
   }
-  a:not(.btn-primary):not(.btn-outline):not(.skip-link):not([class*="group"]):not([class*="nav"]):not([class*="card"]):hover {
+  a:not(.btn-primary):not(.btn-outline):not(.skip-link):not([class*="group"]):not([class*="nav"]):not([class*="card"]):not([class*="text-bone"]):hover {
     color: #FF6B35;
     text-decoration: underline;
     text-underline-offset: 3px;

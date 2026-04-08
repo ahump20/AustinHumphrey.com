@@ -78,6 +78,18 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* This site's own tech stack */}
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
+          {['React', 'TypeScript', 'Tailwind', 'Framer Motion', 'Vite', 'Cloudflare Pages'].map((tech) => (
+            <span
+              key={tech}
+              className="text-[0.5rem] font-mono uppercase tracking-widest text-warm-gray/30 border border-bone/5 rounded-sm px-2 py-0.5"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
         {/* Bottom bar */}
         <div className="pt-8 border-t border-bone/5 text-center">
           <p className="text-sm font-mono text-warm-gray/80">

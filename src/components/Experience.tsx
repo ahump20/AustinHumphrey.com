@@ -75,10 +75,11 @@ export default function Experience() {
                 variants={staggerItem}
                 className="group relative pl-6 py-6 border-l border-bone/10 hover:border-burnt-orange/30 transition-colors duration-300"
               >
-                {/* Timeline dot */}
+                {/* Timeline dot with hover glow */}
                 <div className="absolute left-0 top-8 -translate-x-1/2">
                   <span
-                    className={`block w-2.5 h-2.5 rounded-full ${exp.bgAccent}`}
+                    className={`block w-2.5 h-2.5 rounded-full ${exp.bgAccent} transition-shadow duration-300 group-hover:shadow-[0_0_8px_2px_currentColor]`}
+                    style={{ color: exp.bgAccent === 'bg-burnt-orange' ? '#BF5700' : exp.bgAccent === 'bg-ember' ? '#FF6B35' : undefined }}
                   />
                 </div>
 

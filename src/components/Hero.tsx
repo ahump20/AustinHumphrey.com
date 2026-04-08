@@ -132,7 +132,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3, ease: EASE_OUT_EXPO }}
-            className="order-1 md:order-2 flex justify-center md:justify-end"
+            className="order-1 md:order-2 flex justify-center md:justify-end group"
           >
             <div className="relative">
               {/* Burnt-orange accent glow */}
@@ -153,8 +153,8 @@ export default function Hero() {
                 }}
               />
               {/* Corner marks */}
-              <div className="absolute top-0 left-0 w-5 h-5 border-t border-l border-burnt-orange/30" />
-              <div className="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-burnt-orange/30" />
+              <div className="absolute top-0 left-0 w-5 h-5 border-t border-l border-burnt-orange/30 transition-all duration-500 group-hover:w-7 group-hover:h-7 group-hover:border-burnt-orange/50" />
+              <div className="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-burnt-orange/30 transition-all duration-500 group-hover:w-7 group-hover:h-7 group-hover:border-burnt-orange/50" />
             </div>
           </motion.div>
         </div>

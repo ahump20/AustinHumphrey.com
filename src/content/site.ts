@@ -50,6 +50,7 @@ export const FOOTER_LINK_GROUPS = [
       { label: 'BlazeCraft Dashboard', href: PLATFORM_URLS.blazecraft, external: true },
       { label: 'BSI Arcade', href: PLATFORM_URLS.arcade, external: true },
       { label: 'A Documented Heritage', href: PLATFORM_URLS.dna, external: true },
+      { label: 'BSI Editorial', href: 'https://blazesportsintel.com/blog-post-feed', external: true },
     ] satisfies SiteLink[],
   },
   {

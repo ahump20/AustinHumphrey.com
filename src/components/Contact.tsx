@@ -229,11 +229,18 @@ export default function Contact() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     onBlur={() => setEmailTouched(true)}
+                    aria-describedby={!emailValid ? 'email-error' : undefined}
+                    aria-invalid={!emailValid}
                     className={`w-full bg-transparent border-0 border-b px-0 py-2 text-sm text-bone placeholder-warm-gray/70 focus:outline-none transition-colors duration-300 ${
                       !emailValid ? 'border-amber-500/60' : email && emailTouched ? 'border-emerald-500/40' : 'border-bone/15 focus:border-burnt-orange'
                     }`}
                     placeholder="your@email.com"
                   />
+                  {!emailValid && (
+                    <p id="email-error" className="text-amber-400 text-[0.6rem] font-mono mt-1" role="alert">
+                      Enter a valid email address
+                    </p>
+                  )}
                 </div>
               </div>
 

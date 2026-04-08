@@ -23,6 +23,7 @@ function App() {
   const [easterEgg, setEasterEgg] = useState(false);
   useKonamiCode(useCallback(() => {
     setEasterEgg(true);
+    window.posthog?.capture('konami_code_activated');
     setTimeout(() => setEasterEgg(false), 3000);
   }, []));
 

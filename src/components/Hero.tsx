@@ -134,23 +134,31 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator + recruiter shortcut */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="mt-12"
+          className="mt-12 flex items-end justify-between"
         >
-          <span
-            className="inline-block font-mono text-[9px] tracking-[0.3em] uppercase"
-            style={{ color: 'rgba(245,240,235,0.25)' }}
+          <div>
+            <span
+              className="inline-block font-mono text-[9px] tracking-[0.3em] uppercase"
+              style={{ color: 'rgba(245,240,235,0.25)' }}
+            >
+              Scroll
+            </span>
+            <div
+              className="w-px h-8 mt-2"
+              style={{ background: 'linear-gradient(to bottom, rgba(191,87,0,0.4), transparent)' }}
+            />
+          </div>
+          <a
+            href="#contact"
+            className="font-mono text-[9px] tracking-[0.2em] uppercase text-warm-gray/30 hover:text-burnt-orange transition-colors duration-300"
           >
-            Scroll
-          </span>
-          <div
-            className="w-px h-8 mt-2"
-            style={{ background: 'linear-gradient(to bottom, rgba(191,87,0,0.4), transparent)' }}
-          />
+            Get in touch &darr;
+          </a>
         </motion.div>
       </div>
     </section>

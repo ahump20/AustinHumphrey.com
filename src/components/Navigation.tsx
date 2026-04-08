@@ -117,7 +117,7 @@ export default function Navigation() {
         transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-midnight/96 border-b border-burnt-orange/15 shadow-[0_10px_32px_rgba(0,0,0,0.35)]'
+            ? 'bg-midnight/96 backdrop-blur-sm border-b border-burnt-orange/15 shadow-[0_10px_32px_rgba(0,0,0,0.35)]'
             : 'bg-transparent'
         }`}
       >

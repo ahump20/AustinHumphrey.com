@@ -16,7 +16,7 @@ const schools = [
     detail: 'Accepted — Apr 2026 cohort',
     bgAccent: 'bg-burnt-orange',
     textAccent: 'text-burnt-orange',
-    focus: ['Python', 'Machine Learning', 'Neural Networks', 'NLP', 'Statistics'],
+    focus: ['Python', 'Supervised Learning', 'Deep Learning', 'NLP', 'Statistics', 'Neural Networks'],
     inProgress: true,
   },
   {

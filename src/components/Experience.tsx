@@ -83,7 +83,7 @@ export default function Experience() {
                 <div className="absolute left-0 top-8 -translate-x-1/2">
                   <span
                     className={`block w-2.5 h-2.5 rounded-full ${exp.bgAccent} transition-shadow duration-300 group-hover:shadow-[0_0_8px_2px_currentColor]`}
-                    style={{ color: exp.bgAccent === 'bg-burnt-orange' ? '#BF5700' : exp.bgAccent === 'bg-ember' ? '#FF6B35' : undefined }}
+                    style={{ color: exp.bgAccent === 'bg-burnt-orange' ? '#BF5700' : exp.bgAccent === 'bg-ember' ? '#FF6B35' : exp.bgAccent === 'bg-spectrum-blue' ? '#3B82F6' : exp.bgAccent === 'bg-nw-navy' ? '#1E3A5F' : exp.bgAccent === 'bg-ato-gold' ? '#D4A843' : '#BF5700' }}
                   />
                 </div>
 

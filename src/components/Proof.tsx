@@ -219,7 +219,7 @@ export default function Proof() {
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-center">
               <div className="space-y-4">
                 <p className="section-label mb-0">// On Camera</p>
-                <h3 className="font-sans text-2xl font-semibold uppercase tracking-[0.14em] text-bone md:text-3xl">
+                <h3 className="font-sans text-2xl font-bold uppercase tracking-wider text-bone md:text-3xl">
                   Talking Sports: The Analytical Lens
                 </h3>
                 <p className="max-w-2xl text-base leading-8 text-bone/70">

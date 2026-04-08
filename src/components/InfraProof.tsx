@@ -52,7 +52,7 @@ export default function InfraProof() {
       id="infrastructure"
       aria-label="Platform infrastructure"
       className="section-padding relative infra-dot-grid"
-      style={{ background: 'var(--surface-deep)' }}
+      style={{ backgroundColor: 'var(--surface-deep)' }}
     >
       <div className="container-custom">
         <motion.div

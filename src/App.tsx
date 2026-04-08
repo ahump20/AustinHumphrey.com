@@ -91,6 +91,8 @@ function App() {
           {/* Infrastructure proof — hard numbers, animated counters */}
           <InfraProof />
 
+          <div className="section-divider" />
+
           {/* Photo break — athletic arc from Friday Night Lights to the Forty Acres */}
           <AthleticArc />
 

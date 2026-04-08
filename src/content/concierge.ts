@@ -1,12 +1,12 @@
 import { PLATFORM_URLS, PRIMARY_EMAIL } from './site';
 
-export const AI_CHAT_GREETING = 'Austin Humphrey — builder, BSI founder, Texas-born. Ask me anything.';
+export const AI_CHAT_GREETING = 'Austin Humphrey — builder, BSI architect, Texas-born. Ask me anything.';
 
 export const AI_CHAT_SUGGESTED_PROMPTS = [
   'What is BSI?',
   'Tell me about the Texas soil',
   "What's the tech stack?",
-  'How do I reach Austin?',
+  'What makes BSI different?',
 ] as const;
 
 export const AI_CHAT_FALLBACK_RESPONSES: Array<{
@@ -16,46 +16,76 @@ export const AI_CHAT_FALLBACK_RESPONSES: Array<{
   {
     keywords: ['bsi', 'blaze', 'sports intel', 'platform'],
     response:
-      'Blaze Sports Intel is a production-grade sports analytics platform covering six leagues — MLB, NFL, NBA, NCAA football, college basketball, and college baseball. Dozens of specialized systems, multiple databases, all maintained by Austin.',
+      'Blaze Sports Intel covers what mainstream media overlooks — live scores, park-adjusted sabermetrics, and original editorial across six leagues. 330+ D1 college baseball programs tracked with advanced analytics. Dozens of edge workers, multiple databases, all built and maintained by one person.',
   },
   {
-    keywords: ['contact', 'email', 'hire', 'reach', 'direct'],
+    keywords: ['different', 'unique', 'special', 'why', 'gap'],
     response:
-      `Reach Austin at ${PRIMARY_EMAIL}, on LinkedIn at ${PLATFORM_URLS.linkedin.replace('https://', '')}, or on X at @BlazeSportsIntel.`,
+      'The gap BSI fills: nobody else provides advanced analytics for a Tuesday night college baseball game between Rice and Sam Houston. Mainstream sports media covers 20 programs. BSI covers 330. Park-adjusted wOBA, FIP, wRC+ — real sabermetrics for the games people care about but can\'t find data for.',
   },
   {
-    keywords: ['texas', 'soil', 'origin', 'born'],
+    keywords: ['sabermetric', 'analytics', 'woba', 'fip', 'wrc', 'stats', 'metric', 'savant'],
     response:
-      'Austin was born August 17, 1995 in Memphis. His parents brought Texas soil from West Columbia and placed it beneath his mother before he was born. The El Campo Leader-News ran the headline: "Tennessee Birth Will Be on Texas Soil."',
+      'BSI Savant computes park-adjusted sabermetrics every 6 hours — wOBA, wRC+, FIP, ERA- across all 330 D1 programs. Park factors are recalculated weekly. Conference strength indexes weight the competition. The same level of analytics MLB teams use, applied to college baseball.',
+  },
+  {
+    keywords: ['contact', 'email', 'hire', 'reach', 'direct', 'connect'],
+    response:
+      `Reach Austin directly at ${PRIMARY_EMAIL}, on LinkedIn at ${PLATFORM_URLS.linkedin.replace('https://', '')}, or on X at @BlazeSportsIntel. No gatekeepers — Austin reads every message himself.`,
+  },
+  {
+    keywords: ['texas', 'soil', 'origin', 'born', 'memphis'],
+    response:
+      'Austin was born August 17, 1995 in Memphis. His parents brought Texas soil from West Columbia — birthplace of the Republic of Texas — and placed it beneath his mother before he was born. The El Campo Leader-News ran the headline: "Tennessee Birth Will Be on Texas Soil." Not a gesture for a story later — a family continuation.',
   },
   {
     keywords: ['education', 'school', 'ut', 'university', 'degree', 'full sail', 'mccombs'],
     response:
-      'B.A. International Relations & Global Studies from UT Austin (minors in Economics and European Studies). M.S. Entertainment Business — Sports Management from Full Sail University (GPA 3.56). Currently pursuing an AI & Machine Learning Postgraduate Certificate from UT Austin McCombs.',
+      'B.A. International Relations & Global Studies from UT Austin (minors in Economics and European Studies). M.S. Entertainment Business — Sports Management from Full Sail University (GPA 3.56). Currently pursuing an AI & Machine Learning Postgraduate Certificate from UT Austin McCombs School of Business.',
   },
   {
     keywords: ['experience', 'work', 'job', 'career', 'spectrum', 'northwestern'],
     response:
-      'Founder & Builder at BSI (2023-present). Before that: Advertising Account Executive at Spectrum Reach covering Austin/San Antonio DMA (2022-2025), Financial Representative at Northwestern Mutual earning the "Power of 10" Award for top 10% nationally (2020-2022).',
+      'Founder & Builder at BSI (2023–present). Before that: Advertising Account Executive at Spectrum Reach covering Austin/San Antonio (2022–2025) — linear TV, OTT/CTV, streaming, digital. Financial Representative at Northwestern Mutual (2020–2022) — "Power of 10" Award for top 10% nationally.',
   },
   {
-    keywords: ['philosophy', 'covenant', 'believe', 'values'],
+    keywords: ['philosophy', 'covenant', 'believe', 'values', 'crockett'],
     response:
-      '"For me, personally, I believe Texas is how you choose to treat the best and worst of us." It\'s a covenant with oneself — to never stop dreaming beyond the horizon, regardless of race, ethnicity, religion, or birth soil.',
+      '"For me, personally, I believe Texas is how you choose to treat the best and worst of us." — Austin Humphrey. It\'s a covenant with oneself — to never stop building beyond the horizon, regardless of where you started.',
   },
   {
-    keywords: ['project', 'blazecraft', 'arcade', 'sandlot', 'game'],
+    keywords: ['project', 'blazecraft', 'arcade', 'sandlot', 'game', 'dna'],
     response:
-      `Beyond BSI: BlazeCraft (${PLATFORM_URLS.blazecraft.replace('https://', '')}) is a Warcraft 3-style system health dashboard. The BSI Arcade features Sandlot Sluggers, a browser-based baseball game with real rosters via the BSI API.`,
+      `Beyond BSI: BlazeCraft (${PLATFORM_URLS.blazecraft.replace('https://', '')}) is a Warcraft 3-style system health dashboard. BSI Arcade (${PLATFORM_URLS.arcade.replace('https://', '')}) features Sandlot Sluggers — a 3D browser baseball game with real college rosters. BSI Radar Lab validates TrackMan pitch data with six physics layers.`,
   },
   {
-    keywords: ['stack', 'tech', 'cloudflare', 'worker', 'infrastructure'],
+    keywords: ['stack', 'tech', 'cloudflare', 'worker', 'infrastructure', 'built'],
     response:
-      'Cloudflare everything — dozens of edge-powered specialists, multiple databases, KV caches, and storage buckets. Frontend: Next.js 16 (static export), React 19, TypeScript, Tailwind. All maintained solo.',
+      'Cloudflare everything — 18 edge workers, 12 databases, 45 KV stores, 40+ API routes. Frontend: Next.js 16 (static export), React 19, TypeScript, Tailwind. 662 tests passing. No AWS, no Vercel, no external databases. One constraint that forces simplicity and keeps it debuggable by one person.',
   },
   {
-    keywords: ['bitch', 'idiot', 'stupid', 'trash', 'hood', 'dumb'],
+    keywords: ['podcast', 'audio', 'listen', 'episode'],
     response:
-      "I can do better than drive-by nonsense. Ask about Austin, BSI, the build, the Texas soil story, or how to reach him and I'll give you something useful.",
+      `BSI publishes a weekly podcast covering college baseball — AI-generated deep dives built with NotebookLM. Listen at ${PLATFORM_URLS.bsi.replace('https://', '')}/podcast.`,
+  },
+  {
+    keywords: ['football', 'athlete', 'sport', 'play', 'charger'],
+    response:
+      'Austin played football at Boerne Champion High School — #20, Chargers. Running back who understood Friday Night Lights culture from the inside. That competitive instinct and sports culture shaped everything BSI became.',
+  },
+  {
+    keywords: ['blaze', 'dog', 'bartlett', 'name', 'brand'],
+    response:
+      'The name Blaze comes from Bartlett Blaze — Austin\'s dachshund, named after his first youth baseball team. The brand wasn\'t invented in a vacuum. It was remembered into form.',
+  },
+  {
+    keywords: ['resume', 'cv', 'pdf', 'download'],
+    response:
+      'Austin\'s resume is available for download at austinhumphrey.com/Austin_Humphrey_Resume.pdf — or click the "Resume" button in the navigation.',
+  },
+  {
+    keywords: ['bitch', 'idiot', 'stupid', 'trash', 'dumb', 'suck'],
+    response:
+      "Not productive. Ask about Austin, BSI, the build, the Texas soil story, or how to reach him — I'll give you something useful.",
   },
 ] as const;

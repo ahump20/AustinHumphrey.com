@@ -171,7 +171,7 @@
     @apply max-w-6xl mx-auto;
   }
 
-  /* Section label: // The Origin style */
+  /* Section label: // The Origin style — with underline reveal */
   .section-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.65rem;
@@ -179,6 +179,24 @@
     text-transform: uppercase;
     color: var(--color-accent);
     margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 4px;
+  }
+  .section-label::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-accent);
+    opacity: 0.5;
+    transition: width 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  section:hover .section-label::after,
+  .section-label:hover::after {
+    width: 100%;
   }
 
   /* Section title */

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Austin Humphrey</title>
+  <style>
+    @font-face {
+      font-family: 'Oswald';
+      src: url('/fonts/oswald.woff2') format('woff2');
+      font-weight: 400 700;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      src: url('/fonts/jetbrains-mono.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0D0D0D;
+      color: #F5F0EB;
+      font-family: 'JetBrains Mono', monospace;
+      text-align: center;
+      padding: 2rem;
+    }
+    .container { max-width: 480px; }
+    .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #BF5700;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: clamp(4rem, 12vw, 8rem);
+      text-transform: uppercase;
+      color: #BF5700;
+      line-height: 0.9;
+      margin-bottom: 1.5rem;
+    }
+    p {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: #A89F95;
+      margin-bottom: 2rem;
+    }
+    a {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #F5F0EB;
+      background: #BF5700;
+      padding: 0.75rem 1.5rem;
+      border-radius: 2px;
+      transition: filter 0.3s ease;
+    }
+    a:hover { filter: brightness(1.1); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="label">// Dead End</p>
+    <h1>404</h1>
+    <p>This page doesn't exist. The path you're looking for either moved or never was.</p>
+    <a href="/">Back to Austin Humphrey</a>
+  </div>
+</body>
+</html>

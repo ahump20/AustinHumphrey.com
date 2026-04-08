@@ -118,6 +118,7 @@ export default function Hero() {
                   e.preventDefault();
                   const target = document.getElementById('contact');
                   if (target) target.scrollIntoView({ behavior: 'smooth' });
+                  window.posthog?.capture('hero_get_in_touch_clicked');
                 }}
                 className="font-mono text-[9px] tracking-[0.2em] uppercase text-warm-gray/30 hover:text-burnt-orange transition-colors duration-300"
               >

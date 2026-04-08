@@ -28,6 +28,14 @@ const pieces = [
     featured: false,
   },
   {
+    title: 'Big Ten Conference Baseball Preview 2026',
+    excerpt:
+      'The Big Ten remade itself as a baseball conference. New programs, new facilities, new ambition — how every team stacks up in the expanded league.',
+    tag: 'Conference Preview',
+    url: 'https://blazesportsintel.com/college-baseball/editorial/big-ten',
+    featured: false,
+  },
+  {
     title: 'Texas Longhorns: Week 1 in Review',
     excerpt:
       "The Longhorns opened SEC play with a statement. Breaking down the pitching staff's evolution and what the numbers say about postseason trajectory.",

@@ -13,10 +13,11 @@ const schools = [
   {
     degree: 'AI & Machine Learning Postgraduate Certificate',
     school: 'UT Austin McCombs School of Business',
-    detail: 'Accepted and currently in progress',
+    detail: 'Accepted — Apr 2026 cohort',
     bgAccent: 'bg-burnt-orange',
     textAccent: 'text-burnt-orange',
     focus: ['Python', 'Machine Learning', 'Neural Networks', 'NLP', 'Statistics'],
+    inProgress: true,
   },
   {
     degree: 'B.A. International Relations & Global Studies',
@@ -59,9 +60,20 @@ export default function Education() {
                   className={`w-3 h-3 rounded-full mb-4 ${s.bgAccent}`}
                 />
 
-                <h3 className="font-sans font-semibold text-base uppercase tracking-wider text-bone mb-2 group-hover:text-burnt-orange transition-colors duration-300">
-                  {s.degree}
-                </h3>
+                <div className="flex items-start gap-3 mb-2">
+                  <h3 className="font-sans font-semibold text-base uppercase tracking-wider text-bone group-hover:text-burnt-orange transition-colors duration-300">
+                    {s.degree}
+                  </h3>
+                  {'inProgress' in s && s.inProgress && (
+                    <span className="shrink-0 flex items-center gap-1.5 text-[0.55rem] font-mono text-amber-400 uppercase tracking-widest mt-1">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75 animate-ping" />
+                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber-400" />
+                      </span>
+                      Active
+                    </span>
+                  )}
+                </div>
                 <p className={`font-semibold text-sm mb-2 ${s.textAccent}`}>{s.school}</p>
                 <p className="text-sm font-mono text-warm-gray">{s.detail}</p>
 

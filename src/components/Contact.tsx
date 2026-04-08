@@ -260,9 +260,21 @@ export default function Contact() {
               </button>
 
               {formState === 'sent' && (
-                <p className="text-green-400 text-xs font-mono mt-3 text-center" aria-live="polite">
-                  Message received. Austin will get back to you.
-                </p>
+                <div className="flex items-center justify-center gap-2 mt-3" aria-live="polite">
+                  <svg className="w-4 h-4 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <motion.path
+                      d="M5 13l4 4L19 7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
+                    />
+                  </svg>
+                  <p className="text-green-400 text-xs font-mono">
+                    Message received. Austin will get back to you.
+                  </p>
+                </div>
               )}
               {formState === 'error' && (
                 <p className="text-orange-400 text-xs font-mono mt-3 text-center" aria-live="polite">

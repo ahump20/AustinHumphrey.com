@@ -39,12 +39,11 @@ export default function Currently() {
             <h2 className="section-title">Currently</h2>
           </motion.div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <motion.div variants={staggerItem} className="grid gap-4 sm:grid-cols-2">
             {CURRENT_WORK.map((item) => (
-              <motion.div
+              <div
                 key={item.label}
-                variants={staggerItem}
-                className="flex items-start gap-3 py-3"
+                className="flex items-start gap-3 py-3 border-b border-bone/5 last:border-0"
               >
                 <span className="shrink-0 font-mono text-[0.6rem] uppercase tracking-[0.25em] text-burnt-orange mt-1 w-20">
                   {item.label}
@@ -52,9 +51,9 @@ export default function Currently() {
                 <p className="text-sm text-bone/80 leading-relaxed">
                   {item.detail}
                 </p>
-              </motion.div>
+              </div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

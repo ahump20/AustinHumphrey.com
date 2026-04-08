@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useMotionValueEvent, useSpring, AnimatePresence } from 'framer-motion';
 import { NAV_ITEMS, RESUME_PATH } from '../content/site';
 
-const ALL_SECTION_IDS = ['hero', 'projects', 'proof', 'bsi', 'infrastructure', 'athletic-arc', 'origin', 'experience', 'education', 'covenant', 'contact'];
+const ALL_SECTION_IDS = ['hero', 'projects', 'proof', 'bsi', 'infrastructure', 'athletic-arc', 'origin', 'experience', 'education', 'currently', 'covenant', 'contact'];
 
 export default function Navigation() {
   const [activeSection, setActiveSection] = useState('hero');

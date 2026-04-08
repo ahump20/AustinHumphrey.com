@@ -93,7 +93,7 @@ export default function Experience() {
                   <div className="flex items-center gap-3 text-sm font-mono text-warm-gray shrink-0">
                     <span>{exp.location}</span>
                     <span className="text-bone/10">|</span>
-                    <span>{exp.period}</span>
+                    <time>{exp.period}</time>
                   </div>
                 </div>
 

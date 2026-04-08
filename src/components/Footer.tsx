@@ -44,7 +44,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li className="text-sm text-warm-gray">{SITE_LOCATION}</li>
               <li>
-                <a href={RESUME_PATH} download className="text-sm text-bone/80 hover:text-burnt-orange transition-colors duration-300">
+                <a href={RESUME_PATH} download onClick={() => window.posthog?.capture('resume_downloaded', { source: 'footer' })} className="text-sm text-bone/80 hover:text-burnt-orange transition-colors duration-300">
                   Download Resume
                 </a>
               </li>

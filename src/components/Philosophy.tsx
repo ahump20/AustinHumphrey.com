@@ -27,6 +27,24 @@ export default function Philosophy() {
             <div className="h-px w-16 bg-gradient-to-l from-transparent to-burnt-orange/40" />
           </motion.div>
 
+          {/* Contemplative portrait — the quiet Austin between the declarations */}
+          <motion.div variants={staggerItem} className="mb-10 flex justify-center">
+            <div className="relative">
+              <img
+                src="/assets/optimized/hawaiian-candid-640w.webp"
+                srcSet="/assets/optimized/hawaiian-candid-640w.webp 640w, /assets/optimized/hawaiian-candid-1024w.webp 1024w"
+                sizes="(max-width: 640px) 200px, 280px"
+                alt="Austin — warm afternoon light, looking off-camera"
+                loading="lazy"
+                decoding="async"
+                className="w-48 md:w-64 rounded-sm shadow-lg"
+                style={{ filter: 'contrast(1.02) brightness(0.98)' }}
+              />
+              <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-burnt-orange/25" />
+              <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-burnt-orange/25" />
+            </div>
+          </motion.div>
+
           <motion.blockquote variants={staggerItem} className="mb-12">
             <p className="font-display italic text-bone/90 text-3xl md:text-5xl leading-relaxed mb-6">
               "For me, personally, I believe Texas is how you choose to treat

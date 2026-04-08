@@ -146,7 +146,7 @@ export default function About() {
               </div>
             </div>
             <div className="flex items-center">
-              <blockquote className="border-l border-burnt-orange/40 pl-6 text-xl italic leading-relaxed text-bone/85">
+              <blockquote className="border-l-2 border-burnt-orange/40 hover:border-burnt-orange/70 pl-6 text-xl italic leading-relaxed text-bone/85 transition-colors duration-500">
                 Texas isn&apos;t a birthplace here. It&apos;s a covenant with family, effort, and
                 how you choose to carry yourself when nobody is obligated to care.
               </blockquote>

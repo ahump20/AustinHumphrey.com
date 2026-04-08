@@ -140,7 +140,7 @@ export default function About() {
                 className="block h-full w-full object-cover"
               />
               <div className="border-t border-bone/10 px-4 py-3">
-                <p className="text-[0.65rem] font-mono uppercase tracking-[0.22em] text-warm-gray/80">
+                <p className="text-xs font-mono uppercase tracking-[0.18em] text-warm-gray/80">
                   Bartlett Blaze, the namesake that turned memory into brand
                 </p>
               </div>

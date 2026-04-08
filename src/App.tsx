@@ -2,11 +2,14 @@ import { lazy, Suspense, useEffect } from 'react';
 import ErrorBoundary from './components/ErrorBoundary';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
-import BSIShowcase from './components/BSIShowcase';
 import Projects from './components/Projects';
 import Proof from './components/Proof';
+import BSIShowcase from './components/BSIShowcase';
+import AthleticArc from './components/AthleticArc';
 import About from './components/About';
 import Experience from './components/Experience';
+import Education from './components/Education';
+import Philosophy from './components/Philosophy';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -37,23 +40,30 @@ function App() {
     <ErrorBoundary>
       <div className="min-h-screen bg-midnight text-bone">
         <a href="#main" className="skip-link">
-        Skip to content
+          Skip to content
         </a>
         <Navigation />
         <main id="main" className="main-content" tabIndex={-1}>
+          {/* Identity anchor — name, thesis, CTA */}
           <Hero />
 
           <div className="section-divider" />
 
+          {/* What Austin builds — project cards with live badges */}
           <Projects />
 
           <div className="section-divider" />
 
+          {/* Published writing + speaking reel — proof in public */}
           <Proof />
 
           <div className="section-divider" />
 
+          {/* BSI platform deep-dive — stats, architecture, coverage */}
           <BSIShowcase />
+
+          {/* Photo break — athletic arc from Friday Night Lights to the Forty Acres */}
+          <AthleticArc />
 
           {/* Origin narrative — warm seam from authority into biography */}
           <div className="origin-bridge-shell">
@@ -61,8 +71,16 @@ function App() {
             <About />
           </div>
 
+          {/* Career timeline */}
           <Experience />
 
+          {/* Academic foundation */}
+          <Education />
+
+          {/* Texas covenant — personal philosophy */}
+          <Philosophy />
+
+          {/* Contact channels + form */}
           <Contact />
         </main>
         <Footer />

@@ -139,8 +139,8 @@ export default function Contact() {
                 <p className="section-label">// Connect</p>
                 <h2 id="contact-heading" className="section-title">Get in Touch</h2>
                 <p className="editorial-lead max-w-xl">
-                  This goes straight to Austin. Platform work, sports intelligence, or
-                  partnership conversations — no gatekeepers.
+                  Direct line. Platform partnerships, sports intelligence collaborations, or
+                  hiring conversations &mdash; no gatekeepers, no form letters.
                 </p>
               </div>
 

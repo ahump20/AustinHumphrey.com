@@ -27,6 +27,7 @@ export const NAV_ITEMS = [
   { id: 'proof', label: 'Proof' },
   { id: 'bsi', label: 'BSI' },
   { id: 'origin', label: 'Origin' },
+  { id: 'experience', label: 'Experience' },
   { id: 'contact', label: 'Contact' },
 ] as const;
 
@@ -158,8 +159,8 @@ export const BSI_SHOWCASE = {
   stats: [
     { value: '6', label: 'Leagues' },
     { value: '330+', label: 'D1 Programs' },
-    { value: '58+', label: 'Articles' },
-    { value: '558', label: 'Tests Passing' },
+    { value: '58+', label: 'Editorial Features' },
+    { value: '662', label: 'Tests Passing' },
   ],
   architecture: [
     { label: 'External APIs', sub: 'Highlightly · SportsDataIO · ESPN' },

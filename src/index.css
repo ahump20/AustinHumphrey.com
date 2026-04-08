@@ -536,19 +536,31 @@
 
 /* ─── Responsive: Tablet ─── */
 @media (max-width: 768px) {
-  h1 { font-size: 2.25rem !important; }
-  h2 { font-size: 1.75rem !important; }
-  h3 { font-size: 1.25rem !important; }
-  section { padding: 3rem 1rem !important; }
-  .section-content { padding: 0 1rem; }
+  .section-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+  .section-padding {
+    padding: 3rem 1rem;
+  }
 }
 
 /* ─── Responsive: Mobile ─── */
 @media (max-width: 480px) {
-  h1 { font-size: 1.75rem !important; }
-  h2 { font-size: 1.5rem !important; }
-  section { padding: 2rem 0.75rem !important; }
-  button, .btn { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+  .section-title {
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
+  }
+  .section-padding {
+    padding: 2rem 0.75rem;
+  }
+
+  /* Hero name must stay on one line */
+  .hero-first-name {
+    font-size: clamp(2rem, 12vw, 3rem);
+  }
+  .hero-last-name {
+    font-size: clamp(2.5rem, 16vw, 4.5rem);
+    letter-spacing: -0.02em;
+  }
 
   /* Prevent horizontal scroll on narrow viewports */
   .grid { min-width: 0; }

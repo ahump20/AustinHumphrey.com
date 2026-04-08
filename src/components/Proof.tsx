@@ -68,9 +68,9 @@ export default function Proof() {
               Writing & Film
             </h2>
             <p className="editorial-lead">
-              BSI proves itself in public. The work is not a pitch deck. It is
-              published, argued, spoken, and shipped in plain view for anyone
-              willing to read the tape.
+              The work proves itself in public &mdash; published, argued, spoken, and
+              shipped in plain view. Not a pitch deck. Not a prototype. Real editorial
+              with real positions, available for anyone willing to read the tape.
             </p>
           </motion.div>
 

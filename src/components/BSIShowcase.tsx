@@ -34,21 +34,56 @@ export default function BSIShowcase() {
             </p>
           </motion.div>
 
+          {/* Screenshot — visual proof the platform is real */}
+          <motion.div variants={staggerItem} className="mb-16">
+            <a
+              href={PLATFORM_URLS.bsi}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group"
+            >
+              <div className="relative rounded-sm overflow-hidden border border-bone/10 shadow-[0_20px_60px_rgba(0,0,0,0.4)] transition-all duration-500 group-hover:shadow-[0_24px_70px_rgba(191,87,0,0.15)] group-hover:-translate-y-1">
+                {/* Browser chrome bar */}
+                <div className="flex items-center gap-2 px-4 py-2.5 bg-[#1a1a1a] border-b border-bone/5">
+                  <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+                  </div>
+                  <div className="flex-1 flex justify-center">
+                    <span className="font-mono text-[0.6rem] text-warm-gray/50 bg-bone/5 rounded-sm px-3 py-0.5">
+                      blazesportsintel.com
+                    </span>
+                  </div>
+                </div>
+                <img
+                  src="/assets/bsi-homepage.png"
+                  srcSet="/assets/optimized/bsi-homepage-640w.webp 640w, /assets/optimized/bsi-homepage-1024w.webp 1024w"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px"
+                  alt="Blaze Sports Intel homepage — live sports intelligence platform"
+                  loading="lazy"
+                  decoding="async"
+                  className="block w-full"
+                />
+              </div>
+            </a>
+          </motion.div>
+
           {/* Editorial lead + stats — 2 column on desktop */}
           <div className="grid lg:grid-cols-5 gap-12 mb-16">
             {/* Narrative — 3 cols */}
             <motion.div variants={staggerItem} className="lg:col-span-3 space-y-5 text-bone/85 text-lg leading-relaxed">
               <p>
-                BSI exists because the coverage gap between interest in the game and access to
-                meaningful data is the product. Advanced analytics for a Tuesday night college
-                baseball game between Rice and Sam Houston. Conference standings across five
-                sports without clicking through fifteen pages.
+                The gap between caring about a Tuesday night college baseball game and having real
+                analytics for it &mdash; that gap is the product. Park-adjusted sabermetrics for
+                Rice vs. Sam Houston. Conference standings across six sports without clicking
+                through fifteen pages. Real data for the games mainstream media ignores.
               </p>
               <p>
-                Dozens of specialized systems handle every data call, transformation, and
-                storage layer. Multiple databases track historical and live game data across
-                six leagues. One person built all of it &mdash; old-school scouting instinct
-                fused with new-school sabermetrics.
+                Dozens of specialized edge systems handle every data call, transformation, and
+                storage operation. Multiple databases track historical and live game data
+                across six leagues. Every API route, every analytics pipeline, every line of
+                editorial &mdash; one builder, zero shortcuts.
               </p>
 
               <div className="flex flex-wrap gap-4 pt-2">

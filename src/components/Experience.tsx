@@ -10,7 +10,7 @@ const experiences = [
     bgAccent: 'bg-burnt-orange',
     textAccent: 'text-burnt-orange',
     description:
-      'Production-grade sports analytics platform covering six leagues — dozens of specialized systems, multiple databases, 58+ editorial deep-dives. Full architecture designed, deployed, and maintained solo.',
+      'Six-league sports intelligence platform. Dozens of edge workers, multiple databases, 58+ editorial features. Full architecture — API design to deploy pipeline — built and maintained solo on Cloudflare.',
   },
   {
     title: 'Advertising Account Executive',
@@ -20,7 +20,7 @@ const experiences = [
     bgAccent: 'bg-spectrum-blue',
     textAccent: 'text-spectrum-blue',
     description:
-      'Advertising strategy across Austin and San Antonio — two of the fastest-growing markets in Texas — spanning linear TV, OTT/CTV, streaming, and digital. Turned raw campaign data into revenue decisions for local and regional businesses.',
+      'Advertising strategy across two of Texas\'s fastest-growing markets. Linear TV, OTT/CTV, streaming, and digital. Translated campaign performance data into revenue decisions for local and regional businesses.',
   },
   {
     title: 'Financial Representative',

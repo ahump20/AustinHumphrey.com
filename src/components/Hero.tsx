@@ -86,9 +86,9 @@ export default function Hero() {
           className="text-bone/90 text-lg md:text-xl max-w-xl mb-10 leading-relaxed text-center md:text-left mx-auto md:mx-0"
           style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}
         >
-          Built Blaze Sports Intel solo — live analytics, park-adjusted
-          sabermetrics, and original editorial for 330 D1 college baseball
-          programs. Six leagues. One builder.
+          Built Blaze Sports Intel solo on Cloudflare — live analytics,
+          park-adjusted sabermetrics, and original editorial for 330 D1
+          college baseball programs. Six leagues. One builder.
           <motion.span
             className="inline-block w-0.5 h-5 bg-burnt-orange/70 ml-1 align-middle"
             initial={{ opacity: 1 }}

@@ -57,7 +57,7 @@ export default function Education() {
               >
                 {/* Accent dot */}
                 <div
-                  className={`w-3 h-3 rounded-full mb-4 ${s.bgAccent}`}
+                  className={`w-3 h-3 rounded-full mb-4 ${s.bgAccent} group-hover:brightness-125 transition-all duration-300`}
                 />
 
                 <div className="flex items-start gap-3 mb-2">

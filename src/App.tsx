@@ -25,6 +25,15 @@ const AIChatWidget = lazy(() => import('./components/AIChatWidget'));
 function App() {
   const [easterEgg, setEasterEgg] = useState(false);
   useScrollDepth();
+
+  // Set page-level properties for PostHog segmentation
+  useEffect(() => {
+    window.posthog?.register({
+      viewport_width: window.innerWidth,
+      sections_count: document.querySelectorAll('section[id]').length,
+      site_version: 'v2.0',
+    });
+  }, []);
   useKonamiCode(useCallback(() => {
     setEasterEgg(true);
     window.posthog?.capture('konami_code_activated');

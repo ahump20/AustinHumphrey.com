@@ -17,9 +17,9 @@ function InfraStat({ value, label, suffix }: { value: number; label: string; suf
 
   return (
     <div className="text-center group cursor-default hover:scale-105 transition-transform duration-300" ref={ref as React.RefObject<HTMLDivElement>}>
-      <p className="font-sans font-bold text-bone leading-none infra-stat-value group-hover:text-burnt-orange transition-colors duration-300" aria-hidden="true">
+      <p className="font-sans font-bold text-burnt-orange leading-none infra-stat-value group-hover:text-ember transition-colors duration-300" aria-hidden="true">
         {displayValue}
-        <span className="text-burnt-orange">{suffix}</span>
+        <span className="text-ember">{suffix}</span>
       </p>
       <span className="sr-only">{value}{suffix}</span>
       <p className="font-mono text-[0.65rem] uppercase tracking-[0.25em] text-warm-gray mt-3">

@@ -595,6 +595,7 @@
 /* ─── Projects ─── */
 .project-card-featured-bg {
   background: linear-gradient(135deg, rgba(26,26,26,0.8) 0%, rgba(191,87,0,0.04) 100%);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
 }
 
 /* ─── Proof editorial hover underline ─── */

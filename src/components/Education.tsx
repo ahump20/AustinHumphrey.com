@@ -90,9 +90,13 @@ export default function Education() {
                   </div>
                 )}
 
-                {/* Bottom accent line */}
+                {/* Bottom accent line — gradient fade */}
                 <div
-                  className={`mt-5 h-px w-12 opacity-40 ${s.bgAccent}`}
+                  className="mt-5 h-px w-16"
+                  style={{
+                    background: `linear-gradient(90deg, ${s.bgAccent === 'bg-burnt-orange' ? '#BF5700' : s.bgAccent === 'bg-ember' ? '#FF6B35' : '#BF5700'}, transparent)`,
+                    opacity: 0.4,
+                  }}
                 />
               </motion.div>
             ))}

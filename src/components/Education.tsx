@@ -82,7 +82,7 @@ export default function Education() {
                     {s.focus.map((f) => (
                       <span
                         key={f}
-                        className="text-[0.55rem] font-mono uppercase tracking-widest text-warm-gray/50 border border-bone/8 rounded-sm px-2 py-0.5"
+                        className="text-[0.55rem] font-mono uppercase tracking-widest text-warm-gray/50 border border-bone/8 rounded-sm px-2 py-0.5 hover:border-bone/15 hover:text-warm-gray/70 transition-colors duration-300"
                       >
                         {f}
                       </span>

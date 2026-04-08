@@ -87,6 +87,7 @@ export default function Contact() {
     e.preventDefault();
     if (website) return;
 
+    window.posthog?.capture('contact_form_submitted');
     setFormState('sending');
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 8000);

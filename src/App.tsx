@@ -16,6 +16,7 @@ import Philosophy from './components/Philosophy';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import DevPanel from './components/DevPanel';
 
 const AIChatWidget = lazy(() => import('./components/AIChatWidget'));
 
@@ -133,6 +134,7 @@ function App() {
         )}
 
         <ScrollToTop />
+        <DevPanel />
         <Suspense fallback={null}>
           <AIChatWidget />
         </Suspense>

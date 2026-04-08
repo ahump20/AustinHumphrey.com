@@ -11,7 +11,7 @@ function AnimatedStatCard({ value, label, suffix = '' }: { value: string; label:
 
   return (
     <div className="text-center" ref={ref as React.RefObject<HTMLDivElement>}>
-      <p className="text-3xl font-bold font-sans text-burnt-orange" aria-hidden="true">
+      <p className="text-3xl font-bold font-sans text-burnt-orange hover:text-ember transition-colors duration-300 cursor-default" aria-hidden="true">
         {isNaN(numericValue) ? value : displayValue}
         {hasPlus && '+'}
         {suffix}

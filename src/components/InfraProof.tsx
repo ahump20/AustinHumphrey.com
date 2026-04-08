@@ -93,7 +93,7 @@ export default function InfraProof() {
               variants={staggerItem}
               className="text-center mt-4"
             >
-              <span className="inline-flex items-center gap-2 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-emerald-400/70">
+              <span className="inline-flex items-center gap-2 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-emerald-400/70 hover:text-emerald-400 transition-colors duration-300 cursor-default">
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />

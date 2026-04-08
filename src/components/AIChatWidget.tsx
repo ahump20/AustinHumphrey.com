@@ -243,9 +243,14 @@ export default function AIChatWidget() {
           >
             {/* Header */}
             <div className="border-b border-bone/5 bg-midnight px-4 py-4">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-burnt-orange font-medium">
-                // Concierge
-              </p>
+              <div className="flex items-center justify-between">
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-burnt-orange font-medium">
+                  // Concierge
+                </p>
+                <span className="font-mono text-[0.5rem] uppercase tracking-widest text-warm-gray/40">
+                  AI-assisted
+                </span>
+              </div>
               <p className="mt-2 max-w-xs text-sm leading-6 text-bone/68">
                 Ask about Austin, BSI, the build, the origin story, or how to
                 reach him directly.

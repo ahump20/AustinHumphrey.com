@@ -53,7 +53,7 @@ export default function Education() {
               <motion.div
                 key={s.school}
                 variants={staggerItem}
-                className="group relative py-6 px-1"
+                className="group relative py-6 px-4 rounded-sm border border-transparent hover:border-bone/5 hover:-translate-y-0.5 transition-all duration-300"
               >
                 {/* Accent dot */}
                 <div

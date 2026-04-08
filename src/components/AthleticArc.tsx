@@ -3,42 +3,42 @@ import { staggerContainer, staggerItem } from '../utils/animations';
 
 const photos = [
   {
-    src: '/assets/running-vs-tivy.jpg',
+    src: '/assets/optimized/running-vs-tivy-640w.webp',
     srcSet: '/assets/optimized/running-vs-tivy-640w.webp 640w, /assets/optimized/running-vs-tivy-1024w.webp 1024w',
     alt: 'Chargers #20 — corner route vs Tivy',
     aspect: 'wide' as const,
     featured: false,
   },
   {
-    src: '/assets/chargers-with-dad.jpg',
+    src: '/assets/optimized/chargers-with-dad-640w.webp',
     srcSet: '/assets/optimized/chargers-with-dad-640w.webp 640w, /assets/optimized/chargers-with-dad-1024w.webp 1024w',
     alt: 'Post-game with Dad — Friday night lights',
     aspect: 'tall' as const,
     featured: false,
   },
   {
-    src: '/assets/last-game-silhouette.jpg',
+    src: '/assets/optimized/last-game-silhouette-640w.webp',
     srcSet: '/assets/optimized/last-game-silhouette-640w.webp 640w, /assets/optimized/last-game-silhouette-1024w.webp 1024w',
     alt: 'Last game — vs Seguin, 2013',
     aspect: 'wide' as const,
     featured: true,
   },
   {
-    src: '/assets/friendsgiving.jpg',
+    src: '/assets/optimized/friendsgiving-640w.webp',
     srcSet: '/assets/optimized/friendsgiving-640w.webp 640w, /assets/optimized/friendsgiving-1024w.webp 1024w',
     alt: 'Friendsgiving — Austin, TX',
     aspect: 'wide' as const,
     featured: false,
   },
   {
-    src: '/assets/ballpark-kids.jpg',
+    src: '/assets/optimized/ballpark-kids-640w.webp',
     srcSet: '/assets/optimized/ballpark-kids-640w.webp 640w, /assets/optimized/ballpark-kids-1024w.webp 1024w',
     alt: 'Ballpark days — where it started',
     aspect: 'wide' as const,
     featured: false,
   },
   {
-    src: '/assets/titans-halloween.jpg',
+    src: '/assets/optimized/titans-halloween-640w.webp',
     srcSet: '/assets/optimized/titans-halloween-640w.webp 640w, /assets/optimized/titans-halloween-1024w.webp 1024w',
     alt: 'Remember the Titans — Halloween, always football',
     aspect: 'tall' as const,

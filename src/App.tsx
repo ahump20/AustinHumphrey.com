@@ -109,7 +109,7 @@ function App() {
           {/* Closing cinematic break — last game silhouette */}
           <div className="relative h-48 md:h-64 overflow-hidden">
             <img
-              src="/assets/last-game-silhouette.jpg"
+              src="/assets/optimized/last-game-silhouette-1024w.webp"
               srcSet="/assets/optimized/last-game-silhouette-640w.webp 640w, /assets/optimized/last-game-silhouette-1024w.webp 1024w"
               sizes="100vw"
               alt=""

@@ -74,12 +74,12 @@ export default function About() {
 
           <motion.div variants={staggerItem} className="grid gap-6 md:grid-cols-2 mb-12">
             <PhotoCard
-              src="/assets/texas-soil.jpg"
+              src="/assets/optimized/texas-soil-640w.webp"
               srcSet="/assets/optimized/texas-soil-640w.webp 640w, /assets/optimized/texas-soil-1024w.webp 1024w"
               alt="West Columbia soil, preserved article, and the beginning of the story"
             />
             <PhotoCard
-              src="/assets/young-austin-longhorns.jpg"
+              src="/assets/optimized/young-austin-longhorns-640w.webp"
               srcSet="/assets/optimized/young-austin-longhorns-640w.webp 640w, /assets/optimized/young-austin-longhorns-1024w.webp 1024w"
               alt="Longhorn allegiance started early and never needed explanation"
             />
@@ -108,12 +108,12 @@ export default function About() {
           {/* Documentary proof — birth article and certificate */}
           <motion.div variants={staggerItem} className="grid gap-6 md:grid-cols-2 mb-12">
             <PhotoCard
-              src="/assets/birth-article.jpg"
+              src="/assets/optimized/birth-article-640w.webp"
               srcSet="/assets/optimized/birth-article-640w.webp 640w, /assets/optimized/birth-article-1024w.webp 1024w"
               alt="El Campo Leader-News: Tennessee Birth Will Be on Texas Soil"
             />
             <PhotoCard
-              src="/assets/birth-certificate.jpg"
+              src="/assets/optimized/birth-certificate-640w.webp"
               srcSet="/assets/optimized/birth-certificate-640w.webp 640w, /assets/optimized/birth-certificate-1024w.webp 1024w"
               alt="Birth certificate — Memphis, Tennessee, August 17, 1995"
             />
@@ -122,7 +122,7 @@ export default function About() {
           <motion.div variants={staggerItem} className="grid gap-6 md:grid-cols-2 mb-12">
             <div className="overflow-hidden rounded-sm border border-bone/10 bg-charcoal/40">
               <img
-                src="/assets/blaze-dog.jpg"
+                src="/assets/optimized/blaze-dog-640w.webp"
                 srcSet="/assets/optimized/blaze-dog-640w.webp 640w, /assets/optimized/blaze-dog-1024w.webp 1024w"
                 sizes="(max-width: 640px) 100vw, 50vw"
                 alt="Bartlett Blaze, the namesake that turned memory into brand"
@@ -147,7 +147,7 @@ export default function About() {
           {/* Closing photo — family milestone */}
           <motion.div variants={staggerItem} className="mt-8">
             <PhotoCard
-              src="/assets/nana-graduation.jpg"
+              src="/assets/optimized/nana-graduation-640w.webp"
               srcSet="/assets/optimized/nana-graduation-640w.webp 640w, /assets/optimized/nana-graduation-1024w.webp 1024w"
               alt="Graduation day with Nana — Full Sail University, 2026"
             />

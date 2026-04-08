@@ -84,6 +84,26 @@ export const AI_CHAT_FALLBACK_RESPONSES: Array<{
       'Austin\'s resume is available for download at austinhumphrey.com/Austin_Humphrey_Resume.pdf — or click the "Resume" button in the navigation.',
   },
   {
+    keywords: ['studying', 'learning', 'course', 'class', 'ai', 'ml', 'machine learning', 'postgrad'],
+    response:
+      'Austin is currently in the AI & Machine Learning Postgraduate Certificate program at UT Austin McCombs School of Business (Apr 2026 cohort). Coursework covers supervised learning, deep learning, NLP, neural networks, and statistics — all in Python. The goal: bring ML directly into BSI\'s analytics pipeline.',
+  },
+  {
+    keywords: ['advertising', 'spectrum', 'tv', 'media', 'sales', 'ott', 'ctv'],
+    response:
+      'Before building BSI full-time, Austin spent three years as an Advertising Account Executive at Spectrum Reach (2022–2025). Covered two of Texas\'s fastest-growing markets — Austin and San Antonio. Linear TV, OTT/CTV, streaming, digital. Translated campaign data into revenue decisions for local businesses.',
+  },
+  {
+    keywords: ['fraternity', 'ato', 'alpha tau omega', 'rush', 'greek'],
+    response:
+      'Austin served as Rush Captain and Alumni Relations Chair for Alpha Tau Omega at UT Austin (2015–2020). Led recruitment strategy for 73 new members and managed approximately $100K in event budgets. The leadership and network-building carried directly into everything after.',
+  },
+  {
+    keywords: ['san antonio', 'location', 'where', 'live', 'based'],
+    response:
+      'Austin is based in San Antonio, Texas. BSI is built and operated from there. San Antonio is one of the fastest-growing cities in the country — and it\'s where the work happens.',
+  },
+  {
     keywords: ['bitch', 'idiot', 'stupid', 'trash', 'dumb', 'suck'],
     response:
       "Not productive. Ask about Austin, BSI, the build, the Texas soil story, or how to reach him — I'll give you something useful.",

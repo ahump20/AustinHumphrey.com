@@ -92,7 +92,7 @@ export default function Experience() {
                     <h3 className="font-sans font-semibold text-base uppercase tracking-wider text-bone group-hover:text-burnt-orange transition-colors duration-300">
                       {exp.title}
                     </h3>
-                    <p className={`text-sm font-semibold ${exp.textAccent}`}>{exp.company}</p>
+                    <p className={`text-sm font-semibold ${exp.textAccent} group-hover:brightness-125 transition-all duration-300`}>{exp.company}</p>
                   </div>
                   <div className="flex items-center gap-3 text-sm font-mono text-warm-gray shrink-0">
                     <span>{exp.location}</span>

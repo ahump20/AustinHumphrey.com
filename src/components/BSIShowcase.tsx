@@ -138,8 +138,8 @@ export default function BSIShowcase() {
                 <div className="space-y-0">
                   {BSI_SHOWCASE.architecture.map((node, i) => (
                     <div key={node.label}>
-                      <div className="flex items-center gap-3 py-2.5 px-3 rounded-sm hover:bg-bone/[0.02] transition-colors duration-300">
-                        <div className="shrink-0 w-6 h-6 rounded-full border border-burnt-orange/30 flex items-center justify-center">
+                      <div className="group/node flex items-center gap-3 py-2.5 px-3 rounded-sm hover:bg-bone/[0.02] transition-colors duration-300">
+                        <div className="shrink-0 w-6 h-6 rounded-full border border-burnt-orange/30 flex items-center justify-center group-hover/node:border-burnt-orange/80 group-hover/node:bg-burnt-orange/10 transition-all duration-300">
                           <span className="font-mono text-[0.5rem] text-burnt-orange">{i + 1}</span>
                         </div>
                         <div className="flex-1 min-w-0">

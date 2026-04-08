@@ -54,7 +54,16 @@ export default function Projects() {
         >
           <motion.div variants={staggerItem}>
             <p className="section-label">// The Work</p>
-            <h2 id="projects-heading" className="section-title">Projects</h2>
+            <div className="flex items-center gap-4 mb-10">
+              <h2 id="projects-heading" className="section-title mb-0">Projects</h2>
+              <span className="flex items-center gap-1.5 text-[0.6rem] font-mono text-emerald-400 uppercase tracking-widest border border-emerald-400/20 bg-emerald-400/5 px-2.5 py-1 rounded-sm">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                </span>
+                4 Live
+              </span>
+            </div>
           </motion.div>
 
           {/* Heavy-weight projects — larger cards with screenshots */}

@@ -128,6 +128,7 @@ function App() {
               alt=""
               aria-hidden="true"
               loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover object-center"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-midnight/60 via-transparent to-midnight/80" />

@@ -166,6 +166,7 @@ export default function Proof() {
               href="https://blazesportsintel.com/blog-post-feed"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => window.posthog?.capture('view_all_writing_clicked')}
               className="btn-outline inline-flex items-center gap-2"
             >
               View All Writing

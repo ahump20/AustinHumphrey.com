@@ -115,6 +115,7 @@ export default function BSIShowcase() {
                   href="https://blazesportsintel.com/scores"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => window.posthog?.capture('bsi_live_scores_clicked')}
                   className="btn-outline"
                 >
                   Live Scores

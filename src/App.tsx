@@ -1,5 +1,6 @@
 import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import { useKonamiCode } from './hooks/useKonamiCode';
+import { useScrollDepth } from './hooks/useScrollDepth';
 import ErrorBoundary from './components/ErrorBoundary';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
@@ -23,6 +24,7 @@ const AIChatWidget = lazy(() => import('./components/AIChatWidget'));
 
 function App() {
   const [easterEgg, setEasterEgg] = useState(false);
+  useScrollDepth();
   useKonamiCode(useCallback(() => {
     setEasterEgg(true);
     window.posthog?.capture('konami_code_activated');

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Austin Humphrey — Writing</title>
+    <link>https://austinhumphrey.com</link>
+    <description>Sports intelligence editorial by Austin Humphrey, builder of Blaze Sports Intel.</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Apr 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://austinhumphrey.com/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Big 12 Conference Baseball Preview 2026</title>
+      <link>https://blazesportsintel.com/college-baseball/editorial/big-12</link>
+      <description>A deep dive into every Big 12 program. Conference realignment reshuffled the deck.</description>
+      <pubDate>Mon, 10 Feb 2026 00:00:00 GMT</pubDate>
+      <guid>https://blazesportsintel.com/college-baseball/editorial/big-12</guid>
+    </item>
+    <item>
+      <title>SEC Conference Baseball Preview 2026</title>
+      <link>https://blazesportsintel.com/college-baseball/editorial/sec</link>
+      <description>The deepest conference in college baseball just added Texas and Oklahoma.</description>
+      <pubDate>Mon, 10 Feb 2026 00:00:00 GMT</pubDate>
+      <guid>https://blazesportsintel.com/college-baseball/editorial/sec</guid>
+    </item>
+    <item>
+      <title>Big Ten Conference Baseball Preview 2026</title>
+      <link>https://blazesportsintel.com/college-baseball/editorial/big-ten</link>
+      <description>The Big Ten remade itself as a baseball conference.</description>
+      <pubDate>Mon, 10 Feb 2026 00:00:00 GMT</pubDate>
+      <guid>https://blazesportsintel.com/college-baseball/editorial/big-ten</guid>
+    </item>
+    <item>
+      <title>Week 1 Recap: What We Learned</title>
+      <link>https://blazesportsintel.com/college-baseball/editorial/week-1-recap</link>
+      <description>Opening weekend separated contenders from pretenders.</description>
+      <pubDate>Mon, 17 Feb 2026 00:00:00 GMT</pubDate>
+      <guid>https://blazesportsintel.com/college-baseball/editorial/week-1-recap</guid>
+    </item>
+    <item>
+      <title>Texas Longhorns: Week 1 in Review</title>
+      <link>https://blazesportsintel.com/blog-post-feed/texas-baseball-week-1-recap-lamar-preview-michigan-state-series-2026</link>
+      <description>Breaking down the pitching staff evolution and postseason trajectory.</description>
+      <pubDate>Mon, 17 Feb 2026 00:00:00 GMT</pubDate>
+      <guid>https://blazesportsintel.com/blog-post-feed/texas-baseball-week-1-recap-lamar-preview-michigan-state-series-2026</guid>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,15 @@
+/* TEAM */
+Builder: Austin Humphrey
+Contact: Austin@BlazeSportsIntel.com
+Location: San Antonio, Texas
+
+/* SITE */
+Stack: React 18, TypeScript, Vite 5, Tailwind CSS 3, Framer Motion
+Hosted: Cloudflare Pages
+Fonts: Oswald, Cormorant Garamond, JetBrains Mono, Libre Baskerville (self-hosted)
+Analytics: PostHog
+Design: Heritage Design System v2.1 (dark-only, burnt-orange accent)
+
+/* THANKS */
+Built solo. No templates. No Squarespace. No Wix.
+Born to Blaze the Path Beaten Less.

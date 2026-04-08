@@ -38,7 +38,7 @@ function PhotoCard({ src, srcSet, alt }: PhotoProps) {
         alt={alt}
         loading="lazy"
         decoding="async"
-        className="block h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+        className="block h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
       />
       <div className="border-t border-bone/10 px-4 py-3">
         <p className="text-[0.65rem] font-mono uppercase tracking-[0.22em] text-warm-gray/80">{alt}</p>

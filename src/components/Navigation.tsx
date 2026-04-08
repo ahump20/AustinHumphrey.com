@@ -115,6 +115,9 @@ export default function Navigation() {
     root.style.scrollBehavior = 'auto';
     window.scrollTo({ top: scrollTarget, left: 0, behavior: 'auto' });
     root.style.scrollBehavior = previousScrollBehavior;
+    // Brief flash to draw the eye to the target section
+    target.classList.add('section-flash');
+    setTimeout(() => target.classList.remove('section-flash'), 1000);
     setMobileOpen(false);
   };
 

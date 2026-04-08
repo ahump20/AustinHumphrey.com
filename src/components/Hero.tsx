@@ -144,7 +144,7 @@ export default function Hero() {
               <img
                 src="/assets/austin-headshot.webp"
                 alt="Austin Humphrey — builder, UT Austin graduate"
-                className="relative rounded-sm w-64 md:w-72 lg:w-80 shadow-2xl"
+                className="relative rounded-sm w-64 md:w-72 lg:w-80 shadow-2xl border border-bone/5"
                 loading="eager"
                 fetchPriority="high"
                 style={{

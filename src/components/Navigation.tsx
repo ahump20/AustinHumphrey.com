@@ -96,6 +96,7 @@ export default function Navigation() {
   }, [mobileOpen]);
 
   const scrollToSection = (sectionId: string) => {
+    window.posthog?.capture('nav_section_clicked', { section: sectionId });
     const target = document.getElementById(sectionId);
     if (!target) return;
 

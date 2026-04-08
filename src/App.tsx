@@ -10,6 +10,7 @@ import InfraProof from './components/InfraProof';
 import AthleticArc from './components/AthleticArc';
 import About from './components/About';
 import Experience from './components/Experience';
+import Skills from './components/Skills';
 import Education from './components/Education';
 import Currently from './components/Currently';
 import Philosophy from './components/Philosophy';
@@ -90,6 +91,9 @@ function App() {
 
           {/* Career timeline */}
           <Experience />
+
+          {/* Technical competencies */}
+          <Skills />
 
           {/* Academic foundation */}
           <Education />

@@ -73,7 +73,7 @@ export default function Experience() {
               <motion.div
                 key={exp.company}
                 variants={staggerItem}
-                className="group relative pl-6 py-6 border-l border-bone/10 hover:border-burnt-orange/30 transition-colors duration-300"
+                className="group relative pl-6 py-6 border-l border-bone/10 hover:border-l-2 hover:border-burnt-orange/40 transition-all duration-300"
               >
                 {/* Timeline dot with hover glow */}
                 <div className="absolute left-0 top-8 -translate-x-1/2">

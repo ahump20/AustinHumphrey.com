@@ -591,6 +591,7 @@
 }
 .hero-photo-ken-burns {
   animation: hero-ken-burns 25s ease-out forwards;
+  will-change: transform;
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-photo-ken-burns { animation: none; }

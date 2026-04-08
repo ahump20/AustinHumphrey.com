@@ -163,6 +163,7 @@ export default function Projects() {
               href="https://github.com/ahump20"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => window.posthog?.capture('github_profile_clicked')}
               className="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-warm-gray/50 hover:text-burnt-orange transition-colors duration-300"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">

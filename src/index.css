@@ -334,6 +334,7 @@
     background: linear-gradient(to right, #BF5700, #FF6B35);
     z-index: 9998;
     transform-origin: left;
+    box-shadow: 0 0 6px rgba(191, 87, 0, 0.4);
   }
 
   /* Stats marquee */

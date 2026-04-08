@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useMotionValueEvent, useSpring, AnimatePresence } from 'framer-motion';
 import { NAV_ITEMS, RESUME_PATH } from '../content/site';
 
+const ALL_SECTION_IDS = ['hero', 'projects', 'proof', 'bsi', 'infrastructure', 'athletic-arc', 'origin', 'experience', 'education', 'covenant', 'contact'];
+
 export default function Navigation() {
   const [activeSection, setActiveSection] = useState('hero');
   const [scrolled, setScrolled] = useState(false);
@@ -139,7 +141,15 @@ export default function Navigation() {
             </span>
           </a>
 
-          {/* Desktop nav */}
+          {/* Section counter + Desktop nav */}
+          <div className="hidden md:flex items-center gap-4">
+            <span className="font-mono text-[0.6rem] text-warm-gray/40 tracking-wider tabular-nums">
+              {String((ALL_SECTION_IDS.indexOf(activeSection) + 1) || 1).padStart(2, '0')}
+              <span className="text-bone/10 mx-0.5">/</span>
+              {ALL_SECTION_IDS.length}
+            </span>
+          </div>
+
           <ul className="hidden md:flex items-center gap-1">
             {NAV_ITEMS.map((item) => (
               <li key={item.id}>

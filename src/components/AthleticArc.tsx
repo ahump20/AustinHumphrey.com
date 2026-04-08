@@ -74,7 +74,7 @@ export default function AthleticArc() {
 
           {/* Desktop: staggered grid */}
           <div className="hidden md:grid md:grid-cols-12 gap-4 items-center">
-            {photos.map((photo, i) => {
+            {photos.map((photo) => {
               // Layout: wide photos span 7 cols, tall photos span 5 cols
               // Alternate alignment for visual rhythm
               const isWide = photo.aspect === 'wide';
@@ -107,18 +107,13 @@ export default function AthleticArc() {
                     <div
                       className="absolute inset-0 pointer-events-none vignette-inset"
                     />
+                    {/* Hover caption overlay */}
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-4 py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                      <p className={`text-xs font-mono ${isLastGame ? 'text-burnt-orange' : 'text-warm-gray/90'}`}>
+                        {photo.alt}
+                      </p>
+                    </div>
                   </div>
-                  <p
-                    className={`text-xs font-mono mt-2 ${
-                      isLastGame
-                        ? 'text-burnt-orange text-center'
-                        : i % 2 === 0
-                          ? 'text-warm-gray/80 text-left'
-                          : 'text-warm-gray/80 text-right'
-                    }`}
-                  >
-                    {photo.alt}
-                  </p>
                 </motion.div>
               );
             })}

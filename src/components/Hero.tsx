@@ -14,7 +14,7 @@ export default function Hero() {
         src="/assets/optimized/football-uniform-1920w.webp"
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover object-top"
+        className="absolute inset-0 w-full h-full object-cover object-top hero-photo-ken-burns"
         loading="eager"
         fetchPriority="high"
       />

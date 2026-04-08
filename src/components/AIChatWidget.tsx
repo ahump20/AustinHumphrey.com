@@ -199,7 +199,7 @@ export default function AIChatWidget() {
             ? 'border-burnt-orange/40 bg-burnt-orange text-white shadow-lg'
             : 'border-bone/10 bg-charcoal/80 text-bone/85 hover:border-burnt-orange/30 hover:text-burnt-orange'
         }`}
-        aria-label={open ? 'Close concierge' : 'Open concierge'}
+        aria-label={open ? 'Close Austin concierge' : 'Austin — open concierge'}
       >
         {open ? (
           <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">

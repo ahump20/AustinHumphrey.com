@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useMotionValueEvent, useSpring, AnimatePresence } from 'framer-motion';
-import { NAV_ITEMS } from '../content/site';
+import { NAV_ITEMS, RESUME_PATH } from '../content/site';
 
 export default function Navigation() {
   const [activeSection, setActiveSection] = useState('hero');
@@ -169,6 +169,18 @@ export default function Navigation() {
             ))}
           </ul>
 
+          {/* Resume download — desktop only */}
+          <a
+            href={RESUME_PATH}
+            download
+            className="hidden md:inline-flex items-center gap-1.5 ml-4 px-3 py-1.5 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-warm-gray/70 border border-bone/10 rounded-sm hover:border-burnt-orange/40 hover:text-burnt-orange transition-all duration-300"
+          >
+            <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M10 3v10m0 0l-3-3m3 3l3-3M4 15h12" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Resume
+          </a>
+
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -234,6 +246,18 @@ export default function Navigation() {
                       </a>
                     </li>
                   ))}
+                  <li>
+                    <a
+                      href={RESUME_PATH}
+                      download
+                      className="flex items-center gap-2 px-4 py-3 font-sans text-xs uppercase tracking-[0.2em] text-burnt-orange/70 hover:text-burnt-orange rounded-sm transition-colors duration-300"
+                    >
+                      <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M10 3v10m0 0l-3-3m3 3l3-3M4 15h12" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      Resume
+                    </a>
+                  </li>
                 </ul>
               </motion.div>
             </>

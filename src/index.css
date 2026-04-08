@@ -511,6 +511,18 @@
   font-size: clamp(3rem, 12vw, 8rem);
 }
 
+/* Ken Burns — subtle zoom on hero background photo */
+@keyframes hero-ken-burns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+.hero-photo-ken-burns {
+  animation: hero-ken-burns 25s ease-out forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo-ken-burns { animation: none; }
+}
+
 /* ─── Philosophy ─── */
 .philosophy-bg {
   background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(191,87,0,0.03) 0%, transparent 60%);

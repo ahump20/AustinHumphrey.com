@@ -165,6 +165,36 @@ export default function Proof() {
             </a>
           </motion.div>
 
+          {/* Podcast CTA */}
+          <motion.div
+            variants={staggerItem}
+            className="mt-8"
+          >
+            <a
+              href="https://blazesportsintel.com/podcast/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-5 py-5 px-6 rounded-sm border border-bone/10 bg-charcoal/30 hover:border-burnt-orange/30 hover:bg-charcoal/50 transition-all duration-300"
+            >
+              <div className="shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-burnt-orange/10 border border-burnt-orange/20 group-hover:bg-burnt-orange/20 transition-colors duration-300">
+                <svg className="w-5 h-5 text-burnt-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3zM19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="font-sans text-sm font-semibold uppercase tracking-[0.14em] text-bone group-hover:text-burnt-orange transition-colors duration-300">
+                  BSI Weekly Podcast
+                </p>
+                <p className="text-sm text-bone/60 leading-relaxed mt-0.5">
+                  AI-generated deep dives on college baseball, every week. Built with NotebookLM.
+                </p>
+              </div>
+              <svg className="w-5 h-5 text-bone/20 group-hover:text-burnt-orange group-hover:translate-x-1 transition-all duration-300 shrink-0" viewBox="0 0 20 20" fill="none">
+                <path d="M5 15L15 5M15 5H8M15 5V12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+          </motion.div>
+
           <motion.div
             variants={staggerItem}
             className="mt-12 border-t border-bone/5 pt-12"

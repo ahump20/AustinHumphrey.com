@@ -57,7 +57,7 @@ export default function Projects() {
                 >
                   {/* Screenshot */}
                   {shotSrc && (
-                    <div className="overflow-hidden border-b border-bone/5">
+                    <div className="overflow-hidden border-b border-bone/5 img-skeleton">
                       <img
                         src={shotSrc}
                         alt={`${project.name} — live screenshot`}
@@ -106,7 +106,7 @@ export default function Projects() {
                 >
                   {/* Thumbnail */}
                   {shotSrc && (
-                    <div className="overflow-hidden border-b border-bone/5 max-h-[160px]">
+                    <div className="overflow-hidden border-b border-bone/5 max-h-[160px] img-skeleton">
                       <img
                         src={shotSrc}
                         alt={`${project.name} screenshot`}

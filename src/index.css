@@ -556,6 +556,27 @@
   background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(191,87,0,0.03) 0%, transparent 60%);
 }
 
+/* ─── Image shimmer skeleton ─── */
+.img-skeleton {
+  position: relative;
+  background: var(--color-bg-secondary);
+  overflow: hidden;
+}
+.img-skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(245,240,235,0.03) 40%, rgba(245,240,235,0.06) 50%, rgba(245,240,235,0.03) 60%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+.img-skeleton img[src] + *,
+.img-skeleton img:not([src=""]) { /* hide skeleton when image loads */ }
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 /* ─── Projects ─── */
 .project-card-featured-bg {
   background: linear-gradient(135deg, rgba(26,26,26,0.8) 0%, rgba(191,87,0,0.04) 100%);

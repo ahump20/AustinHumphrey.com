@@ -10,6 +10,7 @@ const pieces = [
     tag: 'Conference Preview',
     url: 'https://blazesportsintel.com/college-baseball/editorial/big-12',
     featured: true,
+    readTime: '22 min',
   },
   {
     title: 'SEC Conference Baseball Preview 2026',
@@ -18,6 +19,7 @@ const pieces = [
     tag: 'Conference Preview',
     url: 'https://blazesportsintel.com/college-baseball/editorial/sec',
     featured: false,
+    readTime: '18 min',
   },
   {
     title: 'Week 1 Recap: What We Learned',
@@ -26,6 +28,7 @@ const pieces = [
     tag: 'Weekly Recap',
     url: 'https://blazesportsintel.com/college-baseball/editorial/week-1-recap',
     featured: false,
+    readTime: '6 min',
   },
   {
     title: 'Big Ten Conference Baseball Preview 2026',
@@ -34,6 +37,7 @@ const pieces = [
     tag: 'Conference Preview',
     url: 'https://blazesportsintel.com/college-baseball/editorial/big-ten',
     featured: false,
+    readTime: '15 min',
   },
   {
     title: 'Texas Longhorns: Week 1 in Review',
@@ -42,6 +46,7 @@ const pieces = [
     tag: 'Team Analysis',
     url: 'https://blazesportsintel.com/blog-post-feed/texas-baseball-week-1-recap-lamar-preview-michigan-state-series-2026',
     featured: false,
+    readTime: '8 min',
   },
 ];
 
@@ -104,8 +109,8 @@ export default function Proof() {
                 <p className="mt-6 max-w-3xl font-serif text-xl leading-relaxed text-bone/72 md:text-2xl">
                   {lead.excerpt}
                 </p>
-                <span className="inline-flex items-center gap-2 mt-6 font-mono text-[0.62rem] uppercase tracking-[0.28em] text-burnt-orange">
-                  Read the feature
+                <span className="inline-flex items-center gap-3 mt-6 font-mono text-[0.62rem] uppercase tracking-[0.28em] text-burnt-orange">
+                  Read the feature · {lead.readTime}
                   <svg className="h-4 w-4" viewBox="0 0 20 20" fill="none">
                     <path
                       d="M5 15L15 5M15 5H8M15 5V12"
@@ -134,6 +139,7 @@ export default function Proof() {
               >
                 <span className="font-mono text-[0.58rem] uppercase tracking-[0.24em] text-burnt-orange/85">
                   {piece.tag}
+                  <span className="text-warm-gray/40 ml-2">{piece.readTime}</span>
                 </span>
                 <div className="space-y-2">
                   <h3 className="font-sans text-sm font-semibold uppercase tracking-[0.16em] text-bone transition-colors duration-300 group-hover:text-burnt-orange">

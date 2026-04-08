@@ -96,7 +96,7 @@ export default function Proof() {
                 href={lead.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block max-w-4xl"
+                className="group block max-w-4xl border-l-2 border-transparent hover:border-burnt-orange/50 pl-6 -ml-6 transition-all duration-500"
               >
                 <span className="inline-flex rounded-sm border border-burnt-orange/25 bg-burnt-orange/10 px-3 py-1 font-mono text-[0.58rem] uppercase tracking-[0.28em] text-burnt-orange">
                   {lead.tag}

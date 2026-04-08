@@ -132,17 +132,24 @@ export default function BSIShowcase() {
                 ))}
               </div>
 
-              {/* Architecture flow — compact */}
+              {/* Architecture flow — visual pipeline */}
               <div className="card p-5">
-                <p className="section-label mb-3">// Data Flow</p>
-                <div className="space-y-2">
+                <p className="section-label mb-4">// Data Flow</p>
+                <div className="space-y-0">
                   {BSI_SHOWCASE.architecture.map((node, i) => (
-                    <div key={node.label} className="flex items-center gap-3">
-                      {i > 0 && <span aria-hidden="true" className="text-burnt-orange/50 font-mono text-xs">&rarr;</span>}
-                      <div>
-                        <span className="font-sans text-xs uppercase tracking-wider text-bone font-semibold">{node.label}</span>
-                        <span className="font-mono text-[0.6rem] text-warm-gray ml-2">{node.sub}</span>
+                    <div key={node.label}>
+                      <div className="flex items-center gap-3 py-2.5 px-3 rounded-sm hover:bg-bone/[0.02] transition-colors duration-300">
+                        <div className="shrink-0 w-6 h-6 rounded-full border border-burnt-orange/30 flex items-center justify-center">
+                          <span className="font-mono text-[0.5rem] text-burnt-orange">{i + 1}</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <span className="font-sans text-xs uppercase tracking-wider text-bone font-semibold block">{node.label}</span>
+                          <span className="font-mono text-[0.55rem] text-warm-gray/70 block mt-0.5">{node.sub}</span>
+                        </div>
                       </div>
+                      {i < BSI_SHOWCASE.architecture.length - 1 && (
+                        <div className="ml-6 h-4 border-l border-dashed border-burnt-orange/20" aria-hidden="true" />
+                      )}
                     </div>
                   ))}
                 </div>

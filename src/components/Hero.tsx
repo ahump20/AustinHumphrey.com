@@ -43,14 +43,9 @@ export default function Hero() {
 
       {/* Content — anchored to bottom of viewport for dramatic reveal */}
       <div className="relative z-10 px-6 md:px-12 lg:px-16 max-w-6xl mx-auto w-full pb-16 md:pb-24 pt-32">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
-          className="section-label mb-6 text-center md:text-left"
-        >
+        <p className="section-label mb-6 text-center md:text-left typewriter-label">
           Sports Intelligence Architect
-        </motion.p>
+        </p>
 
         <motion.div
           initial={{ opacity: 0, y: 20, letterSpacing: '0.15em' }}

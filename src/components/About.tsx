@@ -119,6 +119,15 @@ export default function About() {
             />
           </motion.div>
 
+          {/* Father and son at the ballpark */}
+          <motion.div variants={staggerItem} className="mb-12">
+            <PhotoCard
+              src="/assets/optimized/baseball-with-father-640w.webp"
+              srcSet="/assets/optimized/baseball-with-father-640w.webp 640w, /assets/optimized/baseball-with-father-1024w.webp 1024w"
+              alt="Austin and his father at a baseball game — the sport was always family"
+            />
+          </motion.div>
+
           <motion.div variants={staggerItem} className="grid gap-6 md:grid-cols-2 mb-12">
             <div className="overflow-hidden rounded-sm border border-bone/10 bg-charcoal/40">
               <img

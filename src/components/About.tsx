@@ -105,6 +105,20 @@ export default function About() {
             ))}
           </div>
 
+          {/* Documentary proof — birth article and certificate */}
+          <motion.div variants={staggerItem} className="grid gap-6 md:grid-cols-2 mb-12">
+            <PhotoCard
+              src="/assets/birth-article.jpg"
+              srcSet="/assets/optimized/birth-article-640w.webp 640w, /assets/optimized/birth-article-1024w.webp 1024w"
+              alt="El Campo Leader-News: Tennessee Birth Will Be on Texas Soil"
+            />
+            <PhotoCard
+              src="/assets/birth-certificate.jpg"
+              srcSet="/assets/optimized/birth-certificate-640w.webp 640w, /assets/optimized/birth-certificate-1024w.webp 1024w"
+              alt="Birth certificate — Memphis, Tennessee, August 17, 1995"
+            />
+          </motion.div>
+
           <motion.div variants={staggerItem} className="grid gap-6 md:grid-cols-2 mb-12">
             <div className="overflow-hidden rounded-sm border border-bone/10 bg-charcoal/40">
               <img

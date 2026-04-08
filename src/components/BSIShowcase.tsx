@@ -61,8 +61,9 @@ export default function BSIShowcase() {
                     <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
                   </div>
                   <div className="flex-1 flex justify-center">
-                    <span className="font-mono text-[0.6rem] text-warm-gray/50 bg-bone/5 rounded-sm px-3 py-0.5">
+                    <span className="font-mono text-[0.6rem] text-warm-gray/50 bg-bone/5 rounded-sm px-3 py-0.5 group-hover:text-burnt-orange/70 transition-colors duration-300">
                       blazesportsintel.com
+                      <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-burnt-orange/50">↗</span>
                     </span>
                   </div>
                 </div>

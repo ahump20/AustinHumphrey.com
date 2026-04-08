@@ -51,6 +51,7 @@ export const FOOTER_LINK_GROUPS = [
       { label: 'BSI Arcade', href: PLATFORM_URLS.arcade, external: true },
       { label: 'A Documented Heritage', href: PLATFORM_URLS.dna, external: true },
       { label: 'BSI Editorial', href: 'https://blazesportsintel.com/blog-post-feed', external: true },
+      { label: 'BSI Podcast', href: 'https://blazesportsintel.com/podcast', external: true },
     ] satisfies SiteLink[],
   },
   {

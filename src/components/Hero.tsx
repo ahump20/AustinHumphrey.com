@@ -53,13 +53,13 @@ export default function Hero() {
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: EASE_OUT_EXPO }}
+          initial={{ opacity: 0, y: 20, letterSpacing: '0.15em' }}
+          animate={{ opacity: 1, y: 0, letterSpacing: '0.05em' }}
+          transition={{ duration: 0.9, delay: 0.2, ease: EASE_OUT_EXPO }}
         >
           <h1
             id="hero-heading"
-            className="font-sans font-bold uppercase leading-[0.9] tracking-wider text-bone mb-6 text-center md:text-left"
+            className="font-sans font-bold uppercase leading-[0.9] text-bone mb-6 text-center md:text-left"
             style={{ textShadow: '0 2px 30px rgba(0,0,0,0.7)' }}
           >
             <span className="block hero-first-name">Austin</span>

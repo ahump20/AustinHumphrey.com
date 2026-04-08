@@ -1,4 +1,5 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
+import { useKonamiCode } from './hooks/useKonamiCode';
 import ErrorBoundary from './components/ErrorBoundary';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
@@ -19,6 +20,12 @@ import ScrollToTop from './components/ScrollToTop';
 const AIChatWidget = lazy(() => import('./components/AIChatWidget'));
 
 function App() {
+  const [easterEgg, setEasterEgg] = useState(false);
+  useKonamiCode(useCallback(() => {
+    setEasterEgg(true);
+    setTimeout(() => setEasterEgg(false), 3000);
+  }, []));
+
   useEffect(() => {
     const routeToSection: Record<string, string> = {
       '/': 'hero',
@@ -111,6 +118,18 @@ function App() {
           <Contact />
         </main>
         <Footer />
+
+        {/* Konami code Easter egg flash */}
+        {easterEgg && (
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none animate-pulse">
+            <div className="text-center">
+              <p className="font-sans font-bold text-6xl md:text-8xl text-burnt-orange uppercase tracking-wider" style={{ textShadow: '0 0 40px rgba(191,87,0,0.5)' }}>
+                BSI
+              </p>
+              <p className="font-mono text-sm text-warm-gray mt-2">Born to Blaze the Path Beaten Less</p>
+            </div>
+          </div>
+        )}
 
         <ScrollToTop />
         <Suspense fallback={null}>

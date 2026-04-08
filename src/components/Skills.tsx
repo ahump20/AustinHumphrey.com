@@ -46,8 +46,8 @@ export default function Skills() {
 
           <motion.div variants={staggerItem} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
             {SKILL_GROUPS.map((group) => (
-              <div key={group.label}>
-                <p className="font-mono text-[0.6rem] uppercase tracking-[0.25em] text-burnt-orange mb-3">
+              <div key={group.label} className="group/skill">
+                <p className="font-mono text-[0.6rem] uppercase tracking-[0.25em] text-burnt-orange/70 group-hover/skill:text-burnt-orange mb-3 transition-colors duration-300">
                   {group.label}
                 </p>
                 <div className="flex flex-wrap gap-1.5">

@@ -68,7 +68,7 @@ export default function BSIShowcase() {
                       <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-burnt-orange/50">↗</span>
                     </span>
                   </div>
-                  <span className="font-mono text-[0.5rem] text-warm-gray/30 tracking-wider hidden sm:inline">
+                  <span className="font-mono text-[0.5rem] text-warm-gray/30 tracking-wider hidden sm:inline group-hover:text-warm-gray/50 transition-colors duration-300">
                     Captured Apr 2026
                   </span>
                 </div>

@@ -135,7 +135,7 @@ export default function Contact() {
           viewport={{ once: true, amount: 0.05 }}
           variants={staggerContainer}
         >
-          <div className="grid gap-12 xl:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] xl:items-start">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start">
             <motion.div variants={staggerItem} className="space-y-8">
               <div>
                 <p className="section-label">// Connect</p>

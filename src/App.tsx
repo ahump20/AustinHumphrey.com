@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Proof from './components/Proof';
 import BSIShowcase from './components/BSIShowcase';
+import InfraProof from './components/InfraProof';
 import AthleticArc from './components/AthleticArc';
 import About from './components/About';
 import Experience from './components/Experience';
@@ -61,6 +62,9 @@ function App() {
 
           {/* BSI platform deep-dive — stats, architecture, coverage */}
           <BSIShowcase />
+
+          {/* Infrastructure proof — hard numbers, animated counters */}
+          <InfraProof />
 
           {/* Photo break — athletic arc from Friday Night Lights to the Forty Acres */}
           <AthleticArc />

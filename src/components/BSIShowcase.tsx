@@ -1,11 +1,20 @@
 import { motion } from 'framer-motion';
 import { staggerContainer, staggerItem } from '../utils/animations';
 import { BSI_SHOWCASE, PLATFORM_URLS, SITE_TAGLINE } from '../content/site';
+import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
 
-function StatCard({ value, label }: { value: string; label: string }) {
+function AnimatedStatCard({ value, label, suffix = '' }: { value: string; label: string; suffix?: string }) {
+  const numericValue = parseInt(value.replace(/[^0-9]/g, ''), 10);
+  const hasPlus = value.includes('+');
+  const [ref, displayValue] = useAnimatedCounter(isNaN(numericValue) ? 0 : numericValue);
+
   return (
-    <div className="text-center">
-      <p className="text-3xl font-bold font-sans text-burnt-orange">{value}</p>
+    <div className="text-center" ref={ref as React.RefObject<HTMLDivElement>}>
+      <p className="text-3xl font-bold font-sans text-burnt-orange">
+        {isNaN(numericValue) ? value : displayValue}
+        {hasPlus && '+'}
+        {suffix}
+      </p>
       <p className="text-xs font-mono text-warm-gray mt-1">{label}</p>
     </div>
   );
@@ -103,7 +112,7 @@ export default function BSIShowcase() {
               {/* Stat grid */}
               <div className="grid grid-cols-2 gap-6">
                 {BSI_SHOWCASE.stats.map((stat) => (
-                  <StatCard key={stat.label} value={stat.value} label={stat.label} />
+                  <AnimatedStatCard key={stat.label} value={stat.value} label={stat.label} />
                 ))}
               </div>
 

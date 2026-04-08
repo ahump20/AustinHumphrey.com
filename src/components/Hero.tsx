@@ -31,6 +31,9 @@ export default function Hero() {
       {/* Editorial gradient mesh — subtle warm tint over the overlay */}
       <div className="absolute inset-0 pointer-events-none hero-gradient-mesh opacity-60" />
 
+      {/* Film grain texture */}
+      <div className="grain-overlay" />
+
       {/* Content — anchored to bottom of viewport for dramatic reveal */}
       <div className="relative z-10 px-6 md:px-12 lg:px-16 max-w-6xl mx-auto w-full pb-16 md:pb-24 pt-32">
         <motion.p

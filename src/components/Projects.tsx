@@ -2,6 +2,26 @@ import { motion } from 'framer-motion';
 import { staggerContainer, staggerItem } from '../utils/animations';
 import { PORTFOLIO_PROJECTS } from '../content/site';
 
+/** Map project names → screenshot paths for visual proof */
+const SCREENSHOTS: Record<string, { src: string; webp: string }> = {
+  'Blaze Sports Intel': {
+    src: '/assets/bsi-homepage.png',
+    webp: '/assets/optimized/bsi-homepage-640w.webp',
+  },
+  'BSI Radar Lab': {
+    src: '/assets/labs-screenshot.png',
+    webp: '/assets/optimized/labs-screenshot-640w.webp',
+  },
+  'BlazeCraft': {
+    src: '/assets/blazecraft-screenshot.png',
+    webp: '/assets/optimized/blazecraft-screenshot-640w.webp',
+  },
+  'Sandlot Sluggers': {
+    src: '/assets/arcade-screenshot.png',
+    webp: '/assets/optimized/arcade-screenshot-640w.webp',
+  },
+};
+
 function LiveBadge() {
   return (
     <span className="flex items-center gap-1.5 text-[0.6rem] font-mono text-emerald-400 uppercase tracking-widest">
@@ -33,66 +53,95 @@ export default function Projects() {
             <h2 id="projects-heading" className="section-title">Projects</h2>
           </motion.div>
 
-          {/* Heavy-weight projects — larger cards, more visual space */}
+          {/* Heavy-weight projects — larger cards with screenshots */}
           <div className="grid md:grid-cols-2 gap-6 mb-8">
-            {PORTFOLIO_PROJECTS.featured.map((project) => (
-              <motion.a
-                key={project.name}
-                variants={staggerItem}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => window.posthog?.capture('project_clicked', { project: project.name })}
-                className="card p-8 group block gradient-border-hover rounded-sm project-card-featured-bg"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <span className="text-[0.6rem] font-mono text-burnt-orange bg-burnt-orange/10 border border-burnt-orange/20 px-3 py-1 rounded-sm uppercase tracking-widest">
-                      {project.highlight}
-                    </span>
-                    {project.live && <LiveBadge />}
-                  </div>
-                  <svg className="w-5 h-5 text-bone/20 group-hover:text-burnt-orange group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 shrink-0" viewBox="0 0 20 20" fill="none">
-                    <path d="M5 15L15 5M15 5H8M15 5V12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
+            {PORTFOLIO_PROJECTS.featured.map((project) => {
+              const shot = SCREENSHOTS[project.name];
+              return (
+                <motion.a
+                  key={project.name}
+                  variants={staggerItem}
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card group block gradient-border-hover rounded-sm project-card-featured-bg overflow-hidden"
+                >
+                  {/* Screenshot */}
+                  {shot && (
+                    <div className="overflow-hidden border-b border-bone/5">
+                      <img
+                        src={shot.webp}
+                        alt={`${project.name} — live screenshot`}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                  )}
 
-                <h3 className="font-sans font-bold text-xl uppercase tracking-wider text-bone mb-3 group-hover:text-burnt-orange transition-colors duration-300">
-                  {project.name}
-                </h3>
-                <p className="text-bone/75 text-base leading-relaxed">{project.description}</p>
-              </motion.a>
-            ))}
-          </div>
+                  <div className="p-8">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        <span className="text-[0.6rem] font-mono text-burnt-orange bg-burnt-orange/10 border border-burnt-orange/20 px-3 py-1 rounded-sm uppercase tracking-widest">
+                          {project.highlight}
+                        </span>
+                        {project.live && <LiveBadge />}
+                      </div>
+                      <svg className="w-5 h-5 text-bone/20 group-hover:text-burnt-orange group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 shrink-0" viewBox="0 0 20 20" fill="none">
+                        <path d="M5 15L15 5M15 5H8M15 5V12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
 
-          {/* Light-weight projects — compact treatment */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {PORTFOLIO_PROJECTS.supporting.map((project) => (
-              <motion.a
-                key={project.name}
-                variants={staggerItem}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => window.posthog?.capture('project_clicked', { project: project.name })}
-                className="group flex items-start gap-4 py-4 px-4 rounded-sm hover:bg-bone/[0.02] transition-colors duration-300 border border-transparent hover:border-bone/5"
-              >
-                <div className="shrink-0 mt-1">
-                  <span className="text-[0.55rem] font-mono text-burnt-orange bg-burnt-orange/10 border border-burnt-orange/20 px-2 py-0.5 rounded-sm uppercase tracking-widest">
-                    {project.highlight}
-                  </span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-sans font-semibold text-sm uppercase tracking-wider text-bone group-hover:text-burnt-orange transition-colors duration-300">
+                    <h3 className="font-sans font-bold text-xl uppercase tracking-wider text-bone mb-3 group-hover:text-burnt-orange transition-colors duration-300">
                       {project.name}
                     </h3>
-                    {project.live && <LiveBadge />}
+                    <p className="text-bone/75 text-base leading-relaxed">{project.description}</p>
                   </div>
-                  <p className="text-bone/60 text-sm leading-relaxed">{project.description}</p>
-                </div>
-              </motion.a>
-            ))}
+                </motion.a>
+              );
+            })}
+          </div>
+
+          {/* Light-weight projects — compact treatment with thumbnails */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {PORTFOLIO_PROJECTS.supporting.map((project) => {
+              const shot = SCREENSHOTS[project.name];
+              return (
+                <motion.a
+                  key={project.name}
+                  variants={staggerItem}
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group card rounded-sm overflow-hidden"
+                >
+                  {/* Thumbnail */}
+                  {shot && (
+                    <div className="overflow-hidden border-b border-bone/5 max-h-[160px]">
+                      <img
+                        src={shot.webp}
+                        alt={`${project.name} screenshot`}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                  )}
+                  <div className="p-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-[0.55rem] font-mono text-burnt-orange bg-burnt-orange/10 border border-burnt-orange/20 px-2 py-0.5 rounded-sm uppercase tracking-widest">
+                        {project.highlight}
+                      </span>
+                      {project.live && <LiveBadge />}
+                    </div>
+                    <h3 className="font-sans font-semibold text-sm uppercase tracking-wider text-bone group-hover:text-burnt-orange transition-colors duration-300 mb-1">
+                      {project.name}
+                    </h3>
+                    <p className="text-bone/60 text-sm leading-relaxed">{project.description}</p>
+                  </div>
+                </motion.a>
+              );
+            })}
           </div>
         </motion.div>
       </div>

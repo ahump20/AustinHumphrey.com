@@ -92,6 +92,7 @@ export default function InfraProof() {
             <motion.p
               variants={staggerItem}
               className="text-center mt-4"
+              aria-live="polite"
             >
               <span className="inline-flex items-center gap-2 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-emerald-400/70 hover:text-emerald-400 transition-colors duration-300 cursor-default">
                 <span className="relative flex h-1.5 w-1.5">

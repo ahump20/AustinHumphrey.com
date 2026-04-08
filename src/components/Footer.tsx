@@ -98,7 +98,7 @@ export default function Footer() {
           <p className="text-xs font-mono text-warm-gray/40 mt-3 italic">
             {SITE_TAGLINE}
           </p>
-          <p className="text-[0.55rem] font-mono text-warm-gray/25 mt-2">
+          <p className="text-[0.55rem] font-mono text-warm-gray/25 mt-2 hover:text-warm-gray/50 transition-colors duration-500 cursor-default">
             Last updated April 2026
           </p>
         </div>

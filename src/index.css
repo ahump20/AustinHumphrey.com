@@ -248,7 +248,7 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     @apply bg-burnt-orange text-white px-6 py-3 rounded-sm
-           hover:brightness-110 active:scale-95
+           hover:brightness-110 hover:scale-[1.01] active:scale-95
            transition-all duration-300 cursor-pointer inline-block text-center;
   }
 

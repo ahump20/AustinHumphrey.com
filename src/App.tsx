@@ -13,6 +13,7 @@ import Education from './components/Education';
 import Philosophy from './components/Philosophy';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 const AIChatWidget = lazy(() => import('./components/AIChatWidget'));
 
@@ -89,6 +90,7 @@ function App() {
         </main>
         <Footer />
 
+        <ScrollToTop />
         <Suspense fallback={null}>
           <AIChatWidget />
         </Suspense>

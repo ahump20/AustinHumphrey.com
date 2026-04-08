@@ -11,6 +11,7 @@ const experiences = [
     textAccent: 'text-burnt-orange',
     description:
       'Six-league sports intelligence platform. Dozens of edge workers, multiple databases, 58+ editorial features. Full architecture — API design to deploy pipeline — built and maintained solo on Cloudflare.',
+    tags: ['Cloudflare Workers', 'Hono', 'D1/KV/R2', 'Next.js', 'TypeScript', 'Playwright'],
   },
   {
     title: 'Advertising Account Executive',
@@ -21,6 +22,7 @@ const experiences = [
     textAccent: 'text-spectrum-blue',
     description:
       'Advertising strategy across two of Texas\'s fastest-growing markets. Linear TV, OTT/CTV, streaming, and digital. Translated campaign performance data into revenue decisions for local and regional businesses.',
+    tags: ['Linear TV', 'OTT/CTV', 'Streaming', 'Campaign Analytics'],
   },
   {
     title: 'Financial Representative',
@@ -31,6 +33,7 @@ const experiences = [
     textAccent: 'text-nw-navy',
     description:
       'Top-5 nationally ranked intern program to full-time. Only person in the office daily during COVID. Nearly tripled the referral production of every other advisor. "Power of 10" Award — top 10% national performance.',
+    tags: ['Financial Planning', 'Client Acquisition', 'Power of 10 Award'],
   },
   {
     title: 'Rush Captain & Alumni Relations Chair',
@@ -41,6 +44,7 @@ const experiences = [
     textAccent: 'text-ato-gold',
     description:
       'Led recruitment strategy for 73 new members. Managed approximately $100K in event budgets. Bridge between active chapter and alumni network.',
+    tags: ['Leadership', 'Event Management', 'Alumni Relations'],
   },
 ];
 
@@ -93,6 +97,19 @@ export default function Experience() {
                 </div>
 
                 <p className="text-bone/75 text-sm leading-relaxed max-w-3xl">{exp.description}</p>
+
+                {exp.tags && exp.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {exp.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[0.55rem] font-mono uppercase tracking-widest text-warm-gray/60 border border-bone/8 rounded-sm px-2 py-0.5"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </motion.div>
             ))}
           </div>

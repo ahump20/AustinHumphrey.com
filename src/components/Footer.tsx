@@ -84,7 +84,7 @@ export default function Footer() {
           {['React', 'TypeScript', 'Tailwind', 'Framer Motion', 'Vite', 'Cloudflare Pages'].map((tech) => (
             <span
               key={tech}
-              className="text-[0.5rem] font-mono uppercase tracking-widest text-warm-gray/30 border border-bone/5 rounded-sm px-2 py-0.5 hover:text-warm-gray/60 hover:border-bone/10 transition-colors duration-300"
+              className="text-[0.55rem] font-mono uppercase tracking-widest text-warm-gray/30 border border-bone/5 rounded-sm px-2 py-0.5 hover:text-warm-gray/60 hover:border-bone/10 transition-colors duration-300"
             >
               {tech}
             </span>

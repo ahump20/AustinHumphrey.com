@@ -1,0 +1,16 @@
+{
+  "name": "Austin Humphrey — Sports Intelligence Architect",
+  "short_name": "Austin Humphrey",
+  "description": "Builder of Blaze Sports Intel. Six-league analytics platform built solo on Cloudflare.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0D0D0D",
+  "background_color": "#0D0D0D",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

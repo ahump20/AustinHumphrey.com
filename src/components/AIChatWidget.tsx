@@ -266,10 +266,10 @@ export default function AIChatWidget() {
               {messages.map((msg) => (
                 <div
                   key={msg.id}
-                  className={`text-sm leading-relaxed rounded-sm px-3 py-2 ${
+                  className={`text-sm leading-relaxed px-3 py-2 ${
                     msg.role === 'user'
-                      ? 'text-bone ml-8 text-right bg-burnt-orange/10 border border-burnt-orange/15'
-                      : 'text-warm-gray mr-8 bg-midnight/50'
+                      ? 'text-bone ml-8 text-right bg-burnt-orange/10 border border-burnt-orange/15 rounded-lg rounded-br-sm'
+                      : 'text-warm-gray mr-8 bg-midnight/50 rounded-lg rounded-bl-sm'
                   }`}
                 >
                   {msg.role === 'assistant' && (

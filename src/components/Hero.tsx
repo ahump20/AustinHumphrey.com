@@ -1,22 +1,29 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import { EASE_OUT_EXPO } from '../utils/animations';
 import { PLATFORM_URLS } from '../content/site';
 
 export default function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const photoY = useTransform(scrollYProgress, [0, 1], ['0%', '15%']);
+
   return (
     <section
       id="hero"
       aria-labelledby="hero-heading"
+      ref={heroRef}
       className="relative min-h-screen flex items-end overflow-hidden bg-midnight"
     >
-      {/* Background photograph — football uniform, real and personal */}
-      <img
+      {/* Background photograph — football uniform, real and personal, with parallax */}
+      <motion.img
         src="/assets/optimized/football-uniform-1920w.webp"
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover object-top hero-photo-ken-burns"
+        className="absolute inset-0 w-full h-[120%] object-cover object-top hero-photo-ken-burns"
         loading="eager"
         fetchPriority="high"
+        style={{ y: photoY }}
       />
 
       {/* Dark gradient overlay — ensures text readability while preserving atmosphere */}

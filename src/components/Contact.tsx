@@ -50,6 +50,8 @@ export default function Contact() {
   const [turnstileToken, setTurnstileToken] = useState('');
   const turnstileRef = useRef<HTMLDivElement>(null);
   const [website, setWebsite] = useState('');
+  const [emailTouched, setEmailTouched] = useState(false);
+  const emailValid = !emailTouched || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const renderTurnstile = useCallback(() => {
     const w = window as unknown as { turnstile?: { render: (el: HTMLElement, opts: Record<string, unknown>) => void } };
@@ -226,7 +228,10 @@ export default function Contact() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-transparent border-0 border-b border-bone/15 px-0 py-2 text-sm text-bone placeholder-warm-gray/70 focus:outline-none focus:border-burnt-orange transition-colors duration-300"
+                    onBlur={() => setEmailTouched(true)}
+                    className={`w-full bg-transparent border-0 border-b px-0 py-2 text-sm text-bone placeholder-warm-gray/70 focus:outline-none transition-colors duration-300 ${
+                      !emailValid ? 'border-amber-500/60' : email && emailTouched ? 'border-emerald-500/40' : 'border-bone/15 focus:border-burnt-orange'
+                    }`}
                     placeholder="your@email.com"
                   />
                 </div>

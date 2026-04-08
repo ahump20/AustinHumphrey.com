@@ -141,6 +141,21 @@ export default function BSIShowcase() {
             </motion.div>
           </div>
 
+          {/* Tech stack */}
+          <motion.div variants={staggerItem} className="mb-12">
+            <p className="section-label mb-4">// Stack</p>
+            <div className="flex flex-wrap gap-2">
+              {BSI_SHOWCASE.techStack.map((tech) => (
+                <span
+                  key={tech}
+                  className="text-[0.6rem] font-mono uppercase tracking-widest text-warm-gray/60 border border-bone/10 rounded-sm px-3 py-1"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
           {/* League coverage — editorial inline list */}
           <motion.div variants={staggerItem}>
             <p className="section-label mb-4">// Coverage</p>

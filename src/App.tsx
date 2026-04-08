@@ -93,6 +93,20 @@ function App() {
           {/* Texas covenant — personal philosophy */}
           <Philosophy />
 
+          {/* Closing cinematic break — last game silhouette */}
+          <div className="relative h-48 md:h-64 overflow-hidden">
+            <img
+              src="/assets/last-game-silhouette.jpg"
+              srcSet="/assets/optimized/last-game-silhouette-640w.webp 640w, /assets/optimized/last-game-silhouette-1024w.webp 1024w"
+              sizes="100vw"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-midnight/60 via-transparent to-midnight/80" />
+          </div>
+
           {/* Contact channels + form */}
           <Contact />
         </main>

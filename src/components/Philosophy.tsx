@@ -71,7 +71,7 @@ export default function Philosophy() {
           {/* Crockett whisper — ceremonial citation */}
           <motion.p
             variants={staggerItem}
-            className="mt-16 font-display italic text-sm text-warm-gray/40 tracking-wide"
+            className="mt-16 font-display italic text-sm text-warm-gray/40 hover:text-warm-gray/60 tracking-wide transition-colors duration-500 cursor-default"
           >
             &ldquo;You may all go to hell, and I will go to Texas.&rdquo;
             <span className="block mt-1 not-italic font-mono text-[0.55rem] uppercase tracking-[0.3em] text-burnt-orange/30">

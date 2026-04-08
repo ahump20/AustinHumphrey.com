@@ -579,6 +579,47 @@
   min-height: 300px;
 }
 
+/* ─── Print stylesheet ─── */
+@media print {
+  body {
+    background: white !important;
+    color: #1a1a1a !important;
+    font-size: 11pt !important;
+  }
+  nav, .scroll-progress, .grain-overlay, footer,
+  .btn-primary, .btn-outline, .section-divider,
+  .section-seam, .origin-bridge-shell::before,
+  button[aria-label*="concierge"],
+  .hero-gradient-mesh, video, .athletic-arc-bg,
+  .accent-line-horizontal, .accent-line-narrow {
+    display: none !important;
+  }
+  section {
+    padding: 1rem 0 !important;
+    break-inside: avoid;
+  }
+  #hero {
+    min-height: auto !important;
+    background: none !important;
+    padding: 2rem 0 !important;
+  }
+  #hero img { display: none !important; }
+  #hero > div:first-child, #hero > div:nth-child(2), #hero > div:nth-child(3) {
+    display: none !important;
+  }
+  h1, h2, h3 { color: #1a1a1a !important; }
+  .section-label { color: #BF5700 !important; }
+  .section-title { font-size: 1.25rem !important; }
+  .card {
+    border: 1px solid #ddd !important;
+    background: #fafafa !important;
+    box-shadow: none !important;
+  }
+  a { color: #BF5700 !important; text-decoration: underline !important; }
+  img { max-height: 200px !important; }
+  * { animation: none !important; transition: none !important; }
+}
+
 /* Keyframes outside layers for broad compat */
 @keyframes gradient-shift {
   0% { background-position: 0% 50%; }

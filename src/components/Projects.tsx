@@ -2,28 +2,13 @@ import { motion } from 'framer-motion';
 import { staggerContainer, staggerItem } from '../utils/animations';
 import { PORTFOLIO_PROJECTS } from '../content/site';
 
-/** Map project names → screenshot paths for visual proof */
-const SCREENSHOTS: Record<string, { src: string; webp: string }> = {
-  'Blaze Sports Intel': {
-    src: '/assets/bsi-homepage.png',
-    webp: '/assets/optimized/bsi-homepage-640w.webp',
-  },
-  'BSI Radar Lab': {
-    src: '/assets/labs-screenshot.png',
-    webp: '/assets/optimized/labs-screenshot-640w.webp',
-  },
-  'BlazeCraft': {
-    src: '/assets/blazecraft-screenshot.png',
-    webp: '/assets/optimized/blazecraft-screenshot-640w.webp',
-  },
-  'Sandlot Sluggers': {
-    src: '/assets/arcade-screenshot.png',
-    webp: '/assets/optimized/arcade-screenshot-640w.webp',
-  },
-  'A Documented Heritage': {
-    src: '/assets/dna-screenshot.png',
-    webp: '/assets/optimized/dna-screenshot-640w.webp',
-  },
+/** Map project names → optimized screenshot path */
+const SCREENSHOTS: Record<string, string> = {
+  'Blaze Sports Intel': '/assets/optimized/bsi-homepage-640w.webp',
+  'BSI Radar Lab': '/assets/optimized/labs-screenshot-640w.webp',
+  'BlazeCraft': '/assets/optimized/blazecraft-screenshot-640w.webp',
+  'Sandlot Sluggers': '/assets/optimized/arcade-screenshot-640w.webp',
+  'A Documented Heritage': '/assets/optimized/dna-screenshot-640w.webp',
 };
 
 function LiveBadge() {
@@ -60,7 +45,7 @@ export default function Projects() {
           {/* Heavy-weight projects — larger cards with screenshots */}
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             {PORTFOLIO_PROJECTS.featured.map((project) => {
-              const shot = SCREENSHOTS[project.name];
+              const shotSrc = SCREENSHOTS[project.name];
               return (
                 <motion.a
                   key={project.name}
@@ -71,10 +56,10 @@ export default function Projects() {
                   className="card group block gradient-border-hover rounded-sm project-card-featured-bg overflow-hidden"
                 >
                   {/* Screenshot */}
-                  {shot && (
+                  {shotSrc && (
                     <div className="overflow-hidden border-b border-bone/5">
                       <img
-                        src={shot.webp}
+                        src={shotSrc}
                         alt={`${project.name} — live screenshot`}
                         loading="lazy"
                         decoding="async"
@@ -109,7 +94,7 @@ export default function Projects() {
           {/* Light-weight projects — compact treatment with thumbnails */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {PORTFOLIO_PROJECTS.supporting.map((project) => {
-              const shot = SCREENSHOTS[project.name];
+              const shotSrc = SCREENSHOTS[project.name];
               return (
                 <motion.a
                   key={project.name}
@@ -120,10 +105,10 @@ export default function Projects() {
                   className="group card rounded-sm overflow-hidden"
                 >
                   {/* Thumbnail */}
-                  {shot && (
+                  {shotSrc && (
                     <div className="overflow-hidden border-b border-bone/5 max-h-[160px]">
                       <img
-                        src={shot.webp}
+                        src={shotSrc}
                         alt={`${project.name} screenshot`}
                         loading="lazy"
                         decoding="async"

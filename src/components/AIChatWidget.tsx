@@ -40,7 +40,14 @@ function shouldUseFallbackConcierge() {
 }
 
 export default function AIChatWidget() {
+  const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState(false);
+
+  // Delay FAB entrance so it doesn't compete with hero animations
+  useEffect(() => {
+    const timer = setTimeout(() => setVisible(true), 2500);
+    return () => clearTimeout(timer);
+  }, []);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: ++msgId,
@@ -188,8 +195,14 @@ export default function AIChatWidget() {
 
   return (
     <>
-      {/* FAB */}
+      {/* FAB — delayed entrance */}
       <button
+        style={{
+          opacity: visible || open ? 1 : 0,
+          transform: visible || open ? 'scale(1)' : 'scale(0.8)',
+          transition: 'opacity 0.5s ease, transform 0.5s ease',
+          pointerEvents: visible || open ? 'auto' : 'none',
+        }}
         onClick={() => {
           if (!open) window.posthog?.capture('chat_opened');
           setOpen(!open);

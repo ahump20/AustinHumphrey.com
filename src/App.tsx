@@ -28,7 +28,7 @@ function App() {
 
   // Set page-level properties for PostHog segmentation
   useEffect(() => {
-    window.posthog?.register({
+    window.posthog?.capture('page_context', {
       viewport_width: window.innerWidth,
       sections_count: document.querySelectorAll('section[id]').length,
       site_version: 'v2.0',

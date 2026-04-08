@@ -226,7 +226,10 @@ export default function Navigation() {
 
           {/* Mobile hamburger */}
           <button
-            onClick={() => setMobileOpen(!mobileOpen)}
+            onClick={() => {
+              if (!mobileOpen) window.posthog?.capture('mobile_menu_opened');
+              setMobileOpen(!mobileOpen);
+            }}
             className="md:hidden border border-burnt-orange/30 bg-charcoal/90 px-2.5 py-2 text-bone/70 hover:border-burnt-orange hover:text-burnt-orange transition-colors"
             aria-label="Navigation menu"
             aria-expanded={mobileOpen}

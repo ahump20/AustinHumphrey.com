@@ -45,8 +45,9 @@ export default function Currently() {
                 key={item.label}
                 className="flex items-start gap-3 py-3 border-b border-bone/5 last:border-0"
               >
-                <span className="shrink-0 font-mono text-[0.6rem] uppercase tracking-[0.25em] text-burnt-orange mt-1 w-20">
+                <span className="shrink-0 font-mono text-[0.6rem] uppercase tracking-[0.25em] text-burnt-orange mt-1 w-20 flex items-center gap-1.5">
                   {item.label}
+                  <span className="w-1 h-1 rounded-full bg-burnt-orange/50 animate-pulse" />
                 </span>
                 <p className="text-sm text-bone/80 leading-relaxed">
                   {item.detail}

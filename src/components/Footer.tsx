@@ -65,6 +65,7 @@ export default function Footer() {
                 href="https://github.com/ahump20/AustinHumphrey.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => window.posthog?.capture('view_source_clicked')}
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-bone/5 border border-bone/5 hover:border-burnt-orange/30 transition-colors duration-300"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 text-warm-gray">

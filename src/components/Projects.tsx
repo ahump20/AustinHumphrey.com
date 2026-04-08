@@ -2,13 +2,28 @@ import { motion } from 'framer-motion';
 import { staggerContainer, staggerItem } from '../utils/animations';
 import { PORTFOLIO_PROJECTS } from '../content/site';
 
-/** Map project names → optimized screenshot path */
-const SCREENSHOTS: Record<string, string> = {
-  'Blaze Sports Intel': '/assets/optimized/bsi-homepage-640w.webp',
-  'BSI Radar Lab': '/assets/optimized/labs-screenshot-640w.webp',
-  'BlazeCraft': '/assets/optimized/blazecraft-screenshot-640w.webp',
-  'Sandlot Sluggers': '/assets/optimized/arcade-screenshot-640w.webp',
-  'A Documented Heritage': '/assets/optimized/dna-screenshot-640w.webp',
+/** Map project names → optimized screenshot paths at multiple sizes */
+const SCREENSHOTS: Record<string, { small: string; large: string }> = {
+  'Blaze Sports Intel': {
+    small: '/assets/optimized/bsi-homepage-640w.webp',
+    large: '/assets/optimized/bsi-homepage-1024w.webp',
+  },
+  'BSI Radar Lab': {
+    small: '/assets/optimized/labs-screenshot-640w.webp',
+    large: '/assets/optimized/labs-screenshot-1024w.webp',
+  },
+  'BlazeCraft': {
+    small: '/assets/optimized/blazecraft-screenshot-640w.webp',
+    large: '/assets/optimized/blazecraft-screenshot-1024w.webp',
+  },
+  'Sandlot Sluggers': {
+    small: '/assets/optimized/arcade-screenshot-640w.webp',
+    large: '/assets/optimized/arcade-screenshot-1024w.webp',
+  },
+  'A Documented Heritage': {
+    small: '/assets/optimized/dna-screenshot-640w.webp',
+    large: '/assets/optimized/dna-screenshot-1024w.webp',
+  },
 };
 
 function LiveBadge() {
@@ -45,7 +60,7 @@ export default function Projects() {
           {/* Heavy-weight projects — larger cards with screenshots */}
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             {PORTFOLIO_PROJECTS.featured.map((project) => {
-              const shotSrc = SCREENSHOTS[project.name];
+              const shot = SCREENSHOTS[project.name];
               return (
                 <motion.a
                   key={project.name}
@@ -55,11 +70,11 @@ export default function Projects() {
                   rel="noopener noreferrer"
                   className="card group block gradient-border-hover rounded-sm project-card-featured-bg overflow-hidden"
                 >
-                  {/* Screenshot */}
-                  {shotSrc && (
+                  {/* Screenshot — use larger variant for featured projects */}
+                  {shot && (
                     <div className="overflow-hidden border-b border-bone/5 img-skeleton">
                       <img
-                        src={shotSrc}
+                        src={shot.large}
                         alt={`${project.name} — live screenshot`}
                         loading="lazy"
                         decoding="async"
@@ -94,7 +109,7 @@ export default function Projects() {
           {/* Light-weight projects — compact treatment with thumbnails */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {PORTFOLIO_PROJECTS.supporting.map((project) => {
-              const shotSrc = SCREENSHOTS[project.name];
+              const shot = SCREENSHOTS[project.name];
               return (
                 <motion.a
                   key={project.name}
@@ -104,11 +119,11 @@ export default function Projects() {
                   rel="noopener noreferrer"
                   className="group card rounded-sm overflow-hidden"
                 >
-                  {/* Thumbnail */}
-                  {shotSrc && (
+                  {/* Thumbnail — smaller variant for supporting projects */}
+                  {shot && (
                     <div className="overflow-hidden border-b border-bone/5 max-h-[160px] img-skeleton">
                       <img
-                        src={shotSrc}
+                        src={shot.small}
                         alt={`${project.name} screenshot`}
                         loading="lazy"
                         decoding="async"

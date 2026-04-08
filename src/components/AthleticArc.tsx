@@ -67,7 +67,7 @@ export default function AthleticArc() {
         >
           <motion.p
             variants={staggerItem}
-            className="section-label text-center mb-10"
+            className="section-label text-center mb-8"
           >
             // Friday Night Lights to the Forty Acres
           </motion.p>

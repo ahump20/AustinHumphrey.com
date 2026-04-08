@@ -649,6 +649,14 @@
 .infra-dot-grid {
   background-image: radial-gradient(circle at 1px 1px, rgba(191,87,0,0.04) 1px, transparent 0);
   background-size: 32px 32px;
+  animation: dot-drift 60s linear infinite;
+}
+@keyframes dot-drift {
+  0% { background-position: 0 0; }
+  100% { background-position: 32px 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .infra-dot-grid { animation: none; }
 }
 .infra-stat-value {
   font-size: clamp(2.5rem, 5vw, 4rem);

@@ -200,6 +200,7 @@ export default function Navigation() {
           <a
             href={RESUME_PATH}
             download
+            onClick={() => window.posthog?.capture('resume_downloaded', { source: 'nav' })}
             className="hidden md:inline-flex items-center gap-1.5 ml-4 px-3 py-1.5 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-warm-gray/70 border border-bone/10 rounded-sm hover:border-burnt-orange/40 hover:text-burnt-orange transition-all duration-300"
           >
             <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">

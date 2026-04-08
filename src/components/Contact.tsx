@@ -158,7 +158,7 @@ export default function Contact() {
                         channel: link.label.toLowerCase(),
                       })
                     }
-                    className="group rounded-sm border border-bone/10 bg-charcoal/35 px-5 py-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-burnt-orange/40 hover:bg-charcoal/60"
+                    className="group rounded-sm border border-bone/10 bg-charcoal/35 px-5 py-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-burnt-orange/40 hover:bg-charcoal/60 gradient-border-hover"
                   >
                     <div className="mb-4 flex items-center justify-between">
                       <div className="text-warm-gray group-hover:text-burnt-orange transition-colors duration-300" aria-hidden="true">

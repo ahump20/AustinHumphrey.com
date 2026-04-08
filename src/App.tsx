@@ -65,6 +65,8 @@ function App() {
           {/* BSI platform deep-dive — stats, architecture, coverage */}
           <BSIShowcase />
 
+          <div className="section-divider" />
+
           {/* Infrastructure proof — hard numbers, animated counters */}
           <InfraProof />
 
@@ -82,6 +84,8 @@ function App() {
 
           {/* Academic foundation */}
           <Education />
+
+          <div className="section-divider" />
 
           {/* What Austin is building right now */}
           <Currently />

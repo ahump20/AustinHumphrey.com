@@ -188,6 +188,7 @@ export default function Proof() {
               href="https://blazesportsintel.com/podcast/"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => window.posthog?.capture('podcast_cta_clicked')}
               className="group flex items-center gap-5 py-5 px-6 rounded-sm border border-bone/10 bg-charcoal/30 hover:border-burnt-orange/30 hover:bg-charcoal/50 transition-all duration-300"
             >
               <div className="shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-burnt-orange/10 border border-burnt-orange/20 group-hover:bg-burnt-orange/20 transition-colors duration-300">

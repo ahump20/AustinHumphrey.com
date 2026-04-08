@@ -51,6 +51,7 @@ export default function BSIShowcase() {
               href={PLATFORM_URLS.bsi}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => window.posthog?.capture('bsi_screenshot_clicked')}
               className="block group"
             >
               <div className="relative rounded-sm overflow-hidden border border-bone/10 shadow-[0_20px_60px_rgba(0,0,0,0.4)] transition-all duration-500 group-hover:shadow-[0_24px_70px_rgba(191,87,0,0.15)] group-hover:-translate-y-1">

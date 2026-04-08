@@ -227,7 +227,7 @@ export default function Proof() {
                 </p>
               </div>
 
-              <div className="relative overflow-hidden rounded-sm border border-bone/10 bg-midnight shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
+              <div className="relative overflow-hidden rounded-sm border border-bone/10 bg-midnight shadow-[0_20px_60px_rgba(0,0,0,0.35)] gradient-border-hover">
                 <div
                   className="pointer-events-none absolute inset-0 z-10 vignette-deep"
                 />

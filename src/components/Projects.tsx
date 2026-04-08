@@ -56,7 +56,7 @@ export default function Projects() {
             <p className="section-label">// The Work</p>
             <div className="flex items-center gap-4 mb-10">
               <h2 id="projects-heading" className="section-title mb-0">Projects</h2>
-              <span className="flex items-center gap-1.5 text-[0.6rem] font-mono text-emerald-400 uppercase tracking-widest border border-emerald-400/20 bg-emerald-400/5 px-2.5 py-1 rounded-sm">
+              <span className="flex items-center gap-1.5 text-[0.6rem] font-mono text-emerald-400 uppercase tracking-widest border border-emerald-400/20 bg-emerald-400/5 px-2.5 py-1 rounded-sm" aria-label="4 projects currently live in production">
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />

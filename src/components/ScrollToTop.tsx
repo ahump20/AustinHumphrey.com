@@ -11,6 +11,7 @@ export default function ScrollToTop() {
   }, []);
 
   const scrollUp = () => {
+    window.posthog?.capture('scroll_to_top_clicked');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

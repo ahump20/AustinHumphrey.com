@@ -95,7 +95,7 @@ export default function Footer() {
           <p className="text-sm font-mono text-warm-gray/80">
             &copy; {new Date().getFullYear()} Austin Humphrey. All rights reserved.
           </p>
-          <p className="text-xs font-mono text-warm-gray/40 mt-3 italic">
+          <p className="text-xs font-mono text-warm-gray/40 mt-3 italic hover:text-burnt-orange/60 transition-colors duration-500 cursor-default">
             {SITE_TAGLINE}
           </p>
           <p className="text-[0.55rem] font-mono text-warm-gray/25 mt-2 hover:text-warm-gray/50 transition-colors duration-500 cursor-default">

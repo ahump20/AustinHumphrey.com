@@ -160,11 +160,22 @@ export default function Navigation() {
 
           {/* Section counter + Desktop nav */}
           <div className="hidden md:flex items-center gap-4">
-            <span className="font-mono text-[0.6rem] text-warm-gray/40 tracking-wider tabular-nums">
-              {String((ALL_SECTION_IDS.indexOf(activeSection) + 1) || 1).padStart(2, '0')}
-              <span className="text-bone/10 mx-0.5">/</span>
-              {ALL_SECTION_IDS.length}
-            </span>
+            {(() => {
+              const idx = ALL_SECTION_IDS.indexOf(activeSection);
+              const progress = idx / (ALL_SECTION_IDS.length - 1);
+              // Interpolate from warm-gray/40 to burnt-orange based on scroll depth
+              const opacity = 0.4 + progress * 0.6;
+              return (
+                <span
+                  className="font-mono text-[0.6rem] tracking-wider tabular-nums transition-colors duration-500"
+                  style={{ color: progress > 0.5 ? `rgba(191,87,0,${opacity})` : `rgba(168,159,149,${opacity})` }}
+                >
+                  {String((idx + 1) || 1).padStart(2, '0')}
+                  <span className="opacity-30 mx-0.5">/</span>
+                  {ALL_SECTION_IDS.length}
+                </span>
+              );
+            })()}
           </div>
 
           <ul className="hidden md:flex items-center gap-1">

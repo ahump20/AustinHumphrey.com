@@ -110,28 +110,29 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        {/* Proof bar — hard numbers above the fold */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.8, ease: EASE_OUT_EXPO }}
-          className="flex gap-8 justify-center md:justify-start mb-8"
-        >
+        {/* Proof bar — hard numbers above the fold, staggered entrance */}
+        <div className="flex gap-8 justify-center md:justify-start mb-8">
           {[
-            { value: '6', label: 'Leagues' },
-            { value: '330+', label: 'Programs' },
-            { value: '662', label: 'Tests' },
+            { value: '6', label: 'Leagues', delay: 0.8 },
+            { value: '330+', label: 'Programs', delay: 0.9 },
+            { value: '662', label: 'Tests', delay: 1.0 },
           ].map((stat) => (
-            <div key={stat.label} className="text-center md:text-left">
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: stat.delay, ease: EASE_OUT_EXPO }}
+              className="text-center md:text-left"
+            >
               <p className="font-sans font-bold text-lg text-bone" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}>
                 {stat.value}
               </p>
               <p className="font-mono text-[0.55rem] uppercase tracking-[0.2em] text-warm-gray/60">
                 {stat.label}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Scroll indicator */}
         <motion.div

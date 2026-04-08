@@ -44,7 +44,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li className="text-sm text-warm-gray">{SITE_LOCATION}</li>
               <li>
-                <a href={RESUME_PATH} download className="text-sm text-warm-gray hover:text-burnt-orange transition-colors duration-300">
+                <a href={RESUME_PATH} download className="text-sm text-bone/80 hover:text-burnt-orange transition-colors duration-300">
                   Download Resume
                 </a>
               </li>
@@ -83,7 +83,7 @@ export default function Footer() {
           {['React', 'TypeScript', 'Tailwind', 'Framer Motion', 'Vite', 'Cloudflare Pages'].map((tech) => (
             <span
               key={tech}
-              className="text-[0.5rem] font-mono uppercase tracking-widest text-warm-gray/30 border border-bone/5 rounded-sm px-2 py-0.5"
+              className="text-[0.5rem] font-mono uppercase tracking-widest text-warm-gray/50 border border-bone/5 rounded-sm px-2 py-0.5"
             >
               {tech}
             </span>
@@ -95,7 +95,7 @@ export default function Footer() {
           <p className="text-sm font-mono text-warm-gray/80">
             &copy; {new Date().getFullYear()} Austin Humphrey. All rights reserved.
           </p>
-          <p className="text-xs font-mono text-warm-gray/40 mt-3 italic hover:text-burnt-orange/60 transition-colors duration-500 cursor-default">
+          <p className="text-xs font-mono text-warm-gray/55 mt-3 italic hover:text-burnt-orange/60 transition-colors duration-500 cursor-default">
             {SITE_TAGLINE}
           </p>
           <p className="text-[0.55rem] font-mono text-warm-gray/25 mt-2 hover:text-warm-gray/50 transition-colors duration-500 cursor-default">

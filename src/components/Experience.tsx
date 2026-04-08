@@ -111,7 +111,7 @@ export default function Experience() {
                     {exp.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[0.55rem] font-mono uppercase tracking-widest text-warm-gray/60 border border-bone/8 rounded-sm px-2 py-0.5"
+                        className="text-[0.55rem] font-mono uppercase tracking-widest text-warm-gray/60 border border-bone/8 rounded-sm px-2 py-0.5 hover:border-bone/15 hover:text-warm-gray/80 transition-colors duration-300"
                       >
                         {tag}
                       </span>

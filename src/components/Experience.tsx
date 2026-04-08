@@ -7,6 +7,7 @@ const experiences = [
     company: 'Blaze Sports Intel',
     location: 'San Antonio, TX',
     period: '2023 – Present',
+    duration: '3+ years',
     bgAccent: 'bg-burnt-orange',
     textAccent: 'text-burnt-orange',
     description:
@@ -18,6 +19,7 @@ const experiences = [
     company: 'Spectrum Reach',
     location: 'Austin / San Antonio, TX',
     period: 'Nov 2022 – Dec 2025',
+    duration: '3 years',
     bgAccent: 'bg-spectrum-blue',
     textAccent: 'text-spectrum-blue',
     description:
@@ -29,6 +31,7 @@ const experiences = [
     company: 'Northwestern Mutual',
     location: 'Austin, TX',
     period: 'Dec 2020 – Aug 2022',
+    duration: '1 yr 8 mo',
     bgAccent: 'bg-nw-navy',
     textAccent: 'text-nw-navy',
     description:
@@ -40,6 +43,7 @@ const experiences = [
     company: 'Alpha Tau Omega — UT Austin',
     location: 'Austin, TX',
     period: '2015 – 2020',
+    duration: '5 years',
     bgAccent: 'bg-ato-gold',
     textAccent: 'text-ato-gold',
     description:
@@ -94,6 +98,9 @@ export default function Experience() {
                     <span>{exp.location}</span>
                     <span className="text-bone/10">|</span>
                     <time>{exp.period}</time>
+                    {'duration' in exp && (
+                      <span className="text-burnt-orange/60 text-[0.65rem]">({exp.duration})</span>
+                    )}
                   </div>
                 </div>
 

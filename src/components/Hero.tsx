@@ -81,9 +81,9 @@ export default function Hero() {
           className="text-bone/90 text-lg md:text-xl max-w-xl mb-10 leading-relaxed text-center md:text-left mx-auto md:mx-0"
           style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}
         >
-          Built Blaze Sports Intel solo on Cloudflare — live analytics,
-          park-adjusted sabermetrics, and original editorial for 330 D1
-          college baseball programs. Six leagues. One builder.
+          Built a production sports analytics platform solo — real-time data
+          pipelines, edge computing, AI-powered editorial, and original
+          sabermetrics across six leagues. From concept to shipped product.
           <motion.span
             className="inline-block w-0.5 h-5 bg-burnt-orange/70 ml-1 align-middle"
             initial={{ opacity: 1 }}
@@ -110,30 +110,6 @@ export default function Hero() {
             See the Work
           </a>
         </motion.div>
-
-        {/* Proof bar — hard numbers above the fold, staggered entrance */}
-        <div className="flex gap-8 justify-center md:justify-start mb-8">
-          {[
-            { value: '6', label: 'Leagues', delay: 0.8 },
-            { value: '330+', label: 'Programs', delay: 0.9 },
-            { value: '662', label: 'Tests', delay: 1.0 },
-          ].map((stat) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: stat.delay, ease: EASE_OUT_EXPO }}
-              className="text-center md:text-left"
-            >
-              <p className="font-sans font-bold text-lg text-bone" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}>
-                {stat.value}
-              </p>
-              <p className="font-mono text-[0.55rem] uppercase tracking-[0.2em] text-warm-gray/60">
-                {stat.label}
-              </p>
-            </motion.div>
-          ))}
-        </div>
 
         {/* Scroll indicator + recruiter shortcut */}
         <motion.div

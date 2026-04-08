@@ -1,0 +1,62 @@
+import { motion } from 'framer-motion';
+import { staggerContainer, staggerItem } from '../utils/animations';
+
+const CURRENT_WORK = [
+  {
+    label: 'Studying',
+    detail: 'AI & Machine Learning — UT Austin McCombs, Apr 2026 cohort',
+  },
+  {
+    label: 'Building',
+    detail: 'Real-time WebSocket scores with Durable Objects across six leagues',
+  },
+  {
+    label: 'Publishing',
+    detail: 'Weekly podcast + conference editorial on college baseball',
+  },
+  {
+    label: 'Shipping',
+    detail: 'Park-adjusted sabermetrics recomputed every 6 hours for 330 programs',
+  },
+];
+
+export default function Currently() {
+  return (
+    <section
+      id="currently"
+      aria-label="What Austin is working on now"
+      className="section-padding section-border"
+    >
+      <div className="container-custom max-w-4xl">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={staggerContainer}
+        >
+          <motion.div variants={staggerItem}>
+            <p className="section-label">// Right Now</p>
+            <h2 className="section-title">Currently</h2>
+          </motion.div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {CURRENT_WORK.map((item) => (
+              <motion.div
+                key={item.label}
+                variants={staggerItem}
+                className="flex items-start gap-3 py-3"
+              >
+                <span className="shrink-0 font-mono text-[0.6rem] uppercase tracking-[0.25em] text-burnt-orange mt-1 w-20">
+                  {item.label}
+                </span>
+                <p className="text-sm text-bone/80 leading-relaxed">
+                  {item.detail}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

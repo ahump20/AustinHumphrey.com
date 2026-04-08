@@ -10,6 +10,7 @@ import AthleticArc from './components/AthleticArc';
 import About from './components/About';
 import Experience from './components/Experience';
 import Education from './components/Education';
+import Currently from './components/Currently';
 import Philosophy from './components/Philosophy';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -81,6 +82,9 @@ function App() {
 
           {/* Academic foundation */}
           <Education />
+
+          {/* What Austin is building right now */}
+          <Currently />
 
           {/* Texas covenant — personal philosophy */}
           <Philosophy />

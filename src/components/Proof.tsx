@@ -109,7 +109,7 @@ export default function Proof() {
                 <p className="mt-6 max-w-3xl font-serif text-xl leading-relaxed text-bone/72 md:text-2xl">
                   {lead.excerpt}
                 </p>
-                <span className="inline-flex items-center gap-3 mt-6 font-mono text-[0.62rem] uppercase tracking-[0.28em] text-burnt-orange">
+                <span className="proof-cta mt-6 font-mono text-[0.62rem] uppercase tracking-[0.28em] text-burnt-orange">
                   Read the feature · {lead.readTime}
                   <svg className="h-4 w-4" viewBox="0 0 20 20" fill="none">
                     <path

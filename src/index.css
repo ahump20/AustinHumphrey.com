@@ -582,6 +582,27 @@
   background: linear-gradient(135deg, rgba(26,26,26,0.8) 0%, rgba(191,87,0,0.04) 100%);
 }
 
+/* ─── Proof editorial hover underline ─── */
+.proof-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.proof-cta::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.group:hover .proof-cta::after {
+  width: 100%;
+}
+
 /* ─── InfraProof ─── */
 .infra-stat-value {
   font-size: clamp(2.5rem, 5vw, 4rem);

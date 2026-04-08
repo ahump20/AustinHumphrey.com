@@ -51,7 +51,7 @@ export default function AthleticArc() {
     <section
       id="athletic-arc"
       aria-label="Athletic arc — Friday Night Lights to the Forty Acres"
-      className="relative pt-8 pb-12 overflow-hidden athletic-arc-bg"
+      className="relative pt-14 pb-16 overflow-hidden athletic-arc-bg"
     >
       {/* Top accent line */}
       <div

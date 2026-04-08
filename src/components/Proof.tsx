@@ -257,7 +257,7 @@ export default function Proof() {
                     className="absolute inset-0 z-20 flex items-center justify-center cursor-pointer"
                     aria-label="Play video"
                   >
-                    <span className="flex h-20 w-20 items-center justify-center rounded-full border border-white/10 bg-burnt-orange/90 shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-burnt-orange">
+                    <span className="flex h-20 w-20 items-center justify-center rounded-full border border-white/10 bg-burnt-orange/90 shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-burnt-orange hover:border-white/25 hover:shadow-[0_0_30px_rgba(191,87,0,0.3)]">
                       <svg viewBox="0 0 24 24" fill="white" className="ml-1 h-8 w-8">
                         <path d="M8 5v14l11-7z" />
                       </svg>

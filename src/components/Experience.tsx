@@ -104,7 +104,7 @@ export default function Experience() {
                   </div>
                 </div>
 
-                <p className="text-bone/75 text-sm leading-relaxed max-w-3xl">{exp.description}</p>
+                <p className="text-bone/75 text-sm leading-7 max-w-3xl">{exp.description}</p>
 
                 {exp.tags && exp.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2 mt-3">

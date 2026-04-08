@@ -167,6 +167,40 @@
     }
     </script>
 
+    <!-- FAQ structured data (from AI concierge common questions) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Blaze Sports Intel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Blaze Sports Intel is a production sports analytics platform covering six leagues with live scores, park-adjusted sabermetrics, and original editorial for 330+ D1 college baseball programs. Built and maintained solo by Austin Humphrey on Cloudflare."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Austin Humphrey's tech stack?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cloudflare Workers (18 edge workers), D1/KV/R2 databases, Hono framework, Next.js 16 static export, React 19, TypeScript, Tailwind CSS, Playwright testing. 662 tests passing. All infrastructure on Cloudflare — no AWS, no Vercel."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I contact Austin Humphrey?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Email Austin@BlazeSportsIntel.com, connect on LinkedIn at linkedin.com/in/ahump20, or reach out on X at @BlazeSportsIntel. Austin reads every message directly."
+          }
+        }
+      ]
+    }
+    </script>
+
     <!-- Identity verification (IndieWeb rel=me) -->
     <link rel="me" href="https://linkedin.com/in/ahump20" />
     <link rel="me" href="https://github.com/ahump20" />

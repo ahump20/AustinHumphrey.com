@@ -119,6 +119,15 @@ export default function BSIShowcase() {
                 >
                   Live Scores
                 </a>
+                <a
+                  href="https://blazesportsintel.com/college-baseball/savant"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => window.posthog?.capture('bsi_savant_clicked')}
+                  className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-warm-gray/50 hover:text-burnt-orange transition-colors duration-300"
+                >
+                  BSI Savant &rarr;
+                </a>
                 <PlatformStatus />
               </div>
             </motion.div>

@@ -89,6 +89,12 @@ export default function Hero() {
           Built Blaze Sports Intel solo — live analytics, park-adjusted
           sabermetrics, and original editorial for 330 D1 college baseball
           programs. Six leagues. One builder.
+          <motion.span
+            className="inline-block w-0.5 h-5 bg-burnt-orange/70 ml-1 align-middle"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: [1, 0, 1, 0, 1, 0] }}
+            transition={{ duration: 3, delay: 1.5, times: [0, 0.1, 0.2, 0.3, 0.4, 1] }}
+          />
         </motion.p>
 
         <motion.div

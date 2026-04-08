@@ -1,6 +1,13 @@
 import { PLATFORM_URLS, PRIMARY_EMAIL } from './site';
 
-export const AI_CHAT_GREETING = 'Austin Humphrey — builder, BSI architect, Texas-born. Ask me anything.';
+function getTimeGreeting(): string {
+  const hour = new Date().getHours();
+  if (hour < 12) return 'Good morning';
+  if (hour < 17) return 'Good afternoon';
+  return 'Good evening';
+}
+
+export const AI_CHAT_GREETING = `${getTimeGreeting()}. Austin Humphrey — builder, BSI architect, Texas-born. Ask me anything.`;
 
 export const AI_CHAT_SUGGESTED_PROMPTS = [
   'What is BSI?',

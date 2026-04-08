@@ -82,7 +82,7 @@ export default function InfraProof() {
 
           <motion.p
             variants={staggerItem}
-            className="text-center text-warm-gray/60 text-sm font-mono mt-10 max-w-2xl mx-auto"
+            className="text-center text-warm-gray/60 hover:text-warm-gray/80 text-sm font-mono mt-10 max-w-2xl mx-auto transition-colors duration-500 cursor-default"
           >
             All infrastructure on Cloudflare. No AWS. No Vercel. No external databases.
             One constraint that forces simplicity.

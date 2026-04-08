@@ -28,7 +28,7 @@ const SCREENSHOTS: Record<string, { small: string; large: string }> = {
 
 function LiveBadge() {
   return (
-    <span className="flex items-center gap-1.5 text-[0.6rem] font-mono text-emerald-400 uppercase tracking-widest">
+    <span className="flex items-center gap-1.5 text-[0.6rem] font-mono text-emerald-400 uppercase tracking-widest" title="Running in production right now">
       <span className="relative flex h-2 w-2">
         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
         <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />

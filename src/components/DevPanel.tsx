@@ -1,8 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function DevPanel() {
   const [open, setOpen] = useState(false);
+  const loadTime = useRef('');
+  if (!loadTime.current && typeof performance !== 'undefined') {
+    const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+    if (nav) loadTime.current = `${Math.round(nav.domContentLoadedEventEnd)}ms`;
+  }
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -35,6 +40,7 @@ export default function DevPanel() {
             <p>React 18 · TypeScript · Tailwind 3</p>
             <p>Framer Motion · Vite 5</p>
             <p>Cloudflare Pages · 65KB gzipped</p>
+            {loadTime.current && <p>DOM ready: {loadTime.current}</p>}
             <p className="text-burnt-orange/50 pt-1">Built solo. Press ` to close.</p>
           </div>
         </motion.div>

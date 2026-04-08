@@ -8,6 +8,7 @@ const schools = [
     detail: 'Graduated February 2026 | GPA: 3.56',
     bgAccent: 'bg-ember',
     textAccent: 'text-ember',
+    focus: ['Sports Analytics', 'Media Strategy', 'Revenue Models'],
   },
   {
     degree: 'AI & Machine Learning Postgraduate Certificate',
@@ -15,6 +16,7 @@ const schools = [
     detail: 'Accepted and currently in progress',
     bgAccent: 'bg-burnt-orange',
     textAccent: 'text-burnt-orange',
+    focus: ['Python', 'Machine Learning', 'Neural Networks', 'NLP', 'Statistics'],
   },
   {
     degree: 'B.A. International Relations & Global Studies',
@@ -22,6 +24,7 @@ const schools = [
     detail: '2014 – 2020 | Minors: Economics, European Studies',
     bgAccent: 'bg-burnt-orange',
     textAccent: 'text-burnt-orange',
+    focus: ['Economics', 'European Studies', 'Policy Analysis'],
   },
 ];
 
@@ -61,6 +64,19 @@ export default function Education() {
                 </h3>
                 <p className={`font-semibold text-sm mb-2 ${s.textAccent}`}>{s.school}</p>
                 <p className="text-sm font-mono text-warm-gray">{s.detail}</p>
+
+                {s.focus && s.focus.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mt-3">
+                    {s.focus.map((f) => (
+                      <span
+                        key={f}
+                        className="text-[0.5rem] font-mono uppercase tracking-widest text-warm-gray/50 border border-bone/8 rounded-sm px-1.5 py-0.5"
+                      >
+                        {f}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
                 {/* Bottom accent line */}
                 <div

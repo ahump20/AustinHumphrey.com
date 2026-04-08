@@ -220,6 +220,7 @@ export default function Proof() {
                     controls={playing}
                     preload="metadata"
                     playsInline
+                    poster="/assets/speaking-poster.jpg"
                     aria-label="Talking Sports: The Analytical Lens"
                     className="h-full w-full object-cover"
                     onPlay={() => setPlaying(true)}

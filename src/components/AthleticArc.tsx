@@ -30,6 +30,20 @@ const photos = [
     aspect: 'wide' as const,
     featured: false,
   },
+  {
+    src: '/assets/ballpark-kids.jpg',
+    srcSet: '/assets/optimized/ballpark-kids-640w.webp 640w, /assets/optimized/ballpark-kids-1024w.webp 1024w',
+    alt: 'Ballpark days — where it started',
+    aspect: 'wide' as const,
+    featured: false,
+  },
+  {
+    src: '/assets/titans-halloween.jpg',
+    srcSet: '/assets/optimized/titans-halloween-640w.webp 640w, /assets/optimized/titans-halloween-1024w.webp 1024w',
+    alt: 'Remember the Titans — Halloween, always football',
+    aspect: 'tall' as const,
+    featured: false,
+  },
 ];
 
 export default function AthleticArc() {

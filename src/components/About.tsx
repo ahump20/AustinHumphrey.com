@@ -143,6 +143,15 @@ export default function About() {
               </blockquote>
             </div>
           </motion.div>
+
+          {/* Closing photo — family milestone */}
+          <motion.div variants={staggerItem} className="mt-8">
+            <PhotoCard
+              src="/assets/nana-graduation.jpg"
+              srcSet="/assets/optimized/nana-graduation-640w.webp 640w, /assets/optimized/nana-graduation-1024w.webp 1024w"
+              alt="Graduation day with Nana — Full Sail University, 2026"
+            />
+          </motion.div>
         </motion.div>
       </div>
     </section>

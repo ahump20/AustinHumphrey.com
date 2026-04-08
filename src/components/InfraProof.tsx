@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { staggerContainer, staggerItem } from '../utils/animations';
 import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
@@ -27,7 +28,24 @@ function InfraStat({ value, label, suffix }: { value: number; label: string; suf
   );
 }
 
+function useHealthPing() {
+  const [ago, setAgo] = useState('');
+  useEffect(() => {
+    fetch('https://blazesportsintel.com/api/health')
+      .then(r => r.json())
+      .then((d: { timestamp?: string }) => {
+        if (d.timestamp) {
+          const diff = Math.round((Date.now() - new Date(d.timestamp).getTime()) / 1000);
+          setAgo(diff < 60 ? 'just now' : `${Math.round(diff / 60)}m ago`);
+        }
+      })
+      .catch(() => setAgo(''));
+  }, []);
+  return ago;
+}
+
 export default function InfraProof() {
+  const healthAgo = useHealthPing();
   return (
     <section
       id="infrastructure"
@@ -68,6 +86,21 @@ export default function InfraProof() {
             All infrastructure on Cloudflare. No AWS. No Vercel. No external databases.
             One constraint that forces simplicity.
           </motion.p>
+
+          {healthAgo && (
+            <motion.p
+              variants={staggerItem}
+              className="text-center mt-4"
+            >
+              <span className="inline-flex items-center gap-2 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-emerald-400/70">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                </span>
+                Production health checked {healthAgo}
+              </span>
+            </motion.p>
+          )}
         </motion.div>
       </div>
     </section>

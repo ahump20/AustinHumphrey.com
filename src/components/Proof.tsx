@@ -137,7 +137,7 @@ export default function Proof() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => window.posthog?.capture('editorial_clicked', { title: piece.title })}
-                className="group grid gap-4 border-b border-bone/5 py-4 md:grid-cols-[9rem_minmax(0,1fr)_1.5rem]"
+                className="group grid gap-4 border-b border-bone/5 py-4 md:grid-cols-[7.5rem_minmax(0,1fr)_1.5rem]"
               >
                 <span className="font-mono text-[0.58rem] uppercase tracking-[0.24em] text-burnt-orange/85">
                   {piece.tag}

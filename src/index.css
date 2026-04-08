@@ -70,6 +70,8 @@
 
   body {
     @apply font-serif;
+    font-size: 17px;
+    line-height: 1.65;
     background-color: var(--color-bg);
     color: var(--color-text);
     overflow-x: hidden;
@@ -616,6 +618,10 @@
 }
 
 /* ─── InfraProof ─── */
+.infra-dot-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(191,87,0,0.04) 1px, transparent 0);
+  background-size: 32px 32px;
+}
 .infra-stat-value {
   font-size: clamp(2.5rem, 5vw, 4rem);
 }

@@ -16,8 +16,8 @@ function InfraStat({ value, label, suffix }: { value: number; label: string; suf
   const [ref, displayValue] = useAnimatedCounter(value, 1400);
 
   return (
-    <div className="text-center" ref={ref as React.RefObject<HTMLDivElement>}>
-      <p className="font-sans font-bold text-bone leading-none infra-stat-value" aria-hidden="true">
+    <div className="text-center group cursor-default hover:scale-105 transition-transform duration-300" ref={ref as React.RefObject<HTMLDivElement>}>
+      <p className="font-sans font-bold text-bone leading-none infra-stat-value group-hover:text-burnt-orange transition-colors duration-300" aria-hidden="true">
         {displayValue}
         <span className="text-burnt-orange">{suffix}</span>
       </p>

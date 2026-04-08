@@ -14,7 +14,10 @@ export default function DevPanel() {
       if (e.key === '`' && !e.ctrlKey && !e.metaKey) {
         const tag = (e.target as HTMLElement)?.tagName;
         if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-        setOpen((prev) => !prev);
+        setOpen((prev) => {
+          if (!prev) window.posthog?.capture('dev_panel_opened');
+          return !prev;
+        });
       }
     };
     window.addEventListener('keydown', handler);

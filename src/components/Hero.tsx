@@ -75,13 +75,18 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.55, ease: EASE_OUT_EXPO }}
               className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
             >
-              <a href="#projects" className="btn-primary">
+              <a
+                href="#projects"
+                onClick={() => window.posthog?.capture('hero_cta_clicked', { cta: 'see_work' })}
+                className="btn-primary"
+              >
                 See What I've Built
               </a>
               <a
                 href={RESUME_PATH}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => window.posthog?.capture('hero_cta_clicked', { cta: 'resume' })}
                 className="btn-outline gradient-border-hover"
               >
                 Resume

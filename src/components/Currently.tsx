@@ -43,7 +43,7 @@ export default function Currently() {
             {CURRENT_WORK.map((item) => (
               <div
                 key={item.label}
-                className="flex items-start gap-3 py-3 px-2 -mx-2 rounded-sm border-b border-bone/5 last:border-0 hover:bg-bone/[0.02] transition-colors duration-300"
+                className="flex items-start gap-3 py-3 px-2 -mx-2 rounded-sm border-b border-bone/5 last:border-0 hover:bg-bone/[0.02] hover:-translate-y-px transition-all duration-300"
               >
                 <span className="shrink-0 font-mono text-[0.6rem] uppercase tracking-[0.25em] text-burnt-orange mt-1 w-20 flex items-center gap-1.5">
                   {item.label}

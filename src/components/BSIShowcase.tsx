@@ -111,6 +111,14 @@ export default function BSIShowcase() {
                 >
                   Visit BSI
                 </a>
+                <a
+                  href="https://blazesportsintel.com/scores"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline"
+                >
+                  Live Scores
+                </a>
                 <PlatformStatus />
               </div>
             </motion.div>

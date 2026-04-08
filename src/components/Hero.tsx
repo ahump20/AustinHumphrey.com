@@ -111,7 +111,7 @@ export default function Hero() {
           >
             Blaze Sports Intel
           </a>
-          <a href="#projects" className="btn-outline">
+          <a href="#projects" className="btn-outline gradient-border-hover">
             See the Work
           </a>
         </motion.div>

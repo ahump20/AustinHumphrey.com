@@ -47,21 +47,23 @@ export default function Philosophy() {
 
           <motion.blockquote variants={staggerItem} className="mb-12">
             <p className="font-display italic text-bone/90 text-3xl md:text-5xl leading-relaxed mb-6">
-              "For me, personally, I believe Texas is how you choose to treat
-              the best and worst of us."
+              "Sports are my passion. People are my purpose."
             </p>
             <footer className="text-sm font-mono text-burnt-orange">— Austin Humphrey</footer>
           </motion.blockquote>
 
           <motion.div variants={staggerItem} className="text-warm-gray text-lg leading-relaxed space-y-6 text-left max-w-2xl mx-auto">
             <p>
-              It's a covenant with oneself and the company one keeps, to never stop dreaming
-              beyond the horizon, regardless of race, ethnicity, religion, or even birth soil.
+              The games were never just games. They were the first place I learned
+              what showing up means — for teammates, for communities, for the people
+              in the stands who needed something to believe in on a Friday night.
             </p>
             <p>
-              The land doesn't care about your resume. The wind doesn't read your LinkedIn.
-              What matters is whether you showed up when it was hard, stayed when it was
-              thankless, and built something that outlasts the news cycle.
+              Everything I build starts there. Not with the technology, not with
+              the data — with the people on the other side of it. The athletes
+              nobody's covering. The programs outside the spotlight. The fans
+              who care deeply about something the mainstream decided wasn't worth
+              their attention.
             </p>
           </motion.div>
 
@@ -72,7 +74,7 @@ export default function Philosophy() {
           >
             <p className="font-sans font-bold uppercase tracking-[0.2em] text-xl md:text-2xl">
               <span className="relative inline-block">
-                <span className="text-burnt-orange">It's not where you're from.</span>
+                <span className="text-burnt-orange">Sports are the vehicle.</span>
                 <motion.span
                   className="absolute -bottom-1 left-0 h-0.5 bg-burnt-orange"
                   initial={{ width: 0 }}
@@ -82,7 +84,7 @@ export default function Philosophy() {
                 />
               </span>
               <br />
-              <span className="text-bone mt-1 block">It's how you show up.</span>
+              <span className="text-bone mt-1 block">People are the point.</span>
             </p>
           </motion.div>
 

@@ -51,9 +51,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35, ease: EASE_OUT_EXPO }}
-              className="font-sans font-semibold text-burnt-orange uppercase tracking-[0.2em] text-sm mb-8"
+              className="font-display italic text-burnt-orange text-lg md:text-xl mb-8"
             >
-              Born to Blaze the Path Beaten Less
+              Sports are my passion. People are my purpose.
             </motion.p>
 
             <motion.p
@@ -62,11 +62,10 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.4, ease: EASE_OUT_EXPO }}
               className="text-bone/85 text-lg md:text-xl max-w-xl mb-10 leading-relaxed mx-auto md:mx-0"
             >
-              I build real products that real people use — from the first commit
-              to the live deployment. Strategy, full-stack engineering, data,
-              and design. Solo-shipped a live analytics platform covering six
-              professional and college sports leagues on Cloudflare's global
-              network.
+              I build technology that connects people to the games and athletes
+              they care about — strategy, engineering, data, and design from the
+              ground up. Solo-shipped a live analytics platform covering six
+              professional and college sports leagues.
             </motion.p>
 
             <motion.div

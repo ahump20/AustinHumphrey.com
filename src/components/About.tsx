@@ -67,8 +67,8 @@ export default function About() {
               Born in Memphis. Rooted in Texas Soil.
             </h2>
             <p className="editorial-lead max-w-3xl">
-              Texas was never a backdrop. It was the standard behind the family, the sports, the
-              identity, and eventually the work.
+              Texas was never a backdrop. It was the standard behind the family, the sports,
+              and the conviction that what you build should serve the people around you.
             </p>
           </motion.div>
 

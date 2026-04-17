@@ -552,3 +552,360 @@ a.btn-editorial:hover,
 a.btn-editorial:focus {
   text-decoration: none !important;
 }
+
+/* ══════════════════════════════════════════════════════════════
+   V2 GRAPHIC DEVICES — color blocks, stamps, stat callouts,
+   pull quotes, polaroid photo treatment, section bars, timeline
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Full-width burnt-orange section bar ── */
+.section-bar {
+  background: var(--accent-burnt);
+  color: var(--paper);
+  padding: 1.75rem clamp(1.5rem, 5vw, 4rem);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  border-top: 3px solid var(--ink-strong);
+  border-bottom: 3px solid var(--ink-strong);
+  position: relative;
+}
+.section-bar__numeral {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+.section-bar__title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-variation-settings: 'opsz' 96, 'SOFT' 30;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  margin: 0;
+  color: var(--paper);
+}
+.section-bar__title em {
+  font-style: italic;
+  font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1;
+}
+.section-bar__kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .section-bar { flex-direction: column; align-items: flex-start; gap: 0.75rem; padding: 1.25rem 1.25rem; }
+  .section-bar__kicker { white-space: normal; }
+}
+
+/* ── Burnt-orange stamp (rotated slightly, badge-like) ── */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  background: var(--accent-burnt);
+  color: var(--paper);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 2px solid var(--ink-strong);
+  position: relative;
+  line-height: 1;
+}
+.stamp--rotated { transform: rotate(-2deg); }
+.stamp--outline {
+  background: transparent;
+  color: var(--accent-burnt);
+  border-color: var(--accent-burnt);
+}
+.stamp__dot {
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+  display: inline-block;
+}
+.ink-ground .stamp--outline { color: var(--accent-ember); border-color: var(--accent-ember); }
+
+/* ── Stat callout (big Fraunces numeral + mono kicker) ── */
+.stat-callout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.stat-callout__value {
+  font-family: 'Fraunces', Georgia, serif;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;
+  font-weight: 500;
+  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--accent-burnt);
+  font-variant-numeric: tabular-nums;
+}
+.stat-callout__label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-mute);
+}
+.ink-ground .stat-callout__label { color: var(--bone-mute); }
+.stat-callout--ink .stat-callout__value { color: var(--bone); }
+.stat-callout--emerald .stat-callout__value { color: var(--accent-emerald); }
+
+/* ── Pull quote with decorative orange quote glyph ── */
+.pull-quote-v2 {
+  position: relative;
+  padding: 2rem 0 2rem 4rem;
+  margin: 3rem 0;
+}
+.pull-quote-v2::before {
+  content: '\201C';
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 7rem;
+  line-height: 1;
+  color: var(--accent-burnt);
+  opacity: 0.95;
+}
+.pull-quote-v2__text {
+  font-family: 'Fraunces', Georgia, serif;
+  font-variation-settings: 'opsz' 48, 'SOFT' 40;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+  line-height: 1.38;
+  letter-spacing: -0.005em;
+  max-width: 52ch;
+}
+.pull-quote-v2__cite {
+  display: block;
+  margin-top: 1.25rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-style: normal;
+  color: var(--ink-mute);
+}
+.ink-ground .pull-quote-v2__cite { color: var(--bone-mute); }
+
+/* ── Polaroid photo card (personal photo treatment) ── */
+.polaroid-v2 {
+  background: var(--paper);
+  padding: 0.65rem 0.65rem 1.75rem 0.65rem;
+  box-shadow:
+    0 2px 6px rgba(15, 10, 5, 0.25),
+    0 12px 28px -8px rgba(15, 10, 5, 0.35),
+    0 1px 0 rgba(255, 255, 255, 0.4) inset;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.polaroid-v2--rotated { transform: rotate(-1.5deg); }
+.polaroid-v2 img { width: 100%; height: auto; display: block; }
+.polaroid-v2__caption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+/* ── Three-axis card (discipline card for Sports / Ent. Biz / AI) ── */
+.axis-card {
+  background: var(--ink-ground-elev);
+  border: 1px solid var(--ink-ground-margin);
+  padding: 2rem 2rem 2.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.axis-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--accent-burnt);
+}
+.axis-card:hover {
+  border-color: rgba(232, 106, 45, 0.4);
+  transform: translateY(-2px);
+}
+.axis-card__numeral {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent-ember);
+  font-weight: 500;
+}
+.axis-card__title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-variation-settings: 'opsz' 48, 'SOFT' 30;
+  font-weight: 500;
+  font-size: 1.75rem;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--bone);
+  margin: 0;
+}
+.axis-card__desc {
+  font-family: 'Fraunces', Georgia, serif;
+  font-variation-settings: 'opsz' 14;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--bone-mute);
+  margin: 0;
+}
+.axis-card__proof {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ink-ground-margin);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-ember);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.axis-card__proof:hover {
+  color: var(--accent-burnt);
+}
+
+/* ── Timeline rule + nodes (Professional Experience) ── */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.4rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent-burnt);
+  opacity: 0.8;
+}
+.timeline-node {
+  position: relative;
+  margin-bottom: 3rem;
+}
+.timeline-node:last-child { margin-bottom: 0; }
+.timeline-node::before {
+  content: '';
+  position: absolute;
+  left: -1.85rem;
+  top: 0.3rem;
+  width: 1rem;
+  height: 1rem;
+  background: var(--accent-burnt);
+  border: 2px solid var(--ink-ground);
+  transform: rotate(45deg);
+}
+.timeline-node__years {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-ember);
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+}
+.timeline-node__role {
+  font-family: 'Fraunces', Georgia, serif;
+  font-variation-settings: 'opsz' 32, 'SOFT' 30;
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--bone);
+  margin: 0 0 0.2rem;
+}
+.timeline-node__employer {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  margin-bottom: 0.8rem;
+}
+.timeline-node__body {
+  font-family: 'Fraunces', Georgia, serif;
+  font-variation-settings: 'opsz' 14;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--bone-mute);
+  max-width: 52ch;
+  margin: 0;
+}
+.timeline-node__accolade {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.3rem 0.65rem;
+  background: rgba(191, 87, 0, 0.15);
+  border: 1px solid var(--accent-burnt);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-ember);
+  font-weight: 500;
+}
+
+/* ── Masthead rule (newspaper-style top bar) ── */
+.masthead-rule {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem clamp(1.5rem, 5vw, 4rem);
+  border-top: 6px solid var(--accent-burnt);
+  border-bottom: 1px solid var(--margin-rule);
+  background: var(--paper);
+  margin-top: 4.5rem;
+}
+.masthead-rule__volume,
+.masthead-rule__date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.masthead-rule__rule {
+  flex: 1;
+  height: 1px;
+  background: var(--margin-rule);
+}
+@media (max-width: 640px) {
+  .masthead-rule { padding: 0.6rem 1.25rem; margin-top: 4.5rem; }
+  .masthead-rule__volume { font-size: 0.55rem; letter-spacing: 0.18em; }
+  .masthead-rule__date { display: none; }
+}

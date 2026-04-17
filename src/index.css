@@ -262,18 +262,20 @@
            transition-all duration-300 cursor-pointer inline-block text-center;
   }
 
-  /* ── Link styling: burnt-orange with hover/focus states ── */
-  a:not(.btn-primary):not(.btn-outline):not(.skip-link):not([class*="group"]):not([class*="nav"]):not([class*="card"]):not([class*="text-bone"]) {
+  /* ── Link styling: burnt-orange with hover/focus states.
+       V2 exclusions: editorial buttons (.btn-editorial, .btn-editorial-solid, .ed-*)
+       must not inherit the accent color — they manage their own text color. ── */
+  a:not(.btn-primary):not(.btn-outline):not(.btn-editorial):not(.btn-editorial-solid):not(.skip-link):not([class*="group"]):not([class*="nav"]):not([class*="card"]):not([class*="text-bone"]):not([class*="ed-"]):not([class*="axis-card"]):not([class*="section-bar"]):not([class*="stamp"]):not([class*="timeline"]) {
     color: var(--color-accent);
     text-decoration: none;
     transition: color 0.2s ease, text-decoration-color 0.2s ease;
   }
-  a:not(.btn-primary):not(.btn-outline):not(.skip-link):not([class*="group"]):not([class*="nav"]):not([class*="card"]):not([class*="text-bone"]):hover {
+  a:not(.btn-primary):not(.btn-outline):not(.btn-editorial):not(.btn-editorial-solid):not(.skip-link):not([class*="group"]):not([class*="nav"]):not([class*="card"]):not([class*="text-bone"]):not([class*="ed-"]):not([class*="axis-card"]):not([class*="section-bar"]):not([class*="stamp"]):not([class*="timeline"]):hover {
     color: #FF6B35;
     text-decoration: underline;
     text-underline-offset: 3px;
   }
-  a:not(.btn-primary):not(.btn-outline):not(.skip-link):focus-visible {
+  a:not(.btn-primary):not(.btn-outline):not(.btn-editorial):not(.btn-editorial-solid):not(.skip-link):focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
     border-radius: 2px;

@@ -7,7 +7,7 @@ function getTimeGreeting(): string {
   return 'Good evening';
 }
 
-export const AI_CHAT_GREETING = `${getTimeGreeting()}. Austin Humphrey — builder, BSI architect, Texas-born. Ask me anything.`;
+export const AI_CHAT_GREETING = `${getTimeGreeting()}. Austin Humphrey — builder, writer, strategist. Texas-based. Ask me anything.`;
 
 export const AI_CHAT_SUGGESTED_PROMPTS = [
   'What is BSI?',
@@ -53,7 +53,7 @@ export const AI_CHAT_FALLBACK_RESPONSES: Array<{
   {
     keywords: ['experience', 'work', 'job', 'career', 'spectrum', 'northwestern'],
     response:
-      'Founder & Builder at BSI (2023–present). Before that: Advertising Account Executive at Spectrum Reach covering Austin/San Antonio (2022–2025) — linear TV, OTT/CTV, streaming, digital. Financial Representative at Northwestern Mutual (2020–2022) — "Power of 10" Award for top 10% nationally.',
+      'Professional experience: Advertising Account Executive at Spectrum Reach covering Austin/San Antonio (2022–2025) — linear TV, OTT/CTV, streaming, digital. Financial Representative at Northwestern Mutual (2020–2022) — "Power of 10" Award for top 10% nationally. Alongside: Blaze Sports Intel is a passion project — a sports intelligence platform built and maintained solo since 2023.',
   },
   {
     keywords: ['philosophy', 'covenant', 'believe', 'values', 'crockett'],

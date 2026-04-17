@@ -5,9 +5,77 @@ type SiteLink = {
 };
 
 export const SITE_TAGLINE = 'Born to Blaze the Path Beaten Less';
-export const SITE_LOCATION = 'San Antonio, Texas';
+export const SITE_LOCATION = 'Boerne, Texas';
 export const RESUME_PATH = '/Austin_Humphrey_Resume.pdf';
 export const PRIMARY_EMAIL = 'Austin@BlazeSportsIntel.com';
+
+/* V2 — Professional Experience timeline */
+export const PROFESSIONAL_EXPERIENCE = [
+  {
+    years: '2022 – 2025',
+    role: 'Advertising Account Executive',
+    employer: 'Spectrum Reach · Austin, TX',
+    body:
+      'Data-informed advertising strategies across linear TV, OTT/CTV, streaming, and digital for local and regional clients. Translated campaign performance into insights that drove renewals and strategic upsells. Three years turning numbers into decisions.',
+    accolade: null as string | null,
+  },
+  {
+    years: '2020 – 2022',
+    role: 'Financial Representative',
+    employer: 'Northwestern Mutual · San Antonio, TX',
+    body:
+      'Top-5 intern program. Converted to full-time advising role. Comprehensive financial plans through structured modeling, prospecting discipline, and consultative client relationships.',
+    accolade: 'Power of 10 · Top 10% Nationally',
+  },
+];
+
+/* V2 — Three Discipline Axes */
+export const DISCIPLINE_AXES = [
+  {
+    numeral: '01',
+    title: 'Sports Intelligence',
+    desc:
+      'Solo build on Cloudflare since 2023 — live scores, park-adjusted sabermetrics, and original editorial across MLB, NFL, NCAA football, NBA, and Division I college baseball. The work that demonstrates the craft under real deadlines.',
+    proofLabel: 'See the platform',
+    proofHref: '#bsi',
+  },
+  {
+    numeral: '02',
+    title: 'Entertainment Business',
+    desc:
+      'M.S. in Entertainment Business — Sports Management, Full Sail University (Feb 2026, 3.56 GPA). Twelve MBA-adjacent courses covering leadership, marketing, finance, legal, and operations — applied to sports industry strategy.',
+    proofLabel: 'See the coursework',
+    proofHref: '#education',
+  },
+  {
+    numeral: '03',
+    title: 'Applied AI',
+    desc:
+      'Two years hands-on with Claude, Gemini, and ChatGPT. Deployed systems — sports data ingestion pipelines, editorial workflows, agentic prompting patterns. Formal grounding via UT Austin McCombs AI/ML postgrad (in progress).',
+    proofLabel: 'See the AI practice',
+    proofHref: '#ai-practice',
+  },
+];
+
+/* V2 Hero Masthead content — firewalled positioning */
+export const HERO_V2 = {
+  dateline: 'Volume One · Portfolio Edition · Boerne, Texas',
+  roles: ['Builder', 'Writer', 'Strategist'] as const,
+  disciplines: 'Sports intelligence · Entertainment business · Applied AI',
+  lede:
+    'Four years of professional experience across advertising strategy and financial advising. Two years hands-on with Claude, Gemini, and ChatGPT. One sports intelligence platform — Blaze Sports Intel — built and maintained solo as a passion project.',
+  kickerStats: [
+    { value: '4', label: 'Years Professional' },
+    { value: '2', label: 'Years Applied AI' },
+    { value: '3', label: 'Active Disciplines' },
+  ],
+  colophon: [
+    { label: 'Based', value: 'Boerne, Texas' },
+    { label: 'Experience', value: 'Spectrum Reach · Northwestern Mutual' },
+    { label: 'Passion Project', value: 'Blaze Sports Intel' },
+    { label: 'AI Practice', value: 'Claude · Gemini · ChatGPT' },
+  ],
+};
 
 export const PLATFORM_URLS = {
   bsi: 'https://blazesportsintel.com',
@@ -23,11 +91,12 @@ export const PLATFORM_URLS = {
 
 export const NAV_ITEMS = [
   { id: 'hero', label: 'Home' },
-  { id: 'projects', label: 'Work' },
-  { id: 'proof', label: 'Proof' },
-  { id: 'bsi', label: 'BSI' },
-  { id: 'origin', label: 'Origin' },
+  { id: 'disciplines', label: 'Axes' },
   { id: 'experience', label: 'Experience' },
+  { id: 'bsi', label: 'BSI' },
+  { id: 'ai-practice', label: 'AI' },
+  { id: 'proof', label: 'Proof' },
+  { id: 'origin', label: 'Origin' },
   { id: 'contact', label: 'Contact' },
 ] as const;
 

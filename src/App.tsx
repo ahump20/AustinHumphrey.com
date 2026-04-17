@@ -4,6 +4,7 @@ import { useScrollDepth } from './hooks/useScrollDepth';
 import ErrorBoundary from './components/ErrorBoundary';
 import Navigation from './components/Navigation';
 import HeroMasthead from './components/HeroMasthead';
+import DisciplineAxes from './components/DisciplineAxes';
 import Projects from './components/Projects';
 import Proof from './components/Proof';
 import BSIShowcase from './components/BSIShowcase';

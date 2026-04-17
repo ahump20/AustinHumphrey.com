@@ -9,6 +9,34 @@ export const SITE_LOCATION = 'Boerne, Texas';
 export const RESUME_PATH = '/Austin_Humphrey_Resume.pdf';
 export const PRIMARY_EMAIL = 'Austin@BlazeSportsIntel.com';
 
+/* V2 — Three Discipline Axes */
+export const DISCIPLINE_AXES = [
+  {
+    numeral: '01',
+    title: 'Sports Intelligence',
+    desc:
+      'Solo build on Cloudflare since 2023 — live scores, park-adjusted sabermetrics, and original editorial across MLB, NFL, NCAA football, NBA, and Division I college baseball. The work that demonstrates the craft under real deadlines.',
+    proofLabel: 'See the platform',
+    proofHref: '#bsi',
+  },
+  {
+    numeral: '02',
+    title: 'Entertainment Business',
+    desc:
+      'M.S. in Entertainment Business — Sports Management, Full Sail University (Feb 2026, 3.56 GPA). Twelve MBA-adjacent courses covering leadership, marketing, finance, legal, and operations — applied to sports industry strategy.',
+    proofLabel: 'See the coursework',
+    proofHref: '#education',
+  },
+  {
+    numeral: '03',
+    title: 'Applied AI',
+    desc:
+      'Two years hands-on with Claude, Gemini, and ChatGPT. Deployed systems — sports data ingestion pipelines, editorial workflows, agentic prompting patterns. Formal grounding via UT Austin McCombs AI/ML postgrad (in progress).',
+    proofLabel: 'See the AI practice',
+    proofHref: '#ai-practice',
+  },
+];
+
 /* V2 Hero Masthead content — firewalled positioning */
 export const HERO_V2 = {
   dateline: 'Volume One · Portfolio Edition · Boerne, Texas',

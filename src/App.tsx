@@ -5,16 +5,13 @@ import ErrorBoundary from './components/ErrorBoundary';
 import Navigation from './components/Navigation';
 import HeroMasthead from './components/HeroMasthead';
 import DisciplineAxes from './components/DisciplineAxes';
-import Projects from './components/Projects';
+import ProfessionalExperience from './components/ProfessionalExperience';
+import PassionProjectBSI from './components/PassionProjectBSI';
+import AppliedAI from './components/AppliedAI';
 import Proof from './components/Proof';
-import BSIShowcase from './components/BSIShowcase';
-import InfraProof from './components/InfraProof';
 import AthleticArc from './components/AthleticArc';
 import About from './components/About';
-import Experience from './components/Experience';
-import Skills from './components/Skills';
 import Education from './components/Education';
-import Currently from './components/Currently';
 import Philosophy from './components/Philosophy';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -75,48 +72,39 @@ function App() {
           {/* Page turn — paper → ink */}
           <div className="paper-to-ink-seam" aria-hidden="true" />
 
-          {/* Chapter I — Index of Work */}
-          <Projects />
+          {/* Chapter I — The Three Axes (disciplines) */}
+          <DisciplineAxes />
+
+          {/* Chapter II — Professional Experience (listed FIRST to firewall
+              from passion project — Spectrum Reach + Northwestern Mutual) */}
+          <ProfessionalExperience />
+
+          {/* Chapter III — Passion Project: Blaze Sports Intel */}
+          <PassionProjectBSI />
+
+          {/* Chapter IV — Applied AI Practice */}
+          <AppliedAI />
 
           <div className="section-divider" />
 
-          {/* Chapter II — Published Proof */}
+          {/* Published writing + speaking reel */}
           <Proof />
-
-          <div className="section-divider" />
-
-          {/* Appendix — Blaze Sports Intel */}
-          <BSIShowcase />
-
-          <div className="section-divider" />
-
-          {/* Chapter III — Infrastructure / substantive numbers */}
-          <InfraProof />
 
           <div className="section-divider" />
 
           {/* Photo plates — Athletic Arc */}
           <AthleticArc />
 
-          {/* Origin narrative — warm seam from plates into biography */}
+          {/* Origin narrative — Texas soil ritual, 127-year tradition, Blaze the dog */}
           <div className="origin-bridge-shell">
             <div className="section-seam" />
             <About />
           </div>
 
-          {/* Career timeline */}
-          <Experience />
-
-          {/* Technical competencies */}
-          <Skills />
-
           {/* Academic foundation */}
           <Education />
 
           <div className="section-divider" />
-
-          {/* What Austin is building right now */}
-          <Currently />
 
           {/* Texas covenant — personal philosophy */}
           <Philosophy />

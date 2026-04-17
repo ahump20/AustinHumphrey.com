@@ -9,6 +9,26 @@ export const SITE_LOCATION = 'Boerne, Texas';
 export const RESUME_PATH = '/Austin_Humphrey_Resume.pdf';
 export const PRIMARY_EMAIL = 'Austin@BlazeSportsIntel.com';
 
+/* V2 — Professional Experience timeline */
+export const PROFESSIONAL_EXPERIENCE = [
+  {
+    years: '2022 – 2025',
+    role: 'Advertising Account Executive',
+    employer: 'Spectrum Reach · Austin, TX',
+    body:
+      'Data-informed advertising strategies across linear TV, OTT/CTV, streaming, and digital for local and regional clients. Translated campaign performance into insights that drove renewals and strategic upsells. Three years turning numbers into decisions.',
+    accolade: null as string | null,
+  },
+  {
+    years: '2020 – 2022',
+    role: 'Financial Representative',
+    employer: 'Northwestern Mutual · San Antonio, TX',
+    body:
+      'Top-5 intern program. Converted to full-time advising role. Comprehensive financial plans through structured modeling, prospecting discipline, and consultative client relationships.',
+    accolade: 'Power of 10 · Top 10% Nationally',
+  },
+];
+
 /* V2 — Three Discipline Axes */
 export const DISCIPLINE_AXES = [
   {
@@ -71,11 +91,12 @@ export const PLATFORM_URLS = {
 
 export const NAV_ITEMS = [
   { id: 'hero', label: 'Home' },
-  { id: 'projects', label: 'Work' },
-  { id: 'proof', label: 'Proof' },
-  { id: 'bsi', label: 'BSI' },
-  { id: 'origin', label: 'Origin' },
+  { id: 'disciplines', label: 'Axes' },
   { id: 'experience', label: 'Experience' },
+  { id: 'bsi', label: 'BSI' },
+  { id: 'ai-practice', label: 'AI' },
+  { id: 'proof', label: 'Proof' },
+  { id: 'origin', label: 'Origin' },
   { id: 'contact', label: 'Contact' },
 ] as const;
 

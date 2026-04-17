@@ -3,6 +3,21 @@ export default {
   theme: {
     extend: {
       colors: {
+        /* Editorial dual-ground palette */
+        'paper': '#ECE3D2',
+        'paper-deep': '#E1D6BF',
+        'paper-edge': '#C9BDA3',
+        'ink': '#1B1714',
+        'ink-strong': '#0E0B09',
+        'ink-mute': '#6B5F52',
+        'ink-ground': '#0B0908',
+        'ink-ground-elev': '#141110',
+        'bone-mute': '#B8AFA4',
+        'accent-burnt': '#BF5700',
+        'accent-ember': '#E86A2D',
+        'accent-emerald': '#1F4D46',
+        'accent-gold': '#C9A14A',
+        /* Legacy tokens retained for not-yet-rebuilt sections */
         'burnt-orange': '#BF5700',
         'texas-soil': '#8B4513',
         'charcoal': '#1A1A1A',
@@ -15,10 +30,10 @@ export default {
         'ato-gold': '#D4A843',
       },
       fontFamily: {
-        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
-        sans: ['Oswald', 'Arial Narrow', 'sans-serif'],
+        display: ['Fraunces', 'Cormorant Garamond', 'Georgia', 'serif'],
+        serif: ['Fraunces', 'Cormorant Garamond', 'Georgia', 'serif'],
         mono: ['JetBrains Mono', 'Menlo', 'monospace'],
-        display: ['Libre Baskerville', 'Georgia', 'serif'],
+        sans: ['Fraunces', 'Cormorant Garamond', 'serif'],
       },
       animation: {
         'gradient-shift': 'gradient-shift 6s ease infinite',

@@ -7,156 +7,236 @@ export default function Hero() {
     <section
       id="hero"
       aria-labelledby="hero-heading"
-      className="relative min-h-screen flex items-center overflow-hidden bg-midnight"
+      className="paper-ground relative overflow-hidden"
     >
-      {/* Subtle gradient mesh — atmosphere without distraction */}
-      <div className="absolute inset-0 pointer-events-none hero-gradient-mesh opacity-40" />
-      <div className="grain-overlay" />
+      {/* Masthead rule — thin burnt-orange tick under the nav */}
+      <div className="absolute top-0 left-0 right-0 z-10">
+        <div className="max-w-[86rem] mx-auto px-6 md:px-10 lg:px-16">
+          <div className="h-px w-full bg-margin" style={{ background: 'var(--margin-rule)' }} />
+        </div>
+      </div>
 
-      <div className="relative z-10 px-6 md:px-12 lg:px-16 max-w-6xl mx-auto w-full py-24 md:py-32">
-        <div className="grid md:grid-cols-[1fr_auto] gap-12 md:gap-16 items-center">
+      <div className="relative z-10 ed-section ed-container pt-28 md:pt-36">
+        <div className="ed-grid-asymmetric items-start">
 
-          {/* Text — who Austin is, for employers */}
-          <div className="order-2 md:order-1 text-center md:text-left">
+          {/* ── LEFT COLUMN — Book jacket copy block ── */}
+          <div className="flex flex-col">
+            {/* Dateline / edition */}
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.05, ease: EASE_OUT_EXPO }}
+              className="dateline"
+              aria-label="Edition"
+            >
+              Volume I &nbsp;·&nbsp; 2026 Edition &nbsp;·&nbsp; San Antonio, Texas
+            </motion.p>
+
+            {/* Rule with tick */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1, delay: 0.15, ease: EASE_OUT_EXPO }}
+              className="marginalia-rule"
+              style={{ transformOrigin: 'left' }}
+            />
+
+            {/* Kicker */}
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25, ease: EASE_OUT_EXPO }}
+              className="ed-kicker mb-6"
+            >
+              A Portfolio &nbsp;/&nbsp; A Record of Work
+            </motion.p>
+
+            {/* Nameplate — blocked spans, no mid-word breaks */}
+            <motion.h1
+              id="hero-heading"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.3, ease: EASE_OUT_EXPO }}
+              className="ed-display mb-4"
+              style={{
+                color: 'var(--ink-strong)',
+                fontSize: 'clamp(3.5rem, 9vw, 7rem)',
+                lineHeight: 0.98,
+              }}
+            >
+              <span style={{ display: 'block', whiteSpace: 'nowrap' }}>Austin</span>
+              <span
+                style={{
+                  display: 'block',
+                  whiteSpace: 'nowrap',
+                  fontStyle: 'italic',
+                  fontVariationSettings: '"opsz" 144, "SOFT" 100, "WONK" 1',
+                  color: 'var(--accent-burnt)',
+                  marginTop: '-0.08em',
+                }}
+              >
+                Humphrey
+              </span>
+            </motion.h1>
+
+            {/* Lede */}
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: EASE_OUT_EXPO }}
-              className="font-mono text-[0.6rem] uppercase tracking-[0.3em] text-burnt-orange/80 mb-6"
+              transition={{ duration: 0.7, delay: 0.45, ease: EASE_OUT_EXPO }}
+              className="ed-lede mb-8"
+              style={{ color: 'var(--ink)' }}
             >
-              San Antonio, TX &nbsp;&middot;&nbsp; UT Austin
+              Builder of sports intelligence. Writer of systems. Reader of games.
+              Raised on Memphis clay, shaped on the forty acres, still playing the
+              long season.
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20, letterSpacing: '0.15em' }}
-              animate={{ opacity: 1, y: 0, letterSpacing: '0.05em' }}
-              transition={{ duration: 0.9, delay: 0.2, ease: EASE_OUT_EXPO }}
-            >
-              <h1
-                id="hero-heading"
-                className="font-sans font-bold uppercase leading-[0.9] text-bone mb-6"
-                style={{ textShadow: '0 2px 30px rgba(0,0,0,0.5)' }}
-              >
-                <span className="block hero-first-name">Austin</span>
-                <span
-                  className="block text-burnt-orange hero-last-name"
-                  style={{ textShadow: '0 4px 50px rgba(191,87,0,0.3)' }}
-                >
-                  Humphrey
-                </span>
-              </h1>
-            </motion.div>
-
+            {/* Body paragraph — one pass, no vanity stats */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.35, ease: EASE_OUT_EXPO }}
-              className="font-display italic text-burnt-orange text-lg md:text-xl mb-8"
+              transition={{ duration: 0.7, delay: 0.6, ease: EASE_OUT_EXPO }}
+              className="ed-body mb-10"
+              style={{ color: 'var(--ink-mute)' }}
             >
-              Sports are my passion. People are my purpose.
+              This edition gathers the work into chapters — the platform I am
+              building, the pieces I have published, the program behind the
+              product, and the people the whole thing is for. Read as far as the
+              interest carries. The index at the end is there for the hurry.
             </motion.p>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4, ease: EASE_OUT_EXPO }}
-              className="text-bone/85 text-lg md:text-xl max-w-xl mb-10 leading-relaxed mx-auto md:mx-0"
-            >
-              I build technology that connects people to the games and athletes
-              they care about — strategy, engineering, data, and design from the
-              ground up. Solo-shipped a live analytics platform covering six
-              professional and college sports leagues.
-            </motion.p>
-
+            {/* CTA pair */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.55, ease: EASE_OUT_EXPO }}
-              className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+              transition={{ duration: 0.7, delay: 0.75, ease: EASE_OUT_EXPO }}
+              className="flex flex-col sm:flex-row gap-3"
             >
               <a
                 href="#projects"
-                onClick={() => window.posthog?.capture('hero_cta_clicked', { cta: 'see_work' })}
-                className="btn-primary"
+                onClick={() => window.posthog?.capture('hero_cta_clicked', { cta: 'index' })}
+                className="btn-editorial-solid ed-focus"
               >
-                See What I've Built
+                Turn to the Index
+                <span aria-hidden style={{ marginLeft: 2 }}>→</span>
               </a>
               <a
                 href={RESUME_PATH}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => window.posthog?.capture('hero_cta_clicked', { cta: 'resume' })}
-                className="btn-outline gradient-border-hover"
+                className="btn-editorial ed-focus"
+                style={{ color: 'var(--ink)' }}
               >
-                Resume
-              </a>
-            </motion.div>
-
-            {/* Scroll indicator */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1 }}
-              className="mt-16 hidden md:flex items-end justify-between"
-            >
-              <div>
-                <span
-                  className="inline-block font-mono text-[9px] tracking-[0.3em] uppercase"
-                  style={{ color: 'rgba(245,240,235,0.25)' }}
-                >
-                  Scroll
-                </span>
-                <div
-                  className="w-px h-8 mt-2"
-                  style={{ background: 'linear-gradient(to bottom, rgba(191,87,0,0.4), transparent)' }}
-                />
-              </div>
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const target = document.getElementById('contact');
-                  if (target) target.scrollIntoView({ behavior: 'smooth' });
-                  window.posthog?.capture('hero_get_in_touch_clicked');
-                }}
-                className="font-mono text-[9px] tracking-[0.2em] uppercase text-warm-gray/30 hover:text-burnt-orange transition-colors duration-300"
-              >
-                Get in touch &darr;
+                Curriculum Vitae
+                <span aria-hidden style={{ marginLeft: 2 }}>↗</span>
               </a>
             </motion.div>
           </div>
 
-          {/* Portrait — the professional headshot */}
+          {/* ── RIGHT COLUMN — Portrait as book jacket plate ── */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3, ease: EASE_OUT_EXPO }}
-            className="order-1 md:order-2 flex justify-center md:justify-end group"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.1, delay: 0.35, ease: EASE_OUT_EXPO }}
+            className="relative"
           >
-            <div className="relative">
-              {/* Burnt-orange accent glow */}
+            {/* Portrait plate with caption block below — held at generous margin */}
+            <figure className="editorial-figure m-0">
               <div
-                className="absolute -inset-1 rounded-sm opacity-20"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(191,87,0,0.4), transparent 60%)',
-                }}
-              />
-              <img
-                src="/assets/austin-headshot.webp"
-                alt="Austin Humphrey — builder, UT Austin graduate"
-                className="relative rounded-sm w-64 md:w-72 lg:w-80 shadow-2xl border border-bone/5"
-                loading="eager"
-                fetchPriority="high"
-                style={{
-                  filter: 'contrast(1.02) brightness(0.98)',
-                }}
-              />
-              {/* Corner marks */}
-              <div className="absolute top-0 left-0 w-5 h-5 border-t border-l border-burnt-orange/30 transition-all duration-500 group-hover:w-7 group-hover:h-7 group-hover:border-burnt-orange/50" />
-              <div className="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-burnt-orange/30 transition-all duration-500 group-hover:w-7 group-hover:h-7 group-hover:border-burnt-orange/50" />
+                className="portrait-frame"
+                style={{ aspectRatio: '4 / 5' }}
+              >
+                <img
+                  src="/assets/austin-headshot.webp"
+                  alt="Austin Humphrey, portrait"
+                  className="ed-portrait-breathe"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+              </div>
+              <figcaption className="mt-4">
+                Plate I &nbsp;·&nbsp; The Author &nbsp;·&nbsp; Humphrey, 2026
+              </figcaption>
+            </figure>
+
+            {/* Below-portrait three-column colophon — substantive, non-vanity */}
+            <div
+              className="grid grid-cols-3 gap-4 mt-8 pt-6"
+              style={{ borderTop: '1px solid var(--margin-rule)' }}
+            >
+              <div>
+                <p className="dateline mb-1">Role</p>
+                <p
+                  className="ed-h4"
+                  style={{
+                    fontSize: '0.95rem',
+                    fontVariationSettings: '"opsz" 18, "SOFT" 20',
+                    fontWeight: 500,
+                    color: 'var(--ink)',
+                    lineHeight: 1.3,
+                  }}
+                >
+                  Founder &amp; Builder
+                </p>
+              </div>
+              <div>
+                <p className="dateline mb-1">Program</p>
+                <p
+                  className="ed-h4"
+                  style={{
+                    fontSize: '0.95rem',
+                    fontVariationSettings: '"opsz" 18, "SOFT" 20',
+                    fontWeight: 500,
+                    color: 'var(--ink)',
+                    lineHeight: 1.3,
+                  }}
+                >
+                  Blaze Sports Intel
+                </p>
+              </div>
+              <div>
+                <p className="dateline mb-1">Formed</p>
+                <p
+                  className="ed-h4"
+                  style={{
+                    fontSize: '0.95rem',
+                    fontVariationSettings: '"opsz" 18, "SOFT" 20',
+                    fontWeight: 500,
+                    color: 'var(--ink)',
+                    lineHeight: 1.3,
+                  }}
+                >
+                  Texas &amp; Tennessee
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>
+
+        {/* Chapter transition — "continue reading" cue at bottom of hero */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.1 }}
+          className="flex items-center justify-between mt-20 md:mt-28 pt-6"
+          style={{ borderTop: '1px solid var(--margin-rule)' }}
+        >
+          <span className="dateline">Continue →</span>
+          <a
+            href="#projects"
+            onClick={(e) => {
+              e.preventDefault();
+              const target = document.getElementById('projects');
+              if (target) target.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="dateline ed-link ed-focus"
+            style={{ color: 'var(--ink)' }}
+          >
+            Chapter I &middot; The Index of Work
+          </a>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,15 +1,13 @@
+/* Editorial design system — Fraunces, paper/ink grounds, chapter rhythm
+   NOTE: @import must precede all other statements per CSS spec. */
+@import './styles/editorial.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Self-hosted fonts — eliminates Google Fonts CDN dependency */
-@font-face {
-  font-family: 'Oswald';
-  src: url('/fonts/oswald.woff2') format('woff2');
-  font-weight: 400 700;
-  font-style: normal;
-  font-display: swap;
-}
+/* Cormorant retained as body-serif fallback until every component is migrated to Fraunces */
 @font-face {
   font-family: 'Cormorant Garamond';
   src: url('/fonts/cormorant-400.woff2') format('woff2');
@@ -29,20 +27,6 @@
   src: url('/fonts/jetbrains-mono.woff2') format('woff2');
   font-weight: 400 600;
   font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Libre Baskerville';
-  src: url('/fonts/libre-baskerville.woff2') format('woff2');
-  font-weight: 400 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Libre Baskerville';
-  src: url('/fonts/libre-baskerville-italic.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
   font-display: swap;
 }
 
@@ -89,8 +73,14 @@
     display: block;
   }
 
+  /* Default editorial heading treatment — Fraunces, mixed case, optical-size tuned.
+     Legacy .section-title utility below still renders uppercase for not-yet-rebuilt sections. */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans font-bold uppercase tracking-wider;
+    font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+    font-feature-settings: 'liga', 'kern';
   }
 
   /* Branded text selection */
@@ -192,44 +182,48 @@
     @apply max-w-6xl mx-auto;
   }
 
-  /* Section label: // The Origin style — with underline reveal */
+  /* Section label: editorial chapter numeral — mono small caps with tick rule */
   .section-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.35em;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--accent-burnt);
     margin-bottom: 1rem;
     position: relative;
     display: inline-block;
-    padding-bottom: 4px;
-    text-shadow: 0 1px 8px rgba(0,0,0,0.2);
+    padding-bottom: 0;
+    font-weight: 500;
   }
-  .section-label::after {
+  .section-label::before {
     content: '';
     position: absolute;
-    bottom: 0;
     left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--color-accent);
-    opacity: 0.5;
-    transition: width 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    top: -8px;
+    width: 2rem;
+    height: 2px;
+    background: var(--accent-burnt);
   }
-  section:hover .section-label::after,
-  .section-label:hover::after {
-    width: 100%;
-  }
+  .section-label::after { display: none; }
 
-  /* Section title */
+  /* Section title: Fraunces display, mixed case, optical-size tuned */
   .section-title {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 600;
-    font-size: clamp(2rem, 4vw, 3rem);
-    text-transform: uppercase;
+    font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+    font-variation-settings: 'opsz' 96, 'SOFT' 30;
+    font-weight: 500;
+    font-size: clamp(2.25rem, 5.5vw, 4rem);
+    text-transform: none;
+    letter-spacing: -0.015em;
+    line-height: 1.08;
     color: var(--color-text);
-    margin-bottom: 2.5rem;
-    text-shadow: 0 1px 12px rgba(0,0,0,0.3);
+    margin-bottom: 2rem;
+    text-shadow: none;
+  }
+  .section-title em,
+  .section-title .italic {
+    font-style: italic;
+    font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1;
+    color: var(--accent-burnt);
   }
 
   /* Reference card style */
@@ -247,10 +241,10 @@
 
   /* Buttons */
   .btn-primary {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
     font-weight: 500;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     @apply bg-burnt-orange text-white px-6 py-3 rounded-sm
            hover:brightness-110 hover:scale-[1.01] active:scale-95
@@ -258,10 +252,10 @@
   }
 
   .btn-outline {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
     font-weight: 500;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     @apply border border-bone/30 text-bone/70 px-6 py-3 rounded-sm
            hover:border-burnt-orange hover:text-burnt-orange active:scale-95
@@ -329,13 +323,15 @@
     z-index: -1;
   }
 
-  /* Editorial lead — large italic Libre Baskerville opener */
+  /* Editorial lead — large italic Fraunces opener */
   .editorial-lead {
-    font-family: 'Libre Baskerville', Georgia, serif;
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: 'opsz' 24, 'SOFT' 40;
     font-style: italic;
     font-size: clamp(1.15rem, 2.5vw, 1.5rem);
-    line-height: 1.6;
+    line-height: 1.55;
     color: var(--color-text-muted);
+    letter-spacing: -0.005em;
   }
 
   /* Scroll progress bar */

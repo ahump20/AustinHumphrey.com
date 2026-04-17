@@ -62,41 +62,42 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen bg-midnight text-bone">
+      <div className="min-h-screen" style={{ backgroundColor: 'var(--ink-ground)', color: 'var(--bone)' }}>
         <a href="#main" className="skip-link">
           Skip to content
         </a>
         <Navigation />
         <main id="main" className="main-content" tabIndex={-1}>
-          {/* Identity anchor — name, thesis, CTA */}
+          {/* Chapter open — book-jacket hero on paper ground */}
           <Hero />
 
-          <div className="section-divider" />
+          {/* Page turn — paper → ink */}
+          <div className="paper-to-ink-seam" aria-hidden="true" />
 
-          {/* What Austin builds — project cards with live badges */}
+          {/* Chapter I — Index of Work */}
           <Projects />
 
           <div className="section-divider" />
 
-          {/* Published writing + speaking reel — proof in public */}
+          {/* Chapter II — Published Proof */}
           <Proof />
 
           <div className="section-divider" />
 
-          {/* BSI platform deep-dive — stats, architecture, coverage */}
+          {/* Appendix — Blaze Sports Intel */}
           <BSIShowcase />
 
           <div className="section-divider" />
 
-          {/* Infrastructure proof — hard numbers, animated counters */}
+          {/* Chapter III — Infrastructure / substantive numbers */}
           <InfraProof />
 
           <div className="section-divider" />
 
-          {/* Photo break — athletic arc from Friday Night Lights to the Forty Acres */}
+          {/* Photo plates — Athletic Arc */}
           <AthleticArc />
 
-          {/* Origin narrative — warm seam from authority into biography */}
+          {/* Origin narrative — warm seam from plates into biography */}
           <div className="origin-bridge-shell">
             <div className="section-seam" />
             <About />
@@ -143,10 +144,23 @@ function App() {
         {easterEgg && (
           <div className="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none animate-pulse">
             <div className="text-center">
-              <p className="font-sans font-bold text-6xl md:text-8xl text-burnt-orange uppercase tracking-wider" style={{ textShadow: '0 0 40px rgba(191,87,0,0.5)' }}>
+              <p
+                className="text-6xl md:text-8xl"
+                style={{
+                  fontFamily: 'Fraunces, Georgia, serif',
+                  fontVariationSettings: '"opsz" 144, "SOFT" 100, "WONK" 1',
+                  fontStyle: 'italic',
+                  fontWeight: 500,
+                  color: 'var(--accent-burnt)',
+                  textShadow: '0 0 40px rgba(191,87,0,0.5)',
+                  letterSpacing: '-0.015em',
+                }}
+              >
                 BSI
               </p>
-              <p className="font-mono text-sm text-warm-gray mt-2">Born to Blaze the Path Beaten Less</p>
+              <p className="font-mono text-sm mt-2" style={{ color: 'var(--bone-mute)', letterSpacing: '0.22em', textTransform: 'uppercase', fontSize: '0.7rem' }}>
+                Born to Blaze the Path Beaten Less
+              </p>
             </div>
           </div>
         )}

@@ -110,7 +110,7 @@ export const PORTFOLIO_PROJECTS = {
     {
       name: 'Blaze Sports Intel',
       description:
-        'Live scores, park-adjusted sabermetrics, and original editorial across 330 D1 college baseball programs. Six-league platform built solo on Cloudflare.',
+        'Live scores, park-adjusted sabermetrics, and original editorial covering sports outside the coastal spotlight. College baseball across every D1 program. Built solo on Cloudflare, end to end.',
       tech: ['Next.js', 'Cloudflare Workers', 'D1', 'Hono'],
       url: PLATFORM_URLS.bsi,
       highlight: 'Flagship',
@@ -159,10 +159,10 @@ export const PORTFOLIO_PROJECTS = {
 
 export const BSI_SHOWCASE = {
   stats: [
-    { value: '6', label: 'Leagues' },
-    { value: '330+', label: 'D1 Programs' },
-    { value: '58+', label: 'Editorial Features' },
-    { value: '662', label: 'Tests Passing' },
+    { value: 'MLB', label: 'Professional Baseball' },
+    { value: 'NFL', label: 'Professional Football' },
+    { value: 'NBA', label: 'Professional Basketball' },
+    { value: 'D1', label: 'College Baseball · Football · Basketball' },
   ],
   architecture: [
     { label: 'External APIs', sub: 'Highlightly · SportsDataIO · ESPN' },

@@ -2,8 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useMotionValueEvent, useSpring, AnimatePresence } from 'framer-motion';
 import { NAV_ITEMS, RESUME_PATH } from '../content/site';
 
-const ALL_SECTION_IDS = ['hero', 'projects', 'proof', 'bsi', 'infrastructure', 'athletic-arc', 'origin', 'experience', 'skills', 'education', 'currently', 'covenant', 'contact'];
-
 export default function Navigation() {
   const [activeSection, setActiveSection] = useState('hero');
   const [scrolled, setScrolled] = useState(false);
@@ -13,7 +11,7 @@ export default function Navigation() {
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    setScrolled(latest > 50);
+    setScrolled(latest > 48);
   });
 
   useEffect(() => {
@@ -36,10 +34,7 @@ export default function Navigation() {
       });
     };
 
-    // Attach to existing sections
     attach();
-
-    // Watch for lazy-loaded sections appearing in the DOM
     const mo = new MutationObserver(attach);
     mo.observe(document.body, { childList: true, subtree: true });
 
@@ -72,7 +67,6 @@ export default function Navigation() {
         setMobileOpen(false);
         return;
       }
-      // Focus trap — Tab wraps within mobile menu
       if (e.key === 'Tab' && mobileMenuRef.current) {
         const focusable = mobileMenuRef.current.querySelectorAll<HTMLElement>('a, button');
         if (focusable.length === 0) return;
@@ -110,13 +104,12 @@ export default function Navigation() {
             : `/#${sectionId}`;
 
     window.history.replaceState(null, '', nextPath);
-    const scrollTarget = Math.max(window.scrollY + target.getBoundingClientRect().top - 88, 0);
+    const scrollTarget = Math.max(window.scrollY + target.getBoundingClientRect().top - 80, 0);
     const root = document.documentElement;
     const previousScrollBehavior = root.style.scrollBehavior;
     root.style.scrollBehavior = 'auto';
     window.scrollTo({ top: scrollTarget, left: 0, behavior: 'auto' });
     root.style.scrollBehavior = previousScrollBehavior;
-    // Brief flash to draw the eye to the target section
     target.classList.add('section-flash');
     setTimeout(() => target.classList.remove('section-flash'), 1000);
     setMobileOpen(false);
@@ -124,7 +117,7 @@ export default function Navigation() {
 
   return (
     <>
-      {/* Scroll progress bar */}
+      {/* Scroll progress — thin burnt-orange rule */}
       <motion.div
         aria-hidden="true"
         className="scroll-progress"
@@ -135,93 +128,122 @@ export default function Navigation() {
         aria-label="Main navigation"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-midnight/96 backdrop-blur-sm border-b border-burnt-orange/15 shadow-[0_10px_32px_rgba(0,0,0,0.35)]'
-            : 'bg-transparent'
-        }`}
+        transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+        style={{
+          /* Always paper-backed so ink text works over paper hero AND over ink sections below.
+             At the absolute top we go slightly translucent so the hero's top rule reads through. */
+          backgroundColor: scrolled
+            ? 'rgba(236, 227, 210, 0.96)'
+            : 'rgba(236, 227, 210, 0.75)',
+          borderBottom: scrolled ? '1px solid var(--margin-rule)' : '1px solid transparent',
+          backdropFilter: 'saturate(1.1) blur(8px)',
+          WebkitBackdropFilter: 'saturate(1.1) blur(8px)',
+          boxShadow: scrolled ? '0 1px 30px rgba(27, 23, 20, 0.08)' : 'none',
+        }}
       >
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          {/* Logo */}
+        <div className="max-w-[86rem] mx-auto px-6 md:px-10 lg:px-16 py-4 flex items-center justify-between gap-6">
+
+          {/* Masthead nameplate */}
           <a
             href="/"
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-3 group ed-focus"
             onClick={(event) => {
               event.preventDefault();
               scrollToSection('hero');
             }}
+            aria-label="Austin Humphrey — home"
           >
-            <img
-              src="/assets/austin-headshot.webp"
-              alt="Austin Humphrey"
-              className="w-9 h-9 rounded-full object-cover object-[center_35%] border border-burnt-orange/40 group-hover:scale-110 group-hover:border-burnt-orange/80 group-hover:-translate-y-px transition-all duration-300"
-            />
-            <span className="font-mono text-sm text-bone/60 hidden sm:block group-hover:text-burnt-orange transition-colors duration-300">
-              Austin Humphrey
+            <span
+              className="text-xl md:text-2xl leading-none transition-colors duration-300"
+              style={{
+                fontFamily: 'Fraunces, Georgia, serif',
+                fontVariationSettings: '"opsz" 72, "SOFT" 40',
+                fontWeight: 500,
+                letterSpacing: '-0.01em',
+                /* Over hero paper ground (unscrolled) use ink; over ink-ground (scrolled, but paper bg kicks in) still use ink.
+                   Both states land ink text on cream backing, which reads cleanly on either section below. */
+                color: 'var(--ink-strong)',
+              }}
+            >
+              Austin{' '}
+              <em
+                style={{
+                  fontStyle: 'italic',
+                  fontVariationSettings: '"opsz" 72, "SOFT" 80, "WONK" 1',
+                  color: 'var(--accent-burnt)',
+                }}
+              >
+                Humphrey
+              </em>
             </span>
           </a>
 
-          {/* Section counter + Desktop nav */}
-          <div className="hidden md:flex items-center gap-4">
-            {(() => {
-              const idx = ALL_SECTION_IDS.indexOf(activeSection);
-              const progress = idx / (ALL_SECTION_IDS.length - 1);
-              // Interpolate from warm-gray/40 to burnt-orange based on scroll depth
-              const opacity = 0.4 + progress * 0.6;
+          {/* Chapter nav — mono small-caps */}
+          <ul className="hidden md:flex items-center gap-5 lg:gap-7">
+            {NAV_ITEMS.map((item) => {
+              const isActive = activeSection === item.id;
               return (
-                <span
-                  className="font-mono text-[0.6rem] tracking-wider tabular-nums transition-colors duration-500"
-                  style={{ color: progress > 0.5 ? `rgba(191,87,0,${opacity})` : `rgba(168,159,149,${opacity})` }}
-                >
-                  {String((idx + 1) || 1).padStart(2, '0')}
-                  <span className="opacity-30 mx-0.5">/</span>
-                  {ALL_SECTION_IDS.length}
-                </span>
+                <li key={item.id}>
+                  <a
+                    href={`#${item.id}`}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      scrollToSection(item.id);
+                    }}
+                    aria-current={isActive ? 'location' : undefined}
+                    className="relative block transition-colors duration-300 ed-focus"
+                    style={{
+                      fontFamily: 'JetBrains Mono, monospace',
+                      fontSize: '0.68rem',
+                      letterSpacing: '0.22em',
+                      textTransform: 'uppercase',
+                      padding: '0.5rem 0',
+                      color: isActive ? 'var(--accent-burnt)' : 'var(--ink-mute)',
+                    }}
+                  >
+                    {item.label}
+                    {isActive && (
+                      <motion.div
+                        layoutId="nav-indicator"
+                        style={{
+                          position: 'absolute',
+                          left: 0,
+                          right: 0,
+                          bottom: -4,
+                          height: 2,
+                          background: 'var(--accent-burnt)',
+                        }}
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </a>
+                </li>
               );
-            })()}
-          </div>
-
-          <ul className="hidden md:flex items-center gap-1">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    scrollToSection(item.id);
-                  }}
-                  aria-current={activeSection === item.id ? 'location' : undefined}
-                  className={`relative px-3 py-2 font-sans text-xs uppercase tracking-[0.2em] font-medium transition-colors duration-300 ${
-                    activeSection === item.id
-                      ? 'text-burnt-orange'
-                      : 'text-bone/50 hover:text-bone'
-                  }`}
-                >
-                  {item.label}
-                  {activeSection === item.id && (
-                    <motion.div
-                      layoutId="nav-indicator"
-                      className="absolute -bottom-1 left-0 right-0 h-[2px] bg-burnt-orange rounded-full"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </a>
-              </li>
-            ))}
+            })}
           </ul>
 
-          {/* Resume download — desktop only */}
+          {/* Correspondence CTA */}
           <a
-            href={RESUME_PATH}
-            download
-            onClick={() => window.posthog?.capture('resume_downloaded', { source: 'nav' })}
-            className="hidden md:inline-flex items-center gap-1.5 ml-4 px-3 py-1.5 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-warm-gray/70 border border-bone/10 rounded-sm hover:border-burnt-orange/40 hover:text-burnt-orange transition-all duration-300"
+            href="#contact"
+            onClick={(event) => {
+              event.preventDefault();
+              scrollToSection('contact');
+            }}
+            className="hidden md:inline-flex items-center gap-2 ed-focus"
+            style={{
+              fontFamily: 'JetBrains Mono, monospace',
+              fontSize: '0.68rem',
+              letterSpacing: '0.22em',
+              textTransform: 'uppercase',
+              padding: '0.65rem 1.1rem',
+              border: '1px solid var(--ink-mute)',
+              color: 'var(--ink)',
+              transition: 'all 0.3s ease',
+            }}
           >
-            <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M10 3v10m0 0l-3-3m3 3l3-3M4 15h12" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Resume
+            Correspondence
+            <span aria-hidden>→</span>
           </a>
 
           {/* Mobile hamburger */}
@@ -230,12 +252,17 @@ export default function Navigation() {
               if (!mobileOpen) window.posthog?.capture('mobile_menu_opened');
               setMobileOpen(!mobileOpen);
             }}
-            className="md:hidden border border-burnt-orange/30 bg-charcoal/90 px-2.5 py-2 text-bone/70 hover:border-burnt-orange hover:text-burnt-orange transition-colors"
+            className="md:hidden p-2 ed-focus"
+            style={{
+              border: '1px solid var(--ink-mute)',
+              color: 'var(--ink)',
+              background: 'transparent',
+            }}
             aria-label="Navigation menu"
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav-menu"
           >
-            <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
               {mobileOpen ? (
                 <path d="M1 1L19 13M19 1L1 13" stroke="currentColor" strokeWidth="1.5" />
               ) : (
@@ -249,17 +276,17 @@ export default function Navigation() {
           </button>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile drawer — paper ground */}
         <AnimatePresence>
           {mobileOpen && (
             <>
-              {/* Backdrop — blocks interaction with content behind */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="fixed inset-0 top-[60px] bg-midnight md:hidden"
+                className="fixed inset-0 top-[64px] md:hidden"
+                style={{ background: 'var(--paper)' }}
                 onClick={() => setMobileOpen(false)}
                 aria-hidden="true"
               />
@@ -270,39 +297,68 @@ export default function Navigation() {
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.3, ease: [0.19, 1, 0.22, 1] }}
-                className="relative overflow-hidden md:hidden bg-midnight border-t border-burnt-orange/10"
+                className="relative overflow-hidden md:hidden"
+                style={{
+                  background: 'var(--paper)',
+                  borderTop: '1px solid var(--margin-rule)',
+                }}
               >
-                <ul className="px-6 py-4 space-y-1">
-                  {NAV_ITEMS.map((item) => (
-                    <li key={item.id}>
-                      <a
-                        href={`#${item.id}`}
-                        onClick={(event) => {
-                          event.preventDefault();
-                          scrollToSection(item.id);
-                        }}
-                        aria-current={activeSection === item.id ? 'location' : undefined}
-                        className={`block px-4 py-3 font-sans text-xs uppercase tracking-[0.2em] rounded-sm transition-colors duration-300 ${
-                          activeSection === item.id
-                            ? 'text-burnt-orange bg-burnt-orange/10'
-                            : 'text-bone/50 hover:text-bone hover:bg-white/5'
-                        }`}
-                      >
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
-                  <li>
+                <ul className="px-6 py-5 space-y-1">
+                  {NAV_ITEMS.map((item, i) => {
+                    const isActive = activeSection === item.id;
+                    return (
+                      <li key={item.id}>
+                        <a
+                          href={`#${item.id}`}
+                          onClick={(event) => {
+                            event.preventDefault();
+                            scrollToSection(item.id);
+                          }}
+                          aria-current={isActive ? 'location' : undefined}
+                          className="flex items-baseline gap-4 py-3 ed-focus"
+                          style={{
+                            borderBottom:
+                              i < NAV_ITEMS.length - 1
+                                ? '1px solid var(--margin-rule)'
+                                : 'none',
+                          }}
+                        >
+                          <span
+                            style={{
+                              fontFamily: 'JetBrains Mono, monospace',
+                              fontSize: '0.65rem',
+                              letterSpacing: '0.22em',
+                              color: 'var(--ink-mute)',
+                              minWidth: '2.5rem',
+                            }}
+                          >
+                            {String(i + 1).padStart(2, '0')}
+                          </span>
+                          <span
+                            style={{
+                              fontFamily: 'Fraunces, Georgia, serif',
+                              fontVariationSettings: '"opsz" 24, "SOFT" 20',
+                              fontSize: '1.25rem',
+                              fontWeight: 500,
+                              color: isActive ? 'var(--accent-burnt)' : 'var(--ink)',
+                            }}
+                          >
+                            {item.label}
+                          </span>
+                        </a>
+                      </li>
+                    );
+                  })}
+                  <li className="pt-4">
                     <a
                       href={RESUME_PATH}
                       download
                       onClick={() => window.posthog?.capture('resume_downloaded', { source: 'mobile_nav' })}
-                      className="flex items-center gap-2 px-4 py-3 font-sans text-xs uppercase tracking-[0.2em] text-burnt-orange/70 hover:text-burnt-orange rounded-sm transition-colors duration-300"
+                      className="btn-editorial ed-focus w-full justify-center"
+                      style={{ color: 'var(--ink)' }}
                     >
-                      <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M10 3v10m0 0l-3-3m3 3l3-3M4 15h12" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                      Resume
+                      Curriculum Vitae
+                      <span aria-hidden>↗</span>
                     </a>
                   </li>
                 </ul>

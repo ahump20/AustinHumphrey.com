@@ -3,7 +3,7 @@ import { useKonamiCode } from './hooks/useKonamiCode';
 import { useScrollDepth } from './hooks/useScrollDepth';
 import ErrorBoundary from './components/ErrorBoundary';
 import Navigation from './components/Navigation';
-import Hero from './components/Hero';
+import HeroMasthead from './components/HeroMasthead';
 import Projects from './components/Projects';
 import Proof from './components/Proof';
 import BSIShowcase from './components/BSIShowcase';
@@ -68,8 +68,8 @@ function App() {
         </a>
         <Navigation />
         <main id="main" className="main-content" tabIndex={-1}>
-          {/* Chapter open — book-jacket hero on paper ground */}
-          <Hero />
+          {/* V2 — book-jacket newspaper-masthead hero on paper ground */}
+          <HeroMasthead />
 
           {/* Page turn — paper → ink */}
           <div className="paper-to-ink-seam" aria-hidden="true" />

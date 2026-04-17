@@ -5,9 +5,29 @@ type SiteLink = {
 };
 
 export const SITE_TAGLINE = 'Born to Blaze the Path Beaten Less';
-export const SITE_LOCATION = 'San Antonio, Texas';
+export const SITE_LOCATION = 'Boerne, Texas';
 export const RESUME_PATH = '/Austin_Humphrey_Resume.pdf';
 export const PRIMARY_EMAIL = 'Austin@BlazeSportsIntel.com';
+
+/* V2 Hero Masthead content — firewalled positioning */
+export const HERO_V2 = {
+  dateline: 'Volume One · Portfolio Edition · Boerne, Texas',
+  roles: ['Builder', 'Writer', 'Strategist'] as const,
+  disciplines: 'Sports intelligence · Entertainment business · Applied AI',
+  lede:
+    'Four years of professional experience across advertising strategy and financial advising. Two years hands-on with Claude, Gemini, and ChatGPT. One sports intelligence platform — Blaze Sports Intel — built and maintained solo as a passion project.',
+  kickerStats: [
+    { value: '4', label: 'Years Professional' },
+    { value: '2', label: 'Years Applied AI' },
+    { value: '3', label: 'Active Disciplines' },
+  ],
+  colophon: [
+    { label: 'Based', value: 'Boerne, Texas' },
+    { label: 'Experience', value: 'Spectrum Reach · Northwestern Mutual' },
+    { label: 'Passion Project', value: 'Blaze Sports Intel' },
+    { label: 'AI Practice', value: 'Claude · Gemini · ChatGPT' },
+  ],
+};
 
 export const PLATFORM_URLS = {
   bsi: 'https://blazesportsintel.com',

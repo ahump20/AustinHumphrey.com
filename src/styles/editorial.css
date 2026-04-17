@@ -538,3 +538,17 @@ figcaption {
   outline-offset: 4px;
   border-radius: 1px;
 }
+
+/* ── Specificity guard — editorial button text color locks.
+     Prevents any ancestor a:not(...) selector from overriding legible text. ── */
+a.btn-editorial-solid,
+a.btn-editorial-solid:hover,
+a.btn-editorial-solid:focus {
+  color: var(--paper) !important;
+  text-decoration: none !important;
+}
+a.btn-editorial,
+a.btn-editorial:hover,
+a.btn-editorial:focus {
+  text-decoration: none !important;
+}

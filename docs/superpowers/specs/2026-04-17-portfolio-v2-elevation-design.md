@@ -68,10 +68,9 @@ maintained solo as a passion project. Grounded in Boerne, Texas.
 | Role | Family | Notes |
 |---|---|---|
 | Display / Reading | **Fraunces** (variable, opsz 9–144, wght 300–800, SOFT + WONK axes) | Retained from v1; used more aggressively with larger scale, tighter tracking, bolder hierarchy |
-| Metadata / Small Caps / Tabular | **JetBrains Mono** | Kickers, datelines, stats, stamps |
-| Body sans (new addition for sports-tabular blocks) | **Inter** (variable weight 300–800) | Self-hosted woff2; used for data-dense blocks (timelines, stat tables) where mono is too tight and serif too literary |
+| Metadata / Small Caps / Tabular / Data | **JetBrains Mono** | Kickers, datelines, stats, stamps, timeline labels, stat tables |
 
-Two-typeface-max rule relaxed to three on the narrow grounds that Inter handles tabular data zones Fraunces can't serve. Rationale documented; not for display use.
+Two-typeface-max rule held. JetBrains Mono with `tabular-nums` handles all stat/timeline display; no third font added. Rationale: editorial rigor demands restraint, and Fraunces + Mono is a signature pairing that differentiates AustinHumphrey.com from BSI's product voice.
 
 ### Color
 
@@ -165,9 +164,9 @@ Every string rewritten against these rules:
    - `Footer.tsx`
 
 4. **Typography + token updates:**
-   - Add Inter variable woff2 to `public/fonts/`
    - Extend `editorial.css` with graphic-device utilities (stamps, section-bars, stat-callouts, pull-quote, polaroid)
    - Update `tailwind.config.js` with new color-block utilities
+   - Fix global `a:not(...)` color selector to include `.btn-editorial` + `.btn-editorial-solid` exclusions (v1 button bug)
 
 5. **Verification:**
    - Playwright headless screenshots at 1440/900 desktop, 390/844 mobile
@@ -192,7 +191,7 @@ Every string rewritten against these rules:
 - [ ] Professional Experience section listed BEFORE BSI section
 - [ ] Three-axis discipline cards visible in above-fold-or-immediately-below flow
 - [ ] Every copy string audited against voice archive — zero banned vocabulary, declarative cadence
-- [ ] Fraunces display + JetBrains Mono + Inter (tabular only) self-hosted, no CDN deps
+- [ ] Fraunces display + JetBrains Mono self-hosted, no CDN deps (two-typeface rule)
 - [ ] Live at `austinhumphrey.com` with deploy verified via headless screenshot
 
 ## Changelog from V1

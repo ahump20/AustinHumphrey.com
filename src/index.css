@@ -32,16 +32,18 @@
 
 @layer base {
   :root {
-    --color-bg: #0D0D0D;
-    --color-bg-secondary: #1A1A1A;
-    --color-text: #F5F0EB;
-    --color-text-muted: #A89F95;
+    /* Paper is the default ground site-wide. Ink stays available
+       for the single chapter that uses it as a cover plate. */
+    --color-bg: #ECE3D2;
+    --color-bg-secondary: #E1D6BF;
+    --color-text: #1B1714;
+    --color-text-muted: #6B5F52;
     --color-accent: #BF5700;
-    --color-border: rgba(245, 240, 235, 0.04);
+    --color-border: rgba(27, 23, 20, 0.18);
     --gradient-mesh-1: rgba(191, 87, 0, 0.04);
     --gradient-mesh-2: rgba(139, 69, 19, 0.03);
     --gradient-mesh-3: rgba(255, 107, 53, 0.02);
-    /* Contrast tier surfaces */
+    /* Contrast tier surfaces (kept so ink-ground sections still work) */
     --surface-deep: #080808;
     --surface-mid: #0D0D0D;
     --surface-elevated: #151515;
@@ -50,7 +52,8 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
-    color-scheme: dark;
+    color-scheme: light;
+    background-color: #ECE3D2;
   }
 
   body {
@@ -98,9 +101,15 @@
     touch-action: manipulation;
   }
 
-  /* Focus states for accessibility */
+  /* Focus states for accessibility — paper-grounded by default */
   *:focus-visible {
-    @apply outline-none ring-2 ring-burnt-orange ring-offset-2 ring-offset-midnight;
+    outline: 2px solid #BF5700;
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+  /* Inside ink-ground sections, ring becomes ember for contrast */
+  .ink-ground *:focus-visible {
+    outline-color: #E86A2D;
   }
 
   /* Respect reduced motion preferences */
@@ -115,25 +124,25 @@
     }
   }
 
-  /* Custom scrollbar */
+  /* Custom scrollbar — cream track, burnt-orange thumb */
   ::-webkit-scrollbar {
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #0D0D0D;
+    background: #E1D6BF;
   }
   ::-webkit-scrollbar-thumb {
     background: #BF5700;
     border-radius: 2px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #FF6B35;
+    background: #E86A2D;
   }
 
   /* Firefox scrollbar */
   html {
     scrollbar-width: thin;
-    scrollbar-color: #BF5700 #0D0D0D;
+    scrollbar-color: #BF5700 #E1D6BF;
   }
 }
 

@@ -32,19 +32,35 @@ export default function DevPanel() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
-          className="fixed top-16 right-5 z-[9999] bg-midnight/95 backdrop-blur-sm border border-burnt-orange/20 rounded-sm p-5 shadow-2xl max-w-xs"
+          className="fixed top-16 right-5 z-[9999] p-5 shadow-2xl max-w-xs"
+          style={{
+            background: 'rgba(11, 9, 8, 0.96)',
+            border: '1px solid rgba(191, 87, 0, 0.4)',
+            color: 'var(--bone)',
+          }}
         >
-          <p className="font-mono text-[0.6rem] uppercase tracking-[0.25em] text-burnt-orange mb-3">
-            // Site Architecture
+          <p
+            className="font-mono mb-3"
+            style={{
+              fontSize: '0.6rem',
+              letterSpacing: '0.28em',
+              textTransform: 'uppercase',
+              color: 'var(--accent-ember)',
+            }}
+          >
+            // Issue Architecture
           </p>
-          <div className="space-y-1.5 text-[0.7rem] font-mono text-bone/70">
-            <p>12 sections · 28 source files</p>
-            <p>4,200+ lines · 0 templates</p>
-            <p>React 18 · TypeScript · Tailwind 3</p>
-            <p>Framer Motion · Vite 5</p>
-            <p>Cloudflare Pages · 65KB gzipped</p>
+          <div
+            className="font-mono space-y-1.5"
+            style={{ fontSize: '0.7rem', color: 'var(--bone-mute)', lineHeight: 1.55 }}
+          >
+            <p>8 chapters · editorial system</p>
+            <p>Fraunces · JetBrains Mono · self-hosted</p>
+            <p>React 18 · TypeScript · Vite 5</p>
+            <p>Framer Motion · Tailwind 3</p>
+            <p>Cloudflare Pages</p>
             {loadTime.current && <p>DOM ready: {loadTime.current}</p>}
-            <p className="text-burnt-orange/50 pt-1">Built solo. Press ` to close.</p>
+            <p style={{ color: 'var(--accent-ember)', paddingTop: '0.4rem' }}>Press ` to close.</p>
           </div>
         </motion.div>
       )}

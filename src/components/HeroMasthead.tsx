@@ -132,11 +132,11 @@ export default function HeroMasthead() {
               className="flex flex-col sm:flex-row gap-3"
             >
               <a
-                href="#experience"
-                onClick={() => window.posthog?.capture('hero_cta_clicked', { cta: 'experience' })}
+                href="#index"
+                onClick={() => window.posthog?.capture('hero_cta_clicked', { cta: 'index' })}
                 className="btn-editorial-solid ed-focus"
               >
-                See the Experience
+                Open the Issue
                 <span aria-hidden style={{ marginLeft: 2 }}>→</span>
               </a>
               <a

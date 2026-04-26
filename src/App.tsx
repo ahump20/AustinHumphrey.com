@@ -4,17 +4,13 @@ import { useScrollDepth } from './hooks/useScrollDepth';
 import ErrorBoundary from './components/ErrorBoundary';
 import Navigation from './components/Navigation';
 import HeroMasthead from './components/HeroMasthead';
+import IssueIndex from './components/IssueIndex';
 import DisciplineAxes from './components/DisciplineAxes';
-import ProfessionalExperience from './components/ProfessionalExperience';
-import PassionProjectBSI from './components/PassionProjectBSI';
-import AppliedAI from './components/AppliedAI';
-import Proof from './components/Proof';
-import AthleticArc from './components/AthleticArc';
-import About from './components/About';
-import Education from './components/Education';
-import Philosophy from './components/Philosophy';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import Curriculum from './components/Curriculum';
+import SelectedWork from './components/SelectedWork';
+import ReadingRoom from './components/ReadingRoom';
+import Origin from './components/Origin';
+import Colophon from './components/Colophon';
 import ScrollToTop from './components/ScrollToTop';
 import DevPanel from './components/DevPanel';
 
@@ -29,125 +25,111 @@ function App() {
     window.posthog?.capture('page_context', {
       viewport_width: window.innerWidth,
       sections_count: document.querySelectorAll('section[id]').length,
-      site_version: 'v2.0',
+      site_version: 'v3.0',
     });
   }, []);
+
   useKonamiCode(useCallback(() => {
     setEasterEgg(true);
     window.posthog?.capture('konami_code_activated');
     setTimeout(() => setEasterEgg(false), 3000);
   }, []));
 
+  // Deep-linking via /about and /contact paths
   useEffect(() => {
     const routeToSection: Record<string, string> = {
       '/': 'hero',
       '/about': 'origin',
-      '/contact': 'contact',
+      '/contact': 'colophon',
     };
-
     const targetSectionId = routeToSection[window.location.pathname];
     if (!targetSectionId) return;
-
     const scrollToTarget = () => {
       const target = document.getElementById(targetSectionId);
-      if (target) {
-        target.scrollIntoView({ behavior: 'auto', block: 'start' });
-      }
+      if (target) target.scrollIntoView({ behavior: 'auto', block: 'start' });
     };
-
     requestAnimationFrame(scrollToTarget);
   }, []);
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen" style={{ backgroundColor: 'var(--ink-ground)', color: 'var(--bone)' }}>
+      <div
+        className="min-h-screen"
+        style={{ backgroundColor: 'var(--paper)', color: 'var(--ink)' }}
+      >
         <a href="#main" className="skip-link">
           Skip to content
         </a>
         <Navigation />
         <main id="main" className="main-content" tabIndex={-1}>
-          {/* V2 — book-jacket newspaper-masthead hero on paper ground */}
+
+          {/* Cover — masthead + nameplate + portrait */}
           <HeroMasthead />
 
-          {/* Page turn — paper → ink */}
+          {/* Quiet seam between cover and contents */}
+          <div className="paper-chapter-rule" aria-hidden="true" />
+
+          {/* Issue Contents — magazine TOC, the signature moment */}
+          <IssueIndex />
+
+          {/* Page turn — paper to ink */}
           <div className="paper-to-ink-seam" aria-hidden="true" />
 
-          {/* Chapter I — The Three Axes (disciplines) */}
+          {/* Chapter I — Three Axes (the only ink interlude) */}
           <DisciplineAxes />
 
-          {/* Chapter II — Professional Experience (listed FIRST to firewall
-              from passion project — Spectrum Reach + Northwestern Mutual) */}
-          <ProfessionalExperience />
+          {/* Page turn — ink back to paper */}
+          <div className="ink-to-paper-seam" aria-hidden="true" />
 
-          {/* Chapter III — Passion Project: Blaze Sports Intel */}
-          <PassionProjectBSI />
+          {/* Chapter II — Curriculum Vitae */}
+          <Curriculum />
 
-          {/* Chapter IV — Applied AI Practice */}
-          <AppliedAI />
+          <div className="paper-chapter-rule" aria-hidden="true" />
 
-          <div className="section-divider" />
+          {/* Chapter III — Selected Work */}
+          <SelectedWork />
 
-          {/* Published writing + speaking reel */}
-          <Proof />
+          <div className="paper-chapter-rule" aria-hidden="true" />
 
-          <div className="section-divider" />
+          {/* Chapter IV — Reading Room */}
+          <ReadingRoom />
 
-          {/* Photo plates — Athletic Arc */}
-          <AthleticArc />
+          <div className="paper-chapter-rule" aria-hidden="true" />
 
-          {/* Origin narrative — Texas soil ritual, 127-year tradition, Blaze the dog */}
-          <div className="origin-bridge-shell">
-            <div className="section-seam" />
-            <About />
-          </div>
+          {/* Chapter V — Origin */}
+          <Origin />
 
-          {/* Academic foundation */}
-          <Education />
-
-          <div className="section-divider" />
-
-          {/* Texas covenant — personal philosophy */}
-          <Philosophy />
-
-          {/* Closing cinematic break — last game silhouette */}
-          <div className="relative h-48 md:h-64 overflow-hidden">
-            <img
-              src="/assets/optimized/last-game-silhouette-1024w.webp"
-              srcSet="/assets/optimized/last-game-silhouette-640w.webp 640w, /assets/optimized/last-game-silhouette-1024w.webp 1024w"
-              sizes="100vw"
-              alt=""
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-              className="w-full h-full object-cover object-center"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-midnight/60 via-transparent to-midnight/80" />
-          </div>
-
-          {/* Contact channels + form */}
-          <Contact />
+          {/* Chapter VI — Colophon (replaces footer + contact) */}
+          <Colophon />
         </main>
-        <Footer />
 
-        {/* Konami code Easter egg flash */}
+        {/* Konami code Easter egg — Austin's monogram */}
         {easterEgg && (
           <div className="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none animate-pulse">
             <div className="text-center">
               <p
-                className="text-6xl md:text-8xl"
+                className="text-7xl md:text-9xl"
                 style={{
                   fontFamily: 'Fraunces, Georgia, serif',
                   fontVariationSettings: '"opsz" 144, "SOFT" 100, "WONK" 1',
                   fontStyle: 'italic',
                   fontWeight: 500,
                   color: 'var(--accent-burnt)',
-                  textShadow: '0 0 40px rgba(191,87,0,0.5)',
-                  letterSpacing: '-0.015em',
+                  textShadow: '0 0 50px rgba(191,87,0,0.45)',
+                  letterSpacing: '-0.025em',
                 }}
               >
-                BSI
+                AH
               </p>
-              <p className="font-mono text-sm mt-2" style={{ color: 'var(--bone-mute)', letterSpacing: '0.22em', textTransform: 'uppercase', fontSize: '0.7rem' }}>
+              <p
+                className="font-mono text-sm mt-2"
+                style={{
+                  color: 'var(--ink-mute)',
+                  letterSpacing: '0.28em',
+                  textTransform: 'uppercase',
+                  fontSize: '0.7rem',
+                }}
+              >
                 Born to Blaze the Path Beaten Less
               </p>
             </div>

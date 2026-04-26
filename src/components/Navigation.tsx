@@ -99,7 +99,7 @@ export default function Navigation() {
         ? '/'
         : sectionId === 'origin'
           ? '/about'
-          : sectionId === 'contact'
+          : sectionId === 'colophon'
             ? '/contact'
             : `/#${sectionId}`;
 
@@ -225,10 +225,10 @@ export default function Navigation() {
 
           {/* Correspondence CTA */}
           <a
-            href="#contact"
+            href="#colophon"
             onClick={(event) => {
               event.preventDefault();
-              scrollToSection('contact');
+              scrollToSection('colophon');
             }}
             className="hidden md:inline-flex items-center gap-2 ed-focus"
             style={{

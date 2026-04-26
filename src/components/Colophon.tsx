@@ -134,7 +134,7 @@ export default function Colophon() {
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
           className="colophon__head"
         >
@@ -158,7 +158,7 @@ export default function Colophon() {
           <motion.form
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
             onSubmit={handleSubmit}
           >
@@ -280,7 +280,7 @@ export default function Colophon() {
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.7, delay: 0.1, ease: EASE_OUT_EXPO }}
           >
             <p className="cv-column__heading">All five channels</p>
@@ -316,7 +316,7 @@ export default function Colophon() {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
           className="colophon__specs"
         >

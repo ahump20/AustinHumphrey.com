@@ -25,7 +25,7 @@ export default function Curriculum() {
           id="curriculum-heading"
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
           className="ed-lede mb-14"
           style={{ color: 'var(--ink-mute)', maxWidth: '60ch' }}
@@ -47,7 +47,7 @@ export default function Curriculum() {
                   key={node.employer}
                   initial={{ opacity: 0, x: 12 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
+                  viewport={{ once: true, amount: 0.05 }}
                   transition={{ duration: 0.6, delay: 0.1 + i * 0.12, ease: EASE_OUT_EXPO }}
                   className="timeline-node"
                 >
@@ -72,7 +72,7 @@ export default function Curriculum() {
                   key={c.school}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
+                  viewport={{ once: true, amount: 0.05 }}
                   transition={{ duration: 0.6, delay: 0.05 + i * 0.1, ease: EASE_OUT_EXPO }}
                   className="credential"
                 >
@@ -88,7 +88,7 @@ export default function Curriculum() {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
+              viewport={{ once: true, amount: 0.05 }}
               transition={{ duration: 0.6, delay: 0.4, ease: EASE_OUT_EXPO }}
               className="mt-10"
             >

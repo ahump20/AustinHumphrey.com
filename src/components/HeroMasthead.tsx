@@ -15,23 +15,21 @@ export default function HeroMasthead() {
       <div className="masthead-rule">
         <span className="masthead-rule__volume">{HERO_V2.dateline}</span>
         <span className="masthead-rule__rule" aria-hidden />
-        <span className="masthead-rule__date">Updated 2026</span>
       </div>
 
       <div className="relative z-10 ed-section ed-container pt-10 md:pt-16">
         <div className="ed-grid-asymmetric items-start">
 
-          {/* ── LEFT — Status stamps, nameplate, roles, subhead, lede, stats, CTAs ── */}
+          {/* ── LEFT — Status stamp, nameplate, roles, subhead, lede, stats, CTAs ── */}
           <div className="flex flex-col">
-            {/* Status stamp row */}
+            {/* Status stamp — single signal that matters */}
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.05, ease: EASE_OUT_EXPO }}
-              className="flex items-center gap-3 mb-8 flex-wrap"
+              className="flex items-center gap-3 mb-8"
             >
-              <SectionStamp variant="solid" withDot>Status · Building</SectionStamp>
-              <SectionStamp variant="outline">Open to Opportunities</SectionStamp>
+              <SectionStamp variant="solid" withDot>Open to Opportunities</SectionStamp>
             </motion.div>
 
             {/* Nameplate */}
@@ -124,17 +122,18 @@ export default function HeroMasthead() {
               ))}
             </motion.div>
 
-            {/* CTA pair */}
+            {/* CTA pair — fluid width, locked to one line */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.8, ease: EASE_OUT_EXPO }}
-              className="flex flex-col sm:flex-row gap-3"
+              className="flex flex-col sm:flex-row gap-3 flex-wrap"
             >
               <a
                 href="#index"
                 onClick={() => window.posthog?.capture('hero_cta_clicked', { cta: 'index' })}
                 className="btn-editorial-solid ed-focus"
+                style={{ whiteSpace: 'nowrap' }}
               >
                 Open the Issue
                 <span aria-hidden style={{ marginLeft: 2 }}>→</span>
@@ -145,7 +144,7 @@ export default function HeroMasthead() {
                 rel="noopener noreferrer"
                 onClick={() => window.posthog?.capture('hero_cta_clicked', { cta: 'resume' })}
                 className="btn-editorial ed-focus"
-                style={{ color: 'var(--ink)' }}
+                style={{ color: 'var(--ink)', whiteSpace: 'nowrap' }}
               >
                 Curriculum Vitae
                 <span aria-hidden style={{ marginLeft: 2 }}>↗</span>
@@ -153,7 +152,7 @@ export default function HeroMasthead() {
             </motion.div>
           </div>
 
-          {/* ── RIGHT — Portrait + colophon quad ── */}
+          {/* ── RIGHT — Portrait only (colophon moves to full-width band below) ── */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -161,47 +160,54 @@ export default function HeroMasthead() {
             className="relative"
           >
             <figure className="editorial-figure m-0">
-              <div className="portrait-frame" style={{ aspectRatio: '4 / 5' }}>
+              <div
+                className="portrait-frame"
+                style={{ aspectRatio: '4 / 5', maxHeight: '70vh' }}
+              >
                 <img
                   src="/assets/austin-headshot.webp"
                   alt="Austin Humphrey, portrait"
                   className="ed-portrait-breathe"
                   loading="eager"
                   fetchPriority="high"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
               </div>
               <figcaption className="mt-4">
                 Plate I &nbsp;·&nbsp; Humphrey, Boerne, Texas &nbsp;·&nbsp; 2026
               </figcaption>
             </figure>
-
-            {/* Colophon quad — firewalled */}
-            <div
-              className="grid grid-cols-2 gap-6 mt-8 pt-6"
-              style={{ borderTop: '1px solid var(--margin-rule)' }}
-            >
-              {HERO_V2.colophon.map((item) => (
-                <div key={item.label}>
-                  <p className="dateline mb-1" style={{ fontSize: '0.62rem' }}>
-                    {item.label}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: 'Fraunces, Georgia, serif',
-                      fontVariationSettings: '"opsz" 18, "SOFT" 20',
-                      fontSize: '0.95rem',
-                      fontWeight: 500,
-                      color: 'var(--ink)',
-                      lineHeight: 1.35,
-                    }}
-                  >
-                    {item.value}
-                  </p>
-                </div>
-              ))}
-            </div>
           </motion.div>
         </div>
+
+        {/* ── Colophon quad — full-width band below both columns ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.95, ease: EASE_OUT_EXPO }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 mt-12 pt-8"
+          style={{ borderTop: '1px solid var(--margin-rule)' }}
+        >
+          {HERO_V2.colophon.map((item) => (
+            <div key={item.label}>
+              <p className="dateline mb-1" style={{ fontSize: '0.62rem' }}>
+                {item.label}
+              </p>
+              <p
+                style={{
+                  fontFamily: 'Fraunces, Georgia, serif',
+                  fontVariationSettings: '"opsz" 18, "SOFT" 20',
+                  fontSize: '0.95rem',
+                  fontWeight: 500,
+                  color: 'var(--ink)',
+                  lineHeight: 1.35,
+                }}
+              >
+                {item.value}
+              </p>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

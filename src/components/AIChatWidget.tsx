@@ -197,21 +197,23 @@ export default function AIChatWidget() {
     <>
       {/* FAB — delayed entrance */}
       <button
-        style={{
-          opacity: visible || open ? 1 : 0,
-          transform: visible || open ? 'scale(1)' : 'scale(0.8)',
-          transition: 'opacity 0.5s ease, transform 0.5s ease',
-          pointerEvents: visible || open ? 'auto' : 'none',
-        }}
         onClick={() => {
           if (!open) window.posthog?.capture('chat_opened');
           setOpen(!open);
         }}
-        className={`fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full border px-3 py-2 backdrop-blur-md transition-all duration-300 cursor-pointer group ${
-          open
-            ? 'border-burnt-orange/40 bg-burnt-orange text-white shadow-lg'
-            : 'border-bone/10 bg-charcoal/80 text-bone/85 hover:border-burnt-orange/30 hover:text-burnt-orange'
-        }`}
+        className="fixed bottom-5 right-5 z-40 flex items-center gap-2 px-3 py-2 transition-all duration-300 cursor-pointer group"
+        style={{
+          opacity: visible || open ? 1 : 0,
+          transform: visible || open ? 'scale(1)' : 'scale(0.8)',
+          pointerEvents: visible || open ? 'auto' : 'none',
+          background: open ? 'var(--accent-burnt)' : 'rgba(236, 227, 210, 0.94)',
+          color: open ? 'var(--paper)' : 'var(--ink-strong)',
+          border: `1px solid ${open ? 'var(--accent-burnt)' : 'rgba(27, 23, 20, 0.35)'}`,
+          backdropFilter: 'saturate(1.1) blur(6px)',
+          WebkitBackdropFilter: 'saturate(1.1) blur(6px)',
+          boxShadow: open ? '0 8px 24px -8px rgba(15, 10, 5, 0.4)' : '0 4px 12px -6px rgba(15, 10, 5, 0.2)',
+          transitionProperty: 'opacity, transform, background, color, border-color, box-shadow',
+        }}
         aria-label={open ? 'Close Austin concierge' : 'Austin — open concierge'}
       >
         {open ? (

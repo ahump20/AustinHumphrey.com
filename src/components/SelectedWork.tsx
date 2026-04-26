@@ -72,7 +72,7 @@ function WorkCard({ item, index }: { item: WorkItem; index: number }) {
         onClick={() => window.posthog?.capture('work_clicked', { project: item.title })}
         initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-60px' }}
+        viewport={{ once: true, amount: 0.05 }}
         transition={{ duration: 0.6, delay: 0.05 * index, ease: EASE_OUT_EXPO }}
         className={`${cardClass} ed-focus`}
         style={{ textDecoration: 'none', color: 'inherit' }}
@@ -87,7 +87,7 @@ function WorkCard({ item, index }: { item: WorkItem; index: number }) {
     <motion.article
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
+      viewport={{ once: true, amount: 0.05 }}
       transition={{ duration: 0.6, delay: 0.05 * index, ease: EASE_OUT_EXPO }}
       className={cardClass}
     >
@@ -114,7 +114,7 @@ export default function SelectedWork() {
           id="work-heading"
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
           className="ed-lede mb-12"
           style={{ color: 'var(--ink-mute)', maxWidth: '60ch' }}

@@ -20,7 +20,7 @@ export default function DisciplineAxes() {
         <motion.p
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
           id="disciplines-heading"
           className="ed-lede mb-12"
@@ -37,7 +37,7 @@ export default function DisciplineAxes() {
               key={axis.numeral}
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
+              viewport={{ once: true, amount: 0.05 }}
               transition={{ duration: 0.6, delay: 0.1 + i * 0.1, ease: EASE_OUT_EXPO }}
               className="axis-card"
             >

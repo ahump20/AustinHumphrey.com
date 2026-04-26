@@ -33,7 +33,7 @@ export default function ReadingRoom() {
           id="reading-heading"
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
           className="ed-lede mb-12"
           style={{ color: 'var(--ink-mute)', maxWidth: '60ch' }}
@@ -51,7 +51,7 @@ export default function ReadingRoom() {
           onClick={() => window.posthog?.capture('editorial_clicked', { title: lead.title, position: 'feature' })}
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
           className="reading-feature ed-focus"
           style={{ textDecoration: 'none', color: 'inherit' }}
@@ -93,7 +93,7 @@ export default function ReadingRoom() {
               onClick={() => window.posthog?.capture('editorial_clicked', { title: piece.title, position: 'list' })}
               initial={{ opacity: 0, x: 10 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
+              viewport={{ once: true, amount: 0.05 }}
               transition={{ duration: 0.5, delay: 0.05 * i, ease: EASE_OUT_EXPO }}
               className="reading-row ed-focus"
             >
@@ -120,7 +120,7 @@ export default function ReadingRoom() {
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
           >
             <p className="cv-column__heading">On Camera</p>
@@ -188,7 +188,7 @@ export default function ReadingRoom() {
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.7, delay: 0.1, ease: EASE_OUT_EXPO }}
             className="flex flex-col"
           >
@@ -239,7 +239,7 @@ export default function ReadingRoom() {
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
           className="mt-12 pt-8"
           style={{ borderTop: '1px solid var(--margin-rule)' }}

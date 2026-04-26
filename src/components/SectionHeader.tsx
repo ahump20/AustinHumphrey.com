@@ -35,7 +35,7 @@ export default function SectionHeader({
       <motion.p
         initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
+        viewport={{ once: true, amount: 0.05 }}
         transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
         className="chapter-numeral"
       >
@@ -46,7 +46,7 @@ export default function SectionHeader({
         <motion.p
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.6, delay: 0.1, ease: EASE_OUT_EXPO }}
           className="ed-mono mb-3"
           style={{ color: dekColor }}
@@ -58,7 +58,7 @@ export default function SectionHeader({
       <motion.h2
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
+        viewport={{ once: true, amount: 0.05 }}
         transition={{ duration: 0.8, delay: 0.18, ease: EASE_OUT_EXPO }}
         className="ed-h1 mb-3"
         style={{
@@ -73,7 +73,7 @@ export default function SectionHeader({
       <motion.div
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
-        viewport={{ once: true, margin: '-80px' }}
+        viewport={{ once: true, amount: 0.05 }}
         transition={{ duration: 1, delay: 0.3, ease: EASE_OUT_EXPO }}
         className="chapter-rule"
         style={{ transformOrigin: 'left' }}
@@ -83,7 +83,7 @@ export default function SectionHeader({
         <motion.p
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.6, delay: 0.4, ease: EASE_OUT_EXPO }}
           className="ed-lede"
           style={{ color: dekColor, maxWidth: '48ch' }}

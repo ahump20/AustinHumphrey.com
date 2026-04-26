@@ -56,7 +56,7 @@ export default function Origin() {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
           >
             <h2 id="origin-heading" className="sr-only">Origin</h2>
@@ -70,7 +70,7 @@ export default function Origin() {
           <motion.figure
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.9, ease: EASE_OUT_EXPO }}
             className="origin-photo origin-photo--span-12"
             style={{ aspectRatio: '21 / 9', gridColumn: 'auto', margin: 0 }}
@@ -91,7 +91,7 @@ export default function Origin() {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
           className="origin-prose drop-cap mx-auto mt-16"
         >
@@ -103,7 +103,7 @@ export default function Origin() {
           <motion.figure
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
             className={`origin-photo origin-photo--${blaze.span}`}
             style={{ margin: 0 }}
@@ -115,7 +115,7 @@ export default function Origin() {
           <motion.figure
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.7, delay: 0.05, ease: EASE_OUT_EXPO }}
             className={`origin-photo origin-photo--${ballpark.span}`}
             style={{ margin: 0 }}
@@ -127,7 +127,7 @@ export default function Origin() {
           <motion.figure
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.7, delay: 0.1, ease: EASE_OUT_EXPO }}
             className={`origin-photo origin-photo--${longhorns.span}`}
             style={{ margin: 0 }}
@@ -145,7 +145,7 @@ export default function Origin() {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
           className="origin-prose mx-auto"
         >
@@ -156,7 +156,7 @@ export default function Origin() {
           <motion.figure
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
             className={`origin-photo origin-photo--${article.span}`}
             style={{ margin: 0 }}
@@ -168,7 +168,7 @@ export default function Origin() {
           <motion.figure
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.7, delay: 0.05, ease: EASE_OUT_EXPO }}
             className={`origin-photo origin-photo--${nana.span}`}
             style={{ margin: 0 }}
@@ -182,7 +182,7 @@ export default function Origin() {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.8, ease: EASE_OUT_EXPO }}
           className="mx-auto mt-12"
           style={{ maxWidth: '64ch' }}
@@ -196,7 +196,7 @@ export default function Origin() {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
           className="origin-prose mx-auto mt-2"
         >
@@ -207,7 +207,7 @@ export default function Origin() {
         <motion.figure
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.9, ease: EASE_OUT_EXPO }}
           className="origin-photo mt-16"
           style={{ aspectRatio: '21 / 9', margin: '4rem 0 0' }}
@@ -227,7 +227,7 @@ export default function Origin() {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.8, ease: EASE_OUT_EXPO }}
           className="text-center mt-20"
         >

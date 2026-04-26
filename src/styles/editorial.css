@@ -657,11 +657,12 @@ a.btn-editorial:focus {
 }
 .stat-callout__label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.24em;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 500;
   color: var(--ink-mute);
+  line-height: 1.25;
 }
 .ink-ground .stat-callout__label { color: var(--bone-mute); }
 .stat-callout--ink .stat-callout__value { color: var(--bone); }

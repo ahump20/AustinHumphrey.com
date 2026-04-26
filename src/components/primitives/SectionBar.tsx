@@ -13,7 +13,7 @@ export default function SectionBar({ numeral, title, kicker }: Props) {
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
+      viewport={{ once: true, amount: 0.05 }}
       transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
       className="section-bar"
     >

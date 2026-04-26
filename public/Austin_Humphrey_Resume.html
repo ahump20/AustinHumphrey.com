@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Resume for Austin Humphrey — builder, writer, and strategist working in sports intelligence, entertainment business, and applied AI." />
+    <meta name="description" content="Austin Humphrey — Multi-disciplinary professional with cross-functional experience in advertising strategy, financial advisory, AI-assisted product development, large language model workflows, cloud architecture, sports analytics, and data-informed editorial strategy." />
     <title>Austin Humphrey | Resume</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,7 +31,7 @@
         --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
       }
 
-      @page { size: A4; margin: 8mm; }
+      @page { size: A4; margin: 6mm; }
 
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -241,7 +241,7 @@
         margin-bottom: 10px;
       }
 
-      /* Prose-style role descriptions */
+      /* Prose-style role descriptions (legacy — kept for backward compatibility) */
       .role-description {
         font-size: 14px;
         line-height: 1.6;
@@ -251,6 +251,43 @@
 
       .role-description + .role-description {
         margin-top: 6px;
+      }
+
+      /* Bulleted achievements inside experience cards — preferred format */
+      .role-bullets {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .role-bullets li {
+        font-size: 13.5px;
+        line-height: 1.55;
+        color: var(--ink);
+        padding-left: 16px;
+        position: relative;
+        margin-bottom: 6px;
+      }
+
+      .role-bullets li:last-child {
+        margin-bottom: 0;
+      }
+
+      .role-bullets li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--burnt-orange);
+        opacity: 0.55;
+      }
+
+      .role-bullets li strong {
+        color: var(--charcoal);
+        font-weight: 600;
       }
 
       /* ── IMPACT GRID ── */
@@ -439,7 +476,11 @@
           print-color-adjust: exact;
           -webkit-print-color-adjust: exact;
         }
-        body { background: #fff; }
+        body {
+          background: #fff;
+          font-size: 12px;
+          line-height: 1.4;
+        }
         .page {
           width: 100%;
           margin: 0;
@@ -451,15 +492,86 @@
           background: #1A1511 !important;
           color: #FFF7EC;
           break-inside: avoid;
+          padding: 22px 26px 18px;
         }
         .hero::after { height: 2px; background: var(--texas-soil); }
         .hero::before { display: none; }
-        .experience-card,
-        .list-box,
-        .impact-card { background: #fff !important; box-shadow: none !important; }
+        h1 { font-size: 38px; margin-bottom: 4px; }
+        .hero-title { font-size: 11px; margin-bottom: 10px; }
+        .summary {
+          font-size: 12.5px;
+          line-height: 1.45;
+          margin-bottom: 12px;
+        }
+        .contact span,
+        .contact a { font-size: 9.5px; padding: 3px 8px; }
+        .main {
+          padding: 14px 24px 12px;
+          gap: 20px;
+        }
+        .section { break-inside: avoid; margin-bottom: 10px; }
+        .footer { break-before: avoid-page; page-break-before: avoid; }
+        .section h2 { font-size: 13.5px; margin-bottom: 6px; }
+        .rule { margin-bottom: 8px; }
+        .experience-card {
+          background: #fff !important;
+          box-shadow: none !important;
+          padding: 10px 12px 10px;
+          margin-bottom: 8px;
+        }
         .experience-card:hover { box-shadow: none !important; }
-        .section { break-inside: avoid; }
-        .footer { border-top-color: #e0e0e0; }
+        .role { font-size: 13.5px; margin-bottom: 2px; }
+        .meta { font-size: 9.5px; margin-bottom: 6px; }
+        .role-bullets li {
+          font-size: 12px;
+          line-height: 1.42;
+          margin-bottom: 3px;
+          padding-left: 14px;
+        }
+        .role-bullets li::before { top: 6px; }
+        .impact { gap: 8px; }
+        .impact-card {
+          background: #fff !important;
+          box-shadow: none !important;
+          padding: 9px 11px;
+        }
+        .impact-card strong { font-size: 11px; margin-bottom: 2px; }
+        .impact-card span { font-size: 10.5px; line-height: 1.4; }
+        .list-box {
+          background: #fff !important;
+          box-shadow: none !important;
+          padding: 10px 12px;
+          margin-bottom: 8px;
+        }
+        .list-box li {
+          font-size: 11.5px;
+          line-height: 1.45;
+          margin-bottom: 4px;
+        }
+        .chipset { gap: 4px; }
+        .chip {
+          font-size: 9px;
+          padding: 3px 8px;
+        }
+        .edu-row { margin-bottom: 7px; }
+        .edu-title { font-size: 12px; }
+        .edu-meta { font-size: 9.5px; }
+        .leadership-item {
+          font-size: 11.5px;
+          line-height: 1.42;
+          margin-bottom: 6px;
+        }
+        .leadership-item .detail { font-size: 10.5px; }
+        .footer {
+          display: none;
+        }
+        .page {
+          overflow: visible;
+          background: #fff !important;
+        }
+        html, body {
+          background: #fff !important;
+        }
       }
     </style>
   </head>
@@ -470,9 +582,9 @@
       <header class="hero">
         <div class="hero-inner">
           <h1>Austin Humphrey</h1>
-          <p class="hero-title">Sports Intelligence · Product Strategy · AI-Assisted Analytics</p>
+          <p class="hero-title">Product Strategy · AI / Large Language Model Workflows · Sports Intelligence</p>
           <p class="summary">
-            I build sports intelligence systems that work in production — not pitch decks. Three years leading data-informed strategy across advertising and founder-led product execution, two years designing AI/LLM workflows from prompt to deployment. I turn raw sports data into decisions people can actually use, with equal coverage for the markets and leagues that mainstream media ignores.
+            Multi-disciplinary professional bridging advertising strategy, financial advisory, and AI-assisted product development. Currently architecting Blaze Sports Intel — a production-grade sports analytics platform spanning MLB, NFL, NBA, NCAA football, and NCAA baseball, built solo on Cloudflare's serverless edge with sub-30-second live refresh. Two years of hands-on Large Language Model workflow design (Anthropic Claude, Google Gemini, OpenAI GPT) applied to data ingestion, predictive forecasting, and editorial automation. Quantitative communicator who translates ambiguous datasets into decisions stakeholders can act on.
           </p>
           <div class="contact">
             <span>Boerne, TX</span>
@@ -502,12 +614,12 @@
                 <span>Boerne, TX</span>
                 <span>2023 – Present</span>
               </div>
-              <p class="role-description">
-                Designed and operate a production sports intelligence platform covering MLB, NFL, NCAA football, NBA, and college baseball — entirely on Cloudflare infrastructure. The backend runs 53 Workers, 12 D1 databases, 45 KV namespaces, and 18 R2 buckets for multi-sport data aggregation at scale.
-              </p>
-              <p class="role-description">
-                Built real-time ingestion pipelines and mobile-first dashboards with ~30-second live refresh, plus AI-assisted forecasting modules and the BlazeCraft reliability monitoring interface. Own every layer: roadmap, architecture, release ops, content, and stakeholder communication as a solo founder focused on the markets that matter and don't get covered.
-              </p>
+              <ul class="role-bullets">
+                <li><strong>Architected</strong> end-to-end sports intelligence platform serving MLB, NFL, NBA, NCAA football, and NCAA baseball — deployed entirely on Cloudflare's serverless edge across 53 Workers, 12 D1 databases, 45 KV namespaces, and 18 R2 object stores.</li>
+                <li><strong>Built</strong> real-time data ingestion pipelines and mobile-responsive dashboards delivering sub-30-second live refresh across thousands of concurrent game states.</li>
+                <li><strong>Designed</strong> AI-assisted forecasting modules leveraging Anthropic Claude, Google Gemini, and OpenAI GPT for predictive analytics, narrative generation, and editorial automation.</li>
+                <li><strong>Drove</strong> product strategy, technical architecture, release operations, content development, and stakeholder communication as solo operator across the full product lifecycle.</li>
+              </ul>
             </article>
 
             <article class="experience-card">
@@ -516,9 +628,12 @@
                 <span>Austin, TX</span>
                 <span>Nov 2022 – Dec 2025</span>
               </div>
-              <p class="role-description">
-                Developed data-informed advertising strategies across linear TV, OTT/CTV, streaming, and digital for local and regional clients. Translated campaign performance into insights that drove client renewals and strategic upsells — the kind of work where you learn that data only matters when it changes someone's decision.
-              </p>
+              <ul class="role-bullets">
+                <li><strong>Developed</strong> data-informed advertising strategies across linear TV, OTT/CTV, streaming, and digital channels for local and regional advertisers.</li>
+                <li><strong>Translated</strong> multi-channel campaign performance metrics into actionable insights that drove client retention and strategic account expansion.</li>
+                <li><strong>Managed</strong> the full sales cycle from prospecting to close — proposal development, performance reporting, and consultative renewal conversations.</li>
+                <li><strong>Collaborated</strong> cross-functionally with creative, ad operations, and analytics teams to align campaign execution with measurable business outcomes.</li>
+              </ul>
             </article>
 
             <article class="experience-card">
@@ -527,32 +642,34 @@
                 <span>San Antonio, TX</span>
                 <span>Dec 2020 – Aug 2022</span>
               </div>
-              <p class="role-description">
-                Completed a top-5 ranked intern program and converted to a full-time advising role. Earned the "Power of 10" Award — top 10% nationally. Built comprehensive financial plans through structured modeling, prospecting discipline, and consultative client relationships.
-              </p>
+              <ul class="role-bullets">
+                <li><strong>Completed</strong> a nationally top-5 ranked internship program and earned full-time conversion to financial representative role; awarded the "Power of 10" recognition for top 10% national performance.</li>
+                <li><strong>Built</strong> comprehensive financial plans for individual and family clients through structured needs analysis and quantitative modeling of long-term capital projections.</li>
+                <li><strong>Maintained</strong> disciplined prospecting cadence and consultative pipeline management to drive sustainable client acquisition.</li>
+              </ul>
             </article>
           </section>
 
-          <!-- SELECTED IMPACT -->
+          <!-- SELECTED ACHIEVEMENTS -->
           <section class="section">
-            <h2>What I've Built</h2>
+            <h2>Selected Achievements</h2>
             <div class="rule"></div>
             <div class="impact">
               <div class="impact-card">
-                <strong>Production Platform</strong>
-                <span>53-Worker serverless architecture serving multi-sport analytics across five leagues — from zero to production as a solo builder.</span>
+                <strong>Production Architecture</strong>
+                <span>Built 53-Worker Cloudflare serverless platform serving multi-sport analytics across MLB, NFL, NBA, NCAA football, and NCAA baseball — zero-to-production as solo founder.</span>
               </div>
               <div class="impact-card">
-                <strong>AI + Sports Operations</strong>
-                <span>Two years designing Claude, Gemini, and ChatGPT workflows for sports data ingestion, forecasting, and editorial — not demos, deployed systems.</span>
+                <strong>AI / LLM Operations</strong>
+                <span>Two years architecting production-grade Large Language Model workflows (Claude, Gemini, GPT) for data ingestion, predictive forecasting, and editorial automation — deployed systems, not prototypes.</span>
               </div>
               <div class="impact-card">
-                <strong>Data → Story</strong>
-                <span>Turn performance metrics into editorial content for college baseball, FCS football, and other markets mainstream media won't touch.</span>
+                <strong>Quantitative Storytelling</strong>
+                <span>Translated performance metrics into long-form editorial coverage for under-served markets including college baseball, FCS football, and regional NCAA athletics.</span>
               </div>
               <div class="impact-card">
-                <strong>Full-Stack Execution</strong>
-                <span>Architecture, frontend, content, ops, and stakeholder communication. Every layer, every day, one person.</span>
+                <strong>End-to-End Ownership</strong>
+                <span>Led architecture, engineering, content strategy, operations, and stakeholder communication across the full product lifecycle as solo operator.</span>
               </div>
             </div>
           </section>
@@ -562,26 +679,29 @@
         <!-- RIGHT COLUMN (ASIDE) -->
         <aside>
 
-          <!-- CORE CAPABILITIES -->
+          <!-- CORE COMPETENCIES -->
           <section class="section">
-            <h2>Core Capabilities</h2>
+            <h2>Core Competencies</h2>
             <div class="rule"></div>
             <div class="chipset">
+              <span class="chip">Cross-Functional Leadership</span>
+              <span class="chip">Stakeholder Management</span>
+              <span class="chip">Product Strategy</span>
               <span class="chip">Consultative Sales</span>
-              <span class="chip">Account Strategy</span>
-              <span class="chip">Client Development</span>
-              <span class="chip">Financial Planning</span>
-              <span class="chip">Multi-Platform Campaigns</span>
-              <span class="chip">TypeScript / Node.js / SQL</span>
-              <span class="chip">Cloudflare Workers</span>
-              <span class="chip">API Design</span>
-              <span class="chip">Real-Time Pipelines</span>
-              <span class="chip">Data Visualization</span>
-              <span class="chip">AI/LLM Workflows</span>
-              <span class="chip">Agentic Prompting</span>
+              <span class="chip">Account Management</span>
+              <span class="chip">Financial Planning &amp; Analysis</span>
+              <span class="chip">Generative AI</span>
+              <span class="chip">Large Language Model Workflows</span>
+              <span class="chip">Prompt Engineering</span>
+              <span class="chip">Agentic AI Systems</span>
+              <span class="chip">Cloud Architecture</span>
+              <span class="chip">Serverless Edge Computing</span>
+              <span class="chip">Real-Time Data Pipelines</span>
+              <span class="chip">Quantitative Analysis</span>
+              <span class="chip">Data-Driven Decision Making</span>
               <span class="chip">Sports Analytics</span>
               <span class="chip">Editorial Strategy</span>
-              <span class="chip">Product Development</span>
+              <span class="chip">Multi-Platform Campaigns</span>
             </div>
           </section>
 
@@ -591,11 +711,12 @@
             <div class="rule"></div>
             <div class="list-box">
               <ul>
-                <li><strong>AI/LLM</strong> — Claude.ai, Claude Code, Gemini, ChatGPT, agentic workflow design (2 years hands-on)</li>
-                <li><strong>Cloud</strong> — Cloudflare Workers, D1, KV, R2, Pages</li>
-                <li><strong>Languages</strong> — TypeScript, Node.js, React, Next.js, Hono, SQL</li>
-                <li><strong>Data</strong> — REST APIs, WebSockets, real-time ingestion pipelines</li>
-                <li><strong>DevOps</strong> — GitHub, Wrangler CLI, CI/CD, Vitest</li>
+                <li><strong>AI / Machine Learning</strong> — Anthropic Claude (Sonnet, Opus, Haiku), Google Gemini, OpenAI GPT, agentic workflow design, prompt engineering, Claude Code SDK, Model Context Protocol (2 years hands-on production deployment)</li>
+                <li><strong>Cloud Infrastructure</strong> — Cloudflare Workers, D1 (SQL at the edge), KV namespaces, R2 object storage, Cloudflare Pages, Durable Objects, Wrangler CLI</li>
+                <li><strong>Languages &amp; Frameworks</strong> — TypeScript, Node.js, React 18 / 19, Next.js 16, Hono, Tailwind CSS, SQL, HTML5, CSS3</li>
+                <li><strong>Data Engineering</strong> — REST API design, WebSocket streaming, real-time ingestion pipelines, ETL workflows, schema design, third-party data integration</li>
+                <li><strong>DevOps &amp; Tooling</strong> — Git, GitHub, CI/CD pipelines, Vitest, Playwright, Cloudflare Observability, performance monitoring</li>
+                <li><strong>Sales &amp; CRM</strong> — Multi-channel campaign planning across linear TV, OTT/CTV, streaming, and digital; quantitative campaign performance analysis; consultative pipeline management</li>
               </ul>
             </div>
           </section>
@@ -623,16 +744,16 @@
 
           <!-- LEADERSHIP -->
           <section class="section">
-            <h2>Leadership</h2>
+            <h2>Leadership &amp; Recognition</h2>
             <div class="rule"></div>
             <div class="list-box">
               <div class="leadership-item">
-                <strong>Rush Captain & Alumni Relations Chair</strong> — Alpha Tau Omega, UT Austin<br />
-                <span class="detail">Managed ~$100K event budget. Recruited 73 new members across two pledge classes.</span>
+                <strong>Rush Captain &amp; Alumni Relations Chair</strong> — Alpha Tau Omega, UT Austin<br />
+                <span class="detail">Managed ~$100,000 event budget across two academic years. Recruited 73 new members across two pledge classes through structured outreach and relationship development.</span>
               </div>
               <div class="leadership-item">
                 <strong>"Power of 10" Award</strong> — Northwestern Mutual<br />
-                <span class="detail">Top 10% nationally in intern program.</span>
+                <span class="detail">Recognized in top 10% nationally among intern class for performance, prospecting cadence, and client outcomes.</span>
               </div>
             </div>
           </section>

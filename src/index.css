@@ -6,22 +6,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Self-hosted fonts — eliminates Google Fonts CDN dependency */
-/* Cormorant retained as body-serif fallback until every component is migrated to Fraunces */
-@font-face {
-  font-family: 'Cormorant Garamond';
-  src: url('/fonts/cormorant-400.woff2') format('woff2');
-  font-weight: 400 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Cormorant Garamond';
-  src: url('/fonts/cormorant-400i.woff2') format('woff2');
-  font-weight: 400 700;
-  font-style: italic;
-  font-display: swap;
-}
+/* Self-hosted fonts — Fraunces variable + JetBrains Mono. v4 drops Cormorant
+   entirely; Fraunces handles every editorial role via opsz + WONK + SOFT axes. */
 @font-face {
   font-family: 'JetBrains Mono';
   src: url('/fonts/jetbrains-mono.woff2') format('woff2');
@@ -33,16 +19,19 @@
 @layer base {
   :root {
     /* Paper is the default ground site-wide. Ink stays available
-       for the single chapter that uses it as a cover plate. */
-    --color-bg: #ECE3D2;
-    --color-bg-secondary: #E1D6BF;
-    --color-text: #1B1714;
-    --color-text-muted: #6B5F52;
-    --color-accent: #BF5700;
-    --color-border: rgba(27, 23, 20, 0.18);
-    --gradient-mesh-1: rgba(191, 87, 0, 0.04);
-    --gradient-mesh-2: rgba(139, 69, 19, 0.03);
-    --gradient-mesh-3: rgba(255, 107, 53, 0.02);
+       for the single chapter that uses it as a cover plate.
+       v4 (2026-04-25): cordovan + brass replaces burnt-orange. */
+    --color-bg: #EFE7D6;
+    --color-bg-secondary: #E5DAC2;
+    --color-text: #181410;
+    --color-text-muted: #5C4F40;
+    --color-accent: #6E1F26;
+    --color-accent-glow: #8E2A33;
+    --color-accent-secondary: #B7873A;
+    --color-border: rgba(24, 20, 16, 0.18);
+    --gradient-mesh-1: rgba(110, 31, 38, 0.04);
+    --gradient-mesh-2: rgba(140, 102, 40, 0.04);
+    --gradient-mesh-3: rgba(142, 42, 51, 0.02);
     /* Contrast tier surfaces (kept so ink-ground sections still work) */
     --surface-deep: #080808;
     --surface-mid: #0D0D0D;
@@ -53,7 +42,7 @@
     scroll-behavior: smooth;
     overflow-x: hidden;
     color-scheme: light;
-    background-color: #ECE3D2;
+    background-color: #EFE7D6;
   }
 
   body {
@@ -79,7 +68,7 @@
   /* Default editorial heading treatment — Fraunces, mixed case, optical-size tuned.
      Legacy .section-title utility below still renders uppercase for not-yet-rebuilt sections. */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+    font-family: 'Fraunces', Georgia, serif;
     font-weight: 500;
     letter-spacing: -0.005em;
     line-height: 1.15;
@@ -88,11 +77,11 @@
 
   /* Branded text selection */
   ::selection {
-    background: rgba(191, 87, 0, 0.35);
+    background: rgba(110, 31, 38, 0.35);
     color: #F5F0EB;
   }
   ::-moz-selection {
-    background: rgba(191, 87, 0, 0.35);
+    background: rgba(110, 31, 38, 0.35);
     color: #F5F0EB;
   }
 
@@ -103,13 +92,13 @@
 
   /* Focus states for accessibility — paper-grounded by default */
   *:focus-visible {
-    outline: 2px solid #BF5700;
+    outline: 2px solid #6E1F26;
     outline-offset: 3px;
     border-radius: 1px;
   }
   /* Inside ink-ground sections, ring becomes ember for contrast */
   .ink-ground *:focus-visible {
-    outline-color: #E86A2D;
+    outline-color: #8E2A33;
   }
 
   /* Respect reduced motion preferences */
@@ -129,20 +118,20 @@
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #E1D6BF;
+    background: #E5DAC2;
   }
   ::-webkit-scrollbar-thumb {
-    background: #BF5700;
+    background: #6E1F26;
     border-radius: 2px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #E86A2D;
+    background: #8E2A33;
   }
 
   /* Firefox scrollbar */
   html {
     scrollbar-width: thin;
-    scrollbar-color: #BF5700 #E1D6BF;
+    scrollbar-color: #6E1F26 #E5DAC2;
   }
 }
 
@@ -217,7 +206,7 @@
 
   /* Section title: Fraunces display, mixed case, optical-size tuned */
   .section-title {
-    font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+    font-family: 'Fraunces', Georgia, serif;
     font-variation-settings: 'opsz' 96, 'SOFT' 30;
     font-weight: 500;
     font-size: clamp(2.25rem, 5.5vw, 4rem);
@@ -244,7 +233,7 @@
   }
   .card:hover {
     transform: translateY(-4px);
-    border-color: rgba(191, 87, 0, 0.3);
+    border-color: rgba(110, 31, 38, 0.3);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   }
 
@@ -280,7 +269,7 @@
     transition: color 0.2s ease, text-decoration-color 0.2s ease;
   }
   a:not(.btn-primary):not(.btn-outline):not(.btn-editorial):not(.btn-editorial-solid):not(.skip-link):not([class*="group"]):not([class*="nav"]):not([class*="card"]):not([class*="text-bone"]):not([class*="ed-"]):not([class*="axis-card"]):not([class*="section-bar"]):not([class*="stamp"]):not([class*="timeline"]):hover {
-    color: #FF6B35;
+    color: #8E2A33;
     text-decoration: underline;
     text-underline-offset: 3px;
   }
@@ -300,19 +289,19 @@
     height: 1px;
     max-width: 64rem;
     margin: 0 auto;
-    background: linear-gradient(90deg, transparent 5%, rgba(191, 87, 0, 0.35) 50%, transparent 95%);
+    background: linear-gradient(90deg, transparent 5%, rgba(110, 31, 38, 0.35) 50%, transparent 95%);
   }
 
   .section-seam {
     height: 1px;
-    background: linear-gradient(90deg, transparent 5%, rgba(191, 87, 0, 0.5) 50%, transparent 95%);
+    background: linear-gradient(90deg, transparent 5%, rgba(110, 31, 38, 0.5) 50%, transparent 95%);
   }
 
   .origin-bridge-shell {
     position: relative;
     background:
-      radial-gradient(ellipse 120% 50% at 15% 20%, rgba(191, 87, 0, 0.04) 0%, transparent 60%),
-      radial-gradient(ellipse 80% 40% at 85% 80%, rgba(139, 69, 19, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse 120% 50% at 15% 20%, rgba(110, 31, 38, 0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 40% at 85% 80%, rgba(140, 102, 40, 0.03) 0%, transparent 50%),
       linear-gradient(180deg, var(--surface-deep) 0%, var(--surface-mid) 8%, var(--surface-mid) 92%, var(--surface-deep) 100%);
   }
 
@@ -328,7 +317,7 @@
     width: min(72rem, calc(100% - 3rem));
     height: 1px;
     transform: translateX(-50%);
-    background: linear-gradient(90deg, transparent 0%, rgba(191, 87, 0, 0.4) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(110, 31, 38, 0.4) 50%, transparent 100%);
     opacity: 0.8;
     pointer-events: none;
     z-index: -1;
@@ -351,10 +340,10 @@
     top: 0;
     left: 0;
     height: 2px;
-    background: linear-gradient(to right, #BF5700, #FF6B35);
+    background: linear-gradient(to right, #6E1F26, #8E2A33);
     z-index: 9998;
     transform-origin: left;
-    box-shadow: 0 0 6px rgba(191, 87, 0, 0.4);
+    box-shadow: 0 0 6px rgba(110, 31, 38, 0.4);
   }
 
   /* Stats marquee */
@@ -387,7 +376,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, #BF5700, #FF6B35, #8B4513, #BF5700);
+    background: linear-gradient(135deg, #6E1F26, #8E2A33, #8C6628, #6E1F26);
     background-size: 300% 300%;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -414,11 +403,11 @@
   }
 
   .text-shadow-glow {
-    text-shadow: 0 0 40px rgba(191, 87, 0, 0.3), 0 0 80px rgba(191, 87, 0, 0.1);
+    text-shadow: 0 0 40px rgba(110, 31, 38, 0.3), 0 0 80px rgba(110, 31, 38, 0.1);
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, #BF5700, #FF6B35, #BF5700);
+    background: linear-gradient(135deg, #6E1F26, #8E2A33, #6E1F26);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -461,7 +450,7 @@
 
 /* ─── Section focus flash on nav click ─── */
 @keyframes section-flash {
-  0% { box-shadow: inset 0 0 0 1px rgba(191,87,0,0.3); }
+  0% { box-shadow: inset 0 0 0 1px rgba(110,31,38,0.3); }
   100% { box-shadow: inset 0 0 0 1px transparent; }
 }
 .section-flash {
@@ -496,7 +485,7 @@
 }
 
 .about-quote-card {
-  background: linear-gradient(135deg, rgba(191,87,0,0.10) 0%, rgba(139,69,19,0.05) 45%, rgba(26,26,26,0.78) 100%);
+  background: linear-gradient(135deg, rgba(110,31,38,0.10) 0%, rgba(140,102,40,0.05) 45%, rgba(26,26,26,0.78) 100%);
 }
 
 /* ─── AIChatWidget ─── */
@@ -510,7 +499,7 @@
 }
 
 .accent-line-horizontal {
-  background: linear-gradient(90deg, transparent 10%, rgba(191,87,0,0.3) 50%, transparent 90%);
+  background: linear-gradient(90deg, transparent 10%, rgba(110,31,38,0.3) 50%, transparent 90%);
 }
 
 .vignette-inset {
@@ -532,7 +521,7 @@
 }
 
 .accent-line-narrow {
-  background: linear-gradient(90deg, transparent 8%, rgba(191,87,0,0.45) 50%, transparent 92%);
+  background: linear-gradient(90deg, transparent 8%, rgba(110,31,38,0.45) 50%, transparent 92%);
 }
 
 /* ─── Education ─── */
@@ -555,7 +544,7 @@
 }
 
 .error-boundary-label {
-  color: #BF5700;
+  color: #6E1F26;
   font-size: 0.65rem;
   letter-spacing: 0.35em;
   text-transform: uppercase;
@@ -564,8 +553,8 @@
 
 .error-boundary-btn {
   background: none;
-  border: 1px solid rgba(191,87,0,0.4);
-  color: #BF5700;
+  border: 1px solid rgba(110,31,38,0.4);
+  color: #6E1F26;
   padding: 0.5rem 1.5rem;
   border-radius: 2px;
   cursor: pointer;
@@ -577,15 +566,15 @@
 
 /* ─── Footer ─── */
 .footer-accent-line {
-  background: linear-gradient(90deg, transparent, #BF5700 30%, #FF6B35 50%, #BF5700 70%, transparent);
+  background: linear-gradient(90deg, transparent, #6E1F26 30%, #8E2A33 50%, #6E1F26 70%, transparent);
 }
 
 /* ─── Hero ─── */
 .hero-gradient-mesh {
   background:
-    radial-gradient(ellipse 70% 60% at 85% 15%, rgba(191,87,0,0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 10% 80%, rgba(139,69,19,0.05) 0%, transparent 50%),
-    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(255,107,53,0.02) 0%, transparent 50%);
+    radial-gradient(ellipse 70% 60% at 85% 15%, rgba(110,31,38,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 10% 80%, rgba(140,102,40,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(142,42,51,0.02) 0%, transparent 50%);
 }
 
 .hero-first-name {
@@ -601,8 +590,8 @@
 /* ─── Philosophy ─── */
 .philosophy-bg {
   background:
-    radial-gradient(ellipse 80% 50% at 50% 40%, rgba(191,87,0,0.03) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 30% 70%, rgba(139,69,19,0.02) 0%, transparent 50%);
+    radial-gradient(ellipse 80% 50% at 50% 40%, rgba(110,31,38,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 30% 70%, rgba(140,102,40,0.02) 0%, transparent 50%);
 }
 
 /* ─── Image shimmer skeleton ─── */
@@ -628,7 +617,7 @@
 
 /* ─── Projects ─── */
 .project-card-featured-bg {
-  background: linear-gradient(135deg, rgba(26,26,26,0.8) 0%, rgba(191,87,0,0.04) 100%);
+  background: linear-gradient(135deg, rgba(26,26,26,0.8) 0%, rgba(110,31,38,0.04) 100%);
   box-shadow: 0 4px 24px rgba(0,0,0,0.2);
 }
 
@@ -655,7 +644,7 @@
 
 /* ─── InfraProof ─── */
 .infra-dot-grid {
-  background-image: radial-gradient(circle at 1px 1px, rgba(191,87,0,0.04) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, rgba(110,31,38,0.04) 1px, transparent 0);
   background-size: 32px 32px;
   animation: dot-drift 60s linear infinite;
 }
@@ -722,14 +711,14 @@
     display: none !important;
   }
   h1, h2, h3 { color: #1a1a1a !important; }
-  .section-label { color: #BF5700 !important; }
+  .section-label { color: #6E1F26 !important; }
   .section-title { font-size: 1.25rem !important; }
   .card {
     border: 1px solid #ddd !important;
     background: #fafafa !important;
     box-shadow: none !important;
   }
-  a { color: #BF5700 !important; text-decoration: underline !important; }
+  a { color: #6E1F26 !important; text-decoration: underline !important; }
   img { max-height: 200px !important; }
   * { animation: none !important; transition: none !important; }
 }

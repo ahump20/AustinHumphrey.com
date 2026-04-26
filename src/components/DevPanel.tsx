@@ -35,7 +35,7 @@ export default function DevPanel() {
           className="fixed top-16 right-5 z-[9999] p-5 shadow-2xl max-w-xs"
           style={{
             background: 'rgba(11, 9, 8, 0.96)',
-            border: '1px solid rgba(191, 87, 0, 0.4)',
+            border: '1px solid rgba(110, 31, 38, 0.4)',
             color: 'var(--bone)',
           }}
         >

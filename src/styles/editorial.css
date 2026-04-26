@@ -24,16 +24,21 @@
   font-variation-settings: 'opsz' 14;
 }
 
-/* ── Dual-ground palette + editorial tokens ── */
+/* ── Dual-ground palette + editorial tokens ──
+   v4 identity (2026-04-25): the portfolio leaves BSI's burnt-orange behind.
+   Cordovan (#6E1F26) is the new spine — book-jacket red, Texas Hill Country
+   leather, library binding. Brass (#B7873A) is gilt foil for chapter
+   markers and small emphasis. Paper warms slightly. Old token names
+   alias forward so legacy components keep working. */
 :root {
-  /* Paper ground — ivory, for longform reading passages */
-  --paper: #ECE3D2;
-  --paper-deep: #E1D6BF;
+  /* Paper ground — slightly warmer cream than v3 */
+  --paper: #EFE7D6;
+  --paper-deep: #E5DAC2;
   --paper-edge: #C9BDA3;
-  --ink: #1B1714;
-  --ink-strong: #0E0B09;
-  --ink-mute: #6B5F52;
-  --margin-rule: rgba(27, 23, 20, 0.22);
+  --ink: #181410;
+  --ink-strong: #0A0805;
+  --ink-mute: #5C4F40;
+  --margin-rule: rgba(24, 20, 16, 0.22);
 
   /* Ink ground — warm black, for proof index + photo plates */
   --ink-ground: #0B0908;
@@ -42,11 +47,18 @@
   --bone: #F5F0EB;
   --bone-mute: #B8AFA4;
 
-  /* Accents — burnt orange kept but restrained; emerald added for differentiation */
-  --accent-burnt: #BF5700;
-  --accent-ember: #E86A2D;
+  /* New canonical accents — cordovan + brass + emerald tertiary */
+  --accent-cordovan: #6E1F26;
+  --accent-cordovan-glow: #8E2A33;
+  --accent-cordovan-deep: #4D1319;
+  --accent-brass: #B7873A;
+  --accent-brass-deep: #8C6628;
   --accent-emerald: #1F4D46;
-  --accent-gold: #C9A14A;
+
+  /* Legacy aliases — preserve old names so nothing breaks during sweep */
+  --accent-burnt: var(--accent-cordovan);
+  --accent-ember: var(--accent-cordovan-glow);
+  --accent-gold: var(--accent-brass);
 
   /* Editorial scale (1.250 minor third) */
   --fs-kicker: 0.72rem;      /* ~11.5px small-caps mono */
@@ -84,8 +96,8 @@
   pointer-events: none;
   z-index: 0;
   background-image:
-    radial-gradient(ellipse 60% 80% at 0% 0%, rgba(140, 110, 70, 0.10), transparent 55%),
-    radial-gradient(ellipse 50% 60% at 100% 100%, rgba(90, 60, 30, 0.08), transparent 60%);
+    radial-gradient(ellipse 60% 80% at 0% 0%, rgba(140, 110, 70, 0.09), transparent 55%),
+    radial-gradient(ellipse 50% 60% at 100% 100%, rgba(110, 31, 38, 0.05), transparent 60%);
 }
 .paper-ground::after {
   /* subtle paper fiber texture via SVG turbulence */
@@ -118,8 +130,8 @@
   pointer-events: none;
   z-index: 0;
   background-image:
-    radial-gradient(ellipse 50% 60% at 80% 10%, rgba(191, 87, 0, 0.08), transparent 60%),
-    radial-gradient(ellipse 40% 70% at 10% 90%, rgba(31, 77, 70, 0.06), transparent 70%);
+    radial-gradient(ellipse 50% 60% at 80% 10%, rgba(110, 31, 38, 0.10), transparent 60%),
+    radial-gradient(ellipse 40% 70% at 10% 90%, rgba(183, 135, 58, 0.06), transparent 70%);
 }
 .ink-ground > * { position: relative; z-index: 2; }
 
@@ -153,7 +165,7 @@
 
 /* ── Editorial type utilities ── */
 .ed-display {
-  font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Fraunces', Georgia, serif;
   font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;
   font-weight: 500;
   font-size: var(--fs-display);
@@ -607,37 +619,43 @@ a.btn-editorial:focus {
   .section-bar__kicker { white-space: normal; }
 }
 
-/* ── Burnt-orange stamp (rotated slightly, badge-like) ── */
+/* ── Editorial chip / gilt-foil stamp ──
+   v4: brass on paper, ink type — reads like foil-stamped library card.
+   Cordovan wordmark stays the dominant accent; brass plays support. */
 .stamp {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 0.9rem;
-  background: var(--accent-burnt);
-  color: var(--paper);
+  gap: 0.55rem;
+  padding: 0.5rem 0.85rem 0.45rem;
+  background: var(--accent-brass);
+  color: var(--ink-strong);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.24em;
+  font-size: 0.6rem;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   font-weight: 600;
-  border: 2px solid var(--ink-strong);
+  border: 1px solid var(--accent-brass-deep);
   position: relative;
   line-height: 1;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18) inset, 0 1px 1px rgba(20, 14, 8, 0.18);
 }
-.stamp--rotated { transform: rotate(-2deg); }
+.stamp--rotated { transform: rotate(-1.5deg); }
 .stamp--outline {
   background: transparent;
-  color: var(--accent-burnt);
-  border-color: var(--accent-burnt);
+  color: var(--accent-cordovan);
+  border-color: var(--accent-cordovan);
+  box-shadow: none;
 }
 .stamp__dot {
   width: 6px;
   height: 6px;
-  background: currentColor;
+  background: var(--accent-cordovan);
   border-radius: 50%;
   display: inline-block;
 }
-.ink-ground .stamp--outline { color: var(--accent-ember); border-color: var(--accent-ember); }
+.stamp--outline .stamp__dot { background: var(--accent-cordovan); }
+.ink-ground .stamp--outline { color: var(--accent-brass); border-color: var(--accent-brass); }
+.ink-ground .stamp--outline .stamp__dot { background: var(--accent-brass); }
 
 /* ── Stat callout (big Fraunces numeral + mono kicker) ── */
 .stat-callout {
@@ -754,7 +772,7 @@ a.btn-editorial:focus {
   background: var(--accent-burnt);
 }
 .axis-card:hover {
-  border-color: rgba(232, 106, 45, 0.4);
+  border-color: rgba(142, 42, 51, 0.4);
   transform: translateY(-2px);
 }
 .axis-card__numeral {
@@ -869,7 +887,7 @@ a.btn-editorial:focus {
   display: inline-block;
   margin-top: 0.75rem;
   padding: 0.3rem 0.65rem;
-  background: rgba(191, 87, 0, 0.15);
+  background: rgba(110, 31, 38, 0.15);
   border: 1px solid var(--accent-burnt);
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.62rem;
@@ -1171,7 +1189,7 @@ a.btn-editorial:focus {
   color: var(--ink);
 }
 .timeline--paper .timeline-node__accolade {
-  background: rgba(191, 87, 0, 0.10);
+  background: rgba(110, 31, 38, 0.10);
   color: var(--accent-burnt);
   border-color: var(--accent-burnt);
 }
@@ -1421,7 +1439,7 @@ a.btn-editorial:focus {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 40% 60% at 30% 30%, rgba(191, 87, 0, 0.18), transparent 60%),
+    radial-gradient(ellipse 40% 60% at 30% 30%, rgba(110, 31, 38, 0.18), transparent 60%),
     radial-gradient(ellipse 30% 50% at 70% 70%, rgba(31, 77, 70, 0.15), transparent 60%);
   z-index: 1;
 }

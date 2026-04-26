@@ -3,26 +3,35 @@ export default {
   theme: {
     extend: {
       colors: {
-        /* Editorial dual-ground palette */
-        'paper': '#ECE3D2',
-        'paper-deep': '#E1D6BF',
+        /* Editorial dual-ground palette — v4 (2026-04-25)
+           Cordovan + brass replaces burnt-orange site-wide.
+           Old class names alias to new hex values for backward compat. */
+        'paper': '#EFE7D6',
+        'paper-deep': '#E5DAC2',
         'paper-edge': '#C9BDA3',
-        'ink': '#1B1714',
-        'ink-strong': '#0E0B09',
-        'ink-mute': '#6B5F52',
+        'ink': '#181410',
+        'ink-strong': '#0A0805',
+        'ink-mute': '#5C4F40',
         'ink-ground': '#0B0908',
         'ink-ground-elev': '#141110',
         'bone-mute': '#B8AFA4',
-        'accent-burnt': '#BF5700',
-        'accent-ember': '#E86A2D',
+        /* New canonical accents */
+        'cordovan': '#6E1F26',
+        'cordovan-glow': '#8E2A33',
+        'cordovan-deep': '#4D1319',
+        'brass': '#B7873A',
+        'brass-deep': '#8C6628',
+        /* Modern accent aliases */
+        'accent-burnt': '#6E1F26',
+        'accent-ember': '#8E2A33',
         'accent-emerald': '#1F4D46',
-        'accent-gold': '#C9A14A',
-        /* Legacy tokens retained for not-yet-rebuilt sections */
-        'burnt-orange': '#BF5700',
-        'texas-soil': '#8B4513',
+        'accent-gold': '#B7873A',
+        /* Legacy tokens — point at new palette so old class strings keep working */
+        'burnt-orange': '#6E1F26',
+        'texas-soil': '#8C6628',
         'charcoal': '#1A1A1A',
         'midnight': '#0D0D0D',
-        'ember': '#FF6B35',
+        'ember': '#8E2A33',
         'bone': '#F5F0EB',
         'warm-gray': '#A89F95',
         'spectrum-blue': '#3B82F6',
@@ -30,10 +39,10 @@ export default {
         'ato-gold': '#D4A843',
       },
       fontFamily: {
-        display: ['Fraunces', 'Cormorant Garamond', 'Georgia', 'serif'],
-        serif: ['Fraunces', 'Cormorant Garamond', 'Georgia', 'serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
+        serif: ['Fraunces', 'Georgia', 'serif'],
         mono: ['JetBrains Mono', 'Menlo', 'monospace'],
-        sans: ['Fraunces', 'Cormorant Garamond', 'serif'],
+        sans: ['Fraunces', 'Georgia', 'serif'],
       },
       animation: {
         'gradient-shift': 'gradient-shift 6s ease infinite',
@@ -46,8 +55,8 @@ export default {
           '50%': { backgroundPosition: '100% 50%' },
         },
         'glow-pulse': {
-          '0%, 100%': { boxShadow: '0 0 8px rgba(191, 87, 0, 0.5)' },
-          '50%': { boxShadow: '0 0 20px rgba(191, 87, 0, 0.8), 0 0 40px rgba(191, 87, 0, 0.3)' },
+          '0%, 100%': { boxShadow: '0 0 8px rgba(110, 31, 38, 0.5)' },
+          '50%': { boxShadow: '0 0 20px rgba(110, 31, 38, 0.8), 0 0 40px rgba(110, 31, 38, 0.3)' },
         },
         'marquee': {
           '0%': { transform: 'translateX(0)' },

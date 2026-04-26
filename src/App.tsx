@@ -115,7 +115,7 @@ function App() {
                   fontStyle: 'italic',
                   fontWeight: 500,
                   color: 'var(--accent-burnt)',
-                  textShadow: '0 0 50px rgba(191,87,0,0.45)',
+                  textShadow: '0 0 50px rgba(110,31,38,0.45)',
                   letterSpacing: '-0.025em',
                 }}
               >

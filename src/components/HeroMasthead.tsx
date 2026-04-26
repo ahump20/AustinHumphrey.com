@@ -85,10 +85,14 @@ export default function HeroMasthead() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4, ease: EASE_OUT_EXPO }}
-              className="ed-kicker mb-8"
-              style={{ fontSize: '0.78rem' }}
+              className="ed-kicker mb-8 hero-disciplines"
             >
-              {HERO_V2.disciplines}
+              {HERO_V2.disciplines.split(' · ').map((d, i, arr) => (
+                <span key={d} className="hero-disciplines__item">
+                  {d}
+                  {i < arr.length - 1 ? <span className="hero-disciplines__sep" aria-hidden> · </span> : null}
+                </span>
+              ))}
             </motion.p>
 
             {/* Lede — firewalled language */}

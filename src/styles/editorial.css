@@ -1949,3 +1949,54 @@ a.btn-editorial:focus {
   color: var(--accent-emerald);
   margin-top: 0.3rem;
 }
+
+/* ══════════════════════════════════════════════════════════════
+   Sharpening pass — fit and finish
+   ══════════════════════════════════════════════════════════════ */
+
+/* Hero disciplines — always stacked. Three intentional lines, one
+   discipline each. Reads as a deliberate magazine-style enumeration
+   instead of fighting column constraints with mid-phrase wraps. */
+.hero-disciplines {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.hero-disciplines__item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+.hero-disciplines__item::before {
+  content: '';
+  display: inline-block;
+  width: 0.85rem;
+  height: 1px;
+  background: var(--accent-burnt);
+  flex-shrink: 0;
+}
+.hero-disciplines__sep {
+  display: none;
+}
+@media (min-width: 768px) {
+  .hero-disciplines {
+    font-size: 0.68rem;
+    gap: 0.45rem;
+  }
+}
+
+/* Three Axes lede on dark — sharper italic, slightly heavier weight */
+.ink-ground .ed-lede {
+  font-weight: 500;
+  font-variation-settings: 'opsz' 24, 'SOFT' 0;
+  color: var(--bone);
+}
+
+/* Hide AI chat FAB on small mobile — preserves cover/colophon space */
+@media (max-width: 600px) {
+  button[aria-label*="concierge"] {
+    display: none !important;
+  }
+}
